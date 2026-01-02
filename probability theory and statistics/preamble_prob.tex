@@ -31,6 +31,11 @@
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{fillbetween}
 % Создаём новый счётчик задач
+\newcounter{maindf}
+\newcounter{subdf}[maindf]
+
+\newcommand{\dfsub}{\arabic{maindf}.\arabic{subdf}}
+
 \newcounter{mainth}
 \newcounter{subth}[mainth]
 
@@ -75,10 +80,11 @@
   colback=violet!10!white,
   colframe=mypurple,
   fonttitle=\ttfamily,
-  title={Определение}
+  title={Определение~\dfsub}
 }
 
 \newcommand{\defin}[1]{%
+  \refstepcounter{subdf}%
   \begin{defBox}%
     #1%
   \end{defBox}%

@@ -1,5 +1,8 @@
 \input{preamble_prob}
 \begin{document}
+\setcounter{maindf}{3}
+\setcounter{subdf}{0}
+
 \setcounter{mainth}{3}
 \setcounter{subth}{0}
 
@@ -121,5 +124,97 @@ $\Omega$, $\sigma$-алгебра $\mc{F}$ подмножеств множест
         \item $\forall\, A_1,\dots, A_n, \dots \in \mc{F},\ A_1 \supseteq A_2 \supseteq \cdots \supseteq A_n \supseteq \cdots$
         \[\lim_{n \to \infty} P(A_n) = P\left(\bigcap_{i = 1}^\infty A_i\right)\]
     \end{enumerate}
+}
+\prof{
+    1. Введём новый набор множеств:
+    \[B_1 = A_1\]
+    \[B_2 = A_2 \setminus A_1\]
+    \[\vdots\]
+    \[B_i = A_i \setminus A_{i-1}\ \forall i \geq 2\]
+    $B_1,\dots,B_n,\dots$ попарно не пересекаются
+    \[\bigcup_{i=1}^\infty B_i = \bigcup_{i=1}^\infty A_i,\ P(B_i) = P(A_i) - P(A_{i-1})\]
+    \[\implies P\left(\bigcup_{i=1}^\infty A_i\right) = P\left(\bigcup_{i=1}^\infty B_i\right) = \sum_{i=1}^{\infty}P(B_i) = \lim_{n\to\infty}\sum_{i=1}^{n}P(B_i) =\]
+    \[= \lim_{n\to\infty} (\cancel{P(A_1)} + \cancel{P(A_2)} - \cancel{P(A_1)} + \cancel{P(A_3)} - \cancel{P(A_2)} + \cdots + P(A_n) - \cancel{P(A_{n-1})}) = \lim_{n\to\infty} P(A_n)\]
+    
+    2. $A_1^c \subseteq A_2^c \subseteq \cdots \subseteq A_n^c \subseteq \cdots$
+
+    $\implies \displaystyle\lim_{n\to\infty} P\left(A_n^c\right) = P\left(\bigcup_{i=1}^\infty A_i^c\right)\ -$ следует из пункта 1.
+    \[\lim_{n\to\infty}P(A_n^c) = \lim_{n\to\infty}(1 - P(A_n)) = 1 - \lim_{n \to \infty} P(A_n)\]
+    \[P\left(\bigcup_{i=1}^\infty A_i^c\right) \overset{\text{ф-ла де Моргана}}{=} P\left(\left(\bigcap_{i=1}^\infty P(A_i)\right)^c\right) = 1 - P\left(\bigcap_{i=1}^\infty A_i\right)\]
+    Итого
+    \[1 - \lim_{n\to \infty}P(A_n) = 1 - P\left(\bigcap_{i=1}^\infty A_i\right)\]
+    \[\lim_{n \to \infty} P(A_n) = P\left(\bigcap_{i=1}^\infty A_i\right)\]
+}
+\newpage
+\setcounter{maindf}{4}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{4}
+
+\setcounter{mainpr}{4}
+
+\setcounter{mainex}{4}
+\begin{center}
+    \huge{Классическая вероятностная схема}
+\end{center}
+$(\Omega,\, \mc{F},\, P)\ -$ вероятностное пространство
+
+$\Omega = \{\omega_1,\,\dots,\, \omega_n\}$, но когда в $\Omega$ конечное число элементов, как здесь, достаточно $(\Omega, P)$
+\\
+
+$P:\, \omega_i \to p_i$
+
+$P(A) = \dfrac{\# A}{\# \Omega}\ -$ классическая формула определения вероятности
+\\
+
+$\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равновероятны)
+\begin{center}
+    \huge{Независимость событий}
+\end{center}
+\defin{
+    Пусть $(\Omega, \mc{F}, P)\ -$ вероятностное пространство. События $A_1,\dots, A_n \in \mc{F}$ называются независимыми, если для всех $1 \leq i_1 \leq \cdots \leq i_k \leq n$
+    \[P\left(A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}\right) = P\left(A_{i_1}\right) \cdot P\left(A_{i_2}\right) \cdots P\left(A_{i_k}\right)\]
+}
+\example{
+    $A_1,\, A_2,\, A_3$ независимы
+    \[P(A_1 \cap A_2) = P(A_1) \cdot P(A_2)\]
+    \[P(A_2 \cap A_3) = P(A_2) \cdot P(A_3)\]
+    \[P(A_1 \cap A_3) = P(A_1) \cdot P(A_3)\]
+    \[P(A_1 \cap A_2 \cap A_3) = P(A_1) \cdot P(A_2) \cdot P(A_3)\]
+    Если события попарно независимы (то есть верно $P(A_i \cap A_j) = P(A_i) \cap P(A_j)\ \forall i,j$), то из этого не следует независимость в совокупности (когда для пересечения $\geq 3\ A_i$ верно)
+}
+Замечание: отрицание $\left(A_i^c\right)$ не влияет на независимость
+\defin{
+    Пусть $(\Omega, \mc{F}, P),\ A_j, j \in J\ -$ произвольная совокупность событий. События $A_j$ называются 
+    
+    независимыми, если $\forall n \in \mb{N}$ любые $n$ из этих событий независимы
+}
+\defin{
+    Условной вероятностью $P(A\mid B)$ события $A$ при условии $B$ называется
+    \[P(A\mid B) = \frac{P(A \cap B)}{P(B)} \implies P(A \cap B) = P(A \mid B) \cdot P(B)\]
+}
+\example{
+    Игральную кость кидают один раз. Какова вероятность, что выпало 2 при условии, что выпало чётное число
+    \[P(''2''\mid \text{чётное}) = \frac{\dfrac{1}{6}}{\dfrac{1}{3}} = \frac{1}{2}\]
+}
+Замечание 1: $P(A \cap B) = P(A\mid B) \cdot P(B)\ -$ теорема умножения
+
+Замечание 2: для независимых событий $A$ и $B$
+\[P(A\mid B) = P(A)\]
+\[P(B\mid A) = P(B)\]
+\example{
+    А $-$ авария
+
+    П $-$ водитель пьян
+
+    Т $-$ водитель трезв
+
+    $P(\text{П}\mid\text{А}) = 0.4,\ P(\text{П}) = 0.05,\ P(\text{T}\mid\text{А}) = 0.6$
+    Нужно решить, каким ездить, пьяным или трезвым, то есть
+    \[\frac{P(\text{A}\mid \text{П})}{P(\text{А} \mid \text{Т})} = ?\]
+    \\
+    \[P(\text{A}\mid \text{П}) = \frac{P(\text{A} \cap \text{П})}{P(\text{П})} = \frac{P(\text{П}\mid\text{А}) \cdot P(\text{А})}{P(\text{П})}\]
+    \[P(\text{А}\mid \text{Т}) = \frac{P(\text{T}\mid\text{А}) \cdot P(\text{А})}{P(\text{Т})}\]
+    \[\implies \frac{P(\text{A}\mid \text{П})}{P(\text{А} \mid \text{Т})} = \frac{P(\text{П}\mid\text{А})\cdot P(\text{Т})}{P(\text{T}\mid\text{А}) \cdot P(\text{П})} = \frac{0.4 \cdot 0.95}{0.6 \cdot 0.05} \simeq 12\]
 }
 \end{document}
