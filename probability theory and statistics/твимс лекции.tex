@@ -150,6 +150,7 @@ $\Omega$, $\sigma$-алгебра $\mc{F}$ подмножеств множест
 \setcounter{subdf}{0}
 
 \setcounter{mainth}{4}
+\setcounter{subth}{0}
 
 \setcounter{mainpr}{4}
 
@@ -210,11 +211,154 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
     Т $-$ водитель трезв
 
     $P(\text{П}\mid\text{А}) = 0.4,\ P(\text{П}) = 0.05,\ P(\text{T}\mid\text{А}) = 0.6$
+    
     Нужно решить, каким ездить, пьяным или трезвым, то есть
     \[\frac{P(\text{A}\mid \text{П})}{P(\text{А} \mid \text{Т})} = ?\]
     \\
     \[P(\text{A}\mid \text{П}) = \frac{P(\text{A} \cap \text{П})}{P(\text{П})} = \frac{P(\text{П}\mid\text{А}) \cdot P(\text{А})}{P(\text{П})}\]
     \[P(\text{А}\mid \text{Т}) = \frac{P(\text{T}\mid\text{А}) \cdot P(\text{А})}{P(\text{Т})}\]
-    \[\implies \frac{P(\text{A}\mid \text{П})}{P(\text{А} \mid \text{Т})} = \frac{P(\text{П}\mid\text{А})\cdot P(\text{Т})}{P(\text{T}\mid\text{А}) \cdot P(\text{П})} = \frac{0.4 \cdot 0.95}{0.6 \cdot 0.05} \simeq 12\]
+    \[\implies \frac{P(\text{A}\mid \text{П})}{P(\text{А} \mid \text{Т})} = \frac{P(\text{П}\mid\text{А})\cdot P(\text{Т})}{P(\text{T}\mid\text{А}) \cdot P(\text{П})} = \frac{0.4 \cdot 0.95}{0.6 \cdot 0.05} \approx 12\]
+}
+\renewcommand{\thletter}{формула умножения вероятностей}
+\theorem{
+    Пусть $P(A_1 \cap \cdots \cap A_{n-1}) > 0,\ n \geq 2$. Тогда
+
+    \[P(A_1 \cap \cdots \cap A_n) = P(A_1) \cdot P(A_2\mid A_2) \cdot P(A_3\mid A_1 \cap A_2) \cdots P(A_n\mid A_1 \cap \cdots \cap A_{n-1})\]
+}
+\prof{
+    По индукции
+
+    База: $n = 2$
+    \[P(A_1 \cap A_2) = P(A_1)\cdot P(A_2\mid A_1) \text{ (из определения условной вероятности)}\]
+    работает
+    \\
+    Шаг: пусть верно для $n-1$
+    \[P(A_1 \cap \cdots \cap A_{n-1}) = P(A_1) \cdot P(A_2\mid A_1) \cdot P(A_3\mid A_1 \cap A_2) \cdots P(A_{n-1}\mid A_1 \cap \cdots \cap A_{n-2})\]
+    Тогда при $n$
+    \[P(\underbrace{A_1 \cap \cdots \cap A_{n - 1}}_{\substack{\text{выделим как}\\\text{отдельное событие}}} \cap\, A_n) = P(A_1 \cap \cdots \cap A_{n-1}) \cdot P(A_n\mid A_1 \cap \cdots \cap A_{n-1}) =\]
+    Из предположения индукции имеем
+    \[= P(A_1) \cdot P(A_2\mid A_1) \cdot P(A_3\mid A_1 \cap A_2) \cdots P(A_{n-1}\mid A_1 \cap \cdots \cap A_{n-2}) \cdot P(A_n\mid A_1 \cap \cdots \cap A_{n-1})\]
+}
+\renewcommand{\thletter}{формула полной вероятности}
+\theorem{
+    Пусть $D = \{D_1,\dots, D_n\}\ -$ разбиение $\Omega$ $\displaystyle\left(D_i \cap D_j = \varnothing\ i \neq j,\ \bigcup_{i = 1}^n D_i = \Omega\right)$,
+
+    $P(D_i) > 0\ i = 1,\dots, n$. Тогда
+    \[P(A) = \sum_{i=1}^{n}P(A\mid D_i) \cdot P(D_i)\]
+}
+\prof{
+    \[\sum_{i=1}^{n}P(A\mid D_i) \cdot P(D_i) = P((A \cap D_1) \cup \cdots \cup (A \cap D_n)) = P(A \cap \underbrace{(D_1 \cup \cdots \cup D_n)}_{\Omega}) = P(A)\]
+}
+\example{
+    б - да ''1''
+    
+    ч - нет ''0''
+
+    п - правда $\begin{cases}
+        1 & p\ -\ ?\\
+        0 & 1 - p
+    \end{cases}$
+
+    Оцениваем как долю $''1''$:
+    \[P(''1'') = P(''1''\mid \text{б})P(\text{б}) + P(''1''\mid \text{ч})P(\text{ч}) + P(''1''\mid \text{п})P(\text{п}) = \frac{N\text{б}}{N}\cdot 1 + \frac{N\text{п}}{N}\cdot p\]
+    \[\implies p = \frac{P(''1'') - \dfrac{N\text{б}}{N}}{\dfrac{N\text{п}}{N}} = \frac{NP(''1'') - N\text{б}}{N\text{п}}\]
+}
+\renewcommand{\thletter}{формула Байеса}
+\theorem{
+    Пусть $P(A) > 0,\ D = \{D_1,\dots, D_n\}\ -$ разбиение
+
+    $P(D_i) > 0\ i = 1,\dots, n$
+    
+    Тогда $P(A\mid D_i)\ -$ апостериорные вероятности и
+    \[P(D_i \mid A) = \frac{P(A\mid D_i) \cdot P(D_i)}{\displaystyle \sum_{k=1}^{n}P(A\mid D_k)\cdot P(D_k)}\]
+    где $P(A\mid D_i) \cdot P(D_i) = P(A \cap D_i),\ \displaystyle \sum_{k=1}^{n}P(A\mid D_k)\cdot P(D_k) = P(A)$ по формуле полной верятности
+}
+\example{
+    Задача
+
+    $P(C) = 0.03$
+
+    $P(+\mid C) = 0.98\ -$ чувствительность теста, где + $-$ положительный результат
+
+    $P\left(+\mid \overline{C}\right) = 0.01 \implies \underbrace{P\left(-\mid \overline{C}\right)}_{\substack{\text{специфичность}\\\text{теста}}} = 0.99$
+
+    $P\left(\overline{C}\mid +\right) =\, ?$
+
+    \[P(+) = P(+\mid C) P(C) + P\left(+\mid \overline{C}\right) P\left(\overline{C}\right) = 0.98 \cdot 0.03 + 0.01 \cdot 0.97 = 0.0391\]
+    \[P\left(\overline{C}\mid +\right) = \frac{P\left(+\mid \overline{C}\right) P\left(\overline{C}\right)}{P(+)} = \frac{0.01 \cdot 0.97}{0.0391} \approx 0.25\]
+}
+\newpage
+\setcounter{maindf}{5}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{5}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{5}
+
+\setcounter{mainex}{5}
+\setcounter{subex}{0}
+\begin{center}
+    \huge{Измеримые функции и случайные величнины}
+\end{center}
+\defin{
+    Пусть задано измеримое пространство $(\Omega, \mc{F})$. Тогда
+
+    $\xi:\, \Omega \to \mb{R}$
+
+    $\xi = \xi(\omega), \ \omega \in \Omega$ называется измеримой ($\mc{F}$-измеримой), если
+    \[\forall c \in \mb{R} \ \underbrace{\{\omega: \xi(\omega) > c\}}_{\text{условие измеримости}} \in \mc{F}\]
+
+    * построить функцию, которая НЕ являтся измеримой, довольно сложно, поэтому можно считать, что известные функции измеримы
+}
+Замечание: $\xi(\omega)\ -$ случайная величина = измеримая функция
+\defin{
+    Функция $g:\, \mb{R} \to \mb{R}$ называется борелевской, если она измерима относительно
+    
+    $\mc{B}(\mb{R})\ -$ борелевской $\sigma$-алгебры, то есть
+    \[\forall c \in \mb{R}\ \{x: g(x) > c\} \in \mc{B}(\mb{R})\]
+}
+Замечание: любая непрерывная функция является измеримой
+\example{
+    \[g(x) = \max\{x, 0\}, x \in \mb{R}\]
+    \[g(x) = -\min\{x, 0\}, x \in \mb{R}\]
+    \[g(x) = |x|\]
+    \[g(x) = e^x\]
+    Все непрерывны $\implies$ все измеримы
+}
+\example{
+    Пусть $(\Omega, \mc{F})\ -$ измеримое пространство
+
+    $\xi: \Omega \to \mb{R}\ -$ $\mc{F}$-измеримая функция
+    
+    Тогда $\forall c \in \mb{R}$
+
+    \[\left.\begin{matrix}
+        \text{а)}\ \{\omega \in \Omega: \xi(\omega) \geq c\}\\
+        \text{б)}\ \{\omega \in \Omega: \xi(\omega) = c\}\\
+        \text{в)}\ \{\omega \in \Omega: \xi(\omega) \leq c\}\\
+        \text{г)}\ \{\omega \in \Omega: \xi(\omega) < c\}
+    \end{matrix}\right\} \in \mc{F}\]
+}
+\prof{
+    a) $\displaystyle\overset{A}{\{\omega \in \Omega: \xi(\omega) \geq c\}} \underset{(1)}{=} \bigcap_{n = 1}^\infty\overset{B}{\underbrace{\left\{\omega \in \Omega: \xi(\omega) > c - \frac{1}{n}\right\}}_{\in \mc{F}}}$
+
+    $\implies$ пересечение тоже $\in \mc{F}$ в силу свойства замкнутости счётного пересечения элементов
+    
+    $\sigma$-алгебры
+    \\
+    \\
+    Доказательство $(1)$:
+
+    Пусть $\omega_0 \in A \implies \xi(\omega_0) > c - \dfrac{1}{n}\ \forall n \in \mb{N} \implies \omega_0 \in B$
+
+    Пусть $\displaystyle\omega_0 \in B \implies \xi(\omega_0) > c - \dfrac{1}{n}\ \forall n \in \mb{N} \implies \xi(\omega_0) \geq \lim_{n \to \infty} \left(c - \dfrac{1}{n}\right) = c \implies \omega_0 \in A$
+    \\
+    \\
+    б) $\displaystyle\{\omega \in \Omega: \xi(\omega) = c\} = \underbrace{\{\omega \in \Omega: \xi(\omega) \geq c\}}_{\in \mc{F}} \setminus \{\omega \in \Omega: \xi(\omega) > c\} \in \mc{F}$
+
+    в) $\displaystyle \{\omega \in \Omega: \xi(\omega) \leq c\} = \Omega \setminus \{\omega \in \Omega: \xi(\omega) > c\} \in \mc{F}$
+
+    г) $\displaystyle \{\omega \in \Omega: \xi(\omega) < c\} = \underbrace{\{\omega \in \Omega: \xi(\omega) \leq c\}}_{\in \mc{F}} \setminus \underbrace{\{\omega \in \Omega: \xi(\omega) = c\}}_{\in \mc{F}} \in \mc{F}$
 }
 \end{document}
