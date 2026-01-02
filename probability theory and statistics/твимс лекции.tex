@@ -1,0 +1,125 @@
+\input{preamble_prob}
+\begin{document}
+\setcounter{mainth}{3}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{3}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{3}
+\setcounter{subex}{0}
+\begin{center}
+    \textbf{\Huge{Теория вероятностей и математическая статистика}}
+    \vspace{5cm}
+
+    Конспекты лекций Коссовой Е.В.
+
+    Факультет экономических наук, 2025/2026 гг.
+
+    \vspace{5cm}
+
+    Особую благодарность хочу выразить студентке ЭАДа Доможаковой Валентине, на основе именно её конспектов составлен данный файл.
+
+    \vspace{10cm}
+    \textit{Примечание: данные конспекты начинаются примерно с октября 2025 года, за материалом до этого времени обращайтесь к конспектам Д. А. Борзых}
+
+\end{center}
+\newpage
+\begin{center}
+    \huge{Вероятностная мера}
+\end{center}
+$\Omega$, $\sigma$-алгебра $\mc{F}$ подмножеств множества $\Omega$
+
+Любое подмножество $ A \in \mc{F}$ называется \textbf{событием}. Элементы $\Omega$ называются \textbf{элементарными исходами}.
+\defin{
+    Пусть задано измеримое пространство $(\Omega,\, \mc{F})$. Функция $P: \mc{F} \to [0, 1]$ называется
+    
+    \underline{вероятностной мерой}, если выполняются условия:
+    \begin{enumerate}
+        \item $P(\Omega) = 1$ (условие нормировки)
+        \item Аксиома счётной аддитивности:
+        Если $A_1, A_2, \ldots \in \mc{F}\, -$ попарно непересекющиеся множества,
+        
+        то
+        \[
+            P\left( \bigcup_{i=1}^{\infty} A_i \right) = \sum_{i=1}^{\infty} P(A_i).
+        \]
+    \end{enumerate}
+}
+
+\propos{
+    \[P(\varnothing) = 0\]
+}
+\prof{
+    Рассмотрим $A_1,\,A_2, \dots A_i = \varnothing$ и пусть $P(A_i) = p > 0$. Тогда
+    \[1 \geq P\left(\bigcup_{i = 1}^\infty A_i\right) = \sum_{i = 1}^{\infty} P(A_i) = p + p + \cdots\]
+    $\implies$ если $p > 0$, то ряд расходится $\implies p = 0$
+}
+\propos{
+    Для любых попарно непересекющихся множеств $A_i \in \mc{F} \ (1 \leq n)$
+    \[P\left(\bigsqcup_{i = 1}^n A_i\right) = \sum_{i = 1}^{n} A_i\]
+}
+\prof{
+    Дополним набор множеств из условия счётным набором $A_{n+1}, A_{n+2}, \dots$, каждое из которых пусто. Тогда по утверждению 3.1 $P(A_i) = 0,\ i > n$
+    \[\implies P\left(\bigcup_{i = 1}^\infty A_i\right) = \sum_{i = 1}^{n} P(A_i) + \sum_{i = n+1}^{\infty} P(A_i) = \sum_{i = 1}^{n} P(A_i) + 0 = \sum_{i = 1}^{n} P(A_i)\]
+}
+\newpage
+\propos{
+    \[\forall\, A_1,A_2 \in \mc{F},\ A_1\subseteq A_2 \implies P(A_2 \setminus A_1) = P(A_2) - P(A_1)\]
+}
+\prof{
+    \[A_2 = A_1 \cup (A_2 \setminus A_1)\]
+    \[\implies P(A_2) = P(A_1) + P(A_2 \setminus A_1)\]
+    \[\implies P(A_2 \setminus A_1) = P(A_2) - P(A_1)\]
+}
+\propos{
+    \[\forall\, A_1,A_2 \in \mc{F},\ A_1\subseteq A_2 \implies P(A_1) \leq P(A_2)\]
+    \textit{очев}
+}
+\propos{
+    \[\forall\, A \in \mc{F} \implies P(A^c) = 1 - P(A)\]
+}
+\prof{
+    \[\Omega = A \cup A^c\]
+    \[\implies P(\Omega) = P(A) + P(A^c)\]
+    \[\implies 1 = P(A) + P(A^c)\]
+    \[\implies P(A^c) = 1 - P(A)\]
+}
+\propos{
+    \[\forall\, A_1,A_2 \in \mc{F} \implies P(A_1 \cup A_2) = P(A_1) + P(A_2) - P(A_1 \cap A_2)\]
+}
+\prof{
+    \[A_1 \cup A_2 = (A_1 \setminus A_2) \cup (A_1 \cap A_2) \cup (A_2 \setminus A_1)\]
+    \[\implies P(A_1 \cup A_2) = \underbrace{P(A_1 \setminus A_2) + P(A_1 \cap A_2)}_{P(A_1)} + \underbrace{P(A_2 \setminus A_1) + P(A_1 \cap A_2)}_{P(A_2)} - P(A_1 \cap A_2) =\]
+    \[= P(A_1) + P(A_2) - P(A_1 \cap A_2)\]
+}
+\newpage
+\propos{
+    \[\forall A_1,\dots,A_n \in \mc{F} \implies P\left(\bigcup_{i = 1}^n A_i\right) \leq \sum_{i = 1}^{n} P(A_i)\]
+}
+\prof{
+    Введём новый набор множеств:
+    \[B_1 = A_1\]
+    \[B_2 = A_2 \setminus A_1\]
+    \[\vdots\]
+    \[B_n = A_n \setminus \bigcup_{i = 1}^{n-1} A_i\]
+    Тогда $B_i \subseteq A_i\, \forall i$, $B_i \cap B_j = \varnothing\ \forall i \neq j$ и
+    \[\bigcup_{i = 1}^n B_i = \bigcup_{i = 1}^n A_i\]
+    Поэтому
+    \[P\left(\bigcup_{i = 1}^n B_i\right) = P\left(\bigcup_{i = 1}^n A_i\right) = \sum_{i = 1}^{n} P(B_i) \leq \sum_{i = 1}^{n} P(A_i)\]
+    }
+\propos{
+    \[\forall A_1,\dots \in \mc{F} \implies P\left(\bigcup_{i = 1}^\infty A_i\right) \leq \sum_{i = 1}^{\infty} P(A_i)\]
+    \textit{Доказательство аналогично предыдущему утверждению.}
+}
+\newpage
+\renewcommand{\thletter}{о непрерывности вероятностной меры}
+\theorem{
+    \begin{enumerate}
+        \item $\forall\, A_1,\dots, A_n, \dots \in \mc{F},\ A_1 \subseteq A_1 \subseteq \cdots \subseteq A_n \subseteq \cdots$
+        \[\lim_{n \to \infty} P(A_n) = P\left(\bigcup_{i = 1}^\infty A_i\right)\]
+        \item $\forall\, A_1,\dots, A_n, \dots \in \mc{F},\ A_1 \supseteq A_2 \supseteq \cdots \supseteq A_n \supseteq \cdots$
+        \[\lim_{n \to \infty} P(A_n) = P\left(\bigcap_{i = 1}^\infty A_i\right)\]
+    \end{enumerate}
+}
+\end{document}
