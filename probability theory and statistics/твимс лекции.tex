@@ -61,6 +61,8 @@ $\Omega$, $\sigma$-алгебра $\mc{F}$ подмножеств множест
 \propos{
     Для любых попарно непересекющихся множеств $A_i \in \mc{F} \ (1 \leq n)$
     \[P\left(\bigsqcup_{i = 1}^n A_i\right) = \sum_{i = 1}^{n} A_i\]
+    
+    \textit{доказательство шло как бонус}
 }
 \prof{
     Дополним набор множеств из условия счётным набором $A_{n+1}, A_{n+2}, \dots$, каждое из которых пусто. Тогда по утверждению 3.1 $P(A_i) = 0,\ i > n$
@@ -99,6 +101,8 @@ $\Omega$, $\sigma$-алгебра $\mc{F}$ подмножеств множест
 \newpage
 \propos{
     \[\forall A_1,\dots,A_n \in \mc{F} \implies P\left(\bigcup_{i = 1}^n A_i\right) \leq \sum_{i = 1}^{n} P(A_i)\]
+
+    \textit{доказательство шло как бонус}
 }
 \prof{
     Введём новый набор множеств:
@@ -113,7 +117,7 @@ $\Omega$, $\sigma$-алгебра $\mc{F}$ подмножеств множест
     }
 \propos{
     \[\forall A_1,\dots \in \mc{F} \implies P\left(\bigcup_{i = 1}^\infty A_i\right) \leq \sum_{i = 1}^{\infty} P(A_i)\]
-    \textit{Доказательство аналогично предыдущему утверждению.}
+    \textit{Доказательство шло как бонус, но оно аналогично предыдущему утверждению.}
 }
 \newpage
 \renewcommand{\thletter}{о непрерывности вероятностной меры}
@@ -361,4 +365,119 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
 
     г) $\displaystyle \{\omega \in \Omega: \xi(\omega) < c\} = \underbrace{\{\omega \in \Omega: \xi(\omega) \leq c\}}_{\in \mc{F}} \setminus \underbrace{\{\omega \in \Omega: \xi(\omega) = c\}}_{\in \mc{F}} \in \mc{F}$
 }
+\newpage
+\begin{center}
+    \huge{Функция распределения и функция плотности}
+
+    \huge{случайных величин}
+\end{center}
+$(\Omega,\mc{F},P)\ -$ вероятностное пространство
+
+Случайная величина $\xi\ -$ это любая измеримая функция
+
+$\{\omega: \xi(\omega) > x\} \in \mc{F}\ \forall x \in \mb{R}$
+
+$(\mb{R}, \mc{B}(\mb{R}), P_\xi)$
+
+$P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
+\defin{
+    Функцией распределения случайной величины $\xi$ называется
+    \[F_\xi(x) = P(\xi \leq x),\]
+    Обладающая следующими свойствами:
+    \begin{enumerate}
+        \item $\displaystyle F_\xi(-\infty) = \lim_{x \to -\infty} F_\xi(x) = 0,\ F_\xi(+\infty) = 1,\ 0 \leq F_\xi(x) \leq 1$
+        \item $\forall x_2 > x_1 \ F_\xi(x_2) \geq F_\xi(x_1)$
+        \item $\displaystyle \lim_{\Delta x \to 0} F_\xi(x + \Delta x) = F_\xi(x)$ (непрерывность справа)
+    \end{enumerate}
+    \textit{Примечание: последнее свойство можно заменить на непрерывность слева, но из-за этого слегка поменяется его доказательство}
+}
+\prof{
+    \begin{enumerate}
+        \item $\displaystyle \bigcap_{n=1}^{+\infty} \{\xi \leq -n\} = \varnothing\ \forall n \in \mb{N}$
+        
+        $F_\xi(-x) = P(\xi \leq -n)$
+
+        $\displaystyle\lim_{n \to \infty} F_\xi(-n) = \lim_{n \to \infty} P(\xi \leq -n) = P\left(\bigcap_{n = 1}^{+\infty}\{\xi \leq -n\}\right) = P(\varnothing) = 0$
+
+        Аналогично
+
+        $\displaystyle\bigcup_{n=1}^{+\infty} \{\xi \leq n\} = \Omega$
+
+        $\displaystyle\lim_{n \to \infty} F_\xi(n) = \lim_{n \to \infty} P(\xi \leq n) = P\left(\bigcup_{n = 1}^{+\infty}\{\xi \leq n\}\right) = P(\Omega) = 1$
+
+        \item $(\xi \leq x_2) \supseteq (\xi \leq x_1)$
+        
+        $\implies P(\xi \leq x_2) \geq P(\xi \geq x_2) \implies F_\xi(x_2) \geq F_\xi(x_1)$
+
+        \item $F(x_0),\ x_n \downarrow x_0\ (x_n \geq x_0\ \forall n)$
+        
+        $\displaystyle \bigcap_{n=1}^\infty\{\xi \leq x_n\} = \{\xi \leq x_0\}$
+
+        $\displaystyle \lim_{x \to x_0^+} F_\xi(x) = P\left(\bigcap_{n=1}^\infty\{\xi \leq x_n\}\right) = P(\{\xi \leq x_0\}) = F_\xi(x_0)$
+
+        \textit{Возвращаясь к замене на непрерывность слева: доказательство будет таким же,\\но $x_n \leq x_0\ \forall n$ и соответственно предел левосторонний}
+    \end{enumerate}
+}
+Замечание: Данное определение работает и в обратную сторону, то есть если функция $G(x)$ обладает свойствами 1-3, то она является функцией распределения какой-то случайной величины
+
+\textit{доказательство шло как бонус}
+\prof{
+    Пусть $G: \mb{R} \to [0, 1]$ и обладает свойствами
+    \begin{enumerate}
+        \item $\displaystyle \lim_{x \to -\infty} G(x) = 0,\ \lim_{x \to +\infty} G(x) = 1$
+        \item $x_1 < x_2 \implies G(x_1) \leq G(x_2)$
+        \item $\displaystyle \lim_{\Delta x \to 0} G(x + \Delta x) = G(x)$
+    \end{enumerate}
+    Покажем, что существует вероятностное пространство и случайная величина $\xi$ такие, что
+    \[F_\xi(x) = P(\xi \leq x) = G(x)\ \forall x\]
+
+    Рассмотрим $G^{-1}(c) = \inf{\{x \in \mb{R}: G(x) \geq c\}}$ и вероятностное пространство $(\Omega, \mc{F}, P)$ такое, что
+    \[\Omega = (0, 1)\]
+    \[\mc{F} = \mc{B}(0, 1)\]
+    \[P((a, b)) = b - a\]
+    Определим случайную величину
+    \[\xi(\omega) := G^{-1}(\omega)\]
+    Покажем, что $G^{-1}(\omega) \leq x \iff \omega \leq G(x)$
+    \\
+    \\
+    Пусть $G^{-1}(\omega) \leq x$. Тогда из определения инфимума и из построения $G^{-1}$ следует, что
+    \[\exists y \in \mb{R}: G^{-1}(\omega) \leq y \leq G^{-1}(\omega) + \varepsilon \text{ и } G(y) \geq \omega\]
+    Возьмём $y \leq x$. Тогда из свойств $G$ следует, что $G(y) \leq G(x)$
+    \[\implies \omega \leq G(y) \leq G(x) \iff G(x) \geq \omega \implies x \in \{z: G(z) \geq \omega\}\]
+    но из определения инфимума 
+    \[G^{-1}(\omega) = \inf\{z: G(z) \geq \omega\}\implies x \geq G^{-1}(\omega)\]
+    Значит, $G^{-1}(\omega) \leq x \iff w \leq G(x)$
+    \[\implies P(\{\omega: \underbrace{G^{-1}(\omega)}_{=\xi} \leq x\}) = P(\{\omega \in \Omega: w \leq G(x)\}) = P(0, G(x)) = G(x)\]
+    Получаем, что $G(x) = P(\xi(\omega) \leq x)$ и так как она удовлетворяет свойствам 1-3, то она является функцией распределения
+}
+\defin{
+    Закон распределения случайной величины $\xi$ называется дискретным ($\xi\ -$ дискретно), если
+    
+    $\exists B = \{x_1,\dots, x_n, \dots\}, \ x_i \in \mb{R}$ такое, что
+    \[P(\xi \in B) = 1\]
+}
+Замечание: если $P(\xi = x) > 0$, то $x$ называют возможным значением $\xi$
+\example{
+    \textit{Шёл как бонус}
+
+    Приведём случайную величину, функция распределения которой имеет разрывы в бесконечном числе точек
+
+    Определим случайную величину $\xi$ следующим образом
+
+    \[P\left(\xi = \dfrac{1}{n}\right) = 2^{-n}, \ n \in \mb{N}\]
+    Мы можем себе такое позволить, потому что
+    \[\sum_{n=1}^{\infty}P\left(\xi = \frac{1}{n}\right) = \sum_{n=1}^{\infty}2^{-n} = 1\]
+    Тогда
+    \[F_\xi(x) = P(\xi \leq x) = \sum_{n: \frac{1}{n} \leq x}2^{-n}\]
+    Она имеет разрывы в точках, образующих последовательность $\dfrac{1}{n},\ n \in \mb{N}$, поэтому число этих
+    
+    разрывов бесконечно
+
+    
+}
+\textit{Примечание: непосредственно на этой лекции у Елены Владимировны произошла профдеформация и она дала в качестве бонуса привести пример случайной величины, чья функция распределения разрывна в каждой точке, хотя такой функции не существует. Пример выше должен был быть на его месте}
+\newpage
+
+\textit{Здесь должна была быть лекция про абсолютно непрерывные распределения и математическое оижидание, но записей в моем распоряжении не оказалось. Если ты это читаешь и у тебя оказался конспект той лекции, то прошу его скинуть мне в тг https://t.me/aleksandroiid}
+\newpage
 \end{document}
