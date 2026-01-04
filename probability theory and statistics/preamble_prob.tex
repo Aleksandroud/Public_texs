@@ -23,13 +23,13 @@
 \usepackage[normalem]{ulem}
 \pagestyle{empty} \textwidth=19.0cm \oddsidemargin=-1.3cm
 \textheight=26cm \topmargin=-3.0cm
-\usepackage{tcolorbox}
 \tcbuselibrary{listingsutf8}
 \usepackage{pgfplots}
 \renewcommand{\rmdefault}{cmss}
 \usepgfplotslibrary{patchplots}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{fillbetween}
+\usetikzlibrary{patterns}
 % Создаём новый счётчик задач
 \newcounter{maindf}
 \newcounter{subdf}[maindf]
@@ -57,19 +57,18 @@
 \usepackage{xcolor}
 
 % --- Однострочное создание блоков \problem, \solution, \answer ---
-% (работает без \begin ... \end)
 \definecolor{myrose}{RGB}{255,182,193} % Розовый
 \definecolor{mybrown}{RGB}{210,180,140} % Светло-коричневый
 \definecolor{mycyan}{RGB}{135,206,235}  % Голубой
 \definecolor{myorange}{RGB}{255,165,0}   % Оранжевый
 \definecolor{mypurple}{RGB}{216,191,216} % Светло-фиолетовый
-% Требуется пакет environ:
+
 \newcommand{\thletter}{}
 
 \newcommand{\thtitle}{
-  \IfStrEq{\thletter}{}%  % Если taskletter пустая
-    {\ttfamily}%   % Выводим только номер
-    {\ttfamily (\thletter)}% Иначе номер + буква
+  \IfStrEq{\thletter}{}%  % Если thletter пустая
+    {\ttfamily}   % Выводим только теорему и её номер
+    {\ttfamily (\thletter)}% Иначе теорема + номер + название теоремы
 }
 
 % --- Определяем сокращённые версии окружений ---
@@ -161,7 +160,6 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.3mm} % Толщина линии в колонтитулах
-% ПРОВЕРЬТЕ ИМЯ ФАЙЛА! Должно быть 'profimatika' или 'profimatica'
 
 \rhead{Теория вероятностей и математическая статистика}
 \lhead{Благий Александр}

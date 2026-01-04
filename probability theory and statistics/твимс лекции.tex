@@ -478,7 +478,287 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
 \textit{Примечание: непосредственно на лекции у Елены Владимировны произошла профдеформация и она дала в качестве бонуса привести пример случайной величины, чья функция распределения разрывна в каждой точке, хотя такой функции не существует. Пример выше должен был быть на его месте}
 \newpage
 
-\textit{Здесь должна была быть лекция про абсолютно непрерывные распределения и математическое ожидание, но записей в моем распоряжении не оказалось. Если ты это читаешь и у тебя оказался конспект той лекции, то прошу его скинуть мне в тг https://t.me/aleksandroiid}
+\textit{Здесь должен был быть блок про абсолютно непрерывные распределения, но записей в моем распоряжении не оказалось. Если ты это читаешь и у тебя оказался конспект по этой теме, то прошу его скинуть мне в тг https://t.me/aleksandroiid}
 \newpage
+\begin{center}
+    \huge{Функции от случайных величин}
+\end{center}
+Если $g(x)\ -$ борелевская функция, то $g(\xi)\ -$ случайная величина
+\renewcommand{\thletter}{}
+\theorem{
+    Пусть $\xi\ -$ абсолютно непрерывная случайная величина, $g(x)\ -$ дифференцируемая и монотонная, $g'(x) \neq 0 \ \forall x \in \mb{R}$. Тогда $\eta = g(\xi)$ является абсолютно непрерывной, причём
+    \[f_\eta(y) = \frac{f_\xi\left(g^{-1}(y)\right)}{\left|g'\left(g^{-1}(y)\right)\right|}\]
+}
+\prof{
+    \[F_\eta(y) = P(\eta \leq y) = P(g(\xi) \leq y) \overset{\text{пусть $g$ монот возр.}}{=} P\left(\xi \leq g^{-1}(y)\right) = F_\xi\left(g^{-1}(y)\right)\]
+    \[\implies f_\eta(y) = F_\eta'(y) = F_\xi'\left(g^{-1}(y)\right) = f_\xi\left(g^{-1}(y)\right)\cdot \left(g^{-1}(y)\right)' = \frac{f_\xi\left(g^{-1}(y)\right)}{g'\left(g^{-1}(y)\right)}\]
+}
+\example{
+    $\xi,\ g(x) = \sigma x + \mu$
+
+    Слуйчайная величина $\eta = \sigma \xi + \mu,\ g^{-1}(y) = \dfrac{y - \mu}{\sigma}$
+
+    Хотим выяснить функцию плотности $f_\eta(y)$
+    \[f_\eta(y) = f_\xi\left(\frac{y - \mu}{\sigma}\right) \cdot \frac{1}{\sigma}\]
+}
+\example{
+    Пусть $u \sim U[0, 1]\ -$ равномерное распределение случайной величины
+
+    $F_\xi(x)\ -$ распределение $\xi$ (непрерывная)
+
+    Рассмотрим случайную величину $\xi_0 = F_\xi^{-1}(u)$
+    \[F_{\xi_0}(x) = P\left(F_\xi^{-1}(u) \leq x\right) = P(u \leq F_\xi(x)) = F_\xi(x)\]
+    так как это просто длина отрезка
+
+    \begin{center}
+        \begin{tikzpicture}[scale=1]
+
+            \draw[thick] (0,0) -- (6,0);
+
+            \draw[thick] (0,-0.1) -- (0,0.1);
+            \draw[thick] (6,-0.1) -- (6,0.1);
+
+            \fill[pattern=north east lines]
+                (0,0) rectangle (3,0.1);
+
+            \node[below] at (0,0) {$0$};
+            \node[below] at (6,0) {$1$};
+            \node[above] at (3,0.1) {$F_\xi(x)$};
+        \end{tikzpicture}
+    \end{center}
+    \newpage
+    Как можно догадаться
+    \begin{center}
+        \begin{tikzpicture}[scale=2]
+        \clip (-3,-2) rectangle (3.2,2.2);
+        
+        \draw[step=0.3, gray!30] (-3,-0.3) grid (3,4);
+        
+        \draw[->, thick] (-3,0) -- (3,0) node[below] {$x$};
+        \draw[->, thick] (0,-0.2) -- (0,2) node[right] {$F_y(x)$};
+
+        % График y = arctan x
+        \draw[thick, domain=-5:5, smooth, color=blue]
+        plot (\x,{atan(\x)/100 + 0.8});
+
+        % Асимптота y = pi/2
+        \draw[dashed, smooth] (-5,{pi/2}) -- (5,{pi/2});
+        \node[above] at (-0.1,{pi/2}) {$1$};
+        \node[below] at (-0.1,0) {$0$};
+        % Значения
+        \pgfmathsetmacro{\yzero}{1.3}
+        \pgfmathsetmacro{\xzero}{tan(100*\yzero - 80)}
+
+        % Проекции
+        \draw[dashed] (0,\yzero) -- (\xzero,\yzero);
+        \draw[dashed] (\xzero,0) -- (\xzero,\yzero);
+
+        % Точка
+        \fill (\xzero,\yzero) circle (1pt);
+
+        % Подписи
+        \node[left] at (0,\yzero) {$y$};
+        \node[below] at (\xzero,0) {$F^{-1}(y)$};
+
+        \end{tikzpicture}
+    \end{center}
+}
+\example{
+    Рассмотрим экспоненциальное распределение.
+    
+    Пусть $\xi \sim \operatorname{Exp}{(\lambda)}$, то есть $f_\xi(x) = \lambda e^{-\lambda x},\ x > 0, \lambda > 0$
+    \[y = F_\xi(x) = 1 - e^{-\lambda x}\]
+    \[e^{-\lambda x} = 1 - y\]
+    \[-\lambda x = \ln{(1 - y)}\]
+    \[x = -\frac{1}{\lambda}\ln{(1 - y)}\]
+}
+\newpage
+\setcounter{maindf}{6}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{6}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{6}
+
+\setcounter{mainex}{6}
+\setcounter{subex}{0}
+
+\begin{center}
+    \huge{Характеристики распределений}
+\end{center}
+\defin{
+    Квантилью (иногда также называемой персентилем) распределения порядка (уровня) $\alpha$ называется такое число $x_\alpha \in \mb{R}$, что
+    \[P(\xi \leq x_\alpha) \geq \alpha\]
+    Или, что то же самое
+    \[P(\xi \geq x_\alpha) \geq 1 - \alpha\]
+    \textit{Замечание: для непрерывного распределения квантиль $x_\alpha$ это такое число, что $F_\xi(x_\alpha) = \alpha$}
+    \begin{center}
+        \begin{tikzpicture}[scale=2]
+        \clip (-3,-2) rectangle (3.2,2.2);
+
+        \draw[step=0.3, gray!30] (-3,-0.3) grid (3,4);
+        
+        \draw[->, thick] (-3,0) -- (3,0) node[below] {$x$};
+        \draw[->, thick] (0,-0.2) -- (0,2) node[right] {$F_\xi(x)$};
+
+        
+
+        % График y = arctan x
+        \draw[thick, domain=-5:5, smooth, color=blue]
+        plot (\x,{atan(\x)/100 + 0.8});
+
+        % Асимптота y = pi/2
+        \draw[dashed, smooth] (-5,{pi/2}) -- (5,{pi/2});
+        \node[above] at (-0.1,{pi/2}) {$1$};
+        \node[below] at (-0.1,0) {$0$};
+        % Значения
+        \pgfmathsetmacro{\yzero}{1.3}
+        \pgfmathsetmacro{\xzero}{tan(100*\yzero - 80)}
+
+        % Проекции
+        \draw[dashed] (0,\yzero) -- (\xzero,\yzero);
+        \draw[dashed] (\xzero,0) -- (\xzero,\yzero);
+
+        % Точка
+        \fill (\xzero,\yzero) circle (1pt);
+
+        % Подписи
+        \node[left] at (0,\yzero) {$\alpha$};
+        \node[below] at (\xzero,0) {$x_\alpha$};
+
+        \end{tikzpicture}
+    \end{center}
+
+    $\alpha = 0.25 \ x_{0.25}\ -$ нижний (первый) квантиль
+
+    $\alpha = 0.5 \ x_{0.5}\ -$ медиана
+
+    $\alpha = 0.75 \ x_{0.75}\ -$ верхний (третий) квантиль
+
+    интерквантильный размах = $x_{0.75} - x_{0.25}$
+
+    Он используется, когда мы, например, не знаем распределения и должны получить всё из данных
+}
+
+Нужно различать понятия
+
+$\operatorname{VaR}$ $-$ value at risk
+
+$\operatorname{Var}$ $-$ дисперсия (оно же $\mb{D}$, оно же $D$)
+
+$\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{цитата})
+
+\example{
+    Пусть $\xi\ -$ убытки $F_\xi(x)$
+
+    убытки не должны превышать $p = \underset{\text{подсчёт}}{0.99} \bigg/ \underset{\text{1\, \text{день}}}{0.95}$, то есть $P(\xi \leq \operatorname{VaR}) = 0.99$
+
+    То есть $\operatorname{VaR} = x_{0.99}$ (или $x_{0.95}$) $-$ квантиль
+}
+\defin{
+    \textit{по-хорошему, это определение должно быть свойством}
+
+    Математическим ожиданием случайной величины $\xi$ называется число
+    \[\mb{E}(\xi) = \left[\begin{matrix}
+        \displaystyle \sum_{i} x_i P(\xi = x_i) & \text{для дискретных распределений}\\
+        \displaystyle \int\limits_{-\infty}^\infty xf_\xi(x)\,dx & \text{для абсолютно непрерывных распределений}
+    \end{matrix}\right.\]
+    !!!если ряд (интеграл) сходится абсолютно!!!
+
+    \textit{Абсолютная сходимость нужна, чтобы, например, можно было менять слагаемые местами}
+}
+\example{
+    $f_\xi(x) = \dfrac{1}{\pi(1 + x^2)},\ x \in \mb{R}$
+
+    \[\mb{E}(\xi) \overset{?}{=} \int\limits_{-\infty}^\infty \frac{x}{\pi(1 + x^2)}\,dx = 0\]
+    НО
+    \[\int\limits_{-\infty}^\infty \frac{|x|}{\pi(1 + x^2)}\,dx = \infty\]
+    То есть математического ожидания \underline{не существует}
+}
+\example{
+    \begin{center}
+        \begin{tikzpicture}[scale=1]
+
+            % Ограничиваем область рисования
+            \clip (-0.5,-0.7) rectangle (9,4);
+
+            % Сетка (как в тетради)
+            \draw[step=0.6, gray!30] (-0.5,-0.7) grid (9,4);
+
+            % Оси
+            \draw[->, thick] (0,0) -- (9,0) node[right] {$x$};
+            \draw[->, thick] (0,0) -- (0,4) node[above] {$f_\xi(x)$};
+
+            % Кривая плотности (ручной стиль)
+            \draw[thick, smooth]
+            plot coordinates {
+                (0,0)
+                (0.2,2.2)
+                (0.6,3.2)
+                (1.2,3.5)
+                (1.8,3.4)
+                (2.5,3.0)
+                (3.2,2.3)
+                (4.0,1.4)
+                (5.0,0.6)
+                (6.0,0.35)
+                (6.8,0.3)
+                (7.3,0.5)
+                (7.6,0.3)
+                (8.5,0.25)
+            };
+
+            \draw[red, dashed, thick] (2.5,0) -- (2.5,3);
+            \node[red, below] at (2.5,0) {медиана};
+            \node[red, below] at (2.5,-0.3) {\small (середина площади)};
+
+            \draw[blue, thick] (4.6,-0.1) -- ++(0,0.2);
+            \node[blue, below] at (4.6,0) {$\mb{E}(\xi)$};
+
+            \draw[green!70!black, thick, ->]
+            (8.2,1.2) to[bend right=20] (7.4,0.5);
+
+        \end{tikzpicture}
+    \end{center}
+    Математическое ожидание сдвинуто, потому что есть ''бугорок'', который сдвигает вес (''слон среди 1000 сусликов'')
+}
+\textit{На самом деле математическое ожидание это}
+\[\mb{E}(\xi(\omega)) = \int\limits_\Omega \xi(\omega)\, d(P(\omega))\ - \textit{ интеграл Лебега-Стильтеса}\]
+
+\newpage
+\begin{center}
+    \huge Свойства математического ожидания
+\end{center}
+\begin{enumerate}
+    \item Если $g(x)\ -$ борелевская функция, то
+    \[\mb{E}(g(\xi)) = \int\limits_{-\infty}^\infty g(x)\,f_\xi(x)\,dx,\ - \text{ если оно существует}\]
+    \textit{Доказательство шло как бонус}
+    \item Если случайная величина $\xi \geq 0$ почти наверное (п.н.), то $\mb{E}(\xi) \geq 0$
+    
+    \textit{Примечание: почти наверное $-$ это значит, что $P(\xi \geq 0) = 1$} 
+
+    \item Если $\xi \geq 0$ п.н. b $\mb{E}(\xi) = 0$, то $\xi = 0$ п.н.
+    \item Если $\xi \geq \eta$, то $\mb{E}(\xi) \geq \mb{E}(\eta)$
+    \item Если $a \leq \xi \leq b$, то $a \leq \mb{\xi} \leq b$
+    \item $\mb{E}(a\xi + b\eta + c) = a\mb{E}(\xi) + b\mb{E}(\eta) + c,\ a,b,c \in \mb{R}$
+    (то есть математическое ожидание линейно)
+\end{enumerate}
+\defin{
+    \[\operatorname{Var}(\xi) = \mb{E}\left((\xi - \mb{E}(\xi))^2\right)\ - \text{ дисперсия}\]
+    А также
+    \[\sigma = \sqrt{\operatorname{Var}(\xi)}\ - \text{ стандартное отклонение}\]
+}
+\begin{center}
+    \huge Свойства дисперсии
+\end{center}
+\begin{enumerate}
+    \item $\operatorname{Var}(\xi) = \mb{E}\left(x^2\right) - \mb{E}^2(\xi)$
+    \prof{
+        \[\operatorname{Var}(\xi) = \mb{E}\left(\xi^2 - 2\xi\mb{E}(\xi) + \mb{E}^2(\xi)\right) = \mb{E}\left(\xi^2\right) - 2\mb{E}(\xi)\mb{E}(\xi) + \mb{E}^2(\xi) = \mb{E}\left(\xi^2\right) - \mb{E}^2(\xi)\]
+    }
+    \item $\operatorname{Var}(\xi) \geq 0$
+    \item $\operatorname{Var}(\xi) = 0 \iff \xi = \operatorname{const}$ п.н.
+\end{enumerate}
 
 \end{document}
