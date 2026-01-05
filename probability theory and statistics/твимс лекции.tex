@@ -478,8 +478,24 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
 \textit{Примечание: непосредственно на лекции у Елены Владимировны произошла профдеформация и она дала в качестве бонуса привести пример случайной величины, чья функция распределения разрывна в каждой точке, хотя такой функции не существует. Пример выше должен был быть на его месте}
 \newpage
 
-\textit{Здесь должен был быть блок про абсолютно непрерывные распределения, но записей в моем распоряжении не оказалось. Если ты это читаешь и у тебя оказался конспект по этой теме, то прошу его скинуть мне в тг https://t.me/aleksandroiid}
+\begin{center}
+    \huge Абсолютно непрерывные распределения 
+\end{center}
+\defin{
+    Закон распределения случайной величины $\xi$ называется абсолютно непрерывным, если $\exists f_\xi(\cdot)$ такая, что
+    \[F_\xi(x) =\int\limits_{-\infty}^x f_\xi(u)\,du\]
+    Тогда $f_\xi(x)$ называется плотностью распределения и обладает следующими свойствами (выводятся из свойств функции распределения)
+    \begin{enumerate}
+        \item $f_\xi(x) \geq 0$
+        \item $\displaystyle \int\limits_{-\infty}^\infty f_\xi(x)\,dx = 1$
+        \item $P(\xi = x) = 0$
+        \item $\displaystyle P(\xi \in B) = \int\limits_B f_\xi(x)\,dx$
+        \item $\displaystyle P(a \leq \xi \leq b) = F_\xi(b) - F_\xi(a) = \int\limits_a^b f_\xi(x)\,dx$
+        \item $F_\xi'(x) = f_\xi(x)$ во всех точках непрерывности функции распределения
+    \end{enumerate}
+}
 \newpage
+
 \begin{center}
     \huge{Функции от случайных величин}
 \end{center}
@@ -580,6 +596,7 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
 \setcounter{subth}{0}
 
 \setcounter{mainpr}{6}
+\setcounter{subpr}{0}
 
 \setcounter{mainex}{6}
 \setcounter{subex}{0}
@@ -761,4 +778,147 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \item $\operatorname{Var}(\xi) = 0 \iff \xi = \operatorname{const}$ п.н.
 \end{enumerate}
 
+\newpage
+\setcounter{maindf}{7}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{7}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{7}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{7}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Многомерные распределения
+\end{center}
+\defin{
+    Пусть $n = 2$. Тогда опишем свойства $F_\xi(x_1, x_2)$ для случайного вектора $\xi = \begin{pmatrix}
+    \xi_1\\
+    \xi_2
+    \end{pmatrix}$
+    \begin{enumerate}
+        \item $0 \leq F_\xi(x_1, x_2) \leq 1$
+        
+        $\displaystyle \lim_{x_k \to -\infty} F_\xi(x_1, x_2) = 0,\ k = 1, 2$
+        
+        $\displaystyle \lim_{x_1 \to +\infty} \lim_{x_2 \to +\infty} F_\xi(x_1, x_2) = 1$
+        \item $F_\xi$ не убывает по $x_1$ и $x_2$
+        \item $F_\xi$ непрерывна справа (слева) по $x_1$ и $x_2$
+        \item $\displaystyle \lim_{x_1 \to \infty} F_\xi(x_1, x_2) = F_{\xi_2}(x_2)$
+        
+        $\displaystyle \lim_{x_2 \to \infty} F_\xi(x_1, x_2) = F_{\xi_1}(x_1)$
+
+        \textit{Примечание 1: $F_{\xi_2}(x_2)$ и $F_{\xi_1}(x_1)$ называются маргинальными (или маржинальными, короче от англ. marginal) распределениями}
+
+        \textit{Примечание 2: свойства выше НЕ работают в обратную сторону, как с одномерным распределением, пример будет ниже}
+    \end{enumerate}
+}
+\textit{Замечание:
+    \[P(a_1 \leq \xi_1 \leq b_1, a_2 \leq \xi_2 \leq b_2) = F_\xi(b_1, b_2) - F_\xi(a_1, b_2) - F_\xi(b_1, a_2) + F_\xi(a_1, a_2)\]
+}
+\begin{center}
+    \begin{tikzpicture}[scale=1]
+        \clip (-0.5,-0.7) rectangle (10,5);
+
+        \draw[step=0.6, gray!30] (-0.5,-0.7) grid (9,4);
+
+        \draw[->, thick] (0,0) -- (9,0) node[below] {$\xi_1$};
+        \draw[->, thick] (0,0) -- (0,4) node[left] {$\xi_2$};
+
+        \draw[thick, smooth, color=green] (0, 0) rectangle (8,3);
+        \draw[smooth, thick, color=blue] (0, 0) rectangle (0.95, 0.95);
+        \draw[smooth, thick, color=red] (0, 0) rectangle (1, 3);
+        \draw[smooth, thick, color=orange] (0, 0) rectangle (8, 1);
+
+        \node[below] at (1,0) {$a_1$};
+        \node[left] at (0,1) {$a_2$};
+        \node[below] at (8,0) {$b_1$};
+        \node[left] at (0,3) {$b_2$};
+
+    \end{tikzpicture}
+\end{center}
+\newpage
+\example{
+    \[F_\xi(x_1, x_2) = \begin{cases}
+        0, & x_1 + x_2 \leq 1, \, x_1 \leq 0, \, x_2 \leq 0\\
+        1, & x_1 + x_2 > 1, \, x_1 > 0, \, x_2 > 0
+    \end{cases}\]
+    \begin{center}
+        \begin{tikzpicture}[scale=1]
+            \clip (-0.5,-0.5) rectangle (5,5);
+
+            \draw[step=0.6, gray!30] (-0.5,-0.5) grid (4,4);
+
+            \draw[->, thick] (0,0) -- (4,0) node[below] {$x_1$};
+            \draw[->, thick] (0,0) -- (0,4) node[left] {$x_2$};
+
+            \draw[smooth, thick] (-1,2) -- (2, -1);
+
+            \node[below] at (1,0) {$1$};
+            \node[left] at (0,1) {$1$};
+
+            \draw[smooth, thick, fill=black] (0.4,0.4) rectangle (0.8, 0.8);
+            
+            \fill[cyan, opacity=0.3] (1,0) -- (4,0) -- (4,4) -- (0,4) -- (0, 1) -- cycle;
+        \end{tikzpicture}
+    \end{center}
+    $-$ функция, удовлетворяющая всем трём свойствам функции распределения
+
+    Но $P(\xi \in \blacksquare) = 1 - 1 - 1 + 0 < 0$
+
+    То есть для многомерного случая недостаточно выполнения трёх свойств распределения
+}
+\defin{
+    $\xi_1$ и $\xi_2$ имеют совместное дискретное распределение, если $\exists (a_i, b_j) \in \mb{R}^2$, что
+    \[\sum_{i, j} P(\xi_1 = a_i, \xi_2 = b_j) = 1\]
+    \textit{не забыть сделать таблицу60}
+}
+\defin{
+    Случайный вектор $\xi$ имеет абсолютно нерпрерывное распределение (случайные величины $\xi_1$ и $\xi_2$ имеют совместное абсолютно непрерывное распределение), если $\exists f_\xi(x_1, x_2)$ такая, что
+    \[\forall B \in \mc{B}\left(\mb{R}^2\right): P(\xi \in B) = \underset{B}{\int\int} f_\xi(x_1, x_2)\,dx_1dx_2\]
+    При этом $f_\xi(x_1, x_2)$ называют совместной плотностью и она обладает свойствами
+    \begin{enumerate}
+        \item $f_\xi(x_1, x_2) \geq 0\ \forall x_1, x_2 \in \mb{R}$
+        \item $\displaystyle \underset{\mb{R}^2}{\int\int} f_\xi(x_1, x_2)\,dx_1dx_2 = 1$
+    \end{enumerate}
+}
+\propos{
+    Любая функция, обладающая свойствами (1)-(2), является функцией плотности
+}
+\propos{
+    \[f_\xi(x_1, x_2) = \int\limits_{-\infty}^{x_1}\int\limits_{-\infty}^{x_2} f_\xi(u, v)\,dudv\]
+}
+Заметим, что если $\xi_1\ -$ абсолютно непрерывна с $f_{\xi_1}$ и $\xi_2\ -$ абсолютно непрерывна с $f_{\xi_2}$, то не всегда $(\xi_1, \xi_2)$ абсолютно непрерывна
+
+Контрпример: $(\xi, \xi)$
+
+Однако в обратную сторону верно
+\theorem{
+    Пусть $\xi_1$ и $\xi_2$ имеют \underline{совместное} абсолютно непрерывное распределение, то есть $\exists f_\xi(x_1, x_2)$. Тогда $\xi_1$ и $\xi_2$ абсолютно неппрерывны, причём
+    \[f_{\xi_1}(x_1) = \int\limits_{-\infty}^\infty f_\xi(x_1, x_2)\,dx_2\]
+    (Аналогично для $f_{\xi_2}(x_2)$)
+}
+\prof{
+    \[F_{\xi_1} = \lim_{x_2 \to \infty} F_\xi(x_1, x_2) = \int\limits_{-\infty}^{x_1}du\underbrace{\int\limits_{-\infty}^\infty f_\xi(u, x_2)\,dx_2}_{f_{\xi_1}(u)}\]
+}
+\example{
+    \textit{Здесь Елена Владимировна выдала офигительную историю про попавший в люк гелика фейрверк и мужика в красных трусах у порога её дома}
+
+    $S \in \mb{R}^n,\ \lambda(S) < \infty$, где $\lambda(S)\ -$ мера Лебега
+
+    \[f_\xi(x_1,\dots,x_n) = \begin{cases}
+        \dfrac{1}{\lambda(S)}, & x_i \in S \ \forall i = 1,\dots,n\\
+        0, & \text{иначе}
+    \end{cases}\]
+    \[\mathbf{x} = (x_1,\dots,x_n)^T\]
+    \[P(\xi \in B) = \frac{\lambda(B)}{\lambda(S)}\]
+    \begin{center}
+        \includegraphics[scale=0.3]{купол с геликом.jpg}
+    \end{center}
+    Гелик находится в куполе радиусом $30$ метров и имеет приоткрытый люк на крыше. Это отверстие имеет размеры $4\times 5 \times 50$ см. Каков шанс того, что туда попадёт фейрверк?
+
+    \[P = \frac{5 \cdot 4 \cdot 50}{\frac{1}{2} \cdot \frac{4}{3}\pi\cdot 3000^3} \approx \frac{1000}{56520000000} = \frac{1}{56520000}\]
+}
 \end{document}
