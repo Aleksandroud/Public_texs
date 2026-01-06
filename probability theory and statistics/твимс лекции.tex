@@ -1241,12 +1241,14 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \defin{
     \textit{Дискретный случай}
 
-    Условное распределение $\xi\mid\eta=x$ (то есть $\xi$ при фиксированном $\eta$) задаётся условными вероятностями
+    Условное распределение $\xi\mid\eta=x$ (то есть $\xi$ при фиксированном $\eta$) задаётся условными
+    
+    вероятностями
     \[P(\xi = a_k\mid \eta = x) = \frac{P(\xi = a_k, \eta = x)}{P(\eta = x)}\]
 
     \textit{Абсолютно непрерывный случай}
 
-    Условная плотность случайно величины $\xi\mid\eta=x$
+    Условная плотность случайной величины $\xi\mid\eta=x$
     \[f_{\xi\mid\eta=x}(y) = \frac{f(y, x)}{f_\eta(x)} \text{ (для $f_\eta \neq 0$)}\]
     где $f(y, x)\ -$ совместная плотность $(\xi, \eta)$
 
@@ -1362,7 +1364,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Пусть $\xi_1,\dots, \xi_n\ -$ независимые одинаково распределённые случайные величины (н.о.р.с.в или i.i.d)
 
     $\mb{E}(\xi_i) = \mu,\ \Var(\xi_i) = \sigma^2$. Тогда
-    \[P\left(\left|\frac{1}{n}\sum_{i=1}^{n}\xi_i - \mu\right| \geq \varepsilon\right) \leq \frac{\sigma^2}{b\varepsilon^2}\ \forall \varepsilon > 0\]
+    \[P\left(\left|\frac{1}{n}\sum_{i=1}^{n}\xi_i - \mu\right| \geq \varepsilon\right) \leq \frac{\sigma^2}{n\varepsilon^2}\ \forall \varepsilon > 0\]
 }
 \prof{
     \[\mb{E}\left( \frac{1}{n}\sum_{i=1}^{n}\xi_i \right) = \frac{1}{n}\sum_{i=1}^{n}\xi_i = \frac{n\mu}{\mu} = n\]
@@ -1401,7 +1403,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \propos{
     \textit{Любимая задача Елены Владимировны для устного экзамена}
 
-    Пусть $\xi_n \xrightarrow[]{d} c,\ c = \in \mb{R}$. Доказать, что $\xi_n \xrightarrow[]{P} c$
+    Пусть $\xi_n \xrightarrow[]{d} c,\ c \in \mb{R}$. Доказать, что $\xi_n \xrightarrow[]{P} c$
 }
 \example{
         \[\begin{array}{c|c|c}
