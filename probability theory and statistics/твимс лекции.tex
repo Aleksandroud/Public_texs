@@ -1223,4 +1223,236 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
         }
     \end{enumerate}
 }
+\newpage 
+\setcounter{maindf}{8}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{8}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{8}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{8}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Условные распределения
+\end{center}
+\defin{
+    \textit{Дискретный случай}
+
+    Условное распределение $\xi\mid\eta=x$ (то есть $\xi$ при фиксированном $\eta$) задаётся условными вероятностями
+    \[P(\xi = a_k\mid \eta = x) = \frac{P(\xi = a_k, \eta = x)}{P(\eta = x)}\]
+
+    \textit{Абсолютно непрерывный случай}
+
+    Условная плотность случайно величины $\xi\mid\eta=x$
+    \[f_{\xi\mid\eta=x}(y) = \frac{f(y, x)}{f_\eta(x)} \text{ (для $f_\eta \neq 0$)}\]
+    где $f(y, x)\ -$ совместная плотность $(\xi, \eta)$
+
+    С этими условными распределениями работают ровно также, как с обычными
+}
+\begin{center}
+    \huge Условное математическое ожидание
+\end{center}
+\defin{
+    Условное математическое ожидание $\xi$ при фиксированном $\eta$
+    \[\mb{E}(\xi\mid\eta=x) = \left[\begin{matrix}
+        \displaystyle\sum_i a_i P(\xi = a_i\mid \eta = x)\\
+        \displaystyle\int\limits_{-\infty}^\infty yf_{\xi\mid\eta=x}(y)\,dy
+    \end{matrix}\right.\]
+    Также, как и для обычного математического ожидания, ряд (интеграл) должен сходиться абсолютно
+
+    $\mb{E}(\xi\mid\eta=x) = g(x)\ -$ это регрессия $\xi$ на $\eta$
+}
+\defin{
+    Условное математическое ожидание $\mb{E\xi\mid\eta} = g(\eta)\ -$ случайная величина
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item линейность
+        \item $\mb{E}(\mb{E}(\xi\mid\eta)) = \mb{E}(\xi)$
+        \prof{
+            Пусть $\xi$ и $\eta$ совместно абсолютно непрерывно распределены
+            
+            $g(\eta) = \mb{E}(\xi\mid\eta)$
+            
+            $g(x) = \mb{E}(\xi\mid\eta=x)$
+            
+            $\displaystyle \mb{E}(g(\eta)) = \int\limits_{-\infty}^\infty g(x)f_\eta(x)\,dx$
+            
+            $\displaystyle \mb{E}(\xi\mid\eta=x) = \int\limits_{-\infty}^\infty yf_{\xi\mid\eta=x}(y)\,dy$
+            \[\mb{E}(\mb{E}(\xi\mid\eta)) = \int\limits_{-\infty}^\infty \mb{E}(\xi\mid\eta=x)\cdot f_\eta(x)\,dx = \int\limits_{-\infty}^\infty dx\int\limits_{-\infty}^\infty y \underbrace{f_{\xi\mid\eta=x}(y)\cdot f_\eta(x)}_{= f(y, x)}\,dy =\]
+            \[= \int\limits_{-\infty}^\infty dx\int\limits_{-\infty}^\infty yf(y, x)\,dy = \int\limits_{-\infty}^\infty y\,dy\underbrace{\int\limits_{-\infty}^\infty f(y, x)\,dx}_{=f_\xi(y)} = \mb{E}(\xi)\]
+        }
+    \end{enumerate}
+}
+\example{
+    \begin{center}
+        \huge Случайные суммы
+    \end{center}
+    $S = \xi_1 + \cdots + \xi_\nu$, $\xi_i\ -$ случайные величины, $\nu\ -$ тоже случайная величина
+
+    Как посчитать $\mb{E}(S)$?
+
+    Возьмём $\nu \sim \operatorname{Poi}(\lambda),\ \xi_i \sim U[5, 10]$. Тогда
+
+    \[\mb{E}(S) = \mb{E}(\mb{E}(S\mid \nu)) = \sum_{k=0}^{\infty}\mb{E}(S\mid\nu=k)P(\nu = k) = \sum_{k=0}^{\infty}k\cdot 7.5P(\nu = k) =\]
+    \[= 7.5\lambda \ \leftarrow \text{ математическое ожидание пуассоновской случайной величины}\]
+    \[\begin{array}{c|ccc}
+        \mb{E}(S\mid\nu) & \mb{E}(S\mid\nu=0) & \mb{E}(S\mid\nu=1) & \cdots\\
+        & P(\nu = 0) & P(\nu = 1) & \cdots
+    \end{array}\]
+}
+\newpage
+\newpage 
+\setcounter{maindf}{9}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{9}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{9}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{9}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Неравенство Маркова
+\end{center}
+\renewcommand{\thletter}{неравенство Маркова}
+\theorem{
+    Пусть $\xi \geq 0$ п.н. и $\exists \mb{E}(\xi)$. Тогда
+    \[P(\xi \geq t) \leq \frac{\mb{E}(\xi)}{t}\ \forall t \in \mb{R}\]
+}
+\prof{
+    Рассмотрим случайную величину
+    \[\eta = \begin{cases}
+        0, & \xi < t\\
+        t, & \xi \geq t
+    \end{cases}\]
+    Тогда $\eta \leq \xi$ п.н. $\implies \mb{E}(\xi) \leq \mb{E}(\eta)$
+    \[\mb{E}(\eta) = 0 \cdot P(\xi < t) + tP(\xi \geq t) = tP(\xi \geq t) \leq \mb{E}(\xi) \implies P(\xi \geq t) \leq \frac{\mb{E}(\xi)}{t}\]
+}
+\renewcommand{\thletter}{неравенство Чебышёва}
+\theorem{
+    Пусть $\exists \Var(\xi)$. Тогда
+    \[P(|\xi - \mb{E}(\xi)| \geq \varepsilon) \leq \frac{\Var(\xi)}{\varepsilon^2}\]
+}
+\prof{
+    \[P(|\xi - \mb{E}(\xi)| \geq \varepsilon) = P\left(\left|\xi - \mb{E}(\xi)\right|^2 \geq \varepsilon^2\right) \overset{\substack{\text{нерав-во}\\\text{Маркова}}}{\leq} \frac{\mb{E}\left(\xi - \mb{E}(\xi)\right)^2}{\varepsilon^2} = \frac{\Var(\xi)}{\varepsilon^2}\]
+}
+\renewcommand{\thletter}{обобщённое неравенство Чебышёва}
+\theorem{
+    Пусть $g(x) > 0\ \forall x\in \mb{R}$ и не убывает и $\exists \mb{E}g(\xi)$. Тогда
+    \[\forall x \in \mb{R} \ P(\xi \geq t) \leq \frac{\mb{E}g(\xi)}{g(t)}\]
+}
+\prof{
+    \[P(\xi \geq t) = P(g(\xi) \geq g(t)) \overset{\substack{\text{нерав-во}\\\text{Маркова}}}{\leq} \frac{\mb{E}(g(\xi))}{g(t)}\]
+}
+\propos{
+    Следствие 1 (из Чебышёва):
+    \[P(|\xi - \mb{E}(\xi)| < \varepsilon) \geq 1 - \frac{\Var(\xi)}{\varepsilon^2}\]
+    * Просто взяли дополнение к $P(|\xi - \mb{E}(\xi)| \geq \varepsilon)$
+}
+\propos{
+    Следствие 2:
+
+    Пусть $\xi_1,\dots, \xi_n\ -$ независимые одинаково распределённые случайные величины (н.о.р.с.в или i.i.d)
+
+    $\mb{E}(\xi_i) = \mu,\ \Var(\xi_i) = \sigma^2$. Тогда
+    \[P\left(\left|\frac{1}{n}\sum_{i=1}^{n}\xi_i - \mu\right| \geq \varepsilon\right) \leq \frac{\sigma^2}{b\varepsilon^2}\ \forall \varepsilon > 0\]
+}
+\prof{
+    \[\mb{E}\left( \frac{1}{n}\sum_{i=1}^{n}\xi_i \right) = \frac{1}{n}\sum_{i=1}^{n}\xi_i = \frac{n\mu}{\mu} = n\]
+    \[\Var\left(\frac{1}{n}\sum_{i=1}^{n}\xi_i\right) = \frac{1}{n^2}\sum_{i=1}^{n}\Var(\xi_i) = \frac{n\sigma^2}{n^2} = \frac{\sigma^2}{n}\]
+}
+Неравенство Чебышёва показывает, сколько потребуется измерений, чтобы получить результат, близкий к истинному значению с заданной точностью
+
+\textit{Правило трёх сигм}
+\[P(|\xi - \mb{E}(\xi)| \geq 3\sigma) \leq \frac{\Var(\xi)}{9\sigma^2} = \frac{\sigma^2}{9\sigma^2} = \frac{1}{9}\]
+
+\textit{Совет на будущее: помнить Чебышёва. Понадобится на эконометрике}
+\newpage
+Далее предположим, что все случайные величины определены на одном и том же вероятностном пространстве $(\Omega, \mc{F}, P)$
+
+\defin{
+    Сходимость почти наверное (п.н.)
+    \[\xi_n \xrightarrow[n \to \infty]{\text{п.н}}, \text{ если } P(\omega: \xi_n(\omega) \xrightarrow[n \to \infty]{}\xi(\omega)) = 1\]
+}
+\defin{
+    Сходимость в среднем порядка $S$
+    \[\xi_n \xrightarrow[n \to \infty]{L_S}, \text{ если } \mb{E}\left|\xi_n - \xi\right|^S \xrightarrow[n \to \infty]{} 0\]
+}
+\defin{
+    Сходимость по вероятности
+    \[\xi_n \xrightarrow[n \to \infty]{P}, \text{ если } \forall \varepsilon > 0 \ P(|\xi_n - \xi| \geq \varepsilon) \xrightarrow[n \to \infty]{} 0\]
+}
+\defin{
+    Сходимость по распределению (она же слабая сходимость)
+    \[\xi_n \xrightarrow[n \to \infty]{d} \xi, \text{ если } \forall x \ F_n(x) \xrightarrow[n \to \infty]{} F_\xi(x) \ \text{(поточечено), где } F_n(x) = P(\xi_n \leq x)\]
+    \textit{(есть также ещё сильная сходимость, в которой функции распределения сходятся равномерно, но для наших целей она нам не понадобится)}
+}
+Иерархия сходимостей по их силе
+\begin{center}
+    \includegraphics[scale=0.5]{иерархия.jpg}
+\end{center}
+\propos{
+    \textit{Любимая задача Елены Владимировны для устного экзамена}
+
+    Пусть $\xi_n \xrightarrow[]{d} c,\ c = \in \mb{R}$. Доказать, что $\xi_n \xrightarrow[]{P} c$
+}
+\example{
+        \[\begin{array}{c|c|c}
+            \xi & 0 & n^7\\
+            \hline p & 1 - \frac{1}{n} & \frac{1}{n}
+        \end{array}\]
+        \[\xi_n \xrightarrow[p \to \infty]{P} 0,\ \mb{E}(\xi_n) \xrightarrow[n \to \infty]{} \infty\]
+        \[\mb{E}(\xi_n) = n^7 \cdot \frac{1}{n} = n^6 \xrightarrow[n \to \infty]{} \infty\]
+        \[\forall \varepsilon \ \exists n\ P(\xi_n \geq \xi) = P(\xi_n = n^7) = \frac{1}{n} \xrightarrow[n \to \infty]{} 0\]
+}
+\example{
+    \begin{center}
+        \huge Биржевой парадокс
+    \end{center}
+    $u + v = 1$
+
+    $0 \leq u \leq 1$
+
+    $0 \leq v \leq 1$
+
+    В начальный период вкладываем деньги:
+    $\begin{matrix}
+        \text{банк} & b \cdot 100\% \text{ доход}\\
+        \text{акции} & x_i \cdot 100\% \text{ доход}
+    \end{matrix}$
+    
+    $\mb{E}(x_i) = m > b > 0$
+
+    $1 \gg P(x_i = -1) = \varepsilon_0 > 0$
+
+    считаем, что $x_i$ н.о.р.с.в
+    \[k_n = k_0(1 + ux_1 + vb)\cdots(1 + ux_n + vb)\]
+    \[\mb{E}(k_n) = k_0(1 + um + vb)^n \xrightarrow[u,v]{} \max \implies u = 1,\ v = 0\]
+    $-$ выгодно всё вложить в акции
+
+    $k_0(1 + um)^n \xrightarrow[n \to \infty]{} \infty$
+
+    Но вероятность разорения
+    \[P(k_n = 0) = 1 - P(k_n \neq 0) = 1 - \prod_{i=1}^{n}P(x_i \neq -1) = 1 - (1 - \varepsilon_0)^n \to 1\]
+    $-$ тоже стремится к 1
+}
+\renewcommand{\thletter}{Слуцкого}
+\theorem{
+    $\xi_n \xrightarrow[n \to \infty]{d} \xi,\ \eta_n \xrightarrow[n \to \infty]{P} c,\ c \in \mb{R}$
+
+    Тогда $\forall g(x, y): \mb{R}^2 \to \mb{R},\ g \in C\left(\mb{R}^2\right)$ следует, что
+    \[g(\xi_n, \eta_n) \xrightarrow[n \to \infty]{d} g(\xi, c)\]
+}
+\example{
+    \[\xi_n + \eta_n \xrightarrow[]{d} \xi + c\]
+    \[\xi_n \cdot \eta_n \xrightarrow[]{d} \xi \cdot c\]
+    \[g(\xi_n) \xrightarrow[]{P} g(\xi), \text{ если } \xi_n \xrightarrow[]{P} \xi\]
+}
 \end{document}
