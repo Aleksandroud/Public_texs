@@ -303,7 +303,7 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
 \setcounter{mainex}{5}
 \setcounter{subex}{0}
 \begin{center}
-    \huge{Измеримые функции и случайные величнины}
+    \huge{Измеримые функции и случайные величины}
 \end{center}
 \defin{
     Пусть задано измеримое пространство $(\Omega, \mc{F})$. Тогда
@@ -806,14 +806,13 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
         $\displaystyle \lim_{x_1 \to +\infty} \lim_{x_2 \to +\infty} F_\xi(x_1, x_2) = 1$
         \item $F_\xi$ не убывает по $x_1$ и $x_2$
         \item $F_\xi$ непрерывна справа (слева) по $x_1$ и $x_2$
-        \item $\displaystyle \lim_{x_1 \to \infty} F_\xi(x_1, x_2) = F_{\xi_2}(x_2)$
-        
-        $\displaystyle \lim_{x_2 \to \infty} F_\xi(x_1, x_2) = F_{\xi_1}(x_1)$
-
-        \textit{Примечание 1: $F_{\xi_2}(x_2)$ и $F_{\xi_1}(x_1)$ называются маргинальными (или маржинальными, короче от англ. marginal) распределениями}
-
-        \textit{Примечание 2: свойства выше НЕ работают в обратную сторону, как с одномерным распределением, пример будет ниже}
     \end{enumerate}
+}
+\defin{
+    \[\lim_{x_1 \to \infty} F_\xi(x_1, x_2) = F_{\xi_2}(x_2)\]
+    \[\lim_{x_2 \to \infty} F_\xi(x_1, x_2) = F_{\xi_1}(x_1)\]
+    
+    $F_{\xi_2}(x_2)$ и $F_{\xi_1}(x_1)$ называются частными или маргинальными (или маржинальными, короче от англ. marginal) распределениями
 }
 \textit{Замечание:
     \[P(a_1 \leq \xi_1 \leq b_1, a_2 \leq \xi_2 \leq b_2) = F_\xi(b_1, b_2) - F_\xi(a_1, b_2) - F_\xi(b_1, a_2) + F_\xi(a_1, a_2)\]
@@ -873,7 +872,9 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \defin{
     $\xi_1$ и $\xi_2$ имеют совместное дискретное распределение, если $\exists (a_i, b_j) \in \mb{R}^2$, что
     \[\sum_{i, j} P(\xi_1 = a_i, \xi_2 = b_j) = 1\]
-    \textit{не забыть сделать таблицу60}
+    \begin{center}
+        \includegraphics[scale=0.3]{таблица дискр распред.jpg}
+    \end{center}
 }
 \defin{
     Случайный вектор $\xi$ имеет абсолютно нерпрерывное распределение (случайные величины $\xi_1$ и $\xi_2$ имеют совместное абсолютно непрерывное распределение), если $\exists f_\xi(x_1, x_2)$ такая, что
@@ -917,8 +918,309 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \begin{center}
         \includegraphics[scale=0.3]{купол с геликом.jpg}
     \end{center}
-    Гелик находится в куполе радиусом $30$ метров и имеет приоткрытый люк на крыше. Это отверстие имеет размеры $4\times 5 \times 50$ см. Каков шанс того, что туда попадёт фейрверк?
+    Гелик находится в куполе радиусом $30$ метров и имеет приоткрытый люк на крыше. Это отверстие имеет размеры $4\times 5 \times 50$ сантиметров. Каков шанс того, что туда попадёт фейрверк?
 
     \[P = \frac{5 \cdot 4 \cdot 50}{\frac{1}{2} \cdot \frac{4}{3}\pi\cdot 3000^3} \approx \frac{1000}{56520000000} = \frac{1}{56520000}\]
+    \textit{(Он реально попал)}
+}
+\newpage
+\begin{center}
+    \huge Независимость
+\end{center}
+\defin{
+    Случайные величины $\xi_i,\dots,\xi_n$ называются независимыми, если
+    \[\forall B_1,\dots,B_n \in \mc{B}(\mb{R}) \implies P(\xi_1 \in B_1,\dots, \xi_n \in B_n) = P(\xi_1 \in B_1) \cdots P(\xi_n \in B_n)\]
+}
+\defin{
+    $\xi_i,\dots,\xi_n$ называются независимыми, если
+    \[F(x_1,\dots,x_n) = F_{\xi_1}(x_1) \cdots F_{\xi_n}(x_n)\]
+}
+\propos{
+    Замечание: определения 7.5 и 7.6 эквивалентны
+}
+\prof{
+    7.5 $\to$ 7.6 очевидно
+    
+    Покажем, что из 7.6 следует 7.5
+
+    $n = 2\ \forall a_1 < b_1,\, a_2 < b_2$
+
+    Нужно доказать, что
+    \[P(a_1 < \xi_1 \leq b_1, a_2 < \xi_2 \leq b_2) = P(a_1 < \xi_1 \leq b_1) \cdot P(a_2 < \xi_2 \leq b_2)\]
+
+    \[P(a_1 < \xi_1 \leq b_1, a_2 < \xi_2 \leq b_2) = F_\xi(b_1, b_2) + F_\xi(a_1, a_2) - F_\xi(a_1, b_2) - F_\xi(b_1, a_2) =\]
+    \[= F_{\xi_1}(b_1)F_{\xi_2}(b_2) + F_{\xi_1}(a_1)F_{\xi_2}(a_2) - F_{\xi_1}(a_1)F_{\xi_2}(b_2) - F_{\xi_1}(b_1)F_{\xi_2}(a_2) =\]
+    \[= F_{\xi_1}(b_1)\left(F_{\xi_2}(b_2) - F_{\xi_2}(a_2)\right) - F_{\xi_1}(a_1)\left(F_{\xi_2}(b_2) - F_{\xi_2}(a_2)\right) =\]
+    \[= \underbrace{\left(F_{\xi_1}(b_1) - F_{\xi_1}(a_1)\right)}_{P\big(\xi_1 \in (a_1, b_1]\big)}\underbrace{\left(F_{\xi_2}(b_2) - F_{\xi_2}(a_2)\right)}_{P\big(\xi_2 \in (a_2, b_2]\big)}\]
+}
+\newpage
+
+\defin{
+    $\xi_1,\dots, \xi_n$ определены на $(\Omega, \mc{F}, P)$
+
+    Пусть $\xi_1,\dots, \xi_n$ имеют совместное дискретное распределение, тогда $\xi_1,\dots, \xi_n$ независимы, если
+    \[P(\xi_1 = x_1,\dots, \xi_n = x_n) = P(\xi_1 = x_1) \cdots P(\xi_n = x_n)\]
+}
+\propos{
+    Замечание: определения 7.7 и 7.5 эквивалентны
+}
+\prof{
+    Докажем, что из 7.7 следует 7.5
+
+    $\forall a_1 < b_1, a_2 < b_2$ покажем, что
+    \[P(a_1 < \xi_1 \leq b_1, a_2 < \xi_2 \leq b_2) = P(a_1 < \xi_1 \leq b_1) \cdot P(a_2 < \xi_2 \leq b_2)\]
+
+    \[X_1 := \big\{i: x_{1i} \in (a_1, b_1]\big\}\ - \text{ значения } \xi_1\]
+    \[X_2 := \big\{i: x_{2i} \in (a_2, b_2]\big\}\ - \text{ значения } \xi_2\]
+    \[P(a_1 < \xi_1 \leq b_1, a_2 < \xi_2 \leq b_2) = \sum_{i \in X_1}\sum_{j \in X_2} \underbrace{P(\xi_1 = x_{1j}, \xi_2 = x_{2j})}_{= P(\xi_1 = x_1) \cdot P(\xi_2 = x_2)} =\]
+    \[= \sum_{i \in X_1} P(\xi_1 = x_1) \cdot \sum_{j \in X_2}P(\xi_2 = x_2) = P(a_1 < \xi_1 \leq b_1) \cdot P(a_2 < \xi_2 \leq b_2)\]
+}
+\defin{
+    Абсолютно непрерывные случайные величины $\xi_1, \dots, \xi_n$ независимы, если
+    \[f_\xi(x_1,\dots, x_n) = f_{\xi_1}(x_1)\cdots f_{\xi_n}(x_n) \qquad (*)\] 
+}
+\propos{
+    Замечание: определения 7.8 и 7.5 эквивалентны
+}
+\prof{
+    Допустим, что из 7.5 не следует 7.8
+
+    Из 7.5 имеем
+    \[\int\limits_{B_1}\cdots\int\limits_{B_n} f_\xi(x_1,\dots, x_n)\,dx_n\cdots dx_1= P(\xi_1 \in B_1, \dots, \xi_n \in B_n) =\]
+    \[= P(\xi_1 \in B_1) \cdots P(\xi_n \in B_n) = \int\limits_{B_1}f_{\xi_1}(x_1)\,dx_1 \cdots \int\limits_{B_n}f_{\xi_n}(x_n)\,dx_n \ \forall B_1,\dots, B_n \in \mc{B}(\mb{R})\]
+    Если $(*)$ неверно, то $\exists B_0 = \left(B_1^*,\dots, B_n^*\right)^T$ такая, что
+    \[f_\xi(x_1,\dots, x_n) - f_{\xi_1}(x_1)\cdots f_{\xi_n}(x_n) > 0\]
+    \[\underset{B_0}{\int\cdots\int}\big(f_\xi(x_1,\dots, x_n) - f_{\xi_1}(x_1)\cdots f_{\xi_n}(x_n)\big)\,dx_1\cdots dx_n > 0\]
+    получаем противоречие с 7.5 $\implies$ 7.5 $\to$ 7.8
+
+    7.8 $\to$ 7.5 очевидно
+}
+\defin{
+    Копула $-$ многомерная (совместная) функция распределения, заданная на единичном кубе, такая, что её частные (маргинальные) распределения равномерны на $[0, 1]$
+}
+\example{
+    $n = 2,\ C(x, y)$
+    \[C(x, 1) = \begin{cases}
+        0, & x < 0\\
+        x, & x \in [0, 1]\\
+        1, & x > 1
+    \end{cases}\]
+    Распределение первой компоненты
+    \[C(1, y) = \begin{cases}
+        0, & y < 0\\
+        y, & y \in [0, 1]\\
+        1, & y > 1
+    \end{cases}\]
+}
+\renewcommand{\thletter}{Склара}
+\theorem{
+    Для произвольной двумерной функции распределения $F_\xi(x, y)$ с маргинальными распределениями $F_{\xi_1}(x)$ и $F_{\xi_2}(y)$
+
+    Тогда существует такая копула, что
+    \[F_{\xi}(x, y) = C(F_{\xi_1}(x), F_{\xi_2}(y))\]
+    \textit{идёт без доказательства}
+}
+\example{
+    Архимедова копула
+    \[C(x, y) = \psi^{-1}(\psi(x) + \psi(y)), \text{ где $\psi\ -$ генератор}\]
+    \begin{enumerate}
+        \item $\psi = -\ln x \implies \psi^{-1} = e^{-y},\ y = -\ln x$
+        \[e^{-(-\ln x - \ln y)} = e^{\ln x + \ln y} = xy\ \leftarrow \text{ независимые компоненты}\]
+        \item $\psi(x) = x^\theta - 1, \ \theta \leq 0$
+        \[C(x, y) = x^\theta + y^\theta - 1 \ - \text{ копула Клейтона}\]
+    \end{enumerate}
+}
+\newpage
+\begin{center}
+    \huge Функции от случайных величин
+\end{center}
+\defin{
+    Функция $g: \mb{R}^n \to \mb{R}^m$ называется борелевской, если $\forall B \in \mc{B}\left(\mb{R}^m\right)$ его прообраз является
+    
+    борелевским множеством, то есть
+    \[g^{-1}(B) = \big\{x: g(x) \in B\big\} \in \mc{B}\left(\mb{R}^n\right)\]
+}
+\renewcommand{\thletter}{}
+\theorem{
+    Пусть $\xi_1,\dots, \xi_n\ -$ случайные величины, определённые на $(\Omega, \mc{F}, P)$ и $g: \mb{R}^n \to \mb{R}^m$. 
+    
+    Тогда $g(\xi_1,\dots, \xi_n)\ -$ случайный вектор
+}
+\propos{
+    Пусть $g: \mb{R}^2 \to \mb{R}^2,\ \eta = g(\xi_1, \xi_2)$
+
+    $\xi = \begin{pmatrix}
+        \xi_1\\
+        \xi_2
+    \end{pmatrix}$ имеет абсолютно непрерывное распределение, то есть $\exists f_\xi(x_1, x_2)$
+
+    $g$ обратимая $(\exists g^{-1})$ и гладкая $(|J| > 0)$, где  $|J|\ -$ якобиан
+
+    Тогда 
+    \[f_\eta(y) = f_\xi\left(g^{-1}(y)\right)J\left(g^{-1}\right), \ y = \begin{pmatrix}
+        y_1\\
+        y_2
+    \end{pmatrix}\]
+}
+\renewcommand{\thletter}{формула свёртки}
+\theorem{
+    Пусть случайные величины $\xi$ и $\eta$ независимы и абсолютно непрерывны. 
+    
+    Тогда $s = \xi + \eta\ -$ абсолютно непрерывная случайная величина с плотностью
+    \[f_s(z) = \int\limits_{-\infty}^\infty f_\xi(x)f_\eta(z - x)\,dx = \int\limits_{-\infty}^\infty f_\eta(y)f_\xi(z - y)\,dy\]
+}
+\prof{
+    \[F_s(z) = P(\xi + \eta \leq z) = \underset{D}{\int\int}f_\xi(x)f_\eta(y)\,dxdy, \ D = \big\{(x, y): x + y \leq z\big\}\]
+    Сделаем замену
+    \[\begin{cases}
+        u = y\\
+        v = x + y
+    \end{cases} \iff \begin{cases}
+        y = u\\
+        x = v - u
+    \end{cases}\]
+    Тогда
+    \[\det J(x, y) = \begin{vmatrix}
+        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\
+        \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
+    \end{vmatrix} = \begin{vmatrix}
+        -1 & 1\\
+        1 & 0
+    \end{vmatrix} = -1 \implies |\det J(x, y)| = 1\]
+    Поэтому
+    \[F_s(z) = \underset{D}{\int\int}f_\xi(x)f_\eta(y)\,dxdy = \int\limits_{-\infty}^zdv\int\limits_{-\infty}^\infty f_\xi(v - u)f_\eta(u)\,du\]
+    Но знаем, что
+    \[F_s(z) = \int\limits_{\infty}^z f_z(v)\,dv\]
+    Значит
+    \[f_z(v) = \int\limits_{-\infty}^\infty f_\xi(v - u)f_\eta(u)\,du\]
+}
+\propos{
+    Пусть $\xi\ -$ абсолютно непрерывное с плотностью $f_\xi(x)$, $\eta\ -$ дискретное с
+    
+    $P(\eta = x_k) = p_k,\ k = 1,\dots$. Тогда $\xi + \eta$ имеет абсолютно непрерывное распределение
+    
+    \textit{Доказательство шло как бонус. Также надо было найти вид этого распределения}
+}
+
+\propos{
+    \begin{center}
+        Распределения, устойчивые относительно суммирования (для независимых)
+    \end{center}
+    Также его называют свойством нестарения или отсутствия памяти
+
+    Заключается оно в том, что
+    \[P(\xi \leq S + T\mid \xi \leq T) = P(\xi \leq S)\]
+    Таким свойством обладают распределения
+    \[N\left(\mu, \sigma^2\right),\ \operatorname{Poi}(\lambda),\ \operatorname{Bi}(n, p),\ \operatorname{Gamma}(\alpha, \beta)\]
+    И не обладают
+    \[U[a, b],\ \operatorname{Exp}(\lambda)\]
+}
+
+\defin{
+    Математическое ожидание от случайных величин $\xi_1,\dots, \xi_n$
+    \[\mb{E}\big(g(\xi_1,\dots, \xi_n)\big) = \left[\begin{matrix}
+        \displaystyle\sum_{i_1}\cdots\sum_{i_n}g(\xi_1,\dots,\xi_n) P(\xi_1 = x_{i1},\dots, \xi_n = x_{in}) \quad \text{для дискретных}\\
+        \displaystyle\underset{\mb{R}^n}{\int\cdots\int} g(x_1,\dots, x_n)f_\xi(x_1,\dots, x_n)\,dx_1\cdots dx_n \quad \text{для абсолютно непрерывных}
+    \end{matrix}\right.\]
+}
+\newpage
+\begin{center}
+    \huge Ковариация и корреляция случайных величин
+\end{center}
+\defin{
+    \[\cov(\xi, \eta) = \mb{E}\big((\xi - \mb{E}(\xi))(\eta - \mb{E}(\eta))\big) = \left[\begin{matrix}
+        \displaystyle\sum_i\sum_j (x_i - \mb{E}(\xi))(y_j - \mb{E}(\eta)) P(\xi = x_i, \eta = y_j)\\
+        \displaystyle \underset{\mb{R}^2}{\int\int}(x - \mb{E}(\xi))(y - \mb{E}(\eta))f(x, y)\,dxdy
+    \end{matrix}\right.\]
+    где $f(x, y)\ -$ совместная плотность $\xi$ и $\eta$
+
+    По знаку ковариации можно определить, сонаправленно или противонаправленно изменяются случайные величины
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item $\cov(\xi, \eta) = \mb{E}(\xi \cdot \eta) - \mb{E}(\xi)\mb{E}(\eta)$
+        \item $\cov(\xi, \xi) = \Var(\xi)$
+        \item $\cov(\xi, \eta) = \cov(\eta, \xi)$
+        \item $\cov(\xi_1 + \xi_2, \eta) = \cov(\xi_1, \eta) + \cov(\xi_2, \eta)$
+        \item $\cov(a\xi + b, \eta) = a\cov(\xi, \eta)$
+        \item если $\xi$ и $\eta$ независимы, то $\cov(\xi, \eta) = 0$. Обратное неверно
+        \prof{
+            Докажем для абсолютно непрерывных (для дискретных будет аналогично)
+            \[\mb{E}(\xi \cdot \eta) = \underset{\mb{R}^2}{\int\int}xyf(x, y)\,dxdy = \underset{\mb{R}^2}{\int\int} xf_\xi(y)\cdot yf_\eta(y)\,dxdy = \int\limits_{-\infty}^\infty xf_\xi(x)\,dx\int\limits_{-\infty}^\infty yf_\eta(y)\,dy = \mb{E}(\xi)\mb{E}(\eta)\]
+            \[\implies \cov(\xi, \eta) = \mb{E}(\xi \cdot \eta) - \mb{E}(\xi)\mb{E}(\eta) = \mb{E}(\xi)\mb{E}(\eta) - \mb{E}(\xi)\mb{E}(\eta) = 0\]
+        }
+        \item $\Var(a\xi + b\eta) = a^2\Var(\xi) + b^2\Var(\eta) + 2ab\cov(\xi, \eta)$
+        \prof{
+            \[\Var(a\xi + b\eta) = \mb{E}\underbrace{\left(a\xi + b\eta - \mb{E}(a\xi + b\eta)\right)^2}_{a(\xi - \mb{E}(\xi)) + b(\eta - \mb{E}(\eta))} =\]
+            \[a^2\mb{E}\left(\xi - \mb{E}\xi\right)^2 + b^2\mb{E}\left(\eta - \mb{E}(\eta)\right)^2 + 2ab\mb{E}\big((\xi - \mb{E}(\xi))(\eta - \mb{E}(\eta))\big) =\]
+            \[= a^2\Var(\xi) + b^2\Var(\eta) + 2ab\cov(\xi, \eta)\]
+        }
+    \end{enumerate}
+}
+\example{
+    $\xi \sim$ акции IBM, $\sigma_\xi^2 = 16$
+
+    $\eta \sim$ акции GF, $\sigma_\eta^2 = 9$
+
+    $\cov(\xi, \eta) = -9.6$
+
+    $\pi = \alpha \xi + (1 - \alpha) \eta,\ \alpha \geq 0$
+
+    Цель: $\Var(\pi) \to \min_\alpha$
+    \[\Var(\pi) = \alpha^2 \cdot 16 + (1 - \alpha)^2\cdot + 2\alpha(1 - \alpha)\cdot (-9.6)\]
+    $-$ квадратичное уравнение относительно $\alpha \implies \min$ в вершине $\alpha_0 \approx 0.42$
+
+    $\implies \Var (\pi_0) = 1.17$
+}
+\example{
+    \[\pi = \dfrac{1}{n}\xi_1 + \cdots + \dfrac{1}{n}\xi_n,\ \xi_1,\dots, \xi_n \text{ независимы}\]
+    \[\Var(\xi_1) = \cdots = \Var(\xi_n) = \sigma^2\]
+    \[\Var(\pi) = \frac{1}{n^2}\sigma^2 + \cdots + \frac{1}{n^2}\sigma^2 = \frac{\sigma^2}{n}\]
+    Пример демонстрирует, зачем диверсифицировать инвестиционный портфель
+}
+\newpage
+\begin{center}
+    \huge Корреляция (или коэффициент корреляции)
+\end{center}
+\defin{
+    \[\rho = \corr(\xi, \eta) = \frac{\cov(\xi, \eta)}{\sigma_\xi\sigma_\eta}\]
+    $\sigma_\xi = \sqrt{\Var(\xi)},\ \sigma_\eta = \sqrt{\Var(\eta)}\ -$ стандартные отклонения
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item $-1 \leq \rho \leq 1$
+        \prof{
+            Процедура нормализации:
+            \[\xi^* = \frac{\xi - \mb{E}(\xi)}{\sigma_\xi},\ \eta^* = \frac{\eta - \mb{E}(\eta)}{\sigma_\eta}\]
+            \[\mb{E}\left(\xi^*\right) = \mb{E}\left(\eta^*\right) = 0,\ \Var\left(\xi^*\right) = \Var\left(\eta^*\right) = 1\]
+            Тогда
+            \[\cov\left(\xi^*, \eta^*\right) = \mb{E}\big(\left(\xi^* - \mb{E}(\xi^*)\right)\left(\eta^* - \mb{E}(\eta^*)\right)\big) = \mb{E}\left(\frac{\xi - \mb{E}(\xi)}{\sigma_\xi}\cdot\frac{\eta - \mb{E}(\eta)}{\sigma_\eta}\right) = \frac{\cov(\xi, \eta)}{\sigma_\xi\sigma_\eta} = \corr(\xi, \eta)\]
+            Заметим, что
+            \[0 \leq \Var(\xi^* - \eta^*) = \Var(\xi^*) + \Var(\eta^*) - 2\cov(\xi^*, \eta^*) = 2 - 2\corr(\xi, \eta)\]
+            \[\implies \corr(\xi, \eta) \leq 1\]
+            Аналогично получаем, что
+            \[\Var(\xi^* + \eta^*) = 2 + 2\corr(\xi, \eta) \geq 0 \implies \corr(\xi, \eta) \geq -1\]
+        }
+        \item если $\xi$ и $\eta$ независимы, то $\corr(\xi, \eta) = 0$
+        \item $|\corr(\xi, \eta)| = 1 \iff \exists a, b \in \mb{R}$ такие, что $\xi = a\eta + b$
+        \prof{
+            $(\impliedby)$ Пусть $\xi = a\eta + b$, покажем, что $|\corr(\xi, \eta)| = 1$
+            \[\corr(\xi, \eta) = \frac{\cov(\xi, \eta)}{\sigma_\xi\sigma_\eta} = \frac{\cov(a\eta + b, \eta)}{\sqrt{\Var a\eta + b}\sigma_\eta} = \frac{a\cov(\eta,\eta)}{|a|\sigma_\eta^2} = \frac{a}{|a|} = \pm 1\]
+
+            $(\implies)$ Пусть $\corr(\xi, \eta) = 1$
+            \[\Var(\xi^* - \eta^*) = \Var(\xi^*) + \Var(\eta^*) - 2\cov(\xi^*, \eta^*) = 1 + 1 - 2 \cdot 1 = 0\]
+            Если $\Var(\xi^* - \eta^*) = 0$, то $P(\xi^* - \eta^* = \const) = 1$
+            \[\frac{\xi - \mb{E}(\xi)}{\sigma_\xi} - \frac{\eta - \mb{E}(\eta)}{\sigma_\eta} = \const = 0\ \text{так как } \mb{E}(\xi^*) = \mb{E}(\eta^*) = 0\]
+            \[\implies \xi = \frac{\eta - \mb{E}(\eta)}{\sigma_\eta} \cdot \sigma_\xi + \mb{E}(\xi)\ - \text{ искомая линейная комбинация}\]
+            в случае $\corr(\xi, \eta) = -1$ будет аналогично, только надо взять $\Var(\xi^* + \eta^*)$
+        }
+        \item $\corr(a\xi + b, c\eta + d) = \operatorname{sign}(ac)\corr(\xi, \eta)$
+        \prof{
+            $\forall a,b,c,d \in \mb{R},\ a \neq 0, c \neq 0$
+            \[\corr(a\xi + b, c\eta + d) = \frac{\cov(a\xi + b, c\eta + d)}{\sqrt{\Var(a\xi + b)\cdot \Var(c\xi + d)}} = \frac{ac\cdot\cov(\xi, \eta)}{|ac|\sigma_\xi\sigma_\eta} = \operatorname{sign}(ac)\corr(\xi, \eta)\]
+        }
+    \end{enumerate}
 }
 \end{document}
