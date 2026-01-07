@@ -1223,6 +1223,27 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
         }
     \end{enumerate}
 }
+\defin{
+    Ковариационная матрица случайного вектора $\xi = \begin{pmatrix}
+        \xi_1\\
+        \vdots\\
+        \xi_n
+    \end{pmatrix}\ -$ это
+    \[\cov(\xi) = \begin{pmatrix}
+        \cov(\xi_1,\xi_1) & \cov(\xi_1, \xi_2) & \cdots & \cov(\xi_1, \xi_n)\\
+        \cov(\xi_2, \xi_1) & \cov(\xi_2, \xi_2) & \cdots & \cov(\xi_2, \xi_n)\\
+        \vdots & \vdots & \ddots & \vdots\\
+        \cov(\xi_n, \xi_1) & \cov(\xi_n, \xi_2) & \cdots & \cov(\xi_n, \xi_n)
+    \end{pmatrix}\]
+    \textit{Замечание: на главной диагонали стоят дисперсии}
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item симметричность
+        \item неотрицательная определённость
+    \end{enumerate}
+}
 \newpage 
 \setcounter{maindf}{8}
 \setcounter{subdf}{0}
