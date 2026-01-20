@@ -1481,4 +1481,222 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \[\xi_n \cdot \eta_n \xrightarrow[]{d} \xi \cdot c\]
     \[g(\xi_n) \xrightarrow[]{P} g(\xi), \text{ если } \xi_n \xrightarrow[]{P} \xi\]
 }
+\newpage
+\setcounter{maindf}{8}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{8}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{8}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{8}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Закон больших чисел
+\end{center}
+\renewcommand{\thletter}{ЗБЧ в форме Чебышёва}
+\theorem{
+    Пусть есть последовательность случайных величин $\{\xi_n\}, \ \exists \mb{E}(\xi_i) = \mu_i,\ \Var(\xi_i) = \sigma_i^2 < c, c \in \mb{R},\ \xi_i$ независимы. Тогда
+    \[\overline{\xi} = \frac{1}{n}\sum_{i=1}^{n}\xi_i \xrightarrow[n\to\infty]{p} \frac{1}{n}\sum_{i=1}^{n}\mu_i\] 
+    то есть
+    \[\forall \varepsilon > 0 \ P\left(\left|\overline{\xi} - \frac{1}{n}\sum_{i=1}^{n}\mu_i\right| \geq \varepsilon\right) \xrightarrow[n \to \infty]{} 0 \]
+}
+\prof{
+    \[P(|\eta - \mb{E}\eta| \geq \varepsilon) \leq \frac{\Var(\eta)}{\varepsilon^2}\]
+    \[\mb{E}\left(\overline{\xi}\right) = \frac{1}{n}\sum_{i=1}^{n}\mb{E}(\xi_i) = \frac{1}{n}\sum_{i=1}^{n}\mu_i\]
+    \[\Var\left(\overline{\xi}\right) = \frac{1}{n^2}\sum_{i=1}^{n}\sigma_i^2 \leq \frac{nc}{n^2} = \frac{c}{n}\]
+    Тогда по неравенству Чебышёва
+    \[0 \leq P\left(\left|\overline{\xi} - \frac{1}{n}\sum_{i=1}^{n}\mu_i\right| \geq \varepsilon\right) \leq \frac{c}{n\varepsilon^2}\]
+    Так как $0 \xrightarrow[n\to\infty]{} 0$ и $\dfrac{c}{n\varepsilon^2} \xrightarrow[n\to\infty]{} 0$, то по теореме о зажатой последовательности 
+    \[P\left(\left|\overline{\xi} - \frac{1}{n}\sum_{i=1}^{n}\mu_i\right| \geq \varepsilon\right) \xrightarrow[n \to \infty]{} 0\]
+}
+\propos{
+    Следствие: ЗБЧ для н.о.р.с.в.
+
+    Пусть $\mb{E}(\xi_i) = \mu,\ \Var(\xi_i) = \sigma^2$. Тогда
+    \[\overline{\xi} \xrightarrow[n\to\infty]{p} \mu\]
+}
+\example{
+    Зачем на лабораторная по физике делать несколько опытов?
+
+    Пусть $\xi_i = \mu_i + \varepsilon_i$, где $\mu_i \ -$ результат опыта (случайная величина), $\varepsilon_i \ -$ ошибка (число). 
+    
+    Тогда при $n$ опытах
+    \[\frac{1}{n}\sum_{i=1}^{n}\xi_i \approx \mu\]
+    Где $\mu \ - $ истинное значение
+}
+\renewcommand{\thletter}{Бернулли или ЗБЧ в форме Бернулли}
+\theorem{
+    Пусть есть последовательность случайных величин $\{\xi_n\},\ \xi_i \sim \Be(p) 
+    \\
+    \left(\text{то есть } \xi_i = \begin{cases}
+        1,& p\\
+        0,& 1-p
+    \end{cases}\right) \implies \mb{E}(\xi_i) = p,\ \Var(\xi_i) = p(1-p)$. Тогда
+    \[P\left(\left|\widehat{p} - p\right| \geq \varepsilon\right) \xrightarrow[n\to\infty]{} 0,\]
+    где $\displaystyle\widehat{p} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\ -$ выборочная доля или доля успехов в $n$ испытаниях
+
+    Иначе говоря,
+    \[\widehat{p} \xrightarrow[n\to\infty]{p} p\]
+}
+\example{
+    Вы начальник предвыборного штаба кого-то куда-то
+
+    Сколько нужно опросить людей, чтобы определить шансы кандидата на победу с заданной точностью?
+    
+    Иначе говоря, надо найти $n$ такой, что
+    \[P\left(\left|\widehat{p} - p\right| \geq 0.01\right) \leq 0.1\]
+    \textit{(числа взяты из головы для иллюстрации)}
+
+    \[P\left(\left|\widehat{p} - p\right| \geq 0.01\right) \leq \frac{\Var\left(\widehat{p}\right)}{0.01^2} = \frac{p(1 - p)}{n\cdot 10^{-4}}\]
+
+    Знаем, что $p(1 - p) = p - p^2\ - $ парабола, чей максимум достигается при $p = \dfrac{1}{2}$ и равен $\dfrac{1}{4}$. Тогда
+    \[\frac{p(1 - p)}{n\cdot 10^{-4}} \leq \frac{\dfrac{1}{4}}{n\cdot 10^{-4}} \leq 0.1\]
+    \[n \geq \frac{1}{4\cdot 10^{-5}} = 25000\]
+    \textit{Заметим, что данная оценка довольно грубая. Мало какой штаб способен на опрос такого количества людей. Но это издержки универсальности неравенства Чебышёва и ЗБЧ}
+}
+\propos{\begin{center}
+    \huge Метод Монте-Карло
+\end{center}
+\newpage
+Нужен для приближённого вычисления объёмов фигур в $\mb{R}^n$
+\begin{center}
+    \begin{tikzpicture}[scale=0.9]
+
+    % ===== Сетка =====
+    \draw[step=0.5, gray!40] (-1,-1) grid (9,6);
+
+    % ===== Оси =====
+    \draw[very thick,->] (-1,0) -- (9,0) node[right] {$x$};
+    \draw[very thick,->] (0,-1) -- (0,6) node[above] {$y$};
+
+    % ===== Синий прямоугольник =====
+    \draw[very thick, blue]
+    (1,1) rectangle (8,5);
+
+    % ===== Произвольная область =====
+    \path[name path=blob]
+    plot[smooth cycle, tension=0.8] coordinates {
+        (2,2)
+        (3,4.2)
+        (5,4.7)
+        (4,5)
+        (6,7.5)
+        (6.8,4)
+        (7,2.5)
+        (6,1.6)
+        (4,1.4)
+        (2.5,1.7)
+    };
+
+    \draw[very thick] 
+    plot[smooth cycle, tension=0.8] coordinates {
+        (2,2)
+        (3,4.2)
+        (5,4.7)
+        (6.8,4)
+        (7,2.5)
+        (6,1.6)
+        (4,1.4)
+        (2.5,1.7)
+    };
+    % ===== Красные точки внутри области =====
+    \begin{scope}
+    \clip
+        (1,1) rectangle (8,5);
+
+    \foreach \i in {1,...,1000} {
+        \fill[red]
+        ({1+7*rand},{1+4*rand}) circle (0.05);
+    }
+    \end{scope}
+    \node at (5,3) {$S$};
+    \node[color=blue,below] at (1,1) {$V$};
+    \end{tikzpicture}
+\end{center}
+Суть метода заключается в том, что мы выбираем набор точек, чьи координаты являются случайными величинами, одинаково распределёнными на $n$-мерном параллелипипеде, в котором полностью помещается наша фигура, и доля тех точек, которая попала внуть этой фигуры, прямо пропорциональна отношению площадей фигуры и параллелипипеда
+\vspace{1mm}
+
+Пусть $(u_i, v_i) \sim \operatorname{U}[\square]\ -$ координаты $i$-й точки, $S, V \ -$ фигура и прямоугольник соответственно, 
+
+$N\ -$ общее количество точек в $V$, $N_S\ -$ количество точек, попавших в $S$. Тогда
+\[P\big((u_i, v_i) \in S\big) = \frac{|S|}{|V|} \approx \frac{N_S}{N} \implies |S| \approx \frac{N_S}{N} \cdot |V|\]
+}
+\example{
+    Нам нужно найти
+    \[\int\limits_a^b g(x)\,dx\]
+    Где $g(x)\ -$ очень страшная функция (возмножно интеграл от неё не берётся)
+
+    Тогда
+    \[\int\limits_a^b g(x)\,dx = (b - a)\int\limits_a^b g(x) \frac{1}{b - a}\,dx = (b - a)\mb{E}(g(u)),\ u \sim \operatorname{U}(a, b)\]
+    Пусть $u_i \sim \operatorname{U}(a, b)$. Тогда по ЗБЧ
+    \[\mb{E}g(u) \approx \frac{1}{n}\sum_{i=1}^{n}g(u_i)\]
+    \[\implies \int\limits_a^b \approx (b - a)\cdot\frac{1}{n}\sum_{i=1}^{n}g(u_i)\]
+    Аналогично
+    \[\underset{m}{\int\cdots\int}g(x_1,\dots,x_m)\,dx_1\cdots dx_m \approx \frac{1}{n} \sum_{i=1}^{n}g(u_1,\dots, u_m) \cdot \const\]
+}
+\example{
+    Метод Монте-Карло работает и для несобственных интегралов
+    \[\int\limits_0^\infty g(x)\,dx = \int\limits_0^\infty \frac{g(x)}{f_\xi(x)}\cdot f_\xi(x)\,dx = \mb{E}\left(\frac{g(\xi)}{f_\xi(\xi)}\right) \approx \frac{1}{n}\sum_{i=1}^{n}\frac{g(\xi_i)}{f_{\xi}(\xi_i)}\]
+    где $\xi, \xi_i$ распределены на $[0, +\infty)$ (например, $\xi, \xi_i \sim \Exp(\lambda)$) 
+}
+\example{
+    Как сгенерировать случайную величину со сложной функцией плотности (в частности, для генерации точек в Монте-Карло)?
+    \begin{center}
+        \begin{tikzpicture}[scale=0.9]
+
+        % ===== Сетка =====
+        \draw[step=0.5, gray!40] (-1,-1) grid (9,6);
+
+        % ===== Оси =====
+        \draw[very thick,->] (-1,0) -- (9,0) node[right] {$x$};
+        \draw[very thick,->] (0,-1) -- (0,6) node[above] {$y$};
+
+        % ===== Синий прямоугольник =====
+        \draw[very thick, blue]
+        (0,0) rectangle (8,4);
+
+        % ===== Произвольная область =====
+        \path[name path=blob]
+        plot[smooth, tension=0.8] coordinates {
+            (0,0)
+            (1,1)
+            (3,4)
+            (4,2)
+            (5,3)
+            (7,1)
+            (8,0)
+        };
+
+        \draw[very thick] 
+        plot[smooth, tension=0.8] coordinates {
+            (0,0)
+            (1,1)
+            (3,4)
+            (4,2)
+            (5,3)
+            (7,1)
+            (8,0)
+        };
+        % ===== Красные точки внутри области =====
+        \begin{scope}
+        \clip
+            (0,0) rectangle (8,4);;
+
+        \foreach \i in {1,...,1000} {
+            \fill[red]
+            ({1+7*rand},{1+4*rand}) circle (0.05);
+        }
+        \end{scope}
+        \node[above] at (3, 4) {$f(x)$};
+        \node[left] at (0, 4) {$b$};
+        \node[below] at (8, 0) {$a$};
+        \end{tikzpicture}
+    \end{center}
+    Пусть $u_{1i} \sim \operatorname{U}(0, a),\ u_{2i} \sim \operatorname{U}(0, b)$, а $\xi_i = u_{1i} \mid u_{2i} \leq f(u_{1i})$. Тогда
+    \[F_{\xi_i}(x) = P(\xi_i \leq x) = P(u_{1i} \leq x \mid u_{2i} \leq f_(u_{1i})) = \frac{P(u_{1i} \leq x,\, u_{2i} \leq f(u_{1i}))}{P(u_{2i} \leq f(u_{1i}))} = \frac{\displaystyle \int\limits_0^xf(t)\,dt/ab}{1/ab} = \int\limits_0^xf(t)\,dt\]
+
+}
 \end{document}
