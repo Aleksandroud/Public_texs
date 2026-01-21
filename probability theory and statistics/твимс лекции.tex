@@ -21,7 +21,7 @@
 
     \vspace{5cm}
 
-    Особую благодарность хочу выразить студентке ЭАДа Доможаковой Валентине, на основе именно её конспектов составлен данный файл.
+    Особую благодарность хочу выразить студентке ЭАДа Доможаковой Валентине, в том числе на основе её записей составлен данный конспект.
 
     \vspace{10cm}
     \textit{Примечание: данные конспекты начинаются примерно с октября 2025 года, за материалом до этого времени обращайтесь к конспектам Д. А. Борзых}
@@ -1111,9 +1111,9 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Заключается оно в том, что
     \[P(\xi \leq S + T\mid \xi \leq T) = P(\xi \leq S)\]
     Таким свойством обладают распределения
-    \[N\left(\mu, \sigma^2\right),\ \operatorname{Poi}(\lambda),\ \operatorname{Bi}(n, p),\ \operatorname{Gamma}(\alpha, \beta)\]
+    \[\operatorname{N}\left(\mu, \sigma^2\right),\ \operatorname{Poi}(\lambda),\ \operatorname{Bi}(n, p),\ \operatorname{Gamma}(\alpha, \beta)\]
     И не обладают
-    \[U[a, b],\ \operatorname{Exp}(\lambda)\]
+    \[\operatorname{U}[a, b],\ \operatorname{Exp}(\lambda)\]
 }
 
 \defin{
@@ -1482,16 +1482,16 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \[g(\xi_n) \xrightarrow[]{P} g(\xi), \text{ если } \xi_n \xrightarrow[]{P} \xi\]
 }
 \newpage
-\setcounter{maindf}{8}
+\setcounter{maindf}{10}
 \setcounter{subdf}{0}
 
-\setcounter{mainth}{8}
+\setcounter{mainth}{10}
 \setcounter{subth}{0}
 
-\setcounter{mainpr}{8}
+\setcounter{mainpr}{10}
 \setcounter{subpr}{0}
 
-\setcounter{mainex}{8}
+\setcounter{mainex}{10}
 \setcounter{subex}{0}
 \begin{center}
     \huge Закон больших чисел
@@ -1701,4 +1701,151 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \[F_{\xi_i}(x) = P(\xi_i \leq x) = P(u_{1i} \leq x \mid u_{2i} \leq f(u_{1i})) = \frac{P(u_{1i} \leq x,\, u_{2i} \leq f(u_{1i}))}{P(u_{2i} \leq f(u_{1i}))} = \frac{\displaystyle \int\limits_0^xf(t)\,dt/ab}{1/ab} = \int\limits_0^xf(t)\,dt\]
 
 }
+\newpage
+\setcounter{maindf}{11}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{11}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{11}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{11}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Центральная предельная теорема
+\end{center}
+\renewcommand{\thletter}{ЦПТ}
+\theorem{
+    Пусть $\{\xi_n\}\ -$ н.о.р.с.в., $\exists \mb{E}(\xi_i) = \mu,\ \Var(\xi) = \sigma^2$
+    Тогда для $S_n = \xi_1 + \cdots + \xi_n$ следует, что
+    \[\frac{S_n - n\mu}{\sqrt{n\sigma^2}} \xrightarrow[n \to \infty]{d} Z \sim \operatorname{N}(0, 1)\]
+    \textit{Выполняется также для случайных векторов}
+
+    Можно также записать
+    \[\frac{\overline{\xi} - \mu}{\sigma/\sqrt{n}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}(0, 1),\quad \overline{\xi} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
+}
+\renewcommand{\thletter}{Муавра-Лапласа (интегральная)}
+\theorem{
+    Пусть $\xi_i \sim \Be(p) \implies \mb{E}(\xi_i) = p,\ \Var(\xi_i) = p(1-p)$
+
+    $\displaystyle S_n = \sum_{i=1}^{n}\xi_i\ -$ число успехов в $n$ результатах (то есть $S_n \sim \operatorname{Bi}(n, p)$). Тогда
+    \[\frac{S_n - np}{\sqrt{np(1-p)}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}(0, 1)\]
+    Или
+    \[\frac{\widehat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}(0, 1), \quad \widehat{p} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
+}
+\propos{
+    Следствие из ЦПТ:
+    \[P(\underset{\substack{\text{можно и}\\\text{нестрогие знаки}}}{a < S_n < b}) = P\left(\frac{a - np}{\sqrt{np(1-p)}} < \frac{S_n - np}{\sqrt{np(1-p)}} < \frac{b - np}{\sqrt{np(1-p)}}\right) \approx \Phi\left(\frac{b - np}{\sqrt{np(1-p)}}\right) - \Phi\left(\frac{a - np}{\sqrt{np(1-p)}}\right)\]
+    где
+    \[\Phi(x) = \int\limits_{-\infty}^x \frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}dt\ - \text{ функция стандартного нормального распределения}\]
+}
+\example{
+    Задача про доктора Спока
+    \vspace{1cm}
+
+    \textit{Контекст: Бенджамин Спок $-$ американский педиатр, живиший в середине XX века, прославивишийся своей книгой о воспитании, которую читали по всему миру и за которую его очень любили женщины. У Спока была активная гражданская позиция, и он выходил на пикеты против войны во Вьетнаме. В какой-то момент американское правительство предъявило ему обвинение в антиконституционной деятельности. Дошло до суда присяжных, и на первом этапе отобрали 300 человек (на втором должны были уже из них выбрать 12), из которых было всего 90 женщин. Адвокат Спока прицепился к этой детали (потому что женщины любили доктора и их большее количество повысило бы шансы победы) и предъявил претензии к отбору присяжных, мол, такое количество в выборке крайне маловероятно и имело место подтасовка. В итоге дело было выиграно}
+
+    Формально, $n = 300$ людей, среди которых $90$ женщин
+
+    $p = \dfrac{1}{2}\ -$ вероятность выбора человека, в данном случае успех это женщина (на самом деле 
+    
+    вероятность больше, так как женщин рождается слегка больше, чем мужчин, но для ясности так)
+    
+    Тогда
+    \[P(S_n \leq 90) = P\left(\frac{S_n - 300 \cdot \frac{1}{2}}{\sqrt{300 \cdot \frac{1}{2} \cdot \frac{1}{2}}} \leq \underbrace{\frac{90 - 150}{\sqrt{75}}}_{\approx -6.9}\right) \approx \Phi(-6.9) \approx 2.3 \cdot 10^{-12}\]
+}
+\textit{Время офигительных историй: когда у Елены Владимировны появился первенец (1993 год) и она приехала с ним домой, то подумала: что с ним делать?, и взяла книжку по домоводству 1977 года. В разделе о младенцах она прочитала следующее:
+\\
+"Если ваш ребёнок тянет пальцы в рот, намажьте ему пальцы горчицей" $\ $(ГОРЧИЦЕЙ, КАРЛ);
+\\
+(речь опять про то, что ребенок тянет пальцы в рот) "Возьмите дощечки и привяжите ручки крестом, чтобы он не смог дотянуться до рта".
+\\
+После прочитанного она закрыла книжку и больше её не открывала. Позднее она прочитала (как раз у доктора Спока), что это нормально, и вздохнула с облегчением
+}
+\example{
+    Задача из теории страхования
+    \vspace{1cm}
+
+    $n = 1000\ -$ количество договоров, $p = 0.05 \ -$ вероятность страхового случая, $2000$ условных единиц (у.е.) $-$ размер выплаты
+
+    Каким должен быть страховой резерв $R$, чтобы $P(2000\cdot S_n < R) = 0.99$?
+
+    Если решать в лоб, то $R = 1000 \cdot 2000 = 2000000$ у.е. $-\ 100\%$ покроем. Ясное дело, такая сумма неподъёмна, поэтому воспользуемся ЦПТ 
+    \[P\left(S_n < \frac{R}{2000}\right) = P\left(\frac{S_n - 1000 \cdot 0.05}{\sqrt{1000 \cdot 0.05 \cdot 0.95}} < \underbrace{\frac{\frac{R}{2000} - 50}{\sqrt{50 \cdot 0.95}}}_{\approx 2.33}\right) = 0.99\]
+    Пропуская все вычисления
+    \[R \approx 132117\]
+    Выгода почти $20$-кратная
+}
+\example{
+    Продолжение задачи про предвыборный штаб
+    \vspace{1cm}
+
+    Хотим выяснить $n$, при котором
+    \[P\left(\left|\widehat{p} - p\right| \geq 0.01\right) \leq 0.1\]
+    \[P\left(\frac{\left|\widehat{p} - p\right|}{\sqrt{\frac{p(1 - p)}{n}}} \geq \underbrace{\frac{0.01}{\sqrt{\frac{p(1 - p)}{n}}}}_{\approx 1.64}\right) \leq 0.1\]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                axis lines=middle,
+                axis line style={very thick,->},
+                xmin=-3.5, xmax=3.5,
+                ymin=-0.05, ymax=0.45,
+                samples=200,
+                xtick=\empty,
+                ytick=\empty,
+                grid=both,
+                grid style={gray!40},
+                width=14cm,
+                height=8cm,
+                enlargelimits=false
+            ]
+
+            \addplot[
+                very thick,
+                domain=-3.5:3.5
+            ]
+            {1/sqrt(2*pi)*exp(-x^2/2)};
+
+
+            \node[below] at (axis cs:-1.64,0) {$-1.64$};
+            \node[below] at (axis cs: 1.64,0) {$1.64$};
+
+            \node[left]  at (axis cs:-2.2,0.06) {$0.05$};
+            \node[right] at (axis cs: 2.2,0.06) {$0.05$};
+
+            % ===== Заштрихованные хвосты =====
+            \addplot[
+                domain=-3.5:-1.64,
+                draw=none,
+                fill=black,
+                fill opacity=0.15
+            ]
+            {1/sqrt(2*pi)*exp(-x^2/2)} \closedcycle;
+
+            \addplot[
+                domain=1.64:3.5,
+                draw=none,
+                fill=black,
+                fill opacity=0.15
+            ]
+            {1/sqrt(2*pi)*exp(-x^2/2)} \closedcycle;
+
+            \end{axis}
+            \end{tikzpicture}
+    \end{center}
+    \[\frac{0.01}{\sqrt{p(1-p)}}\sqrt{n} \geq 1.64 \iff \sqrt{n} \geq \frac{1.64}{0.01}\sqrt{p(1 - p)}\]
+    Берём $\max(p(1-p)) = 0.25$
+    \[n \geq 164^2 \cdot \frac{1}{4} = 6724\]
+    Экономия почти в $4$ раза (было $25000$)
+}
+Обычно ЦПТ применяют при $n \geq 30$, дальше в зависимости от допустимой погрешности
+\renewcommand{\thletter}{неравенство Берри-Эссеена}
+\theorem{
+    \[\sup_{x \in \mb{R}} |F_n(x) - \Phi(x)| \leq c_0\frac{\mb{E}|\xi_1 - \mu|^3}{\sigma^3\sqrt{n}},\quad 0.4 < c_0 < 0.4748 \ \text{(верхняя оценка была получена в 2010 году)}\]
+    \[F_n(x) = P\left(\frac{S_n - n\mu}{\sqrt{n\sigma^2}} \leq x\right)\]
+    То есть $F_n(x) \to \Phi(x)$ со скоростью порядка $\sqrt{n}$
+}
+\textit{Перед получением верхней оценки царили те ещё страсти, котрые Елена Владимировна наблюдала в прямом эфире. В аспирантуре ВМК МГУ училась Ирина Шевцова (была у того же научрука, что и Елена Владимировна), и в кандидатской она снизила верхнюю оценку $c_0$ до $0.7$ (до этого с 50-х годов была $0.7866$). Тут встрепенулся мехмат, потому что теория вероятностей была и остается традиционно их сферой деятельности, и на спор начал пытаться понижать оценку ещё сильнее. В итоге они добились $0.69$. Тут уже Ирина напряглась, так как её кандидатская оказалась под угрозой срыва, но в итоге получила оценку $0.64$ и смогла защитить её и честь ВМК. В 2010 году Ирина Шевцова за оценку $0.4788$ получила степень доктора наук по теории вероятностей, хотя могла и раньше, но деканат (в котором были в основном старики) не пережил бы получение докторской до 30 лет (ещё и женщиной), поэтому её попросили дождаться 30-летия}
 \end{document}
