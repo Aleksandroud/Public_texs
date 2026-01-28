@@ -1848,4 +1848,126 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     То есть $F_n(x) \rightrightarrows \Phi(x)$ со скоростью порядка $\sqrt{n}$
 }
 \textit{Перед получением верхней оценки царили те ещё страсти, котрые Елена Владимировна наблюдала в прямом эфире. В аспирантуре ВМК МГУ училась Ирина Шевцова (была у того же научрука, что и Елена Владимировна), и в кандидатской она снизила верхнюю оценку $c_0$ до $0.7$ (до этого с 50-х годов была $0.7866$). Тут встрепенулся мехмат, потому что теория вероятностей была и остается традиционно их сферой деятельности, и на спор начал пытаться понижать оценку ещё сильнее. В итоге они добились $0.69$. Тут уже Ирина напряглась, так как её кандидатская оказалась под угрозой срыва, но в итоге получила оценку $0.64$ и смогла защитить её и честь ВМК. В 2010 году Ирина Шевцова за оценку $0.4788$ получила степень доктора наук по теории вероятностей, хотя могла и раньше, но деканат (в котором были в основном старики) не пережил бы получение докторской до 30 лет (ещё и женщиной), поэтому её попросили дождаться 30-летия}
+\newpage
+\begin{center}
+    \huge Многомерное нормальное распределение
+\end{center}
+\setcounter{maindf}{12}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{12}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{12}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{12}
+\setcounter{subex}{0}
+\defin{
+    Пусть $\xi = (\xi_1, \dots, \xi_n)^T\ -$ случайный вектор. Тогда
+    \[\xi \sim \operatorname{N}(\mu, C):\ f_\xi(x) = \frac{1}{\left(\sqrt{2\pi}\right)^n} \cdot \frac{1}{\sqrt{\det C}}\exp\left(-\frac{1}{2}(x - \mu)^TC^{-1}(x - \mu)\right)\]
+    В частности при $n = 1$:
+    \[f_\xi(x) = \frac{1}{\sqrt{2\pi}}\frac{1}{\sigma}e^{-\frac{1}{2}(x - \mu)\frac{1}{\sigma^2}(x - \mu)}\]
+}
+\defin{
+    Пусть $\xi_i \sim \operatorname{N}(0, 1)\ -$ независимы. Тогда
+    \[f_\xi(x) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}x_i^2\right) = \frac{1}{\left(\sqrt{2\pi}\right)^n}\exp\left(-\frac{1}{2}\sum_{i=1}^{n}x_i^2\right)\]
+
+    Иначе говоря, $\xi \sim \operatorname{N}(0, I)$, где $I = \begin{pmatrix}
+        1 & \cdots & 0\\
+        \vdots & \ddots & \vdots\\
+        0 & \cdots & 1
+    \end{pmatrix}\ -$ единичная матрица
+    \\
+    \\
+    Тогда случайный вектор $\xi$ (в $\mb{R}^k$) имеет многомерное нормальное распределение, если $\xi = Az + b$, где $z = (z_1,\dots,z_n)^T \sim \operatorname{N}(0, I),\ A\ -$ матрица полного ранга (то есть $\operatorname{rk} A = k$), \\$b \in \mb{R}^k$
+
+    \textit{Замечание: $\mb{E}(\xi) = b,\ \cov \xi = A\cdot \cov z\cdot A^T = AA^T$}
+}
+\defin{
+    Случайная величина $\xi \sim \operatorname{N}(0, C)$, если $\forall a_1,\dots,a_n \in \mb{R} \implies \eta = a_1\xi_1 + \cdots + a_n\xi_n$ имеет либо нормальное, либо вырожденное распределение $(\eta \sim \operatorname{N}(0, a^TCa))$
+}
+\propos{
+    Свойства многомерного нормального распределения:
+    \begin{enumerate}
+        \item $\mu = \mb{E}\xi,\ C = \cov \xi$
+        \item $\eta = \underset{k\times n}{B}\underset{n\times 1}{\xi} + \underset{k\times 1}{\alpha},\ \operatorname{rk}B = k \implies \eta \sim \operatorname{N}\left(B\mu + \alpha, BCB^T\right)$
+        
+        В частности, любой подвектор нормального вектора нормален
+        \item если вектор $\xi$ нормален и $\cov(\xi_i,\xi_j) = 0\ \forall i\neq j$, то $\xi_1,\dots,\xi_n\ -$ независимы (то есть корреляция = независимость)
+        
+        \textit{Замечание: Пусть $\xi_1 \sim \operatorname{N}(0, 1)$,
+        \begin{tabular}{c|cc}
+            $\alpha$ & $-1$ & $1$\\ \hline
+            $\rho$ & $\frac{1}{2}$ & $\frac{1}{2}$
+        \end{tabular}, $\xi_1$ и $\alpha$ независимы, $\xi_2 = \alpha\xi_1$. Покажем, что $\xi_2 \sim \operatorname{N}(0, 1),\ \corr(\xi_1, \xi_2) = 0$
+        \[(1)\ F_{\xi_2}(x) = P(\xi_2 \leq x) = P(\xi_2 \leq x \mid \alpha = -1) \cdot P(\alpha = -1) + P(\xi_2 \leq x \mid \alpha = 1) \cdot P(\alpha = 1) =\]
+        \[= \underbrace{P(-\xi_1 \leq -x)}_{\Phi(x)}\cdot \frac{1}{2}  + \underbrace{P(\xi_1\leq x)}_{\Phi(x)} \cdot \frac{1}{2} = \Phi(x)\]
+        \[(2)\ \cov(\xi_1, \xi_2) = \mb{E}(\xi_1\xi_2) = \mb{E}\left(\alpha\xi_1^2\right) = \underset{=0}{\mb{E}(\alpha)}\cdot\mb{E}\left(\xi_1^2\right) = 0\]
+        }
+        \prof{
+            \[C = \begin{pmatrix}
+                \sigma_1^2 & \cdots & 0\\
+                \vdots & \ddots & \vdots\\
+                0 & \cdots & \sigma_n 
+            \end{pmatrix} \implies \det C = \sigma_1^2\cdots\sigma_n^2\]
+            \[\implies f_\xi(x) = \frac{1}{\left(\sqrt{2\pi}\right)^n}\frac{1}{\sigma_1\cdots\sigma_n}\cdot \exp\left(-\frac{1}{2}\sum_{i=1}^{n}\left(\frac{x_i - \mu_i}{\sigma_i}\right)^2\right) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\cdot\frac{1}{\sigma_i}\exp\left(-\frac{1}{2}\left(\frac{x_i-\mu_i}{\sigma_i}\right)^2\right) =\]
+            \[= \prod_{i=1}^{n}f_{\xi_i}(x_i)\]
+            }
+    \end{enumerate}
+}
+\propos{
+    \begin{center}
+        \huge Двумерное нормальное распределение
+    \end{center}
+        $n = 2$
+        \[\cov \xi = C = \begin{pmatrix}
+            \sigma_1^2 & \rho\sigma_1\sigma_2\\
+            \rho\sigma_1\sigma_2 & \sigma_2^2
+        \end{pmatrix},\ \rho = \corr(\xi_1, \xi_2)\]
+        \[\implies C^{-1} = \frac{1}{\sigma_1^2\sigma_2^2(1 - \rho^2)}\begin{pmatrix}
+            \sigma_2^2 & -\rho\sigma_1\sigma_2\\
+            -\rho\sigma_1\sigma_2 & \sigma_2^2
+        \end{pmatrix} = \frac{1}{1 - \rho^2}\begin{pmatrix}
+            \frac{1}{\sigma_1^2} & -\frac{\rho}{\sigma_1\sigma_2}\\
+            -\frac{\rho}{\sigma_1\sigma_2} & \frac{1}{\sigma_2^2}
+        \end{pmatrix}\]
+        \[(x - \mu)^TC^{-1}(x - \mu) = \frac{1}{1 - \rho^2}\left\{\frac{(x_1 - \mu_1)^2}{\sigma_1^2} - \frac{2\rho(x_1 - \mu_1)(x_2 - \mu_2)}{\sigma_1\sigma_2} + \frac{(x_2 - \mu_2)^2}{\sigma_2^2}\right\}\]
+        \[f_\xi(x_1,x_2) = \frac{1}{2\pi}\frac{1}{\sigma_1\sigma_2\sqrt{1 - \rho^2}}\exp\left(-\frac{1}{2}\cdot\frac{1}{1 - \rho^2}\{\cdots\}\right)\]
+        \textit{Замечание: Пусть $\begin{pmatrix}
+            z_1\\
+            z_2
+        \end{pmatrix} \sim \operatorname{N}\left(\begin{pmatrix}
+            0\\
+            0
+        \end{pmatrix},\begin{pmatrix}
+            1 & \rho\\
+            \rho & 1
+        \end{pmatrix}\right)$. Тогда
+        \[z_1 = \rho z_2 + u\]
+        где $z_2$ и $u$ независимы, $u \sim \operatorname{N}(0, \sigma^2)$}
+        \prof{
+            \[\begin{pmatrix}
+            u\\
+            z_2
+        \end{pmatrix} = \begin{pmatrix}
+            1 & -\rho\\
+            0 & 1
+        \end{pmatrix}\begin{pmatrix}
+            z_1\\
+            z_2
+        \end{pmatrix} = \begin{pmatrix}
+            z_1 - \rho z_2\\
+            z_2
+        \end{pmatrix} \sim \operatorname{N}\left(\begin{pmatrix}
+            0\\
+            0
+        \end{pmatrix}, \begin{pmatrix}
+            1 - \rho^2 & 0\\
+            0 & 1
+        \end{pmatrix}\right)\]
+        \[\cov(z_1 - \rho z_2, z_2) = \rho - \rho \cdot 1 = 0\]
+        \[\Var(z_1 - \rho z_2) = \Var(z_1) + \rho^2\Var(z_2) - 2\rho\cov(z_1, z_2) = 1 + \rho^2 - 2\rho^2 = 1 - \rho^2\]
+        }
+}
 \end{document}
