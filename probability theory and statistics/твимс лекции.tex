@@ -2028,7 +2028,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \huge Усечённое (или урезанное, короче от англ. truncated) нормальное распределение
 \end{center}
 \defin{
-    \[Z \sim \operatorname{N}(0, 1), \quad Z\mid Z > x \sim \, ?\]
+    \[Z \sim \operatorname{N}(0, 1), \quad Z\mid Z > a \sim \, ?\]
         \begin{center}
         \begin{tikzpicture}
             \begin{axis}[
@@ -2069,7 +2069,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
             \end{tikzpicture}
     \end{center}
     \[f_{Z\mid Z>a}(x) = \begin{cases}
-        \dfrac{f_Z(z)}{P(Z > a)}, & x > a\\
+        \dfrac{f_Z(x)}{P(Z > a)}, & x > a\\
         0, & x\leq a
     \end{cases}\ - \text{вообще не совпадает с исходным распределением}\]
 }
