@@ -1894,7 +1894,9 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \item $\eta = \underset{k\times n}{B}\underset{n\times 1}{\xi} + \underset{k\times 1}{\alpha},\ \operatorname{rk}B = k \implies \eta \sim \operatorname{N}\left(B\mu + \alpha, BCB^T\right)$
         
         В частности, любой подвектор нормального вектора нормален
-        \item если вектор $\xi$ нормален и $\cov(\xi_i,\xi_j) = 0\ \forall i\neq j$, то $\xi_1,\dots,\xi_n\ -$ независимы (то есть корреляция = независимость)
+        \item если вектор $\xi$ нормален и $\cov(\xi_i,\xi_j) = 0\ \forall i\neq j$, то $\xi_1,\dots,\xi_n\ -$ независимы 
+        
+        (то есть корреляция = независимость)
         
         \textit{Замечание: Пусть $\xi_1 \sim \operatorname{N}(0, 1)$,
         \begin{tabular}{c|cc}
@@ -1914,60 +1916,167 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
             \[\implies f_\xi(x) = \frac{1}{\left(\sqrt{2\pi}\right)^n}\frac{1}{\sigma_1\cdots\sigma_n}\cdot \exp\left(-\frac{1}{2}\sum_{i=1}^{n}\left(\frac{x_i - \mu_i}{\sigma_i}\right)^2\right) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\cdot\frac{1}{\sigma_i}\exp\left(-\frac{1}{2}\left(\frac{x_i-\mu_i}{\sigma_i}\right)^2\right) =\]
             \[= \prod_{i=1}^{n}f_{\xi_i}(x_i)\]
             }
+        \propos{
+            \begin{center}
+                \huge Двумерное нормальное распределение
+            \end{center}
+                $n = 2$
+                \[\cov \xi = C = \begin{pmatrix}
+                    \sigma_1^2 & \rho\sigma_1\sigma_2\\
+                    \rho\sigma_1\sigma_2 & \sigma_2^2
+                \end{pmatrix},\ \rho = \corr(\xi_1, \xi_2)\]
+                \[\implies C^{-1} = \frac{1}{\sigma_1^2\sigma_2^2(1 - \rho^2)}\begin{pmatrix}
+                    \sigma_2^2 & -\rho\sigma_1\sigma_2\\
+                    -\rho\sigma_1\sigma_2 & \sigma_2^2
+                \end{pmatrix} = \frac{1}{1 - \rho^2}\begin{pmatrix}
+                    \frac{1}{\sigma_1^2} & -\frac{\rho}{\sigma_1\sigma_2}\\
+                    -\frac{\rho}{\sigma_1\sigma_2} & \frac{1}{\sigma_2^2}
+                \end{pmatrix}\]
+                \[(x - \mu)^TC^{-1}(x - \mu) = \frac{1}{1 - \rho^2}\left\{\frac{(x_1 - \mu_1)^2}{\sigma_1^2} - \frac{2\rho(x_1 - \mu_1)(x_2 - \mu_2)}{\sigma_1\sigma_2} + \frac{(x_2 - \mu_2)^2}{\sigma_2^2}\right\}\]
+                \[f_\xi(x_1,x_2) = \frac{1}{2\pi}\frac{1}{\sigma_1\sigma_2\sqrt{1 - \rho^2}}\exp\left(-\frac{1}{2}\cdot\frac{1}{1 - \rho^2}\{\cdots\}\right)\]
+                \textit{Замечание: Пусть $\begin{pmatrix}
+                    Z_1\\
+                    Z_2
+                \end{pmatrix} \sim \operatorname{N}\left(\begin{pmatrix}
+                    0\\
+                    0
+                \end{pmatrix},\begin{pmatrix}
+                    1 & \rho\\
+                    \rho & 1
+                \end{pmatrix}\right)$. Тогда
+                \[Z_1 = \rho Z_2 + u\]
+                где $z_2$ и $u$ независимы, $u \sim \operatorname{N}(0, \sigma^2)$}
+                \prof{
+                    \[\begin{pmatrix}
+                    u\\
+                    Z_2
+                \end{pmatrix} = \begin{pmatrix}
+                    1 & -\rho\\
+                    0 & 1
+                \end{pmatrix}\begin{pmatrix}
+                    Z_1\\
+                    Z_2
+                \end{pmatrix} = \begin{pmatrix}
+                    Z_1 - \rho Z_2\\
+                    z_2
+                \end{pmatrix} \sim \operatorname{N}\left(\begin{pmatrix}
+                    0\\
+                    0
+                \end{pmatrix}, \begin{pmatrix}
+                    1 - \rho^2 & 0\\
+                    0 & 1
+                \end{pmatrix}\right)\]
+                \[\cov(Z_1 - \rho Z_2, Z_2) = \rho - \rho \cdot 1 = 0\]
+                \[\Var(Z_1 - \rho Z_2) = \Var(Z_1) + \rho^2\Var(Z_2) - 2\rho\cov(Z_1, Z_2) = 1 + \rho^2 - 2\rho^2 = 1 - \rho^2\]
+                }
+}       \item Условное нормальное распределение:
+            Если $Z_1$ и $Z_2$ удовлетворяют утверждению выше, то $Z_2\mid Z_1 = x \sim \operatorname{N}(\rho x, 1 - \rho^2)$
+            \prof{
+                \[v = \{Z_2 \mid Z_1 = x\} = \{\rho Z_1 + u \mid Z_1 = x\} = \{u + \rho x \mid Z_1 = x\} = u + \rho x\]
+                Причём $u \sim \operatorname{N}(0, 1 - \rho^2)$
+                \[\implies \mb{E}(v) = 0 + \rho x = \rho x\]
+                \[\Var(v) = \Var(u + \rho x) = 1 - \rho^2\]
+            }
+            \prof{
+                Альтернативное доказательство \textit{(шло как бонус)}:
+
+                Доказать свойство выше через определение $f_{Z_2\mid Z_1 = x}(y)$
+            }
+            \newpage
+            Нестандартный случай:
+
+            $\begin{pmatrix}
+                \xi_1\\
+                \xi_2
+            \end{pmatrix} \sim \operatorname{N}\left(\begin{pmatrix}
+                \mu_1\\
+                \mu_2
+            \end{pmatrix}, \begin{pmatrix}
+                \sigma_1^2 & \rho\sigma_1\sigma_2\\
+                \rho\sigma_1\sigma_2 & \sigma_2^2
+            \end{pmatrix}\right)$. Тогда
+            \[\xi_2\mid \xi_1 = x \sim \operatorname{N}\left(\mu_2 + \rho\sigma_2\frac{x-\mu_1}{\sigma_1}, \sigma_2^2\left(1 - \rho^2\right)\right)\]
+            \prof{
+                Проведём стандартизацию: Пусть $\xi_2^* = \dfrac{\xi_2 - \mu_2}{\sigma_2},\ \xi_1^* = \dfrac{\xi_1 - \mu_1}{\sigma_1}$
+                
+                $\implies \xi_2 = \sigma_2\xi_2^* + \mu_2$
+                \[\mb{E}\left(\xi_2\mid\xi_1 = x\right) = \mb{E}\left(\sigma_2\xi_2^* + \mu_2\mid \xi_1 = \frac{x - \mu_1}{\sigma_1}\right) = \mu_2 + \sigma_2\underbrace{\mb{E}\left(\xi_2^*\mid \xi_1^* = \frac{x - \mu_1}{\sigma_1}\right)}_{=\rho\frac{x-\mu_1}{\sigma_1}} =\]
+                \[= \mu_2 + \sigma_2\rho\frac{x - \mu_1}{\sigma_1}\]
+                Аналогично
+                \[\Var(\xi_2\mid\xi_1 = x) = \sigma_2^2(1 - \rho^2)\]
+                То есть $\mb{E}\left(\xi_2\mid\xi_1 = x\right) = a + bx\ -$ линейная регрессия
+            }
     \end{enumerate}
 }
-\propos{
-    \begin{center}
-        \huge Двумерное нормальное распределение
-    \end{center}
-        $n = 2$
-        \[\cov \xi = C = \begin{pmatrix}
-            \sigma_1^2 & \rho\sigma_1\sigma_2\\
-            \rho\sigma_1\sigma_2 & \sigma_2^2
-        \end{pmatrix},\ \rho = \corr(\xi_1, \xi_2)\]
-        \[\implies C^{-1} = \frac{1}{\sigma_1^2\sigma_2^2(1 - \rho^2)}\begin{pmatrix}
-            \sigma_2^2 & -\rho\sigma_1\sigma_2\\
-            -\rho\sigma_1\sigma_2 & \sigma_2^2
-        \end{pmatrix} = \frac{1}{1 - \rho^2}\begin{pmatrix}
-            \frac{1}{\sigma_1^2} & -\frac{\rho}{\sigma_1\sigma_2}\\
-            -\frac{\rho}{\sigma_1\sigma_2} & \frac{1}{\sigma_2^2}
-        \end{pmatrix}\]
-        \[(x - \mu)^TC^{-1}(x - \mu) = \frac{1}{1 - \rho^2}\left\{\frac{(x_1 - \mu_1)^2}{\sigma_1^2} - \frac{2\rho(x_1 - \mu_1)(x_2 - \mu_2)}{\sigma_1\sigma_2} + \frac{(x_2 - \mu_2)^2}{\sigma_2^2}\right\}\]
-        \[f_\xi(x_1,x_2) = \frac{1}{2\pi}\frac{1}{\sigma_1\sigma_2\sqrt{1 - \rho^2}}\exp\left(-\frac{1}{2}\cdot\frac{1}{1 - \rho^2}\{\cdots\}\right)\]
-        \textit{Замечание: Пусть $\begin{pmatrix}
-            z_1\\
-            z_2
-        \end{pmatrix} \sim \operatorname{N}\left(\begin{pmatrix}
-            0\\
-            0
-        \end{pmatrix},\begin{pmatrix}
-            1 & \rho\\
-            \rho & 1
-        \end{pmatrix}\right)$. Тогда
-        \[z_1 = \rho z_2 + u\]
-        где $z_2$ и $u$ независимы, $u \sim \operatorname{N}(0, \sigma^2)$}
-        \prof{
-            \[\begin{pmatrix}
-            u\\
-            z_2
-        \end{pmatrix} = \begin{pmatrix}
-            1 & -\rho\\
-            0 & 1
-        \end{pmatrix}\begin{pmatrix}
-            z_1\\
-            z_2
-        \end{pmatrix} = \begin{pmatrix}
-            z_1 - \rho z_2\\
-            z_2
-        \end{pmatrix} \sim \operatorname{N}\left(\begin{pmatrix}
-            0\\
-            0
-        \end{pmatrix}, \begin{pmatrix}
-            1 - \rho^2 & 0\\
-            0 & 1
-        \end{pmatrix}\right)\]
-        \[\cov(z_1 - \rho z_2, z_2) = \rho - \rho \cdot 1 = 0\]
-        \[\Var(z_1 - \rho z_2) = \Var(z_1) + \rho^2\Var(z_2) - 2\rho\cov(z_1, z_2) = 1 + \rho^2 - 2\rho^2 = 1 - \rho^2\]
-        }
+\example{
+    Небольшое напоминание про копулы:
+    \[\Phi_2\left(\Phi^{-1}(F_1(x)), \Phi^{-1}(F_2(x))\right)\ - \text{ гауссова копула (часто применяется в теории страхования)}\]
 }
+\newpage
+\setcounter{maindf}{13}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{13}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{13}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{13}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Усечённое (или урезанное, короче от англ. truncated) нормальное распределение
+\end{center}
+\defin{
+    \[Z \sim \operatorname{N}(0, 1), \quad Z\mid Z > x \sim \, ?\]
+        \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                axis lines=middle,
+                axis line style={very thick,->},
+                xmin=-3.5, xmax=3.5,
+                ymin=-0.05, ymax=0.45,
+                samples=200,
+                xtick=\empty,
+                ytick=\empty,
+                grid=both,
+                grid style={gray!40},
+                width=14cm,
+                height=8cm,
+                enlargelimits=false
+            ]
+
+            \addplot[
+                very thick,
+                domain=-3.5:3.5
+            ]
+            {1/sqrt(2*pi)*exp(-x^2/2)};
+
+
+            \node[below] at (axis cs:-1.5,0) {$a$};
+            \node[below] at (axis cs: 1.5,0) {$a$};
+
+            \draw[smooth, thick] (-1.5,0) -- (-1.5, 1);
+            \draw[smooth, thick] (1.5,0) -- (1.5, 1);
+            \draw[smooth, thick] (-1.6,-0.05) -- (-3, 0.2);
+            \draw[smooth, thick] (-3,-0.05) -- (-1.6, 0.2);
+            \draw[smooth, thick] (1.6,-0.05) -- (3, 0.2);
+            \draw[smooth, thick] (3,-0.05) -- (1.6, 0.2);
+
+            \node[above] at (-2.5, 0.2) {$\substack{\text{не видим низкие}\\ \text{доходы (западные страны)}}$};
+            \node[above] at (2.5, 0.2) {$\substack{\text{не видим высокие}\\ \text{доходы (РФ)}}$};
+            \end{axis}
+            \end{tikzpicture}
+    \end{center}
+    \[f_{Z\mid Z>a}(x) = \begin{cases}
+        \dfrac{f_Z(z)}{P(Z > a)}, & x > a\\
+        0, & x\leq a
+    \end{cases}\ - \text{вообще не совпадает с исходным распределением}\]
+}
+\example{
+    \[\lambda(x) = \frac{\varphi(x)}{1 - \Phi(x)}\ - \text{ функция риска (мгновенная вероятность выхода из состояния $>a$)}\]
+}
+\textit{Здесь должен был быть пример из презентации Елены Владимировны для ЦБ, но \sout{я вам его не покажу} его нельзя показывать (потому что договор о неразглашении)}
+
+\textit{Также Елена Владимировна рассказала про случай с собрания преподавателей, где им рассказывали про вышку в цифрах, но там было такое, за распространение чего её могут уволить, поэтому я вам его тоже не покажу}
 \end{document}
