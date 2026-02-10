@@ -2079,4 +2079,224 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \textit{Здесь должен был быть пример из презентации Елены Владимировны для ЦБ, но \sout{я вам его не покажу} его нельзя показывать (потому что договор о неразглашении)}
 
 \textit{Также Елена Владимировна рассказала про случай с собрания преподавателей, где им рассказывали про вышку в цифрах, но там было такое, за распространение чего её могут уволить, поэтому я вам его тоже не покажу}
+
+\newpage
+\setcounter{maindf}{14}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{14}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{14}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{14}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Многомерная центральная предельная теорема
+\end{center}
+\theorem{
+    Пусть $\xi^{(1)}, \dots, \xi^{(n)},\dots \ -$ последовательность независимых одинаково распределённых случайных векторов, причём $\mb{E}\left(\xi^{(1)}\right) = b,\ \cov\left(\xi^{(1)}\right) = C,\ \det C > 0$.
+
+    Тогда для $S_n = \xi^{(1)} + \cdots + \xi^{(n)}$ верно
+    \[\eta^{(n)} = \frac{S_n - nb}{\sqrt{n}} \xrightarrow[n\to\infty]{d}\eta \sim \operatorname{N}(0, C)\]
+    \textit{Замечание: для любой непрерывной функции $g(x),\ x \in \mb{R}$ верно}
+    \[g\left(\eta^{(n)}\right) \xrightarrow[n\to\infty]{d}g(\eta)\]
+}
+\example{
+    \[g(x) = \left\lVert x\right\rVert^2 = \sum_{i=1}^{n}x_i\]
+    \[\implies \left\lVert\eta^{(n)}\right\rVert \xrightarrow[n\to\infty]{d}\lVert\eta\rVert\]
+}
+\newpage
+\begin{center}
+    \huge Распределения, связанные с нормальными
+\end{center}
+\defin{
+    Гамма распределение:
+    
+    С.в. $\xi \sim \operatorname{Gamma}(\alpha, \beta)$, если
+    \[f_\xi(x) = \begin{cases}
+        \dfrac{x^{\alpha-1}e^{-x\beta}b^{\alpha}}{\Gamma(\alpha)}, & x > 0\\
+        0, & x < 0
+    \end{cases} \ (\alpha, \beta > 0)\]
+    \textit{Напоминание:}
+    \[\Gamma(z) = \int\limits_0^\infty z^{t-1}e^{-t}\,dt,\ z \in \mb{C}, \operatorname{Re} z > 0\]
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item устойчивость относительно суммирования:
+        
+        Пусть $\xi_1, \dots, \xi_n \ -$ независимы, $\xi_i \sim \operatorname{Gamma}(\alpha_i,\beta)$. Тогда
+        \[\sum_{i=1}^{n}\xi_i \sim \operatorname{Gamma}\left(\sum_{i=1}^{n}\alpha_i,\beta\right)\]
+        \item[$\text{2}.^*$] бесконечно делимо (то есть представимо в виде суммы сколь угодно большого числа случайных величин с таким же типом распределения)
+        \item[3.] Пусть $Z \sim \operatorname{N}(0, 1)$. Тогда $Z^2 \sim \operatorname{Gamma}\left(\dfrac{1}{2}, \dfrac{1}{2}\right)$
+        
+        \textit{* Это свойство на практике мало где используется, зато его любят в доказательствах предельных теорем (в частности, ЦПТ)}
+    \end{enumerate}
+}
+\defin{
+    Распределение $\chi_k^2$ (хи-квадрат с $k$ степенями свободы) (оно же распределение Пирсона)
+
+    Пусть $Z_1,\dots, Z_k\ -$ н.о.р.с.в., $Z_i \sim \operatorname{N}(0, 1)$. Тогда
+    \[\chi_k^2 = Z_1^2 + \cdots + Z_k^2 \sim \operatorname{Gamma}\left(\frac{k}{2}, \frac{1}{2}\right) \equiv \operatorname{H}_k \leftarrow \text{хи-квадрат распределение с $k$ степенями свободы}\]
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item $\mb{E}\left(\chi_k^2\right) = k, \Var\left(\chi_k^2\right) = 2k$
+        \item устойчивость относительно суммирования, то есть если $\gamma_i \sim \operatorname{H}_k, \gamma_2 \sim \operatorname{H}_m$,
+        
+        $\gamma_1$ и $\gamma_2$ независимы, то
+        \[\gamma_1 + \gamma_2 \sim \operatorname{H}_{k+m}\]
+        \begin{center}
+            \begin{center}
+                \begin{tikzpicture}
+                \begin{axis}[
+                    axis lines=left,
+                    xlabel={$x$},
+                    ylabel={$y$},
+                    xmin=0, xmax=15,
+                    ymin=0, ymax=0.5,
+                    samples=300,
+                    domain=0:15,
+                    smooth,
+                    ticks=none,
+                    width=14cm,
+                    height=7cm,
+                    clip=true
+                ]
+
+                % k = 1: 1/(sqrt(2)*sqrt(pi)) * x^(-1/2) * exp(-x/2)
+                \addplot[thick, red]
+                    {1/(sqrt(2)*sqrt(pi))*x^(-0.5)*exp(-x/2)};
+                \node[below] at (axis cs:0.3,0.4) {$\operatorname{H}_1$};
+
+                % k = 2: 0.5 * exp(-x/2)
+                \addplot[thick, green]
+                    {0.5*exp(-x/2)};
+                \node at (axis cs:0.6,0.25) {$\operatorname{H}_2$};
+
+                % k = 4: (1/4)*x*exp(-x/2)
+                \addplot[thick, blue]
+                    {0.25*x*exp(-x/2)};
+                \node at (axis cs:1.2,0.12) {$\operatorname{H}_4$};
+
+                % k = 5: (1/(4*sqrt(2*pi)))*x^(3/2)*exp(-x/2)
+                \addplot[thick, violet]
+                    {(1/(4*sqrt(2*pi)))*x^1.5*exp(-x/2)};
+                \node at (axis cs:2.7,0.09) {$\operatorname{H}_5$};
+
+                \end{axis}
+                \end{tikzpicture}
+                \end{center}
+
+        \end{center}
+        \item $\dfrac{\chi_k^2 - k}{\sqrt{2k}} \xrightarrow[k\to\infty]{d} Z \sim \operatorname{N}(0, 1)$ (потому что ЦПТ)
+
+        $\dfrac{\xi_k^2}{k} \xrightarrow[k\to\infty]{p} 1$ (потому что ЗБЧ)
+    \end{enumerate}
+    \textit{Замечание:}
+    \[\operatorname{H}_2 = \operatorname{Gamma}\left(1, \dfrac{1}{2}\right) = \operatorname{Exp}\left(\dfrac{1}{2}\right)\]
+}
+\renewcommand{\thletter}{Лемма Фишера}
+\theorem{
+    Пусть $X \sim \operatorname{N}(0, I),\ C^{-1} = C^T$ (ортогональная матрица $n \times n$), $Y = CX$
+
+    Тогда $\forall k = 1,\dots, n$ случайная величина
+    \[T(X) = \sum_{i=1}^{n} X_i^2 - \sum_{i=1}^{k}Y_i^2\]
+    не засисит от $Y_1, \dots, Y_k$ и имеет $\operatorname{H}_{n-k}$ распределение
+}
+\prof{
+    \[\left\lVert X\right\rVert^2 = X_1^2 + \cdots + X_n^2 = X^TX\]
+    \[\left\lVert Y\right\rVert^2 = Y^TY = (CX)^TCX = X^TC^TCX = X^TX = \left\lVert X\right\rVert^2\]
+    \[\implies \sum_{i=1}^{n}Y_i^2 = \sum_{i=1}^{n}X_i^2\]
+    \[T(X) = \sum_{i=1}^{n}X_i^2 - \sum_{i=1}^{k}Y_i^2 = \sum_{i=1}^{n}Y_i^2 - \sum_{i=1}^{k}Y_i^2 = \sum_{i=n-k+1}^{n}Y_i^2 \sim \operatorname{H}_{n-k}\]
+    потому что $Y = CX \implies \cov Y = C\cov X \cdot C^T = I \implies Y \sim \operatorname{N}(0, I)$
+}
+\defin{
+    Распределение Стьюдента $\operatorname{t}_k$
+
+    \textit{Историческая байка (а может и нет): Уильям Госсет работал в пивоварне, но параллельно занимался также математикой и статистикой и в частности по последней посещал курсы. Он измерял количество пива в бочках (потому что оно там не строго фиксированное, а представляет из себя случайную величину), и обнаружил, что распределение похоже на нормальное, но не является им. Так он на эту тему решил написать статью. Хозяин пивоварни ему разрешил, но не под своим именем, и Госсет выбрал псевдоним Стьюдент}
+    
+    \vspace{3mm}
+    Пусть $Z_0,\dots,Z_k\ -$ н.о.р.с.в., $Z_i \sim \operatorname{N}(0, 1)$. Тогда
+    \[T = \frac{Z_0}{\sqrt{\dfrac{Z_1^2 + \cdots + Z_k^2}{k}}} \sim \operatorname{t}_k\]
+    \[f_T(x) = \frac{\Gamma\left(\dfrac{k+1}{2}\right)}{\sqrt{\pi k}\Gamma\left(\dfrac{k}{2}\right)}\left(1 + \frac{x^2}{2}\right)^{-\frac{k+1}{2}}\]
+    \begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=14cm,
+        height=7cm,
+        xmin=-6, xmax=6,
+        ymin=0, ymax=0.45,
+        axis lines=middle,
+        clip=true,
+        ticks=none,
+        xlabel={$x$},
+        ylabel={$y$},
+        enlargelimits=false
+    ]
+
+    % --- Нормальное распределение ---
+    \addplot[
+        domain=-6:6,
+        samples=300,
+        dashed,
+        thick
+    ]
+    {1/sqrt(2*pi)*exp(-x^2/2)};
+
+    \node at (axis cs:1.2,0.39) {Норм.};
+
+    % --- Распределение Стьюдента (ν=3) ---
+    \addplot[
+        domain=-6:6,
+        samples=300,
+        very thick
+    ]
+    {0.3677 * (1 + x^2/3)^(-2)};
+
+    \node at (axis cs:0.5,0.2) {Ст.};
+
+    % --- Вертикальная ось в нуле (усиленная) ---
+    \draw[very thick] (axis cs:0,0) -- (axis cs:0,0.42);
+
+    \end{axis}
+    \end{tikzpicture}
+    \end{center}
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item у распределения Стьюдента существуют только моменты, строго меньшие чем $k$, то есть
+        
+        $\exists \mb{E}\left(T^m\right)$, если $m < k$ и $\not\exists \mb{E}\left(T^m\right)$, если $m \geq k$
+
+        В частности, $\mb{E}(T) = k\ (k \geq 2),\ \Var(T) = \dfrac{k}{k-2}\ (k \geq 3)$
+
+        \textit{Замечание:}
+        \[\operatorname{t}_1 \equiv \operatorname{C}(0, -1) \leftarrow \textit{распределение Коши}\]
+        \[f_X(x) = \frac{1}{\pi\left(1 + x^2\right)}\]
+        \item $\operatorname{t}_k$ симметрично
+        \item $\dfrac{T - k}{\sqrt{\dfrac{k}{k-2}}} \xrightarrow[n \to \infty]{d} \operatorname{N}(0, 1)$
+    \end{enumerate}
+}
+\defin{
+    Распределение Фишера (Фишера-Снедекора)
+
+    Пусть $\gamma_1 \sim \operatorname{H}_k, \gamma_2 \sim \operatorname{H}_m$, $\gamma_1$ и $\gamma_2$ независимы. Тогда
+    \[f_{k,m} = \frac{\gamma_1/k}{\gamma_2/m} \sim \operatorname{F}_{k,m}\]
+}
+\propos{
+    Свойства:
+    \begin{enumerate}
+        \item $\mb{E}(f_{k,m}) = \dfrac{m}{m-2}\ (m > 2)$
+        
+        $\Var(f_{k,m}) = \dfrac{2m^2(k + m + 2)}{k(m - 2)^2(m - 4)}\ (m > 4)$
+        \item $\dfrac{1}{f_{k,m}} \sim \operatorname{F}_{m,k}$
+        
+        \textit{Замечание:} $T^2 \sim \operatorname{F}_{1,k}$
+    \end{enumerate}
+}
 \end{document}
