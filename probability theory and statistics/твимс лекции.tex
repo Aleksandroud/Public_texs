@@ -2301,4 +2301,124 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \textit{Замечание:} $T^2 \sim \operatorname{F}_{1,k}$
     \end{enumerate}
 }
+\newpage
+\setcounter{maindf}{15}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{15}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{15}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{15}
+\setcounter{subex}{0}
+\begin{center}
+    \Huge МАТЕМАТИЧЕСКАЯ СТАТИСТИКА
+\end{center}
+\textit{Наконец-то из небытия вышел Дмитрий Александрович}
+
+Основные понятия:
+\begin{itemize}
+    \item $X_1,\dots, X_n\ -$ н.о.р.с.в., то есть $F_{X_1}(x) = \cdots = F_{X_n}(x) = F(x),\ x \in \mb{R}$
+    \item Пусть $F(x)$ зависит от некоторого вектора неизвестных параметров $\theta = (\theta_1,\dots, \theta_n)$
+    \item Тогда можно писать $F(x; \theta) = F(x)$, где $x\ -$ аргумент, а $\theta\ -$ параметры (да, тут специально стоит точка с запятой)
+    \item $\Theta\ -$ множество допустимых значений вектора $\theta$
+    
+    Пример:
+        \[\theta = \left(\mu, \sigma^2\right)\ \left[X_i \sim \operatorname{N}\left(\mu, \sigma^2\right)\right]\]
+        \[\implies \Theta = \left\{\left(\mu, \sigma^2\right):\ \mu \in \mb{R},\, \sigma^2 > 0\right\} = \mb{R} \times (0, +\infty)\]
+\end{itemize}
+\defin{
+    Случайной выборкой объёма $n$ наблюдений из распределения с функцией $F(x)$ называется случайный вектор $X = (X_1,\dots, X_n)$, компоненты которого независимы с одинаковой функцией
+    
+    распределения $F(x; \theta)$
+    
+    \vspace{3mm}
+    \textit{Замечание 1:} если $X_1, \dots, X_n$ дискретны, то они также имеют одинаковую таблицу распределения
+
+    \textit{Замечание 2:} если $X_1, \dots, X_n$ абсолютно непрерывны, то они также имеют одинаковую плотность распределения $f(x;\theta)$
+
+    \textit{Замечание 3:} если $X\ -$ случайная выборка и $\exists \mb{E}(X_i)$, то $\exists \mb{E}(X_1) = \cdots = \mb{E}(X_n)$
+    
+    \textit{Замечание 4:} если $X\ -$ случайная выборка и $\exists \Var(X_i)$, то
+    \begin{enumerate}
+        \item $\exists \mb{E}(X_1) = \cdots = \mb{E}(X_n)$
+        \item $\exists \Var(X_1) = \cdots = \Var(X_n)$
+        \item $\exists \cov(X_i, X_j) = 0 \ \forall i \neq j$
+    \end{enumerate}
+}
+\defin{
+    \begin{itemize}
+        \item $X(\omega) = \left(X_1(\omega), \dots, X_n(\omega)\right), \omega \in \Omega\ -$ случайная выборка (случайный вектор)
+        \item Зафиксируем $\omega_0$. Тогда $\underbrace{X(\omega_0)}_{x} = (\underbrace{X_1(\omega_0)}_{x_1},\dots, \underbrace{X_n(\omega_0)}_{x_n})$ называется реализацией случайной
+        
+        выборки и представляет из себя числовой вектор
+    \end{itemize}
+}
+\defin{
+    \begin{itemize}
+        \item Пусть $X = (X_1,\dotsm x_n)\ -$ случайная выборка
+        \item $\forall \omega \in \Omega$ распределим $X_1(\omega),\dotsm X_n(\omega)$
+        \item В результате получится набор чисел $X_{(1)}(\omega) \leq \cdots \leq X_{(n)}(\omega)$
+    \end{itemize}
+    Тогда набор случайных величин $X_{(1)}(\omega),\dots, X_{(n)}(\omega)$, определённый таким образом, называется вариационным рядом, а $i$-й его член называется $i$-й порядковой статистикой
+
+    Ясно, что $X_{(1)}(\omega) = \min \{X_1(\omega), \dots, X_n(\omega)\},\ X_{(n)}(\omega) = \max \{X_1(\omega), \dots, X_n(\omega)\}$
+}
+\defin{
+    Выборочное среднее (среднее арифметическое)
+    \[\overline{X} = \frac{X_1(\omega) + \cdots + X_n(\omega)}{n} = \widehat{p}\]
+    (в общем случае обозначают как $\widehat{\theta}$)
+}
+\example{
+    \[\Omega = \{a,b,c\dots,h\}, \mc{F} = 2^\Omega, \qquad p + q = 1\]
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c|c|c|c}
+            $\omega$ & $a$ & $b$ & $c$ & $d$ & $e$ & $f$ & $g$ & $h$\\
+            \hline
+            $P(\{\omega\})$ & $p^3$ & $p^2q$ & $p^2q$ & $pq^2$ & $p^2q$ & $pq^2$ & $pq^2$ & $q^3$\\
+            \hline
+            $X_1(\omega)$ & $1$ & $1$ & $1$ & $1$ & $0$ & $0$ & $0$ & $0$\\
+            \hline
+            $X_2(\omega)$ & $1$ & $1$ & $0$ & $0$ & $1$ & $1$ & $0$ & $0$\\
+            \hline
+            $X_3(\omega)$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$\\
+            \hline\hline
+            $X_{(1)}(\omega)$ & $1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$\\
+            \hline
+            $X_{(2)}(\omega)$ & $1$ & $1$ & $1$ & $0$ & $1$ & $0$ & $0$ & $0$\\
+            \hline
+            $X_{(3)}(\omega)$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $0$\\
+            \hline
+            $\overline{X}(\omega)$ & $1$ & $\frac{2}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{1}{3}$ & $0$
+        \end{tabular}
+    \end{center}
+    Докажем, что в сумме вероятности дают $1$:
+    \[p^3 + p^2q + p^2q + pq^2 + p^2q + pq^2 + pq^2 + q^3 = p^3 + 3p^2q + 3pq^2 + q^3 = (p + q)^3 = 1\]
+    Докажем, что $X_1 \sim \Be(p)$
+    \[P(X_1 = 1) = P(\{a, b, c, d\}) = p^3 + p^2q + p^2q + pq^2 = p(p^2 + 2p + 1) = p(p + q)^2 = p\]
+    Доказательство для $X_2$ и $X_3$ аналогично
+
+    Докажем, что $X_1$ и $X_2$ независимы:
+    \[P(X_1 = 1 \cap X_2 = 1) = P(\{a, b\}) = p^3 + p^2q = p^2(p + q) = p^2 = p \cdot p = P(X_1 = 1) \cdot P(X_2 = 1)\]
+    Аналогично для остальных комбинаций случайных величин и принимаемых ими значений
+
+    Напоминание: $X_1, X_2, X_3$ независимы $\overset{\operatorname{def}}{\iff} \forall B_1, B_2, B_3 \in \mc{B}(\mb{R})$
+    \[P(X_1 \in B_1 \cap X_2 \in B_2 \cap X_3 \in B_3) = P(X_1 \in B_1) \cdot P(X_2 \in B_2) \cdot P(X_3 \in B_3) \qquad (*)\]
+    Значит, надо проверить $(*)$ для 8 вариантов:
+    \[B_1 = \{0\}, B_2 = \{0\}, B_2 = \{0\}\]
+    \[B_1 = \{1\}, B_2 = \{0\}, B_3 = \{0\}\]
+    \[\vdots\]
+    \[B_1 = \{1\}, B_2 = \{1\}, B_3 = \{1\}\]
+    Посчитаем $\mb{E}\left(\overline{X}\right)$, которое также называют оценкой
+    \[\mb{E}\left(\overline{X}\right) = 1\cdot p^3 + \frac{2}{3}p^2q + \frac{2}{3}p^2q + \frac{1}{3}pq^2 + \frac{2}{3}p^2q + \frac{1}{3}pq^2 + \frac{1}{3}pq^2 + 0\cdot q^3 = p^3 + 2p^2q + pq^2 =\]
+    \[= p\left(p^2 + 2pq + q^2\right) = p\]
+}
+\defin{
+    $\widehat{\theta}$ называется несмещённой оценкой параметра $\theta \in \Theta$, если
+    \[\mb{E}\left(\widehat{\theta}\right) = \theta \ \forall \theta \in \Theta\]
+    \textit{Примечание: в английском есть два синонима слову оценка: unbiased estimator обозначает несмещённую оценку случайной величины, а estimate обозначает оценку реализации случайной выборки}
+}
+
 \end{document}
