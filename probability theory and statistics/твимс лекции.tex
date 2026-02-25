@@ -758,7 +758,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 
     \item Если $\xi \geq 0$ п.н. и $\mb{E}(\xi) = 0$, то $\xi = 0$ п.н.
     \item Если $\xi \geq \eta$, то $\mb{E}(\xi) \geq \mb{E}(\eta)$
-    \item Если $a \leq \xi \leq b$, то $a \leq \mb{\xi} \leq b$
+    \item Если $a \leq \xi \leq b$, то $a \leq \mb{E}(\xi) \leq b$
     \item $\mb{E}(a\xi + b\eta + c) = a\mb{E}(\xi) + b\mb{E}(\eta) + c,\ a,b,c \in \mb{R}$
     (то есть математическое ожидание линейно)
 \end{enumerate}
@@ -1912,7 +1912,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
             \[C = \begin{pmatrix}
                 \sigma_1^2 & \cdots & 0\\
                 \vdots & \ddots & \vdots\\
-                0 & \cdots & \sigma_n 
+                0 & \cdots & \sigma_n^2 
             \end{pmatrix} \implies \det C = \sigma_1^2\cdots\sigma_n^2\]
             \[\implies f_\xi(x) = \frac{1}{\left(\sqrt{2\pi}\right)^n}\frac{1}{\sigma_1\cdots\sigma_n}\cdot \exp\left(-\frac{1}{2}\sum_{i=1}^{n}\left(\frac{x_i - \mu_i}{\sigma_i}\right)^2\right) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\cdot\frac{1}{\sigma_i}\exp\left(-\frac{1}{2}\left(\frac{x_i-\mu_i}{\sigma_i}\right)^2\right) =\]
             \[= \prod_{i=1}^{n}f_{\xi_i}(x_i)\]
@@ -2303,16 +2303,16 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \end{enumerate}
 }
 \newpage
-\setcounter{maindf}{15}
+\setcounter{maindf}{1}
 \setcounter{subdf}{0}
 
-\setcounter{mainth}{15}
+\setcounter{mainth}{1}
 \setcounter{subth}{0}
 
-\setcounter{mainpr}{15}
+\setcounter{mainpr}{1}
 \setcounter{subpr}{0}
 
-\setcounter{mainex}{15}
+\setcounter{mainex}{1}
 \setcounter{subex}{0}
 \begin{center}
     \Huge МАТЕМАТИЧЕСКАЯ СТАТИСТИКА
@@ -2333,6 +2333,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \[\implies \Theta = \left\{\left(\mu, \sigma^2\right):\ \mu \in \mb{R},\, \sigma^2 > 0\right\} = \mb{R} \times (0, +\infty)\]
 \end{itemize}
 \defin{
+
     Случайной выборкой объёма $n$ наблюдений из распределения с функцией $F(x)$ называется случайный вектор $X = (X_1,\dots, X_n)$, компоненты которого независимы с одинаковой функцией
     
     распределения $F(x; \theta)$
@@ -2377,6 +2378,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     (в общем случае обозначают как $\widehat{\theta}$)
 }
 \example{
+    (и 1.2 заодно)
     \[\Omega = \{a,b,c\dots,h\}, \mc{F} = 2^\Omega, \qquad p + q = 1\]
     \begin{center}
         \begin{tabular}{c|c|c|c|c|c|c|c|c}
@@ -2420,10 +2422,169 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \[\mb{E}\left(\overline{X}\right) = 1\cdot p^3 + \frac{2}{3}p^2q + \frac{2}{3}p^2q + \frac{1}{3}pq^2 + \frac{2}{3}p^2q + \frac{1}{3}pq^2 + \frac{1}{3}pq^2 + 0\cdot q^3 = p^3 + 2p^2q + pq^2 =\]
     \[= p\left(p^2 + 2pq + q^2\right) = p\]
 }
+
+\defin{
+    \[s^2(\omega) = \frac{1}{n}\sum_{i=1}^{n}(X_i(\omega) - \overline{X}(\omega))\ - \text{ выборочная дисперсия}\]
+    \[\widehat{\sigma}^2(\omega) = \frac{1}{n-1} \sum_{i=1}^{n}(X_i(\omega) - \overline{X}(\omega))\ - \text{ исправленная выборочная дисперсия}\]
+}
+\defin{
+    Пусть $X = (X_1,\dots, X_n)\ -$ случайная выборка. Тогда выборочной функцией распределения 
+    
+    называется функция
+    \[\widehat{F}_n(x, \omega) = \frac{\#\{i \in \{1,\dots, n\}: X_i(\omega) \leq x\}}{n} =\]
+    \[= \frac{\text{число элементов выборки $X$, которое не больше $x$}}{n} =\]
+    \[= \frac{1}{n}\sum_{i=1}^{n}\mb{1}\{X_i(\omega) < x\}\]
+    где $\mb{1}_A(x) = \begin{cases}
+        1, & x \in A\\
+        0, & x \notin A
+    \end{cases}$
+}
+\setcounter{subex}{2}
+\example{
+    продолжение примера 1.1-1.2
+
+    a) $\omega = e$. Надо построить $\widehat{F}_3(x, \omega=e)$
+    \[\widehat{F}_3(x, \omega=e) = \displaystyle \frac{1}{n}\sum_{i=1}^{3}\mb{1}\{X_i(e) \leq x\}\]
+    \begin{center}
+        \begin{tikzpicture}[>=stealth, scale=1.8]
+
+        % Оси
+        \draw[->] (-3,0) -- (4,0) node[right] {$x$};
+        \draw[->] (0,-0.5) -- (0,1.5) node[above] {$\widehat{F}_3(x)$};
+
+        % Деления по y
+        \draw (0,1/3) -- (-0.1,1/3) node[left] {$1/3$};
+        \draw (0,2/3) -- (-0.1,2/3) node[left] {$2/3$};
+        \draw (0,1) -- (-0.1,1) node[left] {$1$};
+        \draw (0,-0.2) node[left] {$0$};
+
+        % Ступеньки
+        \draw[thick] (0,1/3) -- (1,1/3);
+        \draw[thick] (1,2/3) -- (2,2/3);
+        \draw[thick] (2,1) -- (3.5,1);
+        \draw[thick] (-3,0) -- (0,0);
+
+        % Пунктирные вертикали
+        \draw[dashed] (1,0) -- (1,2/3);
+        \draw[dashed] (2,0) -- (2,1);
+        \draw[dashed] (0,2/3) -- (1,2/3);
+        \draw[dashed] (0,1) -- (2,1);
+
+        % Пустые кружки
+        \draw[thick] (0,0) circle (1.5pt);
+        \draw[thick] (1,1/3) circle (1.5pt);
+        \draw[thick] (2,2/3) circle (1.5pt);
+
+        \end{tikzpicture}
+    \end{center}
+    b) $x = 0.7$. Построить $\widehat{F}_3(x = 0.7, \omega)$
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c|c|c|c}
+            $\omega$ & $a$ & $b$ & $c$ & $d$ & $e$ & $f$ & $g$ & $h$\\
+            \hline
+            $\widehat{F}_3(x = 0.7, \omega)$ & $\frac{0}{3}$ & $\frac{1}{3}$ & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{2}{3}$ & $\frac{3}{3}$\\
+        \end{tabular}
+    \end{center}
+}
+\propos{
+    Пусть $X\ -$ случайная выборка, $\mb{E}(X_i) < \infty$. Тогда
+    \[\mb{E}\left(\overline{X}\right) = \mb{E}(X_i)\]
+}
+\prof{
+    \[\mb{E}\left(\overline{X}\right) = \mb{E}\left(\frac{1}{n}\sum_{i=1}^{n}X_i\right) = \frac{1}{n}\cdot n\mb{E}(X_i) = \mb{E}(X_i)\]
+}
+\propos{
+    Пусть $X\ -$ случайная выборка, $\Var(X_i) < \infty$. Тогда
+    \[\Var\left(\overline{X}\right) = \frac{\Var(X_i)}{n}\]
+}
+\prof{
+    \[\Var\left(\overline{X}\right) = \Var\left(\frac{1}{n}\sum_{i=1}^{n}X_i\right) = \frac{1}{n^2}\cdot n\Var(X_i) = \frac{\Var(X_i)}{n}\]
+}
+\defin{
+    Пусть $X\ -$ случайная выборка с функцией распределения $F(x;\theta)$. Тогда оценкой параметра $\theta$ называется случайная величина $\widehat{\theta}$, которая является борелевской функцией от элементов случайной выборки, то есть
+    \[\widehat{\theta} = g(X_1,\dots,X_n), \text{ где } g:\mb{R}^n \to \mb{R}\ - \text{ борелевская функция}\]
+    при этом $g$ не должна зависеть от $\theta$
+}
+\example{
+    Пусть $X\ -$ случайная выборка, $X_i \sim \Be(p)$.
+
+    Тогда $\widehat{p} = \dfrac{X_1 + \cdots + X_n}{n}\ -$ оценка $p$
+
+    $\implies g(x_1,\dots, x_n) = \dfrac{x_1 + \cdots + x_n}{n}$
+}
+\newpage
+\setcounter{maindf}{2}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{2}
+\setcounter{subth}{0}
+
+\setcounter{mainex}{2}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Несмещённые оценки
+\end{center}
 \defin{
     $\widehat{\theta}$ называется несмещённой оценкой параметра $\theta \in \Theta$, если
     \[\mb{E}\left(\widehat{\theta}\right) = \theta \ \forall \theta \in \Theta\]
     \textit{Примечание: в английском есть два синонима слову оценка: unbiased estimator обозначает несмещённую оценку случайной величины, а estimate обозначает оценку реализации случайной выборки}
 }
+\example{
+    Пусть $X\ -$ случайная выборка, $X_i \sim \Be(p)$. Является ли $\widehat{p}$ несмещённой оценкой $p$?
+    \[\mb{E}\left(\widehat{p}\right) = \mb{E}\left(\frac{X_1 + \cdots + X_n}{n}\right) = \mb{E}(X_i) = p\]
+}
+\example{
+    Является ли выборочная функция распределения $\widehat{F}_n(x, \omega)$ (при каждом фиксированном $x$) несмещённой оценкой теоретической функции распределения $F(x)$?
+    \[\mb{E}\left(\widehat{F}(x)\right) = \mb{E}\left(\frac{1}{n}\sum_{i=1}^{n}\mb{1}\{X_i \leq x\}\right) = \frac{1}{n}\sum_{i=1}^{n}\mb{E}(\mb{1}\{X_i \leq x\}) = \frac{1}{n}\sum_{i=1}^{n}\left(1 \cdot P(X_i \leq x) + 0 \cdot P(X_i > x)\right) = \frac{1}{n}\sum_{i=1}^{n}P(X_i \leq x) =\]
+    \[= \frac{1}{n}\sum_{i=1}^{n}F_{X_i}(x) = \frac{1}{n}\cdot nF(x) = F(x)\]
+}
+\example{
+    $X\ -$ случайная выборка из распределения с плотностью
+    \[f(x;\theta) = \begin{cases}
+       \dfrac{2x}{\theta^2}, & x \in [0, \theta]\\
+       0, & \text{иначе}
+    \end{cases}\]
+    Является ли $\widehat{\theta} = \dfrac{3}{2}\overline{X}$ оценкой для $\theta$?
+    \[\mb{E}(X_i) = \int\limits_0^\theta x \cdot \frac{2x}{\theta^2}\,dx = \frac{2}{\theta^2} \cdot \frac{x^3}{3}\Bigg|_0^\theta = \frac{2}{3}\theta\]
+    \[\implies \mb{E}\left(\widehat{\theta}\right) = \mb{E}\left(\frac{3}{2}\overline{X}\right) = \frac{3}{2}\mb{E}(X_i) = \frac{3}{2} \cdot \frac{2}{3}\theta = \theta\]
+    $\implies \widehat{\theta}\ -$ несмещённая оценка
+}
 
+\setcounter{mainpr}{-1}
+\setcounter{subpr}{-1}
+\propos{
+    Оффтоп в теорвер:
+
+    Пусть $\zeta \geq 0$ п.н. и $\mb{E}(\zeta) = 0 \implies \zeta = 0$ п.н.
+}
+\prof{
+    Рассмотрим $A = \{\zeta \neq 0\} = \{\zeta > 0\}$, $A_n = \left\{\zeta > \dfrac{1}{n}\right\}, n \in \mb{N}$
+
+    Заметим, что $A_1 \subseteq A_2 \subseteq \cdots \subseteq A_n \subseteq \cdots$ и $\displaystyle A = \bigcup_{i=1}^\infty A_n$
+
+    Тогда по теореме о непрерывности вероятностной меры
+    \[P(A) = \lim_{n\to\infty} P(A_n) = \lim_{n\to\infty} P\left(\zeta > \dfrac{1}{n}\right) \leq \lim_{n\to\infty}\frac{\mb{E}(\zeta)}{1/n} = 0\]
+    $\implies \zeta = 0$ п.н.
+}
+\setcounter{mainpr}{2}
+\setcounter{subpr}{0}
+
+\renewcommand{\thletter}{строгое неравенство Йенсена}
+\theorem{
+    Пусть $-\infty \leq a < b \leq +\infty$ и функция $g: (a, b) \to \mb{R} \in C^2(a, b)$, причём $g''(x) > 0\ \forall x \in (a, b)$
+
+    Пусть $X: \Omega \to (a, b)\ -$ случайная величина, $\mb{E}(X) < \infty$. Тогда $\mb{E}(g(x)) \geq g(\mb{E}(x))$, причём
+    
+    равенство достигается $\iff X \equiv \const$ п.н.
+
+    \vspace{1cm}
+    \textit{Примечание: если $g'' < 0$, то неравенство имеет обратный знак}
+}
+\example{
+    Пусть $X\ -$ случайная выборка, $X_i \sim \Geo(p)$. Является ли оценка $\widehat{p} = \dfrac{1}{\overline{X}}$ несмещённой?
+    \[\mb{E}(X_i) = \frac{1}{p}\]
+    \[g(x) = \frac{1}{x} \implies g'(x) = -\frac{1}{x^2} \implies g''(x) = \frac{2}{x^3} > 0\ \text{(при $x > 0$)}\]
+    \[\implies \mb{E}\left(\widehat{p}\right) = \mb{E}\left(g\left(\overline{X}\right)\right) = \mb{E}\left(\frac{1}{\overline{X}}\right) > \frac{1}{\mb{E}\left(\overline{X}\right)} = \frac{1}{\mb{E}(X_i)} = \frac{1}{1/p} = p\]
+    $\implies \widehat{p}$ смещена вверх (то есть завышает оценку)
+}
 \end{document}
