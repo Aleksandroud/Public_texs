@@ -2364,7 +2364,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 }
 \defin{
     \begin{itemize}
-        \item Пусть $X = (X_1,\dotsm x_n)\ -$ случайная выборка
+        \item Пусть $X = (X_1,\dotsm X_n)\ -$ случайная выборка
         \item $\forall \omega \in \Omega$ распределим $X_1(\omega),\dotsm X_n(\omega)$
         \item В результате получится набор чисел $X_{(1)}(\omega) \leq \cdots \leq X_{(n)}(\omega)$
     \end{itemize}
@@ -2424,7 +2424,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 }
 
 \defin{
-    \[s^2(\omega) = \frac{1}{n}\sum_{i=1}^{n}(X_i(\omega) - \overline{X}(\omega))\ - \text{ выборочная дисперсия}\]
+    \[s^2(\omega) = \frac{1}{n}\sum_{i=1}^{n}\left(X_i(\omega) - \overline{X}(\omega)\right)\ - \text{ выборочная дисперсия}\]
     \[\widehat{\sigma}^2(\omega) = \frac{1}{n-1} \sum_{i=1}^{n}\left(X_i(\omega) - \overline{X}(\omega)\right)\ - \text{ исправленная выборочная дисперсия}\]
 }
 \defin{
@@ -2519,6 +2519,9 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \setcounter{mainth}{2}
 \setcounter{subth}{0}
 
+\setcounter{mainpr}{2}
+\setcounter{subpr}{0}
+
 \setcounter{mainex}{2}
 \setcounter{subex}{0}
 \begin{center}
@@ -2527,7 +2530,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \defin{
     $\widehat{\theta}$ называется несмещённой оценкой параметра $\theta \in \Theta$, если
     \[\mb{E}\left(\widehat{\theta}\right) = \theta \ \forall \theta \in \Theta\]
-    \textit{Примечание: в английском есть два синонима слову оценка: unbiased estimator обозначает несмещённую оценку случайной величины, а estimate обозначает оценку реализации случайной выборки}
+    \textit{Примечание: в английском есть два синонима слову оценка: estimator обозначает оценку случайной величины, а estimate обозначает оценку реализации случайной выборки}
 }
 \example{
     Пусть $X\ -$ случайная выборка, $X_i \sim \Be(p)$. Является ли $\widehat{p}$ несмещённой оценкой $p$?
@@ -2541,7 +2544,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \example{
     $X\ -$ случайная выборка из распределения с плотностью
     \[f(x;\theta) = \begin{cases}
-       \dfrac{2x}{\theta^2}, & x \in [0, \theta]\\
+       \dfrac{2x}{\theta^2}, & x \in [0, \theta)\\
        0, & \text{иначе}
     \end{cases}\]
     Является ли $\widehat{\theta} = \dfrac{3}{2}\overline{X}$ оценкой для $\theta$?
@@ -2550,8 +2553,6 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     $\implies \widehat{\theta}\ -$ несмещённая оценка
 }
 
-\setcounter{mainpr}{-1}
-\setcounter{subpr}{-1}
 \propos{
     Оффтоп в теорвер:
 
@@ -2566,25 +2567,118 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \[P(A) = \lim_{n\to\infty} P(A_n) = \lim_{n\to\infty} P\left(\zeta > \dfrac{1}{n}\right) \leq \lim_{n\to\infty}\frac{\mb{E}(\zeta)}{1/n} = 0\]
     $\implies \zeta = 0$ п.н.
 }
-\setcounter{mainpr}{2}
-\setcounter{subpr}{0}
 
 \renewcommand{\thletter}{строгое неравенство Йенсена}
 \theorem{
-    Пусть $-\infty \leq a < b \leq +\infty$ и функция $g: (a, b) \to \mb{R} \in C^2(a, b)$, причём $g''(x) > 0\ \forall x \in (a, b)$
+    Пусть $-\infty \leq a < b \leq +\infty$ и функция $g: (a, b) \to \mb{R},\ g \in C^2(a, b)$, причём $g''(x) > 0\ \forall x \in (a, b)$
 
-    Пусть $X: \Omega \to (a, b)\ -$ случайная величина, $\mb{E}(X) < \infty$. Тогда $\mb{E}(g(x)) \geq g(\mb{E}(x))$, причём
-    
-    равенство достигается $\iff X \equiv \const$ п.н.
+    Пусть $X: \Omega \to (a, b)\ -$ случайная величина, $\mb{E}(X) < \infty$. Тогда
+    \[\mb{E}(g(x)) \geq g(\mb{E}(x)) \qquad \text{(1)}\]
+    причём равенство достигается $\iff X \equiv \const$ п.н.
 
     \vspace{1cm}
-    \textit{Примечание: если $g'' < 0$, то неравенство имеет обратный знак}
+    \textit{Следствие 2.1: если $g'' < 0$, то неравенство (1) имеет обратный знак}
+}
+\prof{
+    Пусть $\mu = \mb{E}(X)$. Разложим функцию $g(x)$ в точке $x = \mu$ по Тейлору с остаточным членом в форме Лагранжа до членов первого порядка, т.е.
+    \[g(x) = g(\mu) + g'(\mu)(x - \mu) + \frac{g''(\xi)}{2!}(x - \mu)^2, \quad \text{где $\xi$ лежит между $x$ и $\mu$} \qquad \text{(1*)}\]
+    Зафиксируем $\forall\omega \in \Omega$. В формуле (1) вместо $x$ подставим $X(\omega)$ и вместо $\xi$ подставим $\xi(\omega)$:
+    \[g(X(\omega)) = g(\mu) + g'(\mu)(X(\omega) - \mu) + \frac{g''(\xi(\omega))}{2!}(X(\omega) - \mu)^2 \qquad \text{(2*)}\]
+    Возьмём от обеих частей равенства математическое ожидание
+    \[\mb{E}(g(X)) = g(\mu) + \underbrace{g'(\mu)(\mb{E}(X) - \mu)}_{=0} + \underbrace{\mb{E}\left(\frac{g''(\xi)}{2!}(X - \mu)^2\right)}_{\geq 0} \geq g(\mu) = g(\mb{E}(X)) \qquad \text{(3*)}\]
+    Из формулы (3*) видно, что (1) обращается в равенство, т.е.
+    \[\mb{E}(g(X)) = g(\mb{E}(x)) \iff \mb{E}\left(\frac{g''(\xi)}{2!}(X - \mu)^2\right) = 0\]
+    Заметим, что в скобках стоит неотрицательная случайная величина, чьё математическое ожидание равно $0$. Значит, по утверждению 2.1 (на самом деле свойству математического ожидания)
+    \[\frac{g''(\xi)}{2!}(X - \mu)^2 = 0 \text{ п.н.} \qquad \text{(4*)}\]
+    Учитывая, что $g''(\xi) > 0$, равенство (4*) равносильно
+    \[(X - \mu)^2 = 0 \text{ п.н.} \iff X = \mu \text{ п.н.}\]
 }
 \example{
     Пусть $X\ -$ случайная выборка, $X_i \sim \Geo(p)$. Является ли оценка $\widehat{p} = \dfrac{1}{\overline{X}}$ несмещённой?
     \[\mb{E}(X_i) = \frac{1}{p}\]
     \[g(x) = \frac{1}{x} \implies g'(x) = -\frac{1}{x^2} \implies g''(x) = \frac{2}{x^3} > 0\ \text{(при $x > 0$)}\]
     \[\implies \mb{E}\left(\widehat{p}\right) = \mb{E}\left(g\left(\overline{X}\right)\right) = \mb{E}\left(\frac{1}{\overline{X}}\right) > \frac{1}{\mb{E}\left(\overline{X}\right)} = \frac{1}{\mb{E}(X_i)} = \frac{1}{1/p} = p\]
-    $\implies \widehat{p}$ смещена вверх (то есть завышает) 
+    $\implies \widehat{p}$ смещена вверх (то есть завышает теоретическое значение $p$) 
+}
+\example{
+    Пусть $X\ -$ случайная выборка, которое cостоит из одного наблюдения $X \sim \Be(p)$. Предложите несмещённую оценку для функции $\dfrac{1}{p}$ или докажите, что его не существует
+    \hspace{1cm}
+    От противного: предположим, что $\exists$ несмещённая оценка $g(X)$ для $\dfrac{1}{p}$. Тогда
+    \[\mb{E}(g(X)) = g(0) \cdot (1 - p) + g(1) \cdot p = \frac{1}{p},\ \forall p\in (0, 1) \qquad \text{(1*)}\]
+    Переходя к пределу при $p \to 0^+$ в (1*) получаем, что $LHS(p) \to 0$, а $RHS(p) \to +\infty$
+}
+\propos{
+    $s^2$ может быть представлена в виде
+    \[s^2 = \overline{X^2} - \left(\overline{X}\right)^2\]
+    \textit{доказывалось на семинаре}
+}
+\propos{
+    Найти $\mb{E}\left(s^2\right)$. Является ли $s^2$ несмещённой оценкой для истинной дисперсии $\sigma^2$?
+}
+\prof{
+    По утверждению 2.2 $s^2 = \overline{X^2} - \left(\overline{X}\right)^2$
+    \[ \mb{E}\left(\overline{X^2}\right) = \mb{E}\left(\sum_{i=1}^{n}X_i^2\right) = \frac{1}{n}\sum_{i=1}^{n}\mb{E}\left(X_i^2\right) = \mb{E}\left(X_i^2\right) =\]
+    \[= \Var(X_i) + \mb{E}^2(X) = \sigma^2 + \mu^2\]
+    \[\mb{E}\left(\left(\overline{X}\right)^2\right) = \Var\left(\overline{X}\right) + \mb{E}^2\left(\overline{X}\right) = \frac{\sigma^2}{n} + \mu^2\]
+    \[\implies \mb{E}\left(s^2\right) = \mb{E}\left(\overline{X^2}\right) - \mb{E}\left(\left(\overline{X}\right)^2\right) = \sigma^2 + \mu^2 - \frac{\sigma^2}{n} - \mu^2 = \frac{n - 1}{n}\sigma^2\]
+    То есть $s^2$ занижает $\sigma^2$
+}
+\propos{
+    Найти $\mb{E}\left(\widehat{\sigma}^2\right)$. Является ли $\widehat{\sigma}^2$ несмещённой оценкой для истинной дисперсии $\sigma^2$?
+}
+\prof{
+    \[\widehat{\sigma}^2 = \frac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2 = \frac{n}{n - 1} \cdot \frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2 = \frac{n}{n-1}s^2\]
+    \[\implies \mb{E}\left(\widehat{\sigma}^2\right) = \frac{n}{n-1}\mb{E}\left(s^2\right) = \frac{n}{n-1} \cdot \frac{n-1}{n}\sigma^2 = \sigma^2\]
+    Значит, $\widehat{\sigma}^2$ является несмещённой оценкой $\sigma^2$
+}
+\propos{
+    Является ли 
+    \[\widehat{\sigma} = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i = \overline{X}\right)} = \sqrt{\widehat{\sigma}^2}\] 
+    несмещённой оценкой для $\sigma$?
+}
+\prof{
+    Ответ: нет
+
+    Рассмотрим функцию $g(x) = \sqrt{x} = x^\frac{1}{2} \implies g'(x) = \dfrac{1}{2}x^{-\frac{1}{2}} \implies g''(x) = -\dfrac{1}{4}x^{-\frac{-3}{2}} < 0 \ \forall x\in (0,+\infty)$
+
+    Заметим, что $\dfrac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2 \not\equiv \const$ п.н.
+
+    Тогда по следствию 2.1
+    \[\mb{E}\left(g\left(\dfrac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2\right)\right) < g\left(\mb{E}\left(\dfrac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2\right)\right) = g\left(\mb{E}\left(\widehat{\sigma}^2\right)\right) = g\left(\sigma^2\right) = \sigma\]
+    Значит, $\widehat{\sigma}$ занижает $\sigma$
+}
+\propos{
+    Пусть $X\ -$ случайная выборка, $X_i \sim \operatorname{U}(0, \theta)$, где $\theta > 0\ -$ неизвестный параметр
+    Найти:
+    \begin{enumerate}
+        \item[a)] $F_{X_(n)}(x)$
+        \item[b)] $f_{X_(n)}(x)$
+        \item[c)] $\mb{E}(X_{(n)})$
+        \item[d)] Является ли $X_{(n)} = \widehat{\theta}$ несмещённой оценкой для $\theta$?
+        \item[e)] Какой должна быть константа $c$, чтобы оценка $\tilde{\theta} = c \cdot \widehat{\theta}$ была несмещённой? 
+    \end{enumerate}
+}
+\prof{
+    $X_i \sim \operatorname{U}(0, \theta)$
+    \[\implies F_{X_i}(x) = \begin{cases}
+        0, & x < 0\\
+        \frac{x}{\theta}, & 0 \leq x < \theta\\
+        1, & x \geq \theta
+    \end{cases}\]
+    \begin{enumerate}
+        \item[a)] \[F_{X_{(n)}}(x) = P(X_{(n)} \leq x) = P(\max\{X_1,\dots,X_n\} \leq x) = P(X_1 \leq x \cap \cdots \cap X_n \leq x) =\]
+        \[= \underbrace{P(X_1 \leq x)}_{F_{X_1}(x)} \cdots \underbrace{P(X_n \leq x)}_{F_{X_n}(x)} = \begin{cases}
+            0, & x < 0\\
+            \dfrac{x^n}{\theta^n}, & 0 \leq x < \theta\\
+            1, & x \geq \theta
+        \end{cases}\]
+        \item[b)] \[f_{X_{(n)}}(x) = F_{X_{(n)}}'(x) = \begin{cases}
+            \dfrac{nx^{n-1}}{n},  0 \leq x < \theta\\
+            0, & \text{иначе}
+        \end{cases}\]
+        \item[c)] \[\mb{E}\left(X_{(n)}\right) = \int\limits_0^\theta x \cdot \frac{nx{n-1}}{\theta}\,dx = \frac{n}{\theta^n}\int\limits_0^\theta x^n\,dx = \frac{n}{\theta^n}\cdot\frac{\theta^{n+1}}{n+1} = \frac{n}{n+1}\theta\]
+        \item[d)] $\mb{E}\left(\widehat{\theta}\right) = \mb{E}\left(X_{(n)}\right) = \frac{n}{n+1}\theta < \theta \implies \widehat{\theta}$ занижает $\theta$
+        \item[e)] $\mb{E}\left(\tilde{\theta}\right) = c \cdot \mb{E}\left(\widehat{\theta}\right) = c \cdot \dfrac{n}{n+1}\theta = \theta \implies c = \dfrac{n+1}{n}$ 
+    \end{enumerate}
 }
 \end{document}
