@@ -2662,7 +2662,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     $X_i \sim \operatorname{U}(0, \theta)$
     \[\implies F_{X_i}(x) = \begin{cases}
         0, & x < 0\\
-        \frac{x}{\theta}, & 0 \leq x < \theta\\
+        \dfrac{x}{\theta}, & 0 \leq x < \theta\\
         1, & x \geq \theta
     \end{cases}\]
     \begin{enumerate}
@@ -2673,7 +2673,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
             1, & x \geq \theta
         \end{cases}\]
         \item[b)] \[f_{X_{(n)}}(x) = F_{X_{(n)}}'(x) = \begin{cases}
-            \dfrac{nx^{n-1}}{n},  0 \leq x < \theta\\
+            \dfrac{nx^{n-1}}{n}, & 0 \leq x < \theta\\
             0, & \text{иначе}
         \end{cases}\]
         \item[c)] \[\mb{E}\left(X_{(n)}\right) = \int\limits_0^\theta x \cdot \frac{nx{n-1}}{\theta}\,dx = \frac{n}{\theta^n}\int\limits_0^\theta x^n\,dx = \frac{n}{\theta^n}\cdot\frac{\theta^{n+1}}{n+1} = \frac{n}{n+1}\theta\]
