@@ -2641,7 +2641,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 
     Рассмотрим функцию $g(x) = \sqrt{x} = x^\frac{1}{2} \implies g'(x) = \dfrac{1}{2}x^{-\frac{1}{2}} \implies g''(x) = -\dfrac{1}{4}x^{-\frac{-3}{2}} < 0 \ \forall x\in (0,+\infty)$
 
-    Заметим, что $\dfrac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2 \not\equiv \const$ п.н.
+    Заметим, что $\displaystyle\frac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2 \not\equiv \const$ п.н.
 
     Тогда по следствию 2.1
     \[\mb{E}\left(g\left(\dfrac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2\right)\right) < g\left(\mb{E}\left(\dfrac{1}{n-1}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2\right)\right) = g\left(\mb{E}\left(\widehat{\sigma}^2\right)\right) = g\left(\sigma^2\right) = \sigma\]
@@ -2649,12 +2649,13 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 }
 \propos{
     Пусть $X\ -$ случайная выборка, $X_i \sim \operatorname{U}(0, \theta)$, где $\theta > 0\ -$ неизвестный параметр
+    
     Найти:
     \begin{enumerate}
-        \item[a)] $F_{X_(n)}(x)$
-        \item[b)] $f_{X_(n)}(x)$
-        \item[c)] $\mb{E}(X_{(n)})$
-        \item[d)] Является ли $X_{(n)} = \widehat{\theta}$ несмещённой оценкой для $\theta$?
+        \item[a)] $F_{X_{(n)}}(x)$
+        \item[b)] $f_{X_{(n)}}(x)$
+        \item[c)] $\mb{E}\left(X_{(n)}\right)$
+        \item[d)] Является ли $\widehat{\theta} = X_{(n)}$ несмещённой оценкой для $\theta$?
         \item[e)] Какой должна быть константа $c$, чтобы оценка $\widetilde{\theta} = c \cdot \widehat{\theta}$ была несмещённой? 
     \end{enumerate}
 }
@@ -2666,7 +2667,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         1, & x \geq \theta
     \end{cases}\]
     \begin{enumerate}
-        \item[a)] \[F_{X_{(n)}}(x) = P(X_{(n)} \leq x) = P(\max\{X_1,\dots,X_n\} \leq x) = P(X_1 \leq x \cap \cdots \cap X_n \leq x) =\]
+        \item[a)] \[F_{X_{(n)}}(x) = P\left(X_{(n)} \leq x\right) = P(\max\{X_1,\dots,X_n\} \leq x) = P(X_1 \leq x \cap \cdots \cap X_n \leq x) =\]
         \[= \underbrace{P(X_1 \leq x)}_{F_{X_1}(x)} \cdots \underbrace{P(X_n \leq x)}_{F_{X_n}(x)} = \begin{cases}
             0, & x < 0\\
             \dfrac{x^n}{\theta^n}, & 0 \leq x < \theta\\
