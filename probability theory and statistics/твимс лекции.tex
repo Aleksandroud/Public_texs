@@ -1414,6 +1414,8 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \defin{
     Сходимость по вероятности
     \[\xi_n \xrightarrow[n \to \infty]{P}, \text{ если } \forall \varepsilon > 0 \ P(|\xi_n - \xi| \geq \varepsilon) \xrightarrow[n \to \infty]{} 0\]
+    \textit{другая запись:} 
+    \[\underset{{n\to\infty}}{\operatorname{plim}\,} X_n = X\]
 }
 \defin{
     Сходимость по распределению (она же слабая сходимость)
@@ -2674,12 +2676,135 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
             1, & x \geq \theta
         \end{cases}\]
         \item[b)] \[f_{X_{(n)}}(x) = F_{X_{(n)}}'(x) = \begin{cases}
-            \dfrac{nx^{n-1}}{n}, & 0 \leq x < \theta\\
+            \dfrac{nx^{n-1}}{\theta^n}, & 0 \leq x < \theta\\
             0, & \text{иначе}
         \end{cases}\]
         \item[c)] \[\mb{E}\left(X_{(n)}\right) = \int\limits_0^\theta x \cdot \frac{nx^{n-1}}{\theta}\,dx = \frac{n}{\theta^n}\int\limits_0^\theta x^n\,dx = \frac{n}{\theta^n}\cdot\frac{\theta^{n+1}}{n+1} = \frac{n}{n+1}\theta\]
         \item[d)] $\mb{E}\left(\widehat{\theta}\right) = \mb{E}\left(X_{(n)}\right) = \dfrac{n}{n+1}\theta < \theta \implies \widehat{\theta}$ занижает $\theta$
         \item[e)] $\mb{E}\left(\widetilde{\theta}\right) = c \cdot \mb{E}\left(\widehat{\theta}\right) = c \cdot \dfrac{n}{n+1}\theta = \theta \implies c = \dfrac{n+1}{n}$ 
     \end{enumerate}
+}
+\textit{Замечание: $\mb{E}_\theta\left(\widehat{\theta}\right) = \displaystyle\underset{\mb{R}^n}{\int\cdots\int}g(x_1,\dots,g(x_n)) \cdot f_{X_1,\dots,X_n}(x_1,\dots,x_n)\,dx_1\dots dx_n$}
+\newpage
+\setcounter{maindf}{3}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{3}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{3}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{3}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Сравнение двух оценок по эффективности
+\end{center}
+\defin{
+    Пусть $\theta\ -$ неизвестный параметр, а $\widehat{\theta}\ -$ его оценка. Тогда величина
+    \[\operatorname{bias}_\theta\left(\widehat{\theta}\right) = \mb{E}_\theta\left(\widehat{\theta}\right) - \theta\]
+    называется смещением (bias) оценки $\widehat{\theta}$
+
+    \textit{Замечение 3.1: Оценка $\widehat{\theta}$ называется несмещённой $\iff \operatorname{bias}_\theta\left(\widehat{\theta}\right) = 0,\ \forall\theta \in \Theta$}
+}
+\defin{
+    Пусть $\theta\ -$ неизвестный параметр, а $\widehat{\theta}\ -$ его оценка. Тогда величина
+    \[\operatorname{MSE}_\theta\left(\widehat{\theta}\right) = \mb{E}_\theta\left(\widehat{\theta} - \theta\right)^2\]
+    называется средней квадратичной ошибкой (mean squared error)
+}
+\renewcommand{\thletter}{}
+\theorem{
+    \[\operatorname{MSE}_\theta\left(\widehat{\theta}\right) = \Var_\theta\left(\widehat{\theta}\right) + \operatorname{bias}_\theta^2\left(\widehat{\theta}\right)\]
+
+    \textit{Замечание 3.2: Если оценка $\widehat{\theta}$ является несмещённой, то}
+    \[\forall\theta \in \Theta\ \operatorname{bias}\left(\widehat{\theta}\right) = 0,\ \operatorname{MSE}_\theta\left(\widehat{\theta}\right) = \Var_\theta(\theta)\]
+}
+\prof{
+    \[\operatorname{MSE}\left(\widehat{\theta}\right) = \mb{E}\left(\widehat{\theta} - \theta\right)^2 = \mb{E}\left(\widehat{\theta} - \mb{E}\left(\widehat{\theta}\right) + \mb{E}\left(\widehat{\theta}\right) - \theta\right)^2 =\]
+    \[= \mb{E}\left(\widehat{\theta} - \mb{E}\left(\widehat{\theta}\right)\right)^2 + 2\mb{E}\left(\left(\widehat{\theta} - \mb{E}\left(\widehat{\theta}\right)\right)\left(\mb{E}\left(\widehat{\theta}\right) - \theta\right)\right) + \mb{E}\left(\mb{E}\left(\widehat{\theta}\right) - \theta\right)^2 =\]
+    \[= \Var\left(\widehat{\theta}\right) + \operatorname{bias}^2\left(\widehat{\theta}\right)\]
+    Где $\mb{E}\left(\widehat{\theta}\right)\ -$ не случайная величина
+}
+\defin{
+    Пусть $\widehat{\theta}$ и $\widetilde{\theta}\ -$ две оценки параметра $\theta$. Тогда говорят, что $\widehat{\theta}$ является более эффективной (more efficient estimator), чем $\widetilde{\theta}$, если
+    \begin{enumerate}
+        \item $\forall \theta \in \Theta:\ \operatorname{MSE}_\theta\left(\widehat{\theta}\right) \leq \operatorname{MSE}_\theta\left(\widetilde{\theta}\right)$
+        \item $\exists \theta_0:\ \operatorname{MSE}_{\theta_0}\left(\widehat{\theta}\right) < \operatorname{MSE}_{\theta_0}\left(\widetilde{\theta}\right)$
+    \end{enumerate}
+
+    \textit{Замечание 3.3: Если $\widehat{\theta}$ и $\widetilde{\theta}\ -$ две несмещённые оценки, то $\widehat{\theta}$ более эффективна, чем $\widetilde{\theta}$, если
+    \begin{enumerate}
+        \item $\forall \theta \in \Theta:\ \Var_\theta\left(\widehat{\theta}\right) \leq \Var_\theta\left(\widetilde{\theta}\right)$
+        \item $\exists \theta_0:\ \Var_{\theta_0}\left(\widehat{\theta}\right) < \Var_{\theta_0}\left(\widetilde{\theta}\right)$
+    \end{enumerate}
+    }
+}
+\example{
+    Пусть $X\ -$ случайная выборка, $X_i \sim \operatorname{U}(0, \theta)$, где $\theta > 0\ -$ неизвестный параметр
+
+    $\widehat{\theta} = \max\{X_1,\dots, X_n\} = X_{(n)}$, $\widetilde{\theta} = 2\overline{X}$
+
+    Сравнить оценки $\widehat{\theta}$ и $\widetilde{\theta}$ по эффективности
+
+    Из утверждения 2.6 известно, что
+    \[F_{\widehat{\theta}}(x) = \begin{cases}
+        0, & x < 0\\
+        \dfrac{x^n}{\theta^n}, & 0 \leq x < \theta\\
+        1, & x \geq \theta
+    \end{cases}\]
+    \[f_{\widehat{\theta}}(x) = F_{\widehat{\theta}}'(x) = \begin{cases}
+            \dfrac{nx^{n-1}}{\theta^n}, & 0 \leq x < \theta\\
+            0, & \text{иначе}
+        \end{cases}\]
+    \[\mb{E}\left(\widehat{\theta}\right) = \frac{n}{n+1}\theta\]
+    \[\operatorname{bias}\left(\widehat{\theta}\right) = \mb{E}\left(\widehat{\theta}\right) - \theta = \frac{n}{n+1}\theta - \theta = -\frac{\theta}{n+1}\]
+    \[\mb{E}\left(\widehat{\theta}^2\right) = \int\limits_0\theta x^2 \cdot \frac{nx^{n-1}}{\theta^n}\,dx = \frac{n}{\theta^n} \frac{x^{n+2}}{n+2}\Bigg|_0^\theta = \frac{n}{n+2}\theta^2\]
+    \[\Var\left(\widehat{\theta}\right) = \frac{n}{n+2}\theta^2 - \frac{n^2}{(n+1)^2}\theta^2 = \frac{n}{(n+2)(n+1)^2}\theta^2\]
+    \[\operatorname{MSE}\left(\widehat{\theta}\right) = \Var\left(\widehat{\theta}\right) + \operatorname{bias}^2\left(\widehat{\theta}\right) = \frac{n}{(n+2)(n+1)^2} = \frac{\theta^2}{(n+1)^2} = \frac{2\theta^2}{(n+2)(n+1)}\]
+    \vspace{0.5cm}
+    \[\mb{E}\left(\widetilde{\theta}\right) = \mb{E}\left(\overline{X}\right) = 2\mb{E}\left(X_i\right) = 2 \cdot \frac{\theta}{2} = \theta\]
+    \[\implies \operatorname{bias}\left(\widetilde{\theta}\right) = 0\]
+    \[\Var\left(2\overline{X}\right) = 4\cdot\frac{\Var(X_i)}{n} = \frac{4\theta^2}{12n} = \frac{\theta^2}{3n}\]
+    \[\operatorname{MSE}\left(\widetilde{\theta}\right) = \frac{\theta^2}{3n} + 0 = \frac{\theta^2}{3n}\]
+    Легко заметить, что
+    \begin{itemize}
+        \item при $n = 1:$ $\operatorname{MSE}\left(\widehat{\theta}\right) = \operatorname{MSE}\left(\widetilde{\theta}\right) = \dfrac{\theta^2}{3}$
+        \item при $n = 2:$ $\operatorname{MSE}\left(\widehat{\theta}\right) = \operatorname{MSE}\left(\widetilde{\theta}\right) = \dfrac{\theta^2}{6}$ 
+        \item при $n = 3:$ $\operatorname{MSE}\left(\widehat{\theta}\right) < \operatorname{MSE}\left(\widetilde{\theta}\right)$
+    \end{itemize}
+}
+\newpage
+\setcounter{maindf}{4}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{4}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{4}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{4}
+\setcounter{subex}{0}
+\begin{center}
+    \huge Состоятельные оценки
+\end{center}
+\defin{
+    \textit{Повторяет определение 9.3 из теорвера (определение предела по вероятности)}
+}
+\defin{
+    Оценка $\widehat{\theta}_n$ называется состоятельной (consistant estimator) неизвестного параметра $\theta,\ \theta \in \Theta$, если
+    \[\forall\theta\in\Theta\ \widehat{\theta}_n \xrightarrow[n\to\infty]{P} \theta\]
+}
+\propos{
+    \textit{Повторяет теорему 9.1 из теорвера (неравенство Маркова)}
+
+    \textit{Следствие 4.1: повторяет теорему 9.2 из теорвера (неравенство Чебышёва)}
+
+    \vspace{0.5cm}
+    \textit{Примечание: правда у Дмитрия Александровича названия неравенств выше поменялись местами (он читает курс по другой литературе), поэтому далее буду пользоваться его обозначениями}
+}
+\propos{
+    Пусть $\{X_n\}_{n=1}^\infty\ -$ последовательность случайных величин, $\Var(X_i) < \infty$. Тогда, если $\mb{E}(X_n) \xrightarrow[n\to\infty]{} a$ и $\Var(X_n) \xrightarrow[n\to\infty]{} 0$, то
+    \[X_n \xrightarrow[n\to\infty]{P} a\]
 }
 \end{document}
