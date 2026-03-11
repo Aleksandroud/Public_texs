@@ -2702,34 +2702,34 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \end{center}
 \defin{
     Пусть $\theta\ -$ неизвестный параметр, а $\widehat{\theta}\ -$ его оценка. Тогда величина
-    \[\operatorname{bias}_\theta\left(\widehat{\theta}\right) = \mb{E}_\theta\left(\widehat{\theta}\right) - \theta\]
+    \[\bias_\theta\left(\widehat{\theta}\right) = \mb{E}_\theta\left(\widehat{\theta}\right) - \theta\]
     называется смещением (bias) оценки $\widehat{\theta}$
 
-    \textit{Замечение 3.1: Оценка $\widehat{\theta}$ называется несмещённой $\iff \operatorname{bias}_\theta\left(\widehat{\theta}\right) = 0,\ \forall\theta \in \Theta$}
+    \textit{Замечение 3.1: Оценка $\widehat{\theta}$ называется несмещённой $\iff \bias_\theta\left(\widehat{\theta}\right) = 0,\ \forall\theta \in \Theta$}
 }
 \defin{
     Пусть $\theta\ -$ неизвестный параметр, а $\widehat{\theta}\ -$ его оценка. Тогда величина
-    \[\operatorname{MSE}_\theta\left(\widehat{\theta}\right) = \mb{E}_\theta\left(\widehat{\theta} - \theta\right)^2\]
+    \[\MSE_\theta\left(\widehat{\theta}\right) = \mb{E}_\theta\left(\widehat{\theta} - \theta\right)^2\]
     называется средней квадратичной ошибкой (mean squared error)
 }
 \renewcommand{\thletter}{}
 \theorem{
-    \[\operatorname{MSE}_\theta\left(\widehat{\theta}\right) = \Var_\theta\left(\widehat{\theta}\right) + \operatorname{bias}_\theta^2\left(\widehat{\theta}\right)\]
+    \[\MSE_\theta\left(\widehat{\theta}\right) = \Var_\theta\left(\widehat{\theta}\right) + \bias_\theta^2\left(\widehat{\theta}\right)\]
 
     \textit{Замечание 3.2: Если оценка $\widehat{\theta}$ является несмещённой, то}
-    \[\forall\theta \in \Theta\ \operatorname{bias}\left(\widehat{\theta}\right) = 0,\ \operatorname{MSE}_\theta\left(\widehat{\theta}\right) = \Var_\theta(\theta)\]
+    \[\forall\theta \in \Theta\ \bias\left(\widehat{\theta}\right) = 0,\ \MSE_\theta\left(\widehat{\theta}\right) = \Var_\theta(\theta)\]
 }
 \prof{
-    \[\operatorname{MSE}\left(\widehat{\theta}\right) = \mb{E}\left(\widehat{\theta} - \theta\right)^2 = \mb{E}\left(\widehat{\theta} - \mb{E}\left(\widehat{\theta}\right) + \mb{E}\left(\widehat{\theta}\right) - \theta\right)^2 =\]
+    \[\MSE\left(\widehat{\theta}\right) = \mb{E}\left(\widehat{\theta} - \theta\right)^2 = \mb{E}\left(\widehat{\theta} - \mb{E}\left(\widehat{\theta}\right) + \mb{E}\left(\widehat{\theta}\right) - \theta\right)^2 =\]
     \[= \mb{E}\left(\widehat{\theta} - \mb{E}\left(\widehat{\theta}\right)\right)^2 + 2\mb{E}\left(\left(\widehat{\theta} - \mb{E}\left(\widehat{\theta}\right)\right)\left(\mb{E}\left(\widehat{\theta}\right) - \theta\right)\right) + \mb{E}\left(\mb{E}\left(\widehat{\theta}\right) - \theta\right)^2 =\]
-    \[= \Var\left(\widehat{\theta}\right) + \operatorname{bias}^2\left(\widehat{\theta}\right)\]
+    \[= \Var\left(\widehat{\theta}\right) + \bias^2\left(\widehat{\theta}\right)\]
     Где $\mb{E}\left(\widehat{\theta}\right)\ -$ не случайная величина
 }
 \defin{
     Пусть $\widehat{\theta}$ и $\widetilde{\theta}\ -$ две оценки параметра $\theta$. Тогда говорят, что $\widehat{\theta}$ является более эффективной (more efficient estimator), чем $\widetilde{\theta}$, если
     \begin{enumerate}
-        \item $\forall \theta \in \Theta:\ \operatorname{MSE}_\theta\left(\widehat{\theta}\right) \leq \operatorname{MSE}_\theta\left(\widetilde{\theta}\right)$
-        \item $\exists \theta_0:\ \operatorname{MSE}_{\theta_0}\left(\widehat{\theta}\right) < \operatorname{MSE}_{\theta_0}\left(\widetilde{\theta}\right)$
+        \item $\forall \theta \in \Theta:\ \MSE_\theta\left(\widehat{\theta}\right) \leq \MSE_\theta\left(\widetilde{\theta}\right)$
+        \item $\exists \theta_0:\ \MSE_{\theta_0}\left(\widehat{\theta}\right) < \MSE_{\theta_0}\left(\widetilde{\theta}\right)$
     \end{enumerate}
 
     \textit{Замечание 3.3: Если $\widehat{\theta}$ и $\widetilde{\theta}\ -$ две несмещённые оценки, то $\widehat{\theta}$ более эффективна, чем $\widetilde{\theta}$, если
@@ -2757,20 +2757,20 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
             0, & \text{иначе}
         \end{cases}\]
     \[\mb{E}\left(\widehat{\theta}\right) = \frac{n}{n+1}\theta\]
-    \[\operatorname{bias}\left(\widehat{\theta}\right) = \mb{E}\left(\widehat{\theta}\right) - \theta = \frac{n}{n+1}\theta - \theta = -\frac{\theta}{n+1}\]
+    \[\bias\left(\widehat{\theta}\right) = \mb{E}\left(\widehat{\theta}\right) - \theta = \frac{n}{n+1}\theta - \theta = -\frac{\theta}{n+1}\]
     \[\mb{E}\left(\widehat{\theta}^2\right) = \int\limits_0\theta x^2 \cdot \frac{nx^{n-1}}{\theta^n}\,dx = \frac{n}{\theta^n} \frac{x^{n+2}}{n+2}\Bigg|_0^\theta = \frac{n}{n+2}\theta^2\]
     \[\Var\left(\widehat{\theta}\right) = \frac{n}{n+2}\theta^2 - \frac{n^2}{(n+1)^2}\theta^2 = \frac{n}{(n+2)(n+1)^2}\theta^2\]
-    \[\operatorname{MSE}\left(\widehat{\theta}\right) = \Var\left(\widehat{\theta}\right) + \operatorname{bias}^2\left(\widehat{\theta}\right) = \frac{n}{(n+2)(n+1)^2} = \frac{\theta^2}{(n+1)^2} = \frac{2\theta^2}{(n+2)(n+1)}\]
+    \[\MSE\left(\widehat{\theta}\right) = \Var\left(\widehat{\theta}\right) + \bias^2\left(\widehat{\theta}\right) = \frac{n}{(n+2)(n+1)^2} = \frac{\theta^2}{(n+1)^2} = \frac{2\theta^2}{(n+2)(n+1)}\]
     \vspace{0.5cm}
     \[\mb{E}\left(\widetilde{\theta}\right) = \mb{E}\left(\overline{X}\right) = 2\mb{E}\left(X_i\right) = 2 \cdot \frac{\theta}{2} = \theta\]
-    \[\implies \operatorname{bias}\left(\widetilde{\theta}\right) = 0\]
+    \[\implies \bias\left(\widetilde{\theta}\right) = 0\]
     \[\Var\left(2\overline{X}\right) = 4\cdot\frac{\Var(X_i)}{n} = \frac{4\theta^2}{12n} = \frac{\theta^2}{3n}\]
-    \[\operatorname{MSE}\left(\widetilde{\theta}\right) = \frac{\theta^2}{3n} + 0 = \frac{\theta^2}{3n}\]
+    \[\MSE\left(\widetilde{\theta}\right) = \frac{\theta^2}{3n} + 0 = \frac{\theta^2}{3n}\]
     Легко заметить, что
     \begin{itemize}
-        \item при $n = 1:$ $\operatorname{MSE}\left(\widehat{\theta}\right) = \operatorname{MSE}\left(\widetilde{\theta}\right) = \dfrac{\theta^2}{3}$
-        \item при $n = 2:$ $\operatorname{MSE}\left(\widehat{\theta}\right) = \operatorname{MSE}\left(\widetilde{\theta}\right) = \dfrac{\theta^2}{6}$ 
-        \item при $n = 3:$ $\operatorname{MSE}\left(\widehat{\theta}\right) < \operatorname{MSE}\left(\widetilde{\theta}\right)$
+        \item при $n = 1:$ $\MSE\left(\widehat{\theta}\right) = \MSE\left(\widetilde{\theta}\right) = \dfrac{\theta^2}{3}$
+        \item при $n = 2:$ $\MSE\left(\widehat{\theta}\right) = \MSE\left(\widetilde{\theta}\right) = \dfrac{\theta^2}{6}$ 
+        \item при $n \geq 3:$ $\MSE\left(\widehat{\theta}\right) < \MSE\left(\widetilde{\theta}\right)$
     \end{itemize}
 }
 \newpage
