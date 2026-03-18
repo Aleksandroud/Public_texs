@@ -31,25 +31,36 @@
 \usetikzlibrary{fillbetween}
 \usetikzlibrary{patterns}
 % Создаём новый счётчик задач
+
+% определение
 \newcounter{maindf}
 \newcounter{subdf}[maindf]
 
 \newcommand{\dfsub}{\arabic{maindf}.\arabic{subdf}}
 
+% теорема
 \newcounter{mainth}
 \newcounter{subth}[mainth]
 
 \newcommand{\thsub}{\arabic{mainth}.\arabic{subth}}
 
+% утверждение
 \newcounter{mainpr}
 \newcounter{subpr}[mainpr]
 
 \newcommand{\propsub}{\arabic{mainpr}.\arabic{subpr}}
 
+% пример
 \newcounter{mainex}
 \newcounter{subex}[mainex]
 
 \newcommand{\exsub}{\arabic{mainex}.\arabic{subex}}
+
+% задача
+\newcounter{mainta}
+\newcounter{subta}[mainta]
+
+\newcommand{\tasub}{\arabic{mainta}.\arabic{subta}}
 
 \renewcommand{\familydefault}{\ttdefault}
 
@@ -62,7 +73,7 @@
 \definecolor{mycyan}{RGB}{135,206,235}  % Голубой
 \definecolor{myorange}{RGB}{255,165,0}   % Оранжевый
 \definecolor{mypurple}{RGB}{216,191,216} % Светло-фиолетовый
-
+\definecolor{mygreen}{RGB}{20,220,20}
 \newcommand{\thletter}{}
 
 \newcommand{\thtitle}{
@@ -152,6 +163,21 @@
   \end{exampleBox}%
 }
 
+\newtcolorbox{taskBox}{
+  breakable,
+  enhanced,
+  colback=green!10!white,
+  colframe=mygreen,
+  fonttitle=\ttfamily,
+  title={Задача~\tasub}
+}
+
+\newcommand{\task}[1]{%
+  \refstepcounter{subta}%
+  \begin{taskBox}%
+    #1%
+  \end{taskBox}%
+}
 % Команда для векторов
 \newcommand{\vect}[1]{\mathbf{#1}}
 \usepackage[upint]{stix2}
@@ -174,20 +200,22 @@
 \usepackage{euscript}               % Шрифт Евклид
 \usepackage{mathrsfs}               % Красивый матшрифт
 \usepackage{cancel}                 % Зачёркивание в формулах
-
+\usepackage[unicode, colorlinks, urlcolor=darkblue, linkcolor=violet]{hyperref}
 % Замены часто употребляемых шрифтов
-\newcommand{\mb}[1]{\mathbb{#1}}
-\newcommand{\mc}[1]{\mathcal{#1}}
-\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}\,}
+\newcommand{\mc}[1]{\mathcal{#1}\,}
+\newcommand{\ms}[1]{\mathscr{#1}\,}
 
-\newcommand{\cov}{\operatorname{cov}}
-\newcommand{\Var}{\operatorname{Var}}
-\newcommand{\corr}{\operatorname{corr}}
+\newcommand{\cov}{\operatorname{cov}\,}
+\newcommand{\Var}{\operatorname{Var}\,}
+\newcommand{\corr}{\operatorname{corr}\,}
 \newcommand{\const}{\operatorname{const}}
-\newcommand{\Be}{\operatorname{Be}}
-\newcommand{\Bi}{\operatorname{Bi}}
-\newcommand{\Poi}{\operatorname{Poi}}
-\newcommand{\Exp}{\operatorname{Exp}}
-\newcommand{\Geo}{\operatorname{Geo}}
-\newcommand{\bias}{\operatorname{bias}}
-\newcommand{\MSE}{\operatorname{MSE}}
+\newcommand{\Be}{\operatorname{Be}\,}
+\newcommand{\Bi}{\operatorname{Bi}\,}
+\newcommand{\Poi}{\operatorname{Poi}\,}
+\newcommand{\Exp}{\operatorname{Exp}\,}
+\newcommand{\Geo}{\operatorname{Geo}\,}
+\newcommand{\bias}{\operatorname{bias}\,}
+\newcommand{\MSE}{\operatorname{MSE}\,}
+
+\newcommand{\plim}{\operatorname{plim}\,}
