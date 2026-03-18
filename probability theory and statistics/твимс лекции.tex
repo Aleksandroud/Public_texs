@@ -874,7 +874,17 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     $\xi_1$ и $\xi_2$ имеют совместное дискретное распределение, если $\exists (a_i, b_j) \in \mb{R}^2$, что
     \[\sum_{i, j} P(\xi_1 = a_i, \xi_2 = b_j) = 1\]
     \begin{center}
-        \includegraphics[scale=0.3]{таблица дискр распред.jpg}
+        \renewcommand{\arraystretch}{1.6}
+        \begin{tabular}{c|ccc|c}
+        \diagbox{$\xi_2$}{$\xi_1$}
+        & $a_1$ & $\cdots$ & $a_k$ & $P_{\xi_2}$ \\
+        \hline
+        $b_1$ & $p_{11}$ & $\cdots$ & $p_{1k}$ & $\displaystyle \sum_{i=1}^{k} p_{1i}$ \\
+        $\vdots$ & $\vdots$ & & $\vdots$ & $\vdots$ \\
+        $b_m$ & $p_{m1}$ & $\cdots$ & $p_{mk}$ & $\displaystyle \sum_{i=1}^{k} p_{mi}$ \\
+        \hline
+        $P_{\xi_1}$ & $\displaystyle \sum_{j=1}^{m} p_{j1}$ & $\cdots$ & $\displaystyle \sum_{j=1}^{k} p_{jk}$ & $1$ \\
+        \end{tabular}
     \end{center}
 }
 \defin{
@@ -1413,9 +1423,10 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Сходимость в среднем порядка $S$
     \[\xi_n \xrightarrow[n \to \infty]{L_S}, \text{ если } \mb{E}\left|\xi_n - \xi\right|^S \xrightarrow[n \to \infty]{} 0\]
 }
+\hypertarget{problimflag}{}
 \defin{
     Сходимость по вероятности
-    \[\xi_n \xrightarrow[n \to \infty]{P}, \text{ если } \forall \varepsilon > 0 \ P(|\xi_n - \xi| \geq \varepsilon) \xrightarrow[n \to \infty]{} 0\]
+    \[\xi_n \xrightarrow[n \to \infty]{P} \xi, \text{ если } \forall \varepsilon > 0 \ P(|\xi_n - \xi| \geq \varepsilon) \xrightarrow[n \to \infty]{} 0\]
     \textit{другая запись:} 
     \[\underset{{n\to\infty}}{\operatorname{plim}\,} \xi_n = \xi\]
 }
@@ -2798,7 +2809,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \huge Состоятельные оценки
 \end{center}
 \defin{
-    \textit{Повторяет определение 9.3 из теорвера (определение  предела по вероятности)}
+    \textit{Повторяет определение 9.3 из теорвера (\hyperlink{problimflag}{предел по вероятности})}
 }
 \defin{
     Оценка $\widehat{\theta}_n$ называется состоятельной (consistant estimator) неизвестного параметра $\theta,\ \theta \in \Theta$, если
