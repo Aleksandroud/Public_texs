@@ -2842,7 +2842,7 @@ $(\impliedby)$
     
 Пусть $X_n \xrightarrow[]{P} Y$ и $X_n \xrightarrow[]{P} Z$
 
-Доказать, что $Y = Z$ п.н., то есть $P(T \neq Z) = 0$
+Доказать, что $Y = Z$ п.н., то есть $P(Y \neq Z) = 0$
 
 \[\{|Y - Z| > \varepsilon\} \overset{?}{\subseteq} \left\{|Y - X_n| > \frac{\varepsilon}{2}\right\} \cup \left\{|X_n - Z| > \frac{\varepsilon}{2}\right\}\]
 \[\iff \{|Y - Z| \leq \varepsilon\} \overset{?}{\supseteq} \left\{|Y - X_n| \leq \frac{\varepsilon}{2}\right\} \cap \left\{|X_n - Z| \leq \frac{\varepsilon}{2}\right\}\]
@@ -2885,9 +2885,11 @@ $(\impliedby)$
     \[g(X_n, Y-n) \xrightarrow[]{P} g(a, b)\]
 }
 \prof{
-    Зафиксируем $\forall \varepsilon > 0$. В силу непрерывности $g$ в $a$ $\exists \delta > 0$ такое, что при $|x - a| < \delta$ и $|y - b| < \delta$ имеет место $|g(x, y) - g(a, b)| < \varepsilon$
+    Зафиксируем $\forall \varepsilon > 0$. В силу непрерывности $g$ в $(a, b)$ $\exists \delta > 0$ такое, что при $|x - a| < \delta$ и $|y - b| < \delta$ имеет место $|g(x, y) - g(a, b)| < \varepsilon$
 
-    $\implies$ для тех $\omega \in \Omega$, для которых верно $|X(\omega) - a| < \delta$ и $|Y(\omega) - b| < \delta$, будет верно и $|g(X_n(\omega), Y_n(\omega)) - g(a, b)| \varepsilon$
+    $\implies$ для тех $\omega \in \Omega$, для которых верно $|X(\omega) - a| < \delta$ и $|Y(\omega) - b| < \delta$, будет верно и 
+    
+    $|g(X_n(\omega), Y_n(\omega)) - g(a, b)| < \varepsilon$
 
     \[\implies \{\omega: |X_n(\omega) - a| < \delta\} \cap \{\omega: |Y_n(\omega) - b| < \delta\} \subseteq \{\omega: |g(X_n(\omega), Y_n(\omega)) - g(a, b)| < \varepsilon\}\]
     \[\implies \{|g(X_n, Y-n) - g(a, b)| \geq \varepsilon\} \subseteq \{|X_n - a| \geq \delta\} \cup \{|Y_n - b| \geq \delta\}\]
@@ -2902,7 +2904,7 @@ $(\impliedby)$
 \end{itemize}
 \renewcommand{\thletter}{ЗБЧ в форме Хинчина}
 \theorem{
-    Повторяет утверждение 10.1 и из теорвера (\hyperlink{zbchflag}{ЗБЧ для н.о.р.с.в.}) со поправкой, что конечной дисперсии может не существовать
+    Повторяет утверждение 10.1 из теорвера (\hyperlink{zbchflag}{ЗБЧ для н.о.р.с.в.}) с той поправкой, что конечной дисперсии может не существовать
 }
 \example{
     Продолжение примера 2.3
@@ -2947,7 +2949,6 @@ $(\impliedby)$
         
         \[\frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2 = \frac{1}{n}\sum_{i=1}^{n}X_i^2 - \left(\frac{1}{n}\sum_{i=1}^{n}X_i\right)^2\]
         \[\implies \frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2 \xrightarrow[]{P} \Var(X_i) = \frac{\theta^2}{2} - \frac{4\theta^2}{9} = \frac{\theta^2}{18}\]
-
         $g(x) = \sqrt{18x}\ -$ непрерывная в точке $x = \dfrac{\theta^2}{2}$
         \[\implies \sqrt{\frac{18}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2} \xrightarrow[]{P} \sqrt{18 \cdot \frac{\theta^2}{18}} = \theta\]
         $\implies \displaystyle\sqrt{\frac{18}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2}\ -$ состоятельная оценка 
