@@ -1121,7 +1121,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Заключается оно в том, что если какой-то конечный набор случайных величин независим и одинаково распределён, то их сумма имеет то же самое распределение
     
     Таким свойством обладают распределения
-    \[\operatorname{N}\left(\mu, \sigma^2\right),\ \operatorname{Poi}(\lambda),\ \operatorname{Bi}(n, p),\ \operatorname{Gamma}(\alpha, \beta)\]
+    \[\operatorname{N}\left(\mu, \sigma^2\right),\ \operatorname{Poi}(\lambda),\ \operatorname{Bi}(n, p),\ \operatorname{Gamma}\,(\alpha, \beta)\]
     И не обладают
     \[\operatorname{U}[a, b],\ \operatorname{Exp}(\lambda)\]
 }
@@ -1389,7 +1389,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \propos{
     Следствие 1 (из Чебышёва):
     \[P(|\xi - \mb{E}(\xi)| < \varepsilon) \geq 1 - \frac{\Var(\xi)}{\varepsilon^2}\]
-    * Просто взяли дополнение к $P(|\xi - \mb{E}(\xi)| \geq \varepsilon)$
+    \textit{Просто взяли дополнение к $P(|\xi - \mb{E}(\xi)| \geq \varepsilon)$}
 }
 \propos{
     Следствие 2:
@@ -1648,8 +1648,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     Где $g(x)\ -$ очень страшная функция (возмножно интеграл от неё не берётся)
 
     Тогда
-    \[\int\limits_a^b g(x)\,dx = (b - a)\int\limits_a^b g(x) \frac{1}{b - a}\,dx = (b - a)\mb{E}(g(u)),\ u \sim \operatorname{U}(a, b)\]
-    Пусть $u_i \sim \operatorname{U}(a, b)$. Тогда по ЗБЧ
+    \[\int\limits_a^b g(x)\,dx = (b - a)\int\limits_a^b g(x) \frac{1}{b - a}\,dx = (b - a)\mb{E}(g(u)),\ u \sim \operatorname{U}\,(a, b)\]
+    Пусть $u_i \sim \operatorname{U}\,(a, b)$. Тогда по ЗБЧ
     \[\mb{E}g(u) \approx \frac{1}{n}\sum_{i=1}^{n}g(u_i)\]
     \[\implies \int\limits_a^b g(x)\,dx\approx (b - a)\cdot\frac{1}{n}\sum_{i=1}^{n}g(u_i)\]
     Аналогично
@@ -1713,7 +1713,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \node[below] at (8, 0) {$a$};
         \end{tikzpicture}
     \end{center}
-    Пусть $u_{1i} \sim \operatorname{U}(0, a),\ u_{2i} \sim \operatorname{U}(0, b)$, а $\xi_i = u_{1i} \mid u_{2i} \leq f(u_{1i})$. Тогда
+    Пусть $u_{1i} \sim \operatorname{U}\,(0, a),\ u_{2i} \sim \operatorname{U}\,(0, b)$, а $\xi_i = u_{1i} \mid u_{2i} \leq f(u_{1i})$. Тогда
     \[F_{\xi_i}(x) = P(\xi_i \leq x) = P(u_{1i} \leq x \mid u_{2i} \leq f(u_{1i})) = \frac{P(u_{1i} \leq x,\, u_{2i} \leq f(u_{1i}))}{P(u_{2i} \leq f(u_{1i}))} = \frac{\displaystyle \int\limits_0^xf(t)\,dt/ab}{1/ab} = \int\limits_0^xf(t)\,dt\]
 
 }
@@ -1737,20 +1737,20 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     Пусть $\{\xi_n\}\ -$ н.о.р.с.в., $\exists \mb{E}(\xi_i) = \mu,\ \Var(\xi) = \sigma^2$
     
     Тогда для $S_n = \xi_1 + \cdots + \xi_n$ следует, что
-    \[\frac{S_n - n\mu}{\sqrt{n\sigma^2}} \xrightarrow[n \to \infty]{d} Z \sim \operatorname{N}(0, 1)\]
+    \[\frac{S_n - n\mu}{\sqrt{n\sigma^2}} \xrightarrow[n \to \infty]{d} Z \sim \operatorname{N}\,(0, 1)\]
     \textit{Выполняется также для случайных векторов}
 
     Можно также записать
-    \[\frac{\overline{\xi} - \mu}{\sigma/\sqrt{n}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}(0, 1),\quad \overline{\xi} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
+    \[\frac{\overline{\xi} - \mu}{\sigma/\sqrt{n}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}\,(0, 1),\quad \overline{\xi} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
 }
 \renewcommand{\thletter}{Муавра-Лапласа (интегральная)}
 \theorem{
     Пусть $\xi_i \sim \Be(p) \implies \mb{E}(\xi_i) = p,\ \Var(\xi_i) = p(1-p)$
 
     $\displaystyle S_n = \sum_{i=1}^{n}\xi_i\ -$ число успехов в $n$ результатах (то есть $S_n \sim \operatorname{Bi}(n, p)$). Тогда
-    \[\frac{S_n - np}{\sqrt{np(1-p)}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}(0, 1)\]
+    \[\frac{S_n - np}{\sqrt{np(1-p)}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}\,(0, 1)\]
     Или
-    \[\frac{\widehat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}(0, 1), \quad \widehat{p} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
+    \[\frac{\widehat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}\,(0, 1), \quad \widehat{p} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
 }
 \propos{
     Следствие из ЦПТ:
@@ -1882,27 +1882,27 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \setcounter{subex}{0}
 \defin{
     Пусть $\xi = (\xi_1, \dots, \xi_n)^T\ -$ случайный вектор. Тогда
-    \[\xi \sim \operatorname{N}(\mu, C):\ f_\xi(x) = \frac{1}{\left(\sqrt{2\pi}\right)^n} \cdot \frac{1}{\sqrt{\det C}}\exp\left(-\frac{1}{2}(x - \mu)^TC^{-1}(x - \mu)\right)\]
+    \[\xi \sim \operatorname{N}\,(\mu, C):\ f_\xi(x) = \frac{1}{\left(\sqrt{2\pi}\right)^n} \cdot \frac{1}{\sqrt{\det C}}\exp\left(-\frac{1}{2}(x - \mu)^TC^{-1}(x - \mu)\right)\]
     В частности при $n = 1$:
     \[f_\xi(x) = \frac{1}{\sqrt{2\pi}}\frac{1}{\sigma}e^{-\frac{1}{2}(x - \mu)\frac{1}{\sigma^2}(x - \mu)}\]
 }
 \defin{
-    Пусть $\xi_i \sim \operatorname{N}(0, 1)\ -$ независимы. Тогда
+    Пусть $\xi_i \sim \operatorname{N}\,(0, 1)\ -$ независимы. Тогда
     \[f_\xi(x) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}x_i^2\right) = \frac{1}{\left(\sqrt{2\pi}\right)^n}\exp\left(-\frac{1}{2}\sum_{i=1}^{n}x_i^2\right)\]
 
-    Иначе говоря, $\xi \sim \operatorname{N}(0, I)$, где $I = \begin{pmatrix}
+    Иначе говоря, $\xi \sim \operatorname{N}\,(0, I)$, где $I = \begin{pmatrix}
         1 & \cdots & 0\\
         \vdots & \ddots & \vdots\\
         0 & \cdots & 1
     \end{pmatrix}\ -$ единичная матрица
     \\
     \\
-    Тогда случайный вектор $\xi$ (в $\mb{R}^k$) имеет многомерное нормальное распределение, если $\xi = Az + b$, где $z = (z_1,\dots,z_n)^T \sim \operatorname{N}(0, I),\ A\ -$ матрица полного ранга (то есть $\operatorname{rk} A = k$), \\$b \in \mb{R}^k$
+    Тогда случайный вектор $\xi$ (в $\mb{R}^k$) имеет многомерное нормальное распределение, если $\xi = Az + b$, где $z = (z_1,\dots,z_n)^T \sim \operatorname{N}\,(0, I),\ A\ -$ матрица полного ранга (то есть $\operatorname{rk} A = k$), \\$b \in \mb{R}^k$
 
     \textit{Замечание: $\mb{E}(\xi) = b,\ \cov \xi = A\cdot \cov z\cdot A^T = AA^T$}
 }
 \defin{
-    Случайная величина $\xi \sim \operatorname{N}(0, C)$, если $\forall a_1,\dots,a_n \in \mb{R} \implies \eta = a_1\xi_1 + \cdots + a_n\xi_n$ имеет либо нормальное, либо вырожденное распределение $(\eta \sim \operatorname{N}(0, a^TCa))$
+    Случайная величина $\xi \sim \operatorname{N}\,(0, C)$, если $\forall a_1,\dots,a_n \in \mb{R} \implies \eta = a_1\xi_1 + \cdots + a_n\xi_n$ имеет либо нормальное, либо вырожденное распределение $(\eta \sim \operatorname{N}\,(0, a^TCa))$
 }
 \propos{
     Свойства многомерного нормального распределения:
@@ -1915,11 +1915,11 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         
         (то есть корреляция = независимость)
         
-        \textit{Замечание: Пусть $\xi_1 \sim \operatorname{N}(0, 1)$,
+        \textit{Замечание: Пусть $\xi_1 \sim \operatorname{N}\,(0, 1)$,
         \begin{tabular}{c|cc}
             $\alpha$ & $-1$ & $1$\\ \hline
             $\rho$ & $\frac{1}{2}$ & $\frac{1}{2}$
-        \end{tabular}, $\xi_1$ и $\alpha$ независимы, $\xi_2 = \alpha\xi_1$. Покажем, что $\xi_2 \sim \operatorname{N}(0, 1),\ \corr(\xi_1, \xi_2) = 0$
+        \end{tabular}, $\xi_1$ и $\alpha$ независимы, $\xi_2 = \alpha\xi_1$. Покажем, что $\xi_2 \sim \operatorname{N}\,(0, 1),\ \corr(\xi_1, \xi_2) = 0$
         \[(1)\ F_{\xi_2}(x) = P(\xi_2 \leq x) = P(\xi_2 \leq x \mid \alpha = -1) \cdot P(\alpha = -1) + P(\xi_2 \leq x \mid \alpha = 1) \cdot P(\alpha = 1) =\]
         \[= \underbrace{P(-\xi_1 \leq -x)}_{\Phi(x)}\cdot \frac{1}{2}  + \underbrace{P(\xi_1\leq x)}_{\Phi(x)} \cdot \frac{1}{2} = \Phi(x)\]
         \[(2)\ \cov(\xi_1, \xi_2) = \mb{E}(\xi_1\xi_2) = \mb{E}\left(\alpha\xi_1^2\right) = \underset{=0}{\mb{E}(\alpha)}\cdot\mb{E}\left(\xi_1^2\right) = 0\]
@@ -1962,7 +1962,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
                     \rho & 1
                 \end{pmatrix}\right)$. Тогда
                 \[Z_1 = \rho Z_2 + u\]
-                где $Z_2$ и $u$ независимы, $u \sim \operatorname{N}(0, \sigma^2)$}
+                где $Z_2$ и $u$ независимы, $u \sim \operatorname{N}\,(0, \sigma^2)$}
                 \prof{
                     \[\begin{pmatrix}
                     u\\
@@ -1987,10 +1987,10 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
                 \[\Var(Z_1 - \rho Z_2) = \Var(Z_1) + \rho^2\Var(Z_2) - 2\rho\cov(Z_1, Z_2) = 1 + \rho^2 - 2\rho^2 = 1 - \rho^2\]
                 }
 }       \item Условное нормальное распределение:
-            Если $Z_1$ и $Z_2$ удовлетворяют утверждению выше, то $Z_2\mid Z_1 = x \sim \operatorname{N}(\rho x, 1 - \rho^2)$
+            Если $Z_1$ и $Z_2$ удовлетворяют утверждению выше, то $Z_2\mid Z_1 = x \sim \operatorname{N}\,(\rho x, 1 - \rho^2)$
             \prof{
                 \[v = \{Z_2 \mid Z_1 = x\} = \{\rho Z_1 + u \mid Z_1 = x\} = \{u + \rho x \mid Z_1 = x\} = u + \rho x\]
-                Причём $u \sim \operatorname{N}(0, 1 - \rho^2)$
+                Причём $u \sim \operatorname{N}\,(0, 1 - \rho^2)$
                 \[\implies \mb{E}(v) = 0 + \rho x = \rho x\]
                 \[\Var(v) = \Var(u + \rho x) = 1 - \rho^2\]
             }
@@ -2045,7 +2045,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \huge Усечённое (или урезанное, короче от англ. truncated) нормальное распределение
 \end{center}
 \defin{
-    \[Z \sim \operatorname{N}(0, 1), \quad Z\mid Z > a \sim \, ?\]
+    \[Z \sim \operatorname{N}\,(0, 1), \quad Z\mid Z > a \sim \, ?\]
         \begin{center}
         \begin{tikzpicture}
             \begin{axis}[
@@ -2106,7 +2106,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     Пусть $\xi^{(1)}, \dots, \xi^{(n)},\dots \ -$ последовательность независимых одинаково распределённых случайных векторов, причём $\mb{E}\left(\xi^{(1)}\right) = b,\ \cov\left(\xi^{(1)}\right) = C,\ \det C > 0$.
 
     Тогда для $S_n = \xi^{(1)} + \cdots + \xi^{(n)}$ верно
-    \[\eta^{(n)} = \frac{S_n - nb}{\sqrt{n}} \xrightarrow[n\to\infty]{d}\eta \sim \operatorname{N}(0, C)\]
+    \[\eta^{(n)} = \frac{S_n - nb}{\sqrt{n}} \xrightarrow[n\to\infty]{d}\eta \sim \operatorname{N}\,(0, C)\]
     \textit{Замечание: для любой непрерывной функции $g(x),\ x \in \mb{R}$ верно}
     \[g\left(\eta^{(n)}\right) \xrightarrow[n\to\infty]{d}g(\eta)\]
 }
@@ -2133,7 +2133,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \defin{
     Гамма распределение:
     
-    С.в. $\xi \sim \operatorname{Gamma}(\alpha, \beta)$, если
+    С.в. $\xi \sim \operatorname{Gamma}\,(\alpha, \beta)$, если
     \[f_\xi(x) = \begin{cases}
         \dfrac{x^{\alpha-1}e^{-x\beta}b^{\alpha}}{\Gamma(\alpha)}, & x > 0\\
         0, & x < 0
@@ -2146,10 +2146,10 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \begin{enumerate}
         \item устойчивость относительно суммирования:
         
-        Пусть $\xi_1, \dots, \xi_n \ -$ независимы, $\xi_i \sim \operatorname{Gamma}(\alpha_i,\beta)$. Тогда
-        \[\sum_{i=1}^{n}\xi_i \sim \operatorname{Gamma}\left(\sum_{i=1}^{n}\alpha_i,\beta\right)\]
+        Пусть $\xi_1, \dots, \xi_n \ -$ независимы, $\xi_i \sim \operatorname{Gamma}\,(\alpha_i,\beta)$. Тогда
+        \[\sum_{i=1}^{n}\xi_i \sim \operatorname{Gamma}\,\left(\sum_{i=1}^{n}\alpha_i,\beta\right)\]
         \item[$\text{2}.^*$] бесконечно делимо (то есть представимо в виде суммы сколь угодно большого числа случайных величин с таким же типом распределения)
-        \item[3.] Пусть $Z \sim \operatorname{N}(0, 1)$. Тогда $Z^2 \sim \operatorname{Gamma}\left(\dfrac{1}{2}, \dfrac{1}{2}\right)$
+        \item[3.] Пусть $Z \sim \operatorname{N}\,(0, 1)$. Тогда $Z^2 \sim \operatorname{Gamma}\,\left(\dfrac{1}{2}, \dfrac{1}{2}\right)$
         
         \textit{* Это свойство на практике мало где используется, зато его любят в доказательствах предельных теорем (в частности, ЦПТ)}
     \end{enumerate}
@@ -2157,8 +2157,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \defin{
     Распределение $\chi_k^2$ (хи-квадрат с $k$ степенями свободы) (оно же распределение Пирсона)
 
-    Пусть $Z_1,\dots, Z_k\ -$ н.о.р.с.в., $Z_i \sim \operatorname{N}(0, 1)$. Тогда
-    \[\chi_k^2 = Z_1^2 + \cdots + Z_k^2 \sim \operatorname{Gamma}\left(\frac{k}{2}, \frac{1}{2}\right) \equiv \operatorname{H}_k \leftarrow \text{хи-квадрат распределение с $k$ степенями свободы}\]
+    Пусть $Z_1,\dots, Z_k\ -$ н.о.р.с.в., $Z_i \sim \operatorname{N}\,(0, 1)$. Тогда
+    \[\chi_k^2 = Z_1^2 + \cdots + Z_k^2 \sim \operatorname{Gamma}\,\left(\frac{k}{2}, \frac{1}{2}\right) \equiv \operatorname{H}_k \leftarrow \text{хи-квадрат распределение с $k$ степенями свободы}\]
 }
 \propos{
     Свойства:
@@ -2211,16 +2211,16 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
                 \end{center}
 
         \end{center}
-        \item $\dfrac{\chi_k^2 - k}{\sqrt{2k}} \xrightarrow[k\to\infty]{d} Z \sim \operatorname{N}(0, 1)$ (потому что ЦПТ)
+        \item $\dfrac{\chi_k^2 - k}{\sqrt{2k}} \xrightarrow[k\to\infty]{d} Z \sim \operatorname{N}\,(0, 1)$ (потому что ЦПТ)
 
         $\dfrac{\chi_k^2}{k} \xrightarrow[k\to\infty]{p} 1$ (потому что ЗБЧ)
     \end{enumerate}
     \textit{Замечание:}
-    \[\operatorname{H}_2 = \operatorname{Gamma}\left(1, \dfrac{1}{2}\right) = \operatorname{Exp}\left(\dfrac{1}{2}\right)\]
+    \[\operatorname{H}_2 = \operatorname{Gamma}\,\left(1, \dfrac{1}{2}\right) = \operatorname{Exp}\left(\dfrac{1}{2}\right)\]
 }
 \renewcommand{\thletter}{Лемма Фишера}
 \theorem{
-    Пусть $X \sim \operatorname{N}(0, I),\ C^{-1} = C^T$ (ортогональная матрица $n \times n$), $Y = CX$
+    Пусть $X \sim \operatorname{N}\,(0, I),\ C^{-1} = C^T$ (ортогональная матрица $n \times n$), $Y = CX$
 
     Тогда $\forall k = 1,\dots, n$ случайная величина
     \[T(X) = \sum_{i=1}^{n} X_i^2 - \sum_{i=1}^{k}Y_i^2\]
@@ -2231,7 +2231,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \[\left\lVert Y\right\rVert^2 = Y^TY = (CX)^TCX = X^TC^TCX = X^TX = \left\lVert X\right\rVert^2\]
     \[\implies \sum_{i=1}^{n}Y_i^2 = \sum_{i=1}^{n}X_i^2\]
     \[T(X) = \sum_{i=1}^{n}X_i^2 - \sum_{i=1}^{k}Y_i^2 = \sum_{i=1}^{n}Y_i^2 - \sum_{i=1}^{k}Y_i^2 = \sum_{i=n-k+1}^{n}Y_i^2 \sim \operatorname{H}_{n-k}\]
-    потому что $Y = CX \implies \cov Y = C\cov X \cdot C^T = I \implies Y \sim \operatorname{N}(0, I)$
+    потому что $Y = CX \implies \cov Y = C\cov X \cdot C^T = I \implies Y \sim \operatorname{N}\,(0, I)$
 }
 \defin{
     Распределение Стьюдента $\operatorname{t}_k$
@@ -2239,7 +2239,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \textit{Историческая байка (а может и нет): Уильям Госсет работал в пивоварне, но параллельно занимался также математикой и статистикой и в частности по последней посещал курсы. Он измерял количество пива в бочках (потому что оно там не строго фиксированное, а представляет из себя случайную величину), и обнаружил, что распределение похоже на нормальное, но не является им. Так он на эту тему решил написать статью. Хозяин пивоварни ему разрешил, но не под своим именем, и Госсет выбрал псевдоним Стьюдент}
     
     \vspace{3mm}
-    Пусть $Z_0,\dots,Z_k\ -$ н.о.р.с.в., $Z_i \sim \operatorname{N}(0, 1)$. Тогда
+    Пусть $Z_0,\dots,Z_k\ -$ н.о.р.с.в., $Z_i \sim \operatorname{N}\,(0, 1)$. Тогда
     \[T = \frac{Z_0}{\sqrt{\dfrac{Z_1^2 + \cdots + Z_k^2}{k}}} \sim \operatorname{t}_k\]
     \[f_T(x) = \frac{\Gamma\left(\dfrac{k+1}{2}\right)}{\sqrt{\pi k}\Gamma\left(\dfrac{k}{2}\right)}\left(1 + \frac{x^2}{2}\right)^{-\frac{k+1}{2}}\]
     \begin{center}
@@ -2298,7 +2298,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \[\operatorname{t}_1 \equiv \operatorname{C}(0, -1) \leftarrow \textit{распределение Коши}\]
         \[f_X(x) = \frac{1}{\pi\left(1 + x^2\right)}\]
         \item $\operatorname{t}_k$ симметрично
-        \item $\dfrac{T - k}{\sqrt{\dfrac{k}{k-2}}} \xrightarrow[n \to \infty]{d} \operatorname{N}(0, 1)$
+        \item $\dfrac{T - k}{\sqrt{\dfrac{k}{k-2}}} \xrightarrow[n \to \infty]{d} \operatorname{N}\,(0, 1)$
     \end{enumerate}
 }
 \defin{
@@ -2667,7 +2667,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     Значит, $\widehat{\sigma}$ занижает $\sigma$
 }
 \propos{
-    Пусть $X\ -$ случайная выборка, $X_i \sim \operatorname{U}(0, \theta)$, где $\theta > 0\ -$ неизвестный параметр
+    Пусть $X\ -$ случайная выборка, $X_i \sim \operatorname{U}\,(0, \theta)$, где $\theta > 0\ -$ неизвестный параметр
     
     Найти:
     \begin{enumerate}
@@ -2679,7 +2679,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \end{enumerate}
 }
 \prof{
-    $X_i \sim \operatorname{U}(0, \theta)$
+    $X_i \sim \operatorname{U}\,(0, \theta)$
     \[\implies F_{X_i}(x) = \begin{cases}
         0, & x < 0\\
         \dfrac{x}{\theta}, & 0 \leq x < \theta\\
@@ -2701,7 +2701,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \item[e)] $\mb{E}\left(\widetilde{\theta}\right) = c \cdot \mb{E}\left(\widehat{\theta}\right) = c \cdot \dfrac{n}{n+1}\theta = \theta \implies c = \dfrac{n+1}{n}$ 
     \end{enumerate}
 }
-\textit{Замечание: $\mb{E}_\theta\left(\widehat{\theta}\right) = \displaystyle\underset{\mb{R}^n}{\int\cdots\int}g(x_1,\dots,g(x_n)) \cdot f_{X_1,\dots,X_n}(x_1,\dots,x_n)\,dx_1\dots dx_n$}
+\textit{Замечание: $\mb{E}_\theta\left(\widehat{\theta}\right) = \displaystyle\underset{\mb{R}^n}{\int\cdots\int}g(x_1,\dots,x_n) \cdot f_{X_1,\dots,X_n}(x_1,\dots,x_n)\,dx_1\dots dx_n$}
 \newpage
 \setcounter{maindf}{3}
 \setcounter{subdf}{0}
@@ -2757,7 +2757,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     }
 }
 \example{
-    Пусть $X\ -$ случайная выборка, $X_i \sim \operatorname{U}(0, \theta)$, где $\theta > 0\ -$ неизвестный параметр
+    Пусть $X\ -$ случайная выборка, $X_i \sim \operatorname{U}\,(0, \theta)$, где $\theta > 0\ -$ неизвестный параметр
 
     $\widehat{\theta} = \max\{X_1,\dots, X_n\} = X_{(n)}$, $\widetilde{\theta} = 2\overline{X}$
 
@@ -2809,7 +2809,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \huge Состоятельные оценки
 \end{center}
 \defin{
-    \textit{Повторяет определение 9.3 из теорвера (\hyperlink{problimflag}{предел по вероятности})}
+    \textit{Повторяет определение 9.3 из теорвера (\hyperlink{problimflag}{сходимость по вероятности})}
 }
 \defin{
     Оценка $\widehat{\theta}_n$ называется состоятельной (consistant estimator) неизвестного параметра $\theta,\ \theta \in \Theta$, если
@@ -2817,7 +2817,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 }
 \task{
     Докажите, что определеление предела по вероятности равносильно
-\[\forall \varepsilon > 0\ \lim_{n\to\infty} P(|X_n - X| \geq \varepsilon) = 0\]
+    \[\forall \varepsilon > 0\ \lim_{n\to\infty} P(|X_n - X| \geq \varepsilon) = 0\]
+    \textit{(то есть можно ставить нестрогий знак)}
 
 $(\implies)$
 \[\{|X_n - X| \geq \varepsilon\} \subseteq \left\{|X_n - X| > \frac{\varepsilon}{2}\right\}\]
@@ -2829,12 +2830,12 @@ $(\impliedby)$
 
 }
 \propos{
-    \textit{Повторяет теорему 9.1 из теорвера (\hyperlink{markovflag}{неравенство Маркова})}
+    \textit{Повторяет теорему 9.1 из теорвера (\hyperlink{markovflag}{неравенство Маркова} (Чебышёва у ДА))}
 
-    \textit{Следствие 4.1: повторяет теорему 9.2 из теорвера (\hyperlink{chebyshevflag}{неравенство Чебышёва})}
+    \textit{Следствие 4.1: повторяет теорему 9.2 из теорвера (\hyperlink{chebyshevflag}{неравенство Чебышёва} (Маркова у ДА))}
 
     \vspace{0.5cm}
-    \textit{Примечание: правда у Дмитрия Александровича названия неравенств выше поменялись местами (он читает курс по другой литературе), поэтому далее буду пользоваться его обозначениями}
+    \textit{Примечание: у Дмитрия Александровича названия неравенств выше поменялись местами (он читает курс по другой литературе), поэтому далее буду пользоваться его обозначениями}
 }
 \propos{
     Пусть $\{X_n\}_{n=1}^\infty\ -$ последовательность случайных величин, $\Var(X_i) < \infty$.
@@ -2894,11 +2895,15 @@ $(\impliedby)$
 }
 \propos{
     \textit{Двумерный случай:}
-    Если (борелевская) функция $g: \mb{R}^2 \to \mb{R}$ непрерывна в точке $(a, b) \in \mb{R}^2$ и $X_n \xrightarrow[]{P} a$ и $Y_n \xrightarrow[]{P} b$, то
-    \[g(X_n, Y-n) \xrightarrow[]{P} g(a, b)\]
+    Если (борелевская) функция $g: \mb{R}^2 \to \mb{R}$ непрерывна в точке $(a, b) \in \mb{R}^2$ и
+    
+    $X_n \xrightarrow[]{P} a$ и $Y_n \xrightarrow[]{P} b$, то
+    \[g(X_n, Y_n) \xrightarrow[]{P} g(a, b)\]
 }
 \prof{
-    Зафиксируем $\forall \varepsilon > 0$. В силу непрерывности $g$ в $(a, b)$ $\exists \delta > 0$ такое, что при $|x - a| < \delta$ и $|y - b| < \delta$ имеет место $|g(x, y) - g(a, b)| < \varepsilon$
+    Зафиксируем $\forall \varepsilon > 0$. В силу непрерывности $g$ в $(a, b)$ $\exists \delta > 0$ такое, что при $|x - a| < \delta$ и 
+    
+    $|y - b| < \delta$ имеет место $|g(x, y) - g(a, b)| < \varepsilon$
 
     $\implies$ для тех $\omega \in \Omega$, для которых верно $|X(\omega) - a| < \delta$ и $|Y(\omega) - b| < \delta$, будет верно и 
     
@@ -2917,7 +2922,7 @@ $(\impliedby)$
 \end{itemize}
 \renewcommand{\thletter}{ЗБЧ в форме Хинчина}
 \theorem{
-    Повторяет утверждение 10.1 из теорвера (\hyperlink{zbchflag}{ЗБЧ для н.о.р.с.в.}) с той поправкой, что конечной дисперсии может не существовать
+    \textit{Повторяет утверждение 10.1 из теорвера (\hyperlink{zbchflag}{ЗБЧ для н.о.р.с.в.}) с той поправкой, что конечной дисперсии может не существовать}
 }
 \example{
     Продолжение примера 2.3
