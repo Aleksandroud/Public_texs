@@ -1118,12 +1118,12 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \end{center}
     Также его называют свойством нестарения или отсутствия памяти
 
-    Заключается оно в том, что если какой-то конечный набор случайных величин независим и одинаково распределён, то их сумма имеет то же самое распределение
+    Заключается оно в том, что если какой-то конечный набор случайных величин независим и одинаково распределён, то их сумма имеет то же самое распределение, а в одном или нескольких параметрах лежит сумма параметров исходных распределений
     
     Таким свойством обладают распределения
-    \[\operatorname{N}\left(\mu, \sigma^2\right),\ \operatorname{Poi}(\lambda),\ \operatorname{Bi}(n, p),\ \operatorname{Gamma}\,(\alpha, \beta)\]
+    \[\operatorname{N}\left(\mu, \sigma^2\right),\ \operatorname{Poi}\,(\lambda),\ \operatorname{Bi}\,(n, p),\ \operatorname{Gamma}\,(\alpha, \beta)\]
     И не обладают
-    \[\operatorname{U}[a, b],\ \operatorname{Exp}(\lambda)\]
+    \[\operatorname{U}\,(a, b),\ \operatorname{Exp}\,(\lambda)\]
 }
 
 \defin{
@@ -1329,7 +1329,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 
     Как посчитать $\mb{E}(S)$?
 
-    Возьмём $\nu \sim \operatorname{Poi}(\lambda),\ \xi_i \sim U[5, 10]$. Тогда
+    Возьмём $\nu \sim \operatorname{Poi}\,(\lambda),\ \xi_i \sim U[5, 10]$. Тогда
 
     \[\mb{E}(S) = \mb{E}(\mb{E}(S\mid \nu)) = \sum_{k=0}^{\infty}\mb{E}(S\mid\nu=k)P(\nu = k) = \sum_{k=0}^{\infty}k\cdot 7.5P(\nu = k) =\]
     \[= 7.5\lambda \ \leftarrow \text{ математическое ожидание пуассоновской случайной величины}\]
@@ -1747,7 +1747,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \theorem{
     Пусть $\xi_i \sim \Be(p) \implies \mb{E}(\xi_i) = p,\ \Var(\xi_i) = p(1-p)$
 
-    $\displaystyle S_n = \sum_{i=1}^{n}\xi_i\ -$ число успехов в $n$ результатах (то есть $S_n \sim \operatorname{Bi}(n, p)$). Тогда
+    $\displaystyle S_n = \sum_{i=1}^{n}\xi_i\ -$ число успехов в $n$ результатах (то есть $S_n \sim \operatorname{Bi}\,(n, p)$). Тогда
     \[\frac{S_n - np}{\sqrt{np(1-p)}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}\,(0, 1)\]
     Или
     \[\frac{\widehat{p} - p}{\sqrt{\frac{p(1-p)}{n}}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}\,(0, 1), \quad \widehat{p} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
@@ -2971,5 +2971,159 @@ $(\impliedby)$
         \[\implies \sqrt{\frac{18}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2} \xrightarrow[]{P} \sqrt{18 \cdot \frac{\theta^2}{18}} = \theta\]
         $\implies \displaystyle\sqrt{\frac{18}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2}\ -$ состоятельная оценка 
     \end{enumerate}
+}
+\newpage
+\setcounter{maindf}{5}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{5}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{5}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{5}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{5}
+\setcounter{subta}{0}
+\begin{center}
+    \huge{Основные способы получения оценок\\[1cm]}
+    Метод моментов (ММ)
+\end{center}
+\defin{
+    Пусть задана случайная выборка $X$. Тогда
+    \begin{itemize}
+        \item теоретическим начальным моментом $k$-го порядка называется $\mu_k = \mb{E}\left(X_i^k\right)$
+        \item выборочныи начальным моментом $k$-го порядка называется $\widehat{\mu}_k = \overline{X^k} = \displaystyle \frac{1}{n}\sum_{i=1}^{n}X_i^k$
+        \item теоретическим центральным моментом $k$-го порядка называется $\nu_k = \mb{E}\left(X_i - \mb{E}(X_i)\right)^k$
+        \item теоретическим центральным моментом $k$-го порядка называется $\widehat{\nu}_k = \displaystyle \frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^k$
+    \end{itemize}
+
+    \textit{Замечание 5.1:} \begin{itemize}
+        \item $\mu_1 = \mb{E}(X_i)$
+        \item $\widehat{\mu}_1 = \overline{X}$
+        \item $\nu_2 = \Var(X_i)$
+        \item $\widehat{\nu}_2 = s^2$
+    \end{itemize}
+}
+Пусть $\theta = (\theta_1,\dots,\theta_r) \in \Theta$
+
+Составляем систему из $r$ уравнений
+\[\begin{cases}
+    m_1(\theta_1,\dots,\theta_r) = \widehat{m}_1\\
+    \vdots \hspace{10cm} \text{(1)}\\
+    m_r(\theta_1,\dots,\theta_r) = \widehat{m}_r
+\end{cases}\]
+где $m_j = m_j(\theta_1,\dots,\theta_r)\ -$ теоретический (начальный или центральный) момент некоторого порядка, 
+
+а $\widehat{m}_j\ -$ соответствующий ему выборочный момент
+\defin{
+    Вектор $\widehat{\theta}_{MM} = \left(\widehat{\theta}_{1,MM}, \dots, \widehat{\theta}_{r,MM}\right)$, являющийся решением системы (1) называется оценкой вектора $\theta = (\theta_1,\dots, \theta_r)$ с помощью метода моментов
+}
+\example{
+    Продолжение примера 2.3
+
+    Найти оценку с помощью метода моментов
+    \begin{enumerate}
+        \item[a)] Начальным моментов первого порядка
+        
+        Моментное тождество: $\mu_1 = \widehat{\mu}_1$
+        \[\mu_1 = \mb{E}(X_i) = \frac{2}{3}\theta\]
+        \[\widehat{\mu}_1 = \overline{X} = \frac{2}{3}\theta\]
+        \[\implies \widehat{\theta}_{MM} = \frac{3}{2}\overline{X}\]
+        \item[b)] Центральным моментом второго порядка
+        
+        Моментное тождество: $\nu_2 = \widehat{\nu}_2$
+        \[\nu_2 = \Var(X_i) = \frac{\theta^2}{18}\]
+        \[\widehat{\nu}_2 = \frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2\]
+        \[\implies \frac{\theta^2}{18} = \frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2\]
+        \[\implies \widehat{\theta}_{MM} = \sqrt{\frac{18}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^2}\]
+    \end{enumerate}
+}
+\example{
+    $X\ -$ случайная выборка, $X_i \sim \operatorname{U}\,(a, b),\ a < 0\ -$ неизвестные параметры
+
+    Перый начальный и второй центральный:
+
+    \[\text{(1*)}\quad\begin{cases}
+        \mu_1 = \widehat{\mu}_1\\
+        \nu_2 = \widehat{\nu}_2
+    \end{cases}\]
+    \[\mu_1 = \mb{E}(X_i) = \frac{a + b}{2}\quad \text{(2*)}\]
+    \[\nu_2 = \Var(X_i) = \frac{(b - a)^2}{12}\quad \text{(3*)}\]
+    \[(1*)\quad\begin{cases}
+        \frac{a + b}{2} = \widehat{\mu}_1\\
+        \frac{(b - a)^2}{12} = \widehat{\nu}_2
+    \end{cases}\]
+    Из второго уравения (4*)
+    \[b - a = \sqrt{12\widehat{\nu}_2} \quad \text{5*}\]
+    Первое урвение (4*) умножим на 2
+    \[a + b = 2\widehat{\mu}_2\]
+    (5*) + (6*)
+    \[2b = 2\widehat{\mu}_1 + \sqrt{12\widehat{\nu}_2}\]
+    Делим на 2
+    \[b = \widehat{\mu}_1 + \sqrt{3\widehat{\nu}_2} \quad \text{(7*)}\]
+    Подставляем (7*) в (6*)
+    \[a + \widehat{\mu}_1 + \sqrt{3\widehat{\nu}_2} = w\widehat{\mu}_1\]
+    \[\implies \widehat{a}_{MM} = \widehat{\mu}_1 - \sqrt{3\widehat{\nu}_2};\ \widehat{b}_{MM} = \widehat{\mu}_1 + \sqrt{3\widehat{\nu}_2}\]
+
+    место для рисунка
+}
+\example{
+    $X\ -$ случайная выборка
+
+    \[\begin{array}{c|c|c|c}
+        X_i & -2 & 0 & 1\\
+        \hline
+        P_{X_i} & \frac{1}{2} - \theta & \frac{1}{2} & \theta
+    \end{array}\]
+    Первый начальный момент
+
+    $X = (0, 0, 1, 0, -2)$. Найти $\widehat{\theta}_{MM}$
+    \[\mu_1 = \widehat{\mu}_1\]
+    \[\mu_1 = \mb{E}(X_i)=  -2\left(\frac{1}{2} - \theta\right) + 0 \cdot \frac{1}{2} + 1 \cdot \theta = -1 + 2\theta + \theta = 3\theta - 1\]
+    \[\widehat{\mu}_1 = \overline{X}\]
+    \[\implies 3\theta - 1 = \overline{X} \implies \widehat{\theta}_{MM} = \frac{\overline{X} + 1}{3}\]
+    \[\overline{X} = \frac{0 + 0 + 1 + 0 - 2}{5} = -0.2\]
+    \[\widehat{\theta}_{MM} = \frac{-0.2 + 1}{3} \approx 0.2667\]
+}
+\begin{center}
+    Метод максимального правдоподобия (ММП или MLM)
+\end{center}
+\defin{
+    Пусть задана случайная выборка $X$, компоненты которой имеют функцию распределения $F(x;\theta),\ \theta \in \Theta$
+    \begin{enumerate}
+        \item Если случайный вектор $X$ имеет дискретное распределение, то его функцией правдоподобия называется
+        \[\mc{L}(x_1,\dots,x_n;\theta) = P_{\theta}(\{X_1 = x_1\}\cap \dots \cap \{X_n = x_n\})\]
+        \item Если случайный вектор $X$ имеет абсолютно непрерывное распределение, то его функцией правдоподобия называется
+        \[\mc{L}(x_1,\dots,x_n;\theta) = f_{X_1,\dots,X_n}(x_1,\dots,x_n;\theta)\]
+    \end{enumerate}
+}
+\defin{
+    $\ell(x_1,\dots,x_n;\theta) = \ln \mc{L}(x_1,\dots,x_n;\theta)\ -$ логарифмическая функция правдоподобия
+}
+\defin{
+    Оценкой $\widehat{\theta}_{ML}$ неизвестного параметра $\theta \in \Theta$ по методу максиального правдоподобия называется точка глобального максимума функции правдоподобия по переменной $\theta \in \Theta$ при фиксированных
+    
+    значениях $x_1,\dots,x_n$, то есть
+    \[\mc{L}\left(x_1,\dots,x_n;\widehat{\theta}_{ML}\right) = \max_{\theta \in \Theta} \mc{L}\left(x_1,\dots,x_n;\theta\right)\]
+    \textit{Замечание 5.2:} Если $\mc{L}\left(x_1,\dots,x_n;\theta\right)$ принимает только положительные значения, то, учитывая, что функция $\varphi(t) = \ln t$ является строго возрастающей, оценка $\widehat{\theta}_{ML}$ может быть получена
+    
+    альтернативным способом как точка максимума логарифмической функции правдоподобия, то есть
+    \[\ell\left(x_1,\dots,x_n;\widehat{\theta}_{ML}\right) = \max_{\theta \in \Theta} \ell\left(x_1,\dots,x_n;\theta\right)\]
+}
+\example{
+    $X\ -$ случайная выборка
+    \[f(x;\theta) = \begin{cases}
+        (\theta + 1)x^\theta, & x \in (0, 1)\\
+        0, & \text{иначе}
+    \end{cases}\]
+    \[\mc{L}(x_1,\dots,x_n;\theta) = f_{X_1,\dots,X_n}(x_1,\dots,x_n;\theta) = f_{X_1}(x_1;\theta)\cdots f_{X_n}(x_n;\theta) = (\theta+1)x_1^\theta\cdots(\theta+1)x_n^\theta =\]
+    \[= (\theta + 1)^n (x_1\cdots x_n) \to \max_{\theta\in(-1,+\infty)}\]
+    \[\ell(x_1,\dots,x_n;\theta) = m\ln(\theta + 1) + \theta\ln (x_1\cdots x_n) = n\ln(\theta + 1) + \theta\sum_{i=1}^{n}\ln x_i \to \max_{\theta}\]
+    \[\frac{\partial \ell}{\partial \theta} = \frac{n}{\theta + 1} + \sum_{i=1}^{n}\ln x_i = 0\]
+    \[\implies\theta + 1 = \frac{n}{\displaystyle\sum_{i=1}^{n}\ln x_i}\]
+    \[\implies \widehat{\theta}_{ML} = -1 + \frac{n}{\displaystyle\sum_{i=1}^{n}\ln x_i}\]
 }
 \end{document}
