@@ -3068,7 +3068,38 @@ $(\impliedby)$
     \[a + \widehat{\mu}_1 + \sqrt{3\widehat{\nu}_2} = w\widehat{\mu}_1\]
     \[\implies \widehat{a}_{MM} = \widehat{\mu}_1 - \sqrt{3\widehat{\nu}_2};\ \widehat{b}_{MM} = \widehat{\mu}_1 + \sqrt{3\widehat{\nu}_2}\]
 
-    место для рисунка
+    \begin{center}
+        \begin{tikzpicture}[>=stealth]
+
+        % Ось
+        \draw[thick] (-3,0) -- (3,0);
+
+        % Засечки
+        \draw (-2,0.1) -- (-2,-0.1);
+        \draw (0,0.1) -- (0,-0.1);
+        \draw (2,0.1) -- (2,-0.1);
+
+        % Точки
+        \fill (-2,0) circle (2pt);
+        \fill (-2.3,0) circle (2pt);
+        \fill (0,0) circle (2pt);
+        \fill (2,0) circle (2pt);
+        \fill (1.8,0) circle (2pt);
+
+        % Подписи снизу
+        \node[below] at (-2.3,0) {$a$};
+        \node[below] at (0,0) {$\widehat{\mu}_1$};
+        \node[below] at (1.8,0) {$b$};
+
+        % Подписи сверху (оценки)
+        \node[above] at (-2,0.2) {$\hat{a}=\widehat{\mu}_1-\sqrt{3\widehat{\nu}_2}$};
+        \node[above] at (2,0.2) {$\hat{b}=\widehat{\mu}_1+\sqrt{3\widehat{\nu}_2}$};
+
+        % Стрелка к центральной точке
+        \draw[->] (0,0.8) -- (0,0.1);
+
+        \end{tikzpicture}
+    \end{center}
 }
 \example{
     $X\ -$ случайная выборка
@@ -3124,6 +3155,6 @@ $(\impliedby)$
     \[\ell(x_1,\dots,x_n;\theta) = m\ln(\theta + 1) + \theta\ln (x_1\cdots x_n) = n\ln(\theta + 1) + \theta\sum_{i=1}^{n}\ln x_i \to \max_{\theta}\]
     \[\frac{\partial \ell}{\partial \theta} = \frac{n}{\theta + 1} + \sum_{i=1}^{n}\ln x_i = 0\]
     \[\implies\theta + 1 = \frac{n}{\displaystyle\sum_{i=1}^{n}\ln x_i}\]
-    \[\implies \widehat{\theta}_{ML} = -1 + \frac{n}{\displaystyle\sum_{i=1}^{n}\ln x_i}\]
+    \[\implies \widehat{\theta}_{ML} = -1 + \frac{n}{\displaystyle\sum_{i=1}^{n}\ln X_i}\]
 }
 \end{document}
