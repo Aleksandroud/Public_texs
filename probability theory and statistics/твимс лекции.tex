@@ -3277,7 +3277,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[\eta_n \cdot \xi_n \xrightarrow{d} c\cdot \xi\]
 }
 \defin{
-    Говорят, что последовательность случайных величин $\{\xi_n\}_{n=1}^\infty$ имеют асимптотически нормальное распределение с параметрами $\mu_n$ и $\sigma_n^2$ и пишут $\xi_n \overset{asy}{\sim} \operatorname{N}\left(\mu_n, \sigma_n^2\right)$, если
+    Говорят, что последовательность случайных величин $\{\xi_n\}_{n=1}^\infty$ имеет асимптотически нормальное распределение с параметрами $\mu_n$, и $\sigma_n^2$ и пишут $\xi_n \asim \operatorname{N}\left(\mu_n, \sigma_n^2\right)$, если
     \[\frac{\xi_n - \mu_n}{\sigma_n} \xrightarrow[]{d} Z \sim \operatorname{N}(0, 1)\]
 }
 \example{
@@ -3288,14 +3288,14 @@ plot (\x,{1.23/(0.5*(\x-1))});
     Тогда
     \[\frac{S_n - \mb{E}(S_n)}{\sqrt{\Var(S_n)}} \xrightarrow[]{d} Z \sim \operatorname{N}(0, 1)\]
     где $S_n = X_1 + \cdots + X_n$
-    \[\iff S_n \overset{asy}{\sim} \operatorname{N}\left(\mb{E}(S_n), \Var(S_n)\right)\]
+    \[\iff S_n \asim \operatorname{N}\left(\mb{E}(S_n), \Var(S_n)\right)\]
     То же верно и для выборочного среднего
     \[\frac{\overline{X}_n - \mb{E}\left(\overline{X}_n\right)}{\sqrt{\Var\left(\overline{X}_n\right)}} = \frac{\frac{1}{n}S_n - \frac{1}{n}\mb{E}(S_n)}{\frac{1}{n}\sqrt{\Var(S_n)}} = \frac{S_n - \mb{E}(S_n)}{\sqrt{\Var(S_n)}}\]
 }
 \theorem{
     \textit{Лемма только}
     
-    Пусть $X_n \overset{asy}{\sim} \operatorname{N}\left(\mu, \dfrac{\sigma^2}{n}\right)$. Тогда $X_n \xrightarrow{P} \mu$
+    Пусть $X_n \asim \operatorname{N}\left(\mu, \dfrac{\sigma^2}{n}\right)$. Тогда $X_n \xrightarrow{P} \mu$
 }
 \prof{
     \[\frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} = \frac{\sqrt{n}}{\sigma}(X_n - \mu) \xrightarrow{d} Z \sim \operatorname{N}(0, 1)\]
