@@ -1430,12 +1430,13 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \textit{другая запись:} 
     \[\underset{{n\to\infty}}{\operatorname{plim}\,} \xi_n = \xi\]
 }
-\hypertarget{probconvflag}{}
+\hypertarget{dislimflag}{}
 \defin{
     Сходимость по распределению (она же слабая сходимость)
     \[\xi_n \xrightarrow[n \to \infty]{d} \xi, \text{ если } \forall x \ F_n(x) \xrightarrow[n \to \infty]{} F_\xi(x) \ \text{(поточечено), где } F_n(x) = P(\xi_n \leq x)\]
     \textit{(есть также ещё сильная сходимость, в которой функции распределения сходятся равномерно, но для наших целей она нам не понадобится)}
 }
+\newpage
 Иерархия сходимостей по их силе
 \begin{center}
     \includegraphics[scale=0.5]{иерархия.jpg}
@@ -3266,7 +3267,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \huge Асимптотическая нормальность и Дельта-метод
 \end{center}
 \defin{
-    \textit{повторяет определение 9.4 из теорвера (\hyperlink{probconvflag}{сходимость по распределению})}
+    \textit{повторяет определение 9.4 из теорвера (\hyperlink{dislimflag}{сходимость по распределению})}
 }
 \renewcommand{\thletter}{}
 \theorem{
