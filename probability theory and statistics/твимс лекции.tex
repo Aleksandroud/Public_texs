@@ -3186,7 +3186,7 @@ $(\impliedby)$
 
 % Точка max x_i
 \coordinate (m) at (2,0);
-\draw (m) -- ++(0,0.2);
+\draw[dashed] (m) -- ++(0,2.5);
 \node[below] at (m) {$\max\limits_{1\le i\le n} x_i$};
 
 % Горизонтальный участок (нулевая функция слева)
@@ -3200,7 +3200,7 @@ $(\impliedby)$
 plot (\x,{1.23/(0.5*(\x-1))});
 
 % Подпись области
-\node at (3.5,3) {$\theta \ge \max x_i$};
+\node at (3.5,2) {$\theta \ge \max x_i$};
 
 \end{tikzpicture}
 \end{center}
