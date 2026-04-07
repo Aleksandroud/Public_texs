@@ -1430,6 +1430,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \textit{другая запись:} 
     \[\underset{{n\to\infty}}{\operatorname{plim}\,} \xi_n = \xi\]
 }
+\hypertarget{probconvflag}{}
 \defin{
     Сходимость по распределению (она же слабая сходимость)
     \[\xi_n \xrightarrow[n \to \infty]{d} \xi, \text{ если } \forall x \ F_n(x) \xrightarrow[n \to \infty]{} F_\xi(x) \ \text{(поточечено), где } F_n(x) = P(\xi_n \leq x)\]
@@ -3156,5 +3157,148 @@ $(\impliedby)$
     \[\frac{\partial \ell}{\partial \theta} = \frac{n}{\theta + 1} + \sum_{i=1}^{n}\ln x_i = 0\]
     \[\implies\theta + 1 = \frac{n}{\displaystyle\sum_{i=1}^{n}\ln x_i}\]
     \[\implies \widehat{\theta}_{ML} = -1 + \frac{n}{\displaystyle\sum_{i=1}^{n}\ln X_i}\]
+}
+\example{
+    $X\ -$ случайная выборка
+    \[f(x;\theta) = \begin{cases}
+        \frac{2x}{\theta^2}, & x \in [0, \theta]\\
+        0, & \text{иначе}
+    \end{cases}, \theta > 0\]
+    Надо найти $\widehat{\theta}_{ML}$
+    \[\mc{L}(x_1,\dots,x_n;\theta) = f_{X_1,\dots,X_n}(x_1,\dots,x_n;\theta) = f_{X_1}(x_1;\theta) \cdots f_{X_n}(x_n;\theta) =\]
+    \[= \frac{2x_1}{\theta^2}\cdot \mb{1}_{[0,\theta]}(x_1) \cdots \frac{2x_n}{\theta^2}\cdot \mb{1}_{[0,\theta]}(x_n) =\]
+    Заметим, что
+    \[\mb{1}_{[0,\theta]}(x_i) = 1 \iff 0 \leq x_i \leq \theta \iff \theta \geq x_i \iff \mb{1}_{[x_i,+\infty)}(\theta) = 1\]
+    Поэтому
+    \[= \frac{2x_1}{\theta^2} \cdot \mb{1}_{[x_1,+\infty)}(\theta) \cdots \frac{2x_n}{\theta^2} \cdot \mb{1}_{[x_n,+\infty)}(\theta) = \left(\frac{2}{\theta^2}\right)^nx_1\cdots x_n \cdot \mb{1}_{\bigcap_{i=1}^n[x_i,+\infty)}(\theta) =\]
+    \[= \frac{2^nx_1\cdots x_n}{\theta^{2n}}\cdot \mb{1}_{[\max_{1 \leq i \leq n}x_i, +\infty)}(\theta)\]
+    \begin{center}
+\begin{tikzpicture}[scale=1.2]
+
+% Оси
+\draw[->] (-1,0) -- (6,0) node[right] {$\theta$};
+\draw[->] (0,-0.5) -- (0,4) node[above] {$\mc{L}(\theta)$};
+
+% Нулевая точка
+\filldraw[white] (0,0) circle (2pt);
+\draw (0,0) circle (2pt);
+
+% Точка max x_i
+\coordinate (m) at (2,0);
+\draw (m) -- ++(0,0.2);
+\node[below] at (m) {$\max\limits_{1\le i\le n} x_i$};
+
+% Горизонтальный участок (нулевая функция слева)
+\draw[thick] (0,0) -- (2,0);
+
+% Точка разрыва (закрашенная)
+\fill (2,2.5) circle (2pt);
+
+% Убывающая кривая справа
+\draw[thick, domain=2:6, smooth] 
+plot (\x,{1.23/(0.5*(\x-1))});
+
+% Подпись области
+\node at (3.5,3) {$\theta \ge \max x_i$};
+
+\end{tikzpicture}
+\end{center}
+
+    \[\implies \widehat{\theta}_{ML} = \max_{1\leq i\leq n}X_i = X_{(n)}\]
+}
+\example{
+    $X\ -$ случайная выборка, $X_i \sim \operatorname{U}(a, b)$
+
+    $\widehat{a}_{ML}, \widehat{b}_{ML}\ -\ ?$
+    \[\mc{L}(x_1,\dots,x_n; a, b) = f_{X_1,\dots,X_n}(x_1,\dots,x_n; a ,b) = f_{X_1}(x_1; a, b) \cdots f_{X_n}(x_n;a, b) =\]
+    \[= \frac{1}{b - a} \mb{1}_{[a, b]}(x_1) \cdots \frac{1}{b - a} \mb{1}_{[a, b]}(x_n) =\]
+    Заметим, что
+    \[(\forall i = 1,\dots, n,\ a \leq x_i \leq b) \iff (a \leq \min_{1 \leq i \leq n} x_i \text{ и } \max_{1 \leq i \leq n} x_i \leq b)\]
+    Поэтому
+    \[= \frac{1}{(b - a)^n} \cdot \mb{1}(a \leq \min_{1 \leq i \leq n} x_i) \cdot \mb{1}(\max_{1 \leq i \leq n} x_i \leq b)\]
+    То есть $\widehat{a}_{ML} = \min X_i = X_{(1)},\ \widehat{b}_{ML} = \max X_i = X_{(n)}$
+}
+\example{
+    $X\ -$ случайная выборка
+    \[\begin{array}{c|c|c|c}
+        X_i & -2 & 0 & 1\\
+        \hline
+        P_{X_i} & \frac{1}{2} - \theta & \frac{1}{2} & \theta
+    \end{array}\]
+    $0 < \theta < \dfrac{1}{2}$, $\widehat{\theta}_{ML}\ -\ ?$
+    \[\mc{L}(x_1,\dots,x_n; \theta) = P_{\theta}\left(\{X_1 = x_1\} \cap \cdots \cap \{X_n = x_n\}\right) = P(X_1 = x_1) \cdots P(X_n = x_n)\]
+    \[P_\theta(X_i = x_i) = \begin{cases}
+        \frac{1}{2} - \theta, & x_i = -2\\
+        \frac{1}{2}, & x_i = 0\\
+        \theta, & x_i = 1
+    \end{cases} = \left(\frac{1}{2} - \theta\right)^{\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\mb{1}_{0}(x_i)} \cdot \theta^{\mb{1}_{1}(x_i)} \quad \text{(1*)}\]
+    Итого
+    \[= \prod_{i=1}^{n}P_\theta(X_i = x_i) = \prod_{i=1}^{n} \left(\frac{1}{2} - \theta\right)^{\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\mb{1}_{0}(x_i)} \cdot \theta^{\mb{1}_{1}(x_i)} =\]
+    \[= \left(\frac{1}{2}-\theta\right)^{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\displaystyle \sum_{i=1}^{n}\mb{1}_{0}(x_i)} \cdot \theta^{\displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)}=\]
+    \[\implies \ell(x_1,\dots,x_n;\theta) = \sum_{i=1}^{n}\mb{1}_{-2}(x_i) \cdot \ln \left(\frac{1}{2} - \theta\right) + \sum_{i=1}^{n}\mb{1}_{0}(x_i) \cdot \ln \frac{1}{2} + \sum_{i=1}^{n}\mb{1}_{1}(x_i) \cdot \ln \theta\]
+    \[\frac{\partial \ell}{\partial \theta} = \frac{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i)}{\displaystyle \theta - \frac{1}{2}} + \frac{\displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)}{\theta} = 0\]
+    После решения системы уравнений получаем
+    \[\widehat{\theta}_{ML} = \frac{\displaystyle \frac{1}{2}\sum_{i=1}^{n}\mb{1}_{1}(x_i)}{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i) + \displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)} \xrightarrow[n\to\infty]{P \text{(по ЗБЧ и теореме Слуцкого)}} \frac{\frac{1}{2}\mb{E}\left(\mb{1}_{1}(X_i)\right)}{\mb{E}\left(\mb{1}_{-2}(X_i) + \mb{E}\left(\mb{1}_{1}(X_i)\right)\right)} = \frac{\frac{1}{2}\theta}{\frac{1}{2} - \theta + \theta} = \theta\]
+    То есть $\widehat{\theta}_{ML}$ состоятельна
+
+    \textit{Другой способ:}
+    \[=\prod_{i:x_i=-2}P_\theta(X_i = -2) \cdot \prod_{i:x_i=0}P_\theta(X_i = 0) \cdot \prod_{i:x_i=1}P_\theta(X_i = 1) =\]
+    \[= P_{\theta}(X_i = -2)^{\#\{i:x_i=-2\}} \cdot P_{\theta}(X_i = 0)^{\#\{i:x_i=0\}} \cdot P_{\theta}(X_i = 1)^{\#\{i:x_i=1\}}= \]
+    \[= \left(\frac{1}{2} - \theta\right)^{\#\{i:x_i=-2\}} \cdot \left(\frac{1}{2}\right)^{\#\{i:x_i=0\}} \cdot \theta^{\#\{i:x_i=1\}}\]
+
+}
+\setcounter{maindf}{6}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{6}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{6}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{6}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{6}
+\setcounter{subta}{0}
+\newpage
+\begin{center}
+    \huge Асимптотическая нормальность и Дельта-метод
+\end{center}
+\defin{
+    \textit{повторяет определение 9.4 из теорвера (\hyperlink{probconvflag}{сходимость по распределению})}
+}
+\renewcommand{\thletter}{}
+\theorem{
+    \textit{Лемма только}
+
+    Если $\eta_n \xrightarrow{P} c \neq 0$ и $\xi_n \xrightarrow{d} \xi$, то
+    \[\eta_n \cdot \xi_n \xrightarrow{d} c\cdot \xi\]
+}
+\defin{
+    Говорят, что последовательность случайных величин $\{\xi_n\}_{n=1}^\infty$ имеют асимптотически нормальное распределение с параметрами $\mu_n$ и $\sigma_n^2$ и пишут $\xi_n \overset{asy}{\sim} \operatorname{N}\left(\mu_n, \sigma_n^2\right)$, если
+    \[\frac{\xi_n - \mu_n}{\sigma_n} \xrightarrow[]{d} Z \sim \operatorname{N}(0, 1)\]
+}
+\example{
+    ЦПТ в форме Леви
+
+    Пусть $\{X_n\}_{n=1}^\infty\ -$ последовательность н.о.р.с.в. с $0 < \Var(X_i) < \infty$.
+
+    Тогда
+    \[\frac{S_n - \mb{E}(S_n)}{\sqrt{\Var(S_n)}} \xrightarrow[]{d} Z \sim \operatorname{N}(0, 1)\]
+    где $S_n = X_1 + \cdots + X_n$
+    \[\iff S_n \overset{asy}{\sim} \operatorname{N}\left(\mb{E}(S_n), \Var(S_n)\right)\]
+    То же верно и для выборочного среднего
+    \[\frac{\overline{X}_n - \mb{E}\left(\overline{X}_n\right)}{\sqrt{\Var\left(\overline{X}_n\right)}} = \frac{\frac{1}{n}S_n - \frac{1}{n}\mb{E}(S_n)}{\frac{1}{n}\sqrt{\Var(S_n)}} = \frac{S_n - \mb{E}(S_n)}{\sqrt{\Var(S_n)}}\]
+}
+\theorem{
+    \textit{Лемма только}
+    
+    Пусть $X_n \overset{asy}{\sim} \operatorname{N}\left(\mu, \dfrac{\sigma^2}{n}\right)$. Тогда $X_n \xrightarrow{P} \mu$
+}
+\prof{
+    \[\frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} = \frac{\sqrt{n}}{\sigma}(X_n - \mu) \xrightarrow{d} Z \sim \operatorname{N}(0, 1)\]
+    Так как $\sqrt{n} \to \infty$, а $F_Z(z)$ конечна, то $X_n \xrightarrow{P} \mu$, чтобы в пределе получилось что-то конечное
+    \[P(-\varepsilon < X_n - \mu \leq \varepsilon) = P\left(\frac{-\sqrt{n}\varepsilon}{\sigma} < \frac{X_n \ mu}{\sqrt{\frac{\sigma^2}{n}}} < \frac{\sqrt{n}\varepsilon}{\sigma}\right)\]
 }
 \end{document}
