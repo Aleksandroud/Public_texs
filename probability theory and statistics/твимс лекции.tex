@@ -2000,6 +2000,13 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
                 Альтернативное доказательство \textit{(шло как бонус)}:
 
                 Доказать свойство выше через определение $f_{Z_2\mid Z_1 = x}(y)$
+                
+                \[f_{Z_2\mid Z_1 = x}(y) = \frac{\varphi(x, y)}{\varphi(x)} = \frac{1}{2\pi}\frac{1}{\sqrt{1 - \rho^2}}e^{-\frac{1}{1 - \rho^2}\frac{x^2 - 2\rho xy + y^2}{2}}\cdot\frac{\sqrt{2\pi}}{e^{\frac{-x^2}{2}}} =\]
+                \[= \frac{1}{\sqrt{2\pi\left(1 - \rho^2\right)}}\exp{\left(-\frac{1}{1 - \rho^2}\frac{-2\rho xy + y^2}{2}\right)}\exp{\left(-\frac{x^2}{2\left(1 - \rho^2\right)} + \frac{x^2}{2}\right)} =\]
+                \[= \frac{1}{\sqrt{2\pi\left(1 - \rho^2\right)}} \exp{\left(-\frac{1}{1 - \rho^2}\frac{-2\rho xy + y^2}{2} - \frac{\rho^2x^2}{2\left(1 - \rho^2\right)}\right)} =\]
+                \[= \frac{1}{\sqrt{2\pi\left(1 - \rho^2\right)}}\exp{\left(-\frac{y^2 - 2\rho xy + \rho^2x^2}{2\left(1 - \rho^2\right)}\right)} = \frac{1}{\sqrt{2\pi\left(1 - \rho^2\right)}} \exp{\left(-\frac{(y - \rho x)^2}{2\left(1 - \rho^2\right)}\right)}\]
+                \[\implies Z_2\mid Z_1 = x \sim \operatorname{N}\left(\rho x, 1 - \rho^2\right)\]
+
             }
             \newpage
             Нестандартный случай:
@@ -3238,7 +3245,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[= \left(\frac{1}{2}-\theta\right)^{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\displaystyle \sum_{i=1}^{n}\mb{1}_{0}(x_i)} \cdot \theta^{\displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)}=\]
     \[\implies \ell(x_1,\dots,x_n;\theta) = \sum_{i=1}^{n}\mb{1}_{-2}(x_i) \cdot \ln \left(\frac{1}{2} - \theta\right) + \sum_{i=1}^{n}\mb{1}_{0}(x_i) \cdot \ln \frac{1}{2} + \sum_{i=1}^{n}\mb{1}_{1}(x_i) \cdot \ln \theta\]
     \[\frac{\partial \ell}{\partial \theta} = \frac{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i)}{\displaystyle \theta - \frac{1}{2}} + \frac{\displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)}{\theta} = 0\]
-    После решения системы уравнений получаем
+    После решения уравнения получаем
     \[\widehat{\theta}_{ML} = \frac{\displaystyle \frac{1}{2}\sum_{i=1}^{n}\mb{1}_{1}(x_i)}{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i) + \displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)} \xrightarrow[n\to\infty]{P \text{(по ЗБЧ и теореме Слуцкого)}} \frac{\frac{1}{2}\mb{E}\left(\mb{1}_{1}(X_i)\right)}{\mb{E}\left(\mb{1}_{-2}(X_i) + \mb{E}\left(\mb{1}_{1}(X_i)\right)\right)} = \frac{\frac{1}{2}\theta}{\frac{1}{2} - \theta + \theta} = \theta\]
     То есть $\widehat{\theta}_{ML}$ состоятельна
 
@@ -3246,7 +3253,10 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[=\prod_{i:x_i=-2}P_\theta(X_i = -2) \cdot \prod_{i:x_i=0}P_\theta(X_i = 0) \cdot \prod_{i:x_i=1}P_\theta(X_i = 1) =\]
     \[= P_{\theta}(X_i = -2)^{\#\{i:x_i=-2\}} \cdot P_{\theta}(X_i = 0)^{\#\{i:x_i=0\}} \cdot P_{\theta}(X_i = 1)^{\#\{i:x_i=1\}}= \]
     \[= \left(\frac{1}{2} - \theta\right)^{\#\{i:x_i=-2\}} \cdot \left(\frac{1}{2}\right)^{\#\{i:x_i=0\}} \cdot \theta^{\#\{i:x_i=1\}}\]
-
+    \[\implies \ell(x_1,\dots,x_n;\theta) = \#\{i:x_i=-2\}\ln\left(\frac{1}{2} - \theta\right) + \#\{i:x_i=0\}\ln\frac{1}{2} + \#\{i:x_i=1\}\ln \theta\]
+    \[\frac{\partial \ell}{\partial \theta} = \frac{\#\{i:x_i=-2\}}{\theta - \frac{1}{2}} + \frac{\#\{i:x_i=1\}}{\theta} = 0\]
+    После решения уравнения получаем
+    \[\widehat{\theta}_{ML} = \frac{\frac{1}{2}\#\{i: X_i = -2\}}{\#\{i: X_i = -2\} + \#\{i: X_i = 1\}}\]
 }
 \setcounter{maindf}{6}
 \setcounter{subdf}{0}
