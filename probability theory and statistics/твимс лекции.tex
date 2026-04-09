@@ -3246,7 +3246,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[\implies \ell(x_1,\dots,x_n;\theta) = \sum_{i=1}^{n}\mb{1}_{-2}(x_i) \cdot \ln \left(\frac{1}{2} - \theta\right) + \sum_{i=1}^{n}\mb{1}_{0}(x_i) \cdot \ln \frac{1}{2} + \sum_{i=1}^{n}\mb{1}_{1}(x_i) \cdot \ln \theta\]
     \[\frac{\partial \ell}{\partial \theta} = \frac{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i)}{\displaystyle \theta - \frac{1}{2}} + \frac{\displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)}{\theta} = 0\]
     После решения уравнения получаем
-    \[\widehat{\theta}_{ML} = \frac{\displaystyle \frac{1}{2}\sum_{i=1}^{n}\mb{1}_{1}(x_i)}{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i) + \displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)} \xrightarrow[n\to\infty]{P \text{(по ЗБЧ и теореме Слуцкого)}} \frac{\frac{1}{2}\mb{E}\left(\mb{1}_{1}(X_i)\right)}{\mb{E}\left(\mb{1}_{-2}(X_i) + \mb{E}\left(\mb{1}_{1}(X_i)\right)\right)} = \frac{\frac{1}{2}\theta}{\frac{1}{2} - \theta + \theta} = \theta\]
+    \[\widehat{\theta}_{ML} = \frac{\displaystyle \frac{1}{2}\sum_{i=1}^{n}\mb{1}_{1}(x_i)}{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i) + \displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)} \xrightarrow[n\to\infty]{P \text{(по ЗБЧ и теореме Слуцкого)}} \frac{\frac{1}{2}\mb{E}\left(\mb{1}_{1}(X_i)\right)}{\mb{E}\left(\mb{1}_{-2}(X_i)\right) + \mb{E}\left(\mb{1}_{1}(X_i)\right)} = \frac{\frac{1}{2}\theta}{\frac{1}{2} - \theta + \theta} = \theta\]
     То есть $\widehat{\theta}_{ML}$ состоятельна
 
     \textit{Другой способ:}
