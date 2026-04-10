@@ -1510,13 +1510,14 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 
 \setcounter{mainex}{10}
 \setcounter{subex}{0}
+
 \begin{center}
     \huge Закон больших чисел
 \end{center}
 \renewcommand{\thletter}{ЗБЧ в форме Чебышёва}
 \theorem{
     Пусть есть последовательность случайных величин $\{\xi_n\}, \ \exists \mb{E}(\xi_i) = \mu_i,\ \Var(\xi_i) = \sigma_i^2 < c, c \in \mb{R},\ \xi_i$ независимы. Тогда
-    \[\overline{\xi} = \frac{1}{n}\sum_{i=1}^{n}\xi_i \xrightarrow[n\to\infty]{p} \frac{1}{n}\sum_{i=1}^{n}\mu_i\] 
+    \[\overline{\xi} = \frac{1}{n}\sum_{i=1}^{n}\xi_i \xrightarrow[n\to\infty]{P} \frac{1}{n}\sum_{i=1}^{n}\mu_i\] 
     то есть
     \[\forall \varepsilon > 0 \ P\left(\left|\overline{\xi} - \frac{1}{n}\sum_{i=1}^{n}\mu_i\right| \geq \varepsilon\right) \xrightarrow[n \to \infty]{} 0 \]
 }
@@ -1534,7 +1535,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Следствие: ЗБЧ для н.о.р.с.в.
 
     Пусть $\mb{E}(\xi_i) = \mu,\ \Var(\xi_i) = \sigma^2$. Тогда
-    \[\overline{\xi} \xrightarrow[n\to\infty]{p} \mu\]
+    \[\overline{\xi} \xrightarrow[n\to\infty]{P} \mu\]
 }
 \example{
     Зачем на лабораторная по физике делать несколько опытов?
@@ -1557,7 +1558,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     где $\displaystyle\widehat{p} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\ -$ выборочная доля или доля успехов в $n$ испытаниях
 
     Иначе говоря,
-    \[\widehat{p} \xrightarrow[n\to\infty]{p} p\]
+    \[\widehat{p} \xrightarrow[n\to\infty]{P} p\]
 }
 \example{
     Вы начальник предвыборного штаба кого-то куда-то
@@ -3272,6 +3273,10 @@ plot (\x,{1.23/(0.5*(\x-1))});
 
 \setcounter{mainta}{6}
 \setcounter{subta}{0}
+
+\setcounter{mainle}{6}
+\setcounter{suble}{0}
+
 \newpage
 \begin{center}
     \huge Асимптотическая нормальность и Дельта-метод
@@ -3280,9 +3285,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \textit{повторяет определение 9.4 из теорвера (\hyperlink{dislimflag}{сходимость по распределению})}
 }
 \renewcommand{\thletter}{}
-\theorem{
-    \textit{Лемма только}
-
+\lemma{
     Если $\eta_n \xrightarrow{P} c \neq 0$ и $\xi_n \xrightarrow{d} \xi$, то
     \[\eta_n \cdot \xi_n \xrightarrow{d} c\cdot \xi\]
 }
@@ -3302,14 +3305,12 @@ plot (\x,{1.23/(0.5*(\x-1))});
     То же верно и для выборочного среднего
     \[\frac{\overline{X}_n - \mb{E}\left(\overline{X}_n\right)}{\sqrt{\Var\left(\overline{X}_n\right)}} = \frac{\frac{1}{n}S_n - \frac{1}{n}\mb{E}(S_n)}{\frac{1}{n}\sqrt{\Var(S_n)}} = \frac{S_n - \mb{E}(S_n)}{\sqrt{\Var(S_n)}}\]
 }
-\theorem{
-    \textit{Лемма только}
-    
+\lemma{    
     Пусть $X_n \asim \operatorname{N}\left(\mu, \dfrac{\sigma^2}{n}\right)$. Тогда $X_n \xrightarrow{P} \mu$
 }
 \prof{
     \[\frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} = \frac{\sqrt{n}}{\sigma}(X_n - \mu) \xrightarrow{d} Z \sim \operatorname{N}(0, 1)\]
     Так как $\sqrt{n} \to \infty$, а $F_Z(z)$ конечна, то $X_n \xrightarrow{P} \mu$, чтобы в пределе получилось что-то конечное
-    \[P(-\varepsilon < X_n - \mu \leq \varepsilon) = P\left(\frac{-\sqrt{n}\varepsilon}{\sigma} < \frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} < \frac{\sqrt{n}\varepsilon}{\sigma}\right)\]
+    \[P(-\varepsilon < X_n - \mu \leq \varepsilon) = P\left(-\frac{\sqrt{n}\varepsilon}{\sigma} < \frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} < \frac{\sqrt{n}\varepsilon}{\sigma}\right)\]
 }
 \end{document}

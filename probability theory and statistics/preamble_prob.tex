@@ -62,6 +62,11 @@
 
 \newcommand{\tasub}{\arabic{mainta}.\arabic{subta}}
 
+\newcounter{mainle}
+\newcounter{suble}[mainle]
+
+\newcommand{\lesub}{\arabic{mainle}.\arabic{suble}}
+
 \renewcommand{\familydefault}{\ttdefault}
 
 % Определяем стили блоков
@@ -69,6 +74,7 @@
 
 % --- Однострочное создание блоков \problem, \solution, \answer ---
 \definecolor{myrose}{RGB}{255,182,193} % Розовый
+\definecolor{myred}{RGB}{255,100,100} % Красный
 \definecolor{mybrown}{RGB}{210,180,140} % Светло-коричневый
 \definecolor{mycyan}{RGB}{135,206,235}  % Голубой
 \definecolor{myorange}{RGB}{255,165,0}   % Оранжевый
@@ -178,6 +184,23 @@
     #1%
   \end{taskBox}%
 }
+
+\newtcolorbox{lemmaBox}{
+  breakable,
+  enhanced,
+  colback=red!10!white,
+  colframe=myred,
+  fonttitle=\ttfamily,
+  title={Лемма~\lesub}
+}
+
+\newcommand{\lemma}[1]{%
+  \refstepcounter{suble}%
+  \begin{lemmaBox}%
+    #1%
+  \end{lemmaBox}%
+}
+
 % Команда для векторов
 \newcommand{\vect}[1]{\mathbf{#1}}
 \usepackage[upint]{stix2}
