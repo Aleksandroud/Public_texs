@@ -185,13 +185,21 @@
   \end{taskBox}%
 }
 
+\newcommand{\leletter}{}
+
+\newcommand{\letitle}{
+  \IfStrEq{\leletter}{}%  % Если thletter пустая
+    {\ttfamily}   % Выводим только теорему и её номер
+    {\ttfamily (\leletter)}% Иначе теорема + номер + название теоремы
+}
+
 \newtcolorbox{lemmaBox}{
   breakable,
   enhanced,
   colback=red!10!white,
   colframe=myred,
   fonttitle=\ttfamily,
-  title={Лемма~\lesub}
+  title={Лемма~\lesub \letitle}
 }
 
 \newcommand{\lemma}[1]{%
@@ -241,6 +249,6 @@
 \newcommand{\Geo}{\operatorname{Geo}\,}
 \newcommand{\bias}{\operatorname{bias}\,}
 \newcommand{\MSE}{\operatorname{MSE}\,}
-
+\newcommand{\sign}{\operatorname{sign}}
 \newcommand{\plim}{\operatorname{plim}\,}
-\newcommand{\asim}{\overset{asy}{\sim}}
+\newcommand{\asy}{\overset{asy}{\sim}}

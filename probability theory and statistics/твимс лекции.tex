@@ -2137,6 +2137,9 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 
 \setcounter{mainex}{14}
 \setcounter{subex}{0}
+
+\setcounter{mainle}{14}
+\setcounter{suble}{0}
 \begin{center}
     \huge Распределения, связанные с нормальными
 \end{center}
@@ -2228,8 +2231,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \textit{Замечание:}
     \[\operatorname{H}_2 = \operatorname{Gamma}\,\left(1, \dfrac{1}{2}\right) = \operatorname{Exp}\left(\dfrac{1}{2}\right)\]
 }
-\renewcommand{\thletter}{Лемма Фишера}
-\theorem{
+\renewcommand{\leletter}{Фишера}
+\lemma{
     Пусть $X \sim \operatorname{N}\,(0, I),\ C^{-1} = C^T$ (ортогональная матрица $n \times n$), $Y = CX$
 
     Тогда $\forall k = 1,\dots, n$ случайная величина
@@ -3284,13 +3287,13 @@ plot (\x,{1.23/(0.5*(\x-1))});
 \defin{
     \textit{повторяет определение 9.4 из теорвера (\hyperlink{dislimflag}{сходимость по распределению})}
 }
-\renewcommand{\thletter}{}
+\renewcommand{\leletter}{}
 \lemma{
     Если $\eta_n \xrightarrow{P} c \neq 0$ и $\xi_n \xrightarrow{d} \xi$, то
     \[\eta_n \cdot \xi_n \xrightarrow{d} c\cdot \xi\]
 }
 \defin{
-    Говорят, что последовательность случайных величин $\{\xi_n\}_{n=1}^\infty$ имеет асимптотически нормальное распределение с параметрами $\mu_n$ и $\sigma_n^2$, и пишут $\xi_n \asim \operatorname{N}\left(\mu_n, \sigma_n^2\right)$, если
+    Говорят, что последовательность случайных величин $\{\xi_n\}_{n=1}^\infty$ имеет асимптотически нормальное распределение с параметрами $\mu_n$ и $\sigma_n^2$, и пишут $\xi_n \asy \operatorname{N}\left(\mu_n, \sigma_n^2\right)$, если
     \[\frac{\xi_n - \mu_n}{\sigma_n} \xrightarrow[]{d} Z \sim \operatorname{N}(0, 1)\]
 }
 \example{
@@ -3301,16 +3304,64 @@ plot (\x,{1.23/(0.5*(\x-1))});
     Тогда
     \[\frac{S_n - \mb{E}(S_n)}{\sqrt{\Var(S_n)}} \xrightarrow[]{d} Z \sim \operatorname{N}(0, 1)\]
     где $S_n = X_1 + \cdots + X_n$
-    \[\iff S_n \asim \operatorname{N}\left(\mb{E}(S_n), \Var(S_n)\right)\]
+    \[\iff S_n \asy \operatorname{N}\left(\mb{E}(S_n), \Var(S_n)\right)\]
     То же верно и для выборочного среднего
     \[\frac{\overline{X}_n - \mb{E}\left(\overline{X}_n\right)}{\sqrt{\Var\left(\overline{X}_n\right)}} = \frac{\frac{1}{n}S_n - \frac{1}{n}\mb{E}(S_n)}{\frac{1}{n}\sqrt{\Var(S_n)}} = \frac{S_n - \mb{E}(S_n)}{\sqrt{\Var(S_n)}}\]
 }
-\lemma{    
-    Пусть $X_n \asim \operatorname{N}\left(\mu, \dfrac{\sigma^2}{n}\right)$. Тогда $X_n \xrightarrow{P} \mu$
+\lemma{
+    Пусть $X_n \asy \operatorname{N}\left(\mu, \dfrac{\sigma^2}{n}\right)$. Тогда $X_n \xrightarrow{P} \mu$
 }
 \prof{
-    \[\frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} = \frac{\sqrt{n}}{\sigma}(X_n - \mu) \xrightarrow{d} Z \sim \operatorname{N}(0, 1)\]
-    Так как $\sqrt{n} \to \infty$, а $F_Z(z)$ конечна, то $X_n \xrightarrow{P} \mu$, чтобы в пределе получилось что-то конечное
-    \[P(-\varepsilon < X_n - \mu \leq \varepsilon) = P\left(-\frac{\sqrt{n}\varepsilon}{\sigma} < \frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} < \frac{\sqrt{n}\varepsilon}{\sigma}\right)\]
+    Надо показать, что $\forall \varepsilon > 0$
+    \[P(-\varepsilon < X_n - \mu \leq \varepsilon) \xrightarrow[n\to\infty]{} 1\]
+    \[P(-\varepsilon < X_n - \mu \leq \varepsilon) = P\left(-\frac{\varepsilon}{\sqrt{\frac{\sigma^2}{n}}} < \frac{X_n - \mu}{\sqrt{\frac{\sigma^2}{n}}} \leq \frac{\varepsilon}{\sqrt{\frac{\sigma^2}{n}}}\right) = P\left(-\frac{\varepsilon}{\sigma}\sqrt{n} < Z_n \leq \frac{\varepsilon}{\sigma}\sqrt{n}\right) \geq\]
+    Зафиксируем $\forall c > 0$. Тогда $\exists n_0 \in \mb{N}\ \forall n \geq n_0\ c < \dfrac{\varepsilon}{\sigma}\sqrt{n}$, поэтому
+    \[\geq P(-c < Z_n \leq c) = F_{Z_n}(c) - F_{Z_n}(-c)\]
+    Заметим, что
+    \[\liminf_{n\to\infty} P(-\varepsilon < X_n - \mu \leq \varepsilon) \geq \liminf_{n\to\infty} (F_{Z_n}(c) - F_{Z_n}(-c)) = \Phi(c) - \Phi(-c)\]
+    Перейдём к пределу при $c \to +\infty$
+    \[\lim_{c\to+\infty} (\Phi(c) - \Phi(-c)) = 1 - 0 = 0\]
+    Поэтому
+    \[\liminf_{n\to\infty}P(-\varepsilon < X_n - \mu \leq \varepsilon) \geq 1\]
+    То есть
+    \[1 \leq \liminf_{n\to\infty}P(-\varepsilon < X_n - \mu \leq \varepsilon) \leq \limsup_{n\to\infty}P(-\varepsilon < X_n - \mu \leq \varepsilon) \leq 1\]
+    Мы получили, что $P(-\varepsilon < X_n - \mu \leq \varepsilon)$ зажата между единицами, поэтому
+    \[\exists \lim_{n\to\infty} P(-\varepsilon < X_n - \mu \leq \varepsilon) = 1\]
+}
+\renewcommand{\thletter}{дельта-метод}
+\theorem{
+    Пусть выполнены следующие условия:
+    \begin{enumerate}
+        \item $\widehat{\theta}_n \asy \operatorname{N}\left(\theta, \dfrac{\sigma^2(\theta)}{n}\right)$
+        \item $\Theta\ -$ открытый интервал (возможно, бесконечный)
+        \item $g(t) \ -$ непрерывно дифференцируемая при $t \in \Theta$
+        \item $g'(t) \neq 0 \ \forall t \in \Theta$
+    \end{enumerate}
+    Тогда $g\left(\widehat{\theta}_n\right) \asy \operatorname{N}\left(g(\theta), \left(g'(\theta)\right)^2 \cdot \dfrac{\sigma^2(\theta)}{n}\right)$
+}
+Наводящее рассуждение: в окрестности точки $\theta$
+    \[g(t) \approx g(\theta) + g'(\theta)(t - \theta)\]
+    то есть
+    \[g\left(\widehat{\theta}_n\right) \approx g(\theta) + g'(\theta)\left(\widehat{\theta}_n - \theta\right)\]
+    \[\implies\frac{g(\theta) + g'(\theta)\left(\widehat{\theta}_n - \theta\right) - g(\theta)}{\sqrt{\left(g'(\theta)\right)^2 \cdot \frac{\sigma^2(\theta)}{n}}} = \sign\left(g'(\theta)\right)\frac{\widehat{\theta}_n - \theta}{\sqrt{\frac{\sigma^2(\theta)}{n}}} \xrightarrow[]{d} Z \sim \operatorname{N}\,(0, 1)\]
+    Поэтому $g\left(\widehat{\theta}_n\right) \overset{asy}{\approx} \operatorname{N}\left(g(\theta), \left(g'(\theta)\right)^2 \cdot \dfrac{\sigma^2(\theta)}{n}\right)$
+
+\prof{
+    По теореме Лагранжа существует $\xi_n \in \left(\widehat{\theta}_n - \theta\right)$ такой, что
+    \[g\left(\widehat{\theta}_n\right) - g(\theta) = g'\left(\xi_n\right)\left(\widehat{\theta}_n - \theta\right)\]
+    Из условия $\widehat{\theta}_n \asy \operatorname{N}\left(\theta, \dfrac{\sigma^2\theta}{n}\right)$ и леммы 6.2 вытекает, что
+    $\widehat{\theta}_n \xrightarrow[]{P} \theta$, то есть
+    \[\forall \delta > 0\ \lim_{n\to\infty} P\left(\left|\widehat{\theta}_n - \theta\right|\leq \delta\right) = 1\]
+    Так как $g'(t)$ непрерывна при $t = \theta$, то
+    \[\forall \varepsilon > 0\ \exists \delta > 0:\ \forall t\ |t - \theta| \leq \delta \implies \left|g'(t) - g'(\theta)\right| \leq \varepsilon\]
+    Учитывая, что $|\xi_n - \theta| \leq \left|\widehat{\theta}_n - \theta\right|$
+    \[\implies \left\{\left|\widehat{\theta}_n - \theta\right| \leq \delta\right\} \subseteq \{|\xi_n - \theta| \leq \delta\} \subseteq \left\{\left|g'(\xi_n) - g'(\theta)\right| \leq \varepsilon\right\}\]
+    Поэтому
+    \[\underbrace{P\left(\left|\widehat{\theta}_n - \theta\right| \leq \delta\right)}_{\to 1,\ \text{т.к. }\widehat{\theta}_n\xrightarrow[]{P} \theta} \leq P\left(\left|g'(\xi_n) - g'(\theta)\right| \leq \varepsilon\right) \leq 1\]
+    \[\implies P\left(\left|g'(\xi_n) - g'(\theta)\right| \leq \varepsilon\right) \xrightarrow[n\to\infty]{} 1\]
+    \[\implies g'(\xi_n) \xrightarrow[]{P} g'(\theta)\]
+    \[\implies g'(\xi_n) \cdot \frac{\widehat{\theta}_n - \theta}{\sqrt{\frac{\sigma^2(\theta)}{n}}} \xrightarrow[\text{по лемме 6.1}]{d} g'(\theta) \cdot Z \sim \operatorname{N}\left(0, \left(g'(\theta)\right)^2\right)\]
+    То есть
+    \[\frac{g\left(\widehat{\theta}_n\right) - g(\theta)}{\left(g'(\theta)\right)^2\sqrt{\frac{\sigma^2(\theta)}{n}}} = g'(\xi_n)\cdot\frac{\widehat{\theta}_n - \theta}{\left(g'(\theta)\right)^2\sqrt{\frac{\sigma^2(\theta)}{n}}} \xrightarrow[]{d} Z \sim \operatorname{N}\,(0, 1)\]
 }
 \end{document}
