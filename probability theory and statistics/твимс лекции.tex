@@ -3318,9 +3318,9 @@ plot (\x,{1.23/(0.5*(\x-1))});
     Зафиксируем $\forall c > 0$. Тогда $\exists n_0 \in \mb{N}\ \forall n \geq n_0\ c < \dfrac{\varepsilon}{\sigma}\sqrt{n}$, поэтому
     \[\geq P(-c < Z_n \leq c) = F_{Z_n}(c) - F_{Z_n}(-c)\]
     Заметим, что
-    \[\liminf_{n\to\infty} P(-\varepsilon < X_n - \mu \leq \varepsilon) \geq \liminf_{n\to\infty} (F_{Z_n}(c) - F_{Z_n}(-c)) = \Phi(c) - \Phi(-c)\]
+    \[\liminf_{n\to\infty} P(-\varepsilon < X_n - \mu \leq \varepsilon) \geq \liminf_{n\to\infty} \left(F_{Z_n}(c) - F_{Z_n}(-c)\right) = \Phi(c) - \Phi(-c)\]
     Перейдём к пределу при $c \to +\infty$
-    \[\lim_{c\to+\infty} (\Phi(c) - \Phi(-c)) = 1 - 0 = 0\]
+    \[\lim_{c\to+\infty} (\Phi(c) - \Phi(-c)) = 1 - 0 = 1\]
     Поэтому
     \[\liminf_{n\to\infty}P(-\varepsilon < X_n - \mu \leq \varepsilon) \geq 1\]
     То есть
