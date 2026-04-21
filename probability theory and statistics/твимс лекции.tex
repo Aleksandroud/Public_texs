@@ -1,5 +1,613 @@
 \input{preamble_prob}
 \begin{document}
+\begin{center}
+    \textbf{\Huge{Теория вероятности и математическая статистика}}
+    \vspace{5cm}
+
+    Конспекты лекций Коссовой Е.В. (теорвер) и Борзых Д.А. (матстат)
+
+    Факультет экономических наук, 2025/2026 гг.
+
+    \vspace{5cm}
+    Данный конспект подготовлен студентом ЭАДа Александром Благий
+    
+    Особую благодарность хочу выразить студентке ЭАДа Доможаковой Валентине, на основе её записей составлена значительная часть данного конспекта.
+
+
+\end{center}
+\setcounter{maindf}{1}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{1}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{1}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{1}
+\setcounter{subex}{0}
+\newpage
+\begin{center}
+    \huge ТЕОРИЯ ВЕРОЯТНОСТИ\\[0.5cm]
+    Множества. Операции с множествами
+\end{center}
+\defin{
+    Множеством будет называть совокупность элементов произвольной природы, объединённых некоторым признаком.
+    Таким образом, множество задаётся правилом, согласно которому мы можем определить, принадлежит ли данный элемент множеству или нет\\[1cm]
+    Обычно множества обозначают заглавными буквами, а их элементы $-$ строчными\\[0.5cm]
+    В случае, когда $\omega$ является элементом множества $\Omega$, мы говорим, что $\omega$ принадлежит множеству $\Omega$, и пишем $\omega \in \Omega$, и наоборот. Символ $\in$ называется символом принадлежности\\[0.5cm]
+
+    \textit{здесь было приведено несколько базовых примеров множеств, не будем останавливаться на них}\\[0.5cm]
+
+    В результате словесного описания может оказаться, что описываемое множество не содержит ни одного элемента. Тогда оно называется пустым и обозначается как $\varnothing$
+}
+\defin{
+    Говорят, что множество $A$ является подмножеством множества $B$, и пишут $A \subseteq B$, если 
+    
+    каждый элемент множества $A$ является элементом множества $B$. Символ $\subseteq$ называется символом включения\\[0.5cm]
+
+    \textit{Замечание: пустое множество является подмножеством любого множества}
+}
+\defin{
+    Множества $A$ и $B$ называются равными (и пишут тогда $A = B$), если каждый элемент множества $A$ является элементом множества
+    
+    $B$ и наоборот. Иначе говоря, $A = B \iff A \subseteq B$ и $B \subseteq A$
+}
+Через $\# A$ будем обозначть количество (различных) элементов множества $A$\\[1cm]
+Множество $\Omega$ можно также задать с помощью характеристического свойства, определяющего элементы $\Omega$. Запись
+\[\Omega = \{\omega: \text{ условия на } \omega\}\]
+означает, что множество $\Omega$ состоит из тех элементов, для которых выполнены условия после знака двоеточия.
+\defin{
+    Пусть задано некоторое множество $\Omega$. Тогда совокупность всех подмножеств $\Omega$ будем обозначать $2^\Omega$
+}
+\example{
+    Пусть $\Omega = \{\heartsuit, \diamondsuit, \spadesuit, \clubsuit\}$. Тогда совокупность всех подмножеств $\Omega$ есть
+    \[2^\Omega = \{\varnothing, \{\heartsuit\}, \{\diamondsuit\}, \{\spadesuit\}, \{\clubsuit\},\]
+    \[\{\heartsuit, \diamondsuit\}, \{\heartsuit, \spadesuit\}, \{\heartsuit, \clubsuit\}, \{\diamondsuit, \spadesuit\}, \{\diamondsuit, \clubsuit\} \{\spadesuit, \clubsuit\}\]
+    \[\{\heartsuit, \diamondsuit, \spadesuit\}, \{\heartsuit, \diamondsuit, \clubsuit\}, \{\heartsuit, \spadesuit, \clubsuit\},\Omega\} \]
+}
+\example{
+    Пусть $A = \{\heartsuit, \diamondsuit\},\ B = \{\{\heartsuit\}, \{\diamondsuit\}\},\ C = \{\heartsuit, \diamondsuit, \{\heartsuit\}, \{\diamondsuit\}\},\ D = \{\heartsuit, \diamondsuit, \{\heartsuit\}, \{\diamondsuit\}, \{\heartsuit, \diamondsuit\}\}$
+    Тогда
+    \begin{enumerate}
+        \item[a)] $\# A = 2$
+        \item[b)] $\# B = 2$
+        \item[c)] $\# C = 4$
+        \item[d)] $\# D = 5$
+    \end{enumerate}
+}
+\example{
+    \textit{Здесь был огромный пример на подмножества и принадлежность множеству, я его включать не буду}
+}
+\defin{
+    Пусть множество $A$ является подмножеством множества $\Omega$. Тогда дополнением к множеству $A$ называется множество $A^c = \{\omega \in \Omega: \omega \notin A\}$
+}
+\defin{
+    Объединением множеств $A$ и $B$ называется множество
+    \[A \cup B = \{\omega \in \Omega: \omega \in A \text{ или } \omega \in B\},\]
+    состоящее из элементов множества $\Omega$, которые принадлежат хотя бы одному из множеств $A$ и $B$
+}
+\defin{
+    Пересечением множеств $A$ и $B$ называется множество
+    \[A \cap B = \{\omega \in \Omega: \omega \in A \text{ и } \omega \in B\},\]
+    состоящее из элементов множества $\Omega$, которые принадлежат одноврененно обоим множествам $A$ и $B$
+}
+\defin{
+    Разностью множеств $A$ и $B$ называется множество
+    \[A \setminus B = \{\omega \in \Omega: \omega \in A \text{ и } \omega \notin B\},\]
+    состоящее из элементов множества $\Omega$, которые принадлежат множеству $A$, но не принадлежат множеству $B$
+}
+\defin{
+    Симметрической разностью множеств $A$ и $B$ называется множество
+    \[A\, \Delta\, B = (A \setminus B) \cup (B \setminus A),\]
+    Ясно, что $A\, \Delta\, B = (A \cup B) \setminus (A \cap B)$
+}
+\defin{
+    Множества $A$ и $B$ называются непересекающимися (или дизъюнктными), если они не имеют общих точек, то есть $A \cap B = \varnothing$
+}
+\defin{
+    Пусть $I\ -$ произвольное множество индексов и $A_i,\, i \in I\ -$ некоторое семейство подмножеств
+    
+    множества $\Omega$. Тогда объединением этих множеств называется множество
+    \[\bigcup_{i \in I} A_i = \{\omega \in \Omega: \exists i \in I \text{ такой, что } \omega \in A_i\}\]
+    а их пересечением $-$ множество
+    \[\bigcap_{i \in I} A_i = \{\omega \in \Omega: \forall i \in I\ \omega \in A_i\}\]
+}
+\example{
+    Докажите, что
+    \begin{enumerate}
+        \item[a)] $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
+        \item[b)] $(1, 2) = \displaystyle \bigcup_{i=1}^\infty \left[1 + \frac{1}{n}, 2 - \frac{1}{n}\right]$
+    \end{enumerate}
+
+    (а) Сначала докажем, что $[1,2] \subseteq \displaystyle \displaystyle\bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. В самом леле, для каждого $n \in \mb{N}$
+    имеет место включение $[1, 2] \subseteq \displaystyle\left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$, поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
+    
+    Теперь докажем обратное включение. Пусть $x \in \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. Тогда для каждого $n$ верно $x \in \left(1 - \dfrac{1}{n}, 2 + \dfrac{1}{n}\right)$, то есть $1 - \dfrac{1}{n} < x < 2 + \dfrac{1}{n}$. 
+    Переходя в данном неравенстве к пределу при $n \to \infty$ и учитывая, что
+    при предельном переходе строгие неравенства переходят в нестрогие, получаем
+    \[1 = \lim_{n\to\infty} \left(1 - \frac{1}{n}\right)\leq x \leq \lim_{n\to\infty} \left(2 + \frac{1}{n}\right) = 2\]
+    то есть $x \in [1, 2]$. Поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
+
+    (b) Докажем, что $(1, 2) \subseteq \displaystyle \bigcup_{i=1}^\infty \left[1 + \frac{1}{n}, 2 - \frac{1}{n}\right]$. Пусть $x \in (1, 2)$. Положим
+    $\varepsilon = \min \{x - 1, 2 - x\} > 0$. Поскольку $1 + \dfrac{1}{n} \to 1$ и $2 - \dfrac{1}{n} \to 2$ при $n \to \infty$, то найдётса такой номер $N \in \mb{N}$, что будут выполнены следующие два неравенства:
+    \[-\varepsilon < \left(1 + \frac{1}{N}\right) - 1 < \varepsilon\]
+    и
+    \[-\varepsilon < \left(2 - \frac{1}{N}\right) - 2 < \varepsilon\]
+    Из первого неравенства мы получаем
+    \[\left(1 + \frac{1}{N}\right) - 1 < \varepsilon \implies 1 + \frac{1}{N} < 1 + \varepsilon\]
+    \[\implies 1 + \frac{1}{N} < 1 + \min\{x - 1, 2 - x\} \implies 1 + \frac{1}{N} < 1 + (x - 1) = x\]
+    А из второго
+    \[\left(2 - \frac{1}{N}\right) - 2 > -\varepsilon \implies 2 - \frac{1}{N} > 2 - \varepsilon\]
+    \[2 - \frac{1}{N} > 2 - \min\{x - 1, 2 - x\} \implies 2 - \frac{1}{N} > 2 - (2 - x) = x\]
+    Таким образом, $1 + \dfrac{1}{n} < x < 2 - \dfrac{1}{N}$
+    \[\implies x \in \left[1 + \frac{1}{N}, 2 - \frac{1}{N}\right] \subseteq \bigcup_{i=1}^\infty \left[1 + \frac{1}{N}, 2 - \frac{1}{N}\right]\]
+    Обратное включение очевидно, поскольку вложение $\displaystyle \left[1 + \frac{1}{N}, 2 - \frac{1}{N}\right] \in (1, 2)$ справедливо для всех $n \in \mb{N}$
+}
+\propos{
+    Формулы де Моргана:
+    \begin{enumerate}
+        \item[a)] $A \cup B = \left(A^c \cap B^c\right)^c$
+        \item[b)] $A \cap B = \left(A^c \cup B^c\right)^c$
+        \item[c)] $\displaystyle \bigcap_{i \in I} A_i = \left(\bigcup_{i\in I} A_i^c\right)^c$
+        \item[d)] $\displaystyle \bigcup_{i \in I} A_i = \left(\bigcap_{i\in I} A_i^c\right)^c$
+    \end{enumerate}
+}
+\prof{
+    a)
+    \[\omega \in A \cup B \iff (\omega \in A \text{ или } \omega \in B) \iff (\omega \notin A \text{ и } \omega \notin B) \iff\]
+    \[\iff \omega \notin A^c \cap B^c \iff \omega \in \left(A^c \cap B^c\right)^c\]
+    b)
+    \[\omega \in A \cap B \iff (\omega \in A \text{ и } \omega \in B) \iff (\omega \notin A \text{ или } \omega \notin B) \iff\]
+    \[\iff \omega \notin A^c \cup B^c \iff \omega \in \left(A^c \cup B^c\right)^c\]
+    c)
+    \[\omega \in \bigcup_{i \in I} A_i \iff (\exists i: \omega \in A_i) \iff \left(\forall i: \omega \notin A_i^c\right) \iff\]
+    \[\iff \omega \notin \bigcap_{i\in I} A_i^c \iff \omega \in \left(\bigcap_{i \in I} A_i^c\right)^c\]
+    d)
+    \[\omega \in \bigcap_{i \in I} A_i \iff (\forall i: \omega \in A_i) \iff \left(\exists i: \omega \notin A_i^c\right) \iff\]
+    \[\iff \omega \notin \bigcup_{i\in I} A_i^c \iff \omega \in \left(\bigcup_{i \in I} A_i^c\right)^c\]
+}
+\defin{
+    Пусть задано семейство множеств $A_j,\ j \in J$, некоторого множества $\Omega$. Говорят, что
+    \begin{itemize}
+        \item множества $A_j$ попарно не пересекаются, если для любых $j_1, j_2 \in J$ таких, что $j_1 \neq j_2$, имеет место $A_{j_1} \cap A_{j_2} = \varnothing$
+        \item множества $A_j, j \in J$, не пересекаются, если $\displaystyle \bigcap_{j\in J} A_j = \varnothing$
+    \end{itemize}
+    Попарно неперескающие множества называются дизъюнктными, и для их записи используется обозначение $\displaystyle \bigsqcup_{j\in j} A_j$
+}
+\defin{
+    Прямым или декартовым произведением множеств $A$ и $B$ называется множество 
+    \[A \times B = \{(a, b): a \in A, b \in B\}\]
+}
+\example{
+    \begin{enumerate}
+        \item[a)] Пусть $A = \{1, 2\}, B = \{3, 4, 5\}$. Тогда
+        \[A \times B = \{(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5)\}\]
+        \item[b)] Пусть $A = (1, 2]$ и $B = (3, 5]$. Тогда $A \times B = (1, 2] \times (3, 5]$
+        \item[c)] Пусть $A = \mb{R}$ и $B = \mb{R}$. Тогда $A \times B = \mb{R} \times \mb{R} = \mb{R}^2$
+    \end{enumerate}
+}
+\example{
+    \textit{Аналогичен примеру 1.4, только для двумерного случая}
+
+    Докажите, что
+    \begin{enumerate}
+        \item[a)] $[1, 2] \times [3, 4] = \displaystyle \bigcap_{n=1}^\infty \left(\left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right) \times \left(3 - \frac{1}{n}, 4 + \frac{1}{n}\right)\right)$
+        \item[b)] $(1, 2) \times (3, 4) = \displaystyle \bigcup_{n=1}^\infty \left(\left[1 + \frac{1}{n}, 2 - \frac{1}{n}\right] \times \left[3 + \frac{1}{n}, 4 - \frac{1}{n}\right]\right)$
+    \end{enumerate}
+}
+\defin{
+    Пусть заданы два непустых множества $X$ и $Y$. Функция $f: X \to Y$ называется взаимно 
+    
+    однозначной (биективной), если для каждого элемента $y \in Y$ существует единственный элемент $x \in X$ такой, что $f(x) = y$
+}
+\example{
+    Убедитесь в том, что
+    \begin{enumerate}
+        \item[a)] $f: [0, +\infty) \to [0, +\infty), f(x) = x^2\ -$ взаимно однозначная
+        \item[b)] $f: [0, +\infty) \to \mb{R}, f(x) = x^2\ -$ не взаимно однозначная
+        \item[c)] $f: \mb{R} \to [0, +\infty), f(x) = x^2\ -$ не взаимно однозначная 
+    \end{enumerate}
+    \textit{очев}
+}
+\defin{
+    Множество называется конечным, если для некоторого $n \in \mb{N}$ существует биекция
+    
+    $f: A \to \{1,\dots, n\}$. При этом $n$ является числом элементов множества $A$.
+
+    В противном случае $A$ называется бесконечным.
+
+    \textit{Согласно этому определению, пустое множество является конечным, так как оно содержит $0$ элементов}
+}
+\defin{
+    Бесконечное множество $A$ называется счётным, если существует биекция $f: A \to \mb{N}$
+}
+\defin{
+    Бесконечное множество $A$ называется множеством мощности континуум (континуальным), если существует биекция $f: A \to [0, 1]$
+}
+\example{
+    Докажите, что множество целых чисел $\mb{Z}$ является счётным
+
+    Нужно предъявить биекцию $f: \mb{Z} \to \mb{N}$. Для этого можно построить следующее отображение
+    \[\begin{array}{c|c|c|c|c|c|c|c|c|c}
+        x \in \mb{Z} & \cdots & -3 & -2 & -1 & 0 & 1 & 2 & 3 & \cdots\\
+        \hline
+        f(x) & \cdots & 7 & 5 & 3 & 1 & 2 & 4 & 6 & \cdots
+    \end{array}\]
+}
+\example{
+    Докажите, что счётное объединение счётных множеств является счётным
+    
+    Пусть $A_1,\dots, A_n,\dots\ -$ семейство счётных множеств. Для каждого $i \in \mb{N}$ занумеруем элементы
+    
+    множеств $A_i$:
+    \[A_1 = \{a_{11}, a_{12}, a_{13},\dots\}\]
+    \[A_1 = \{a_{21}, a_{22}, a_{23},\dots\}\]
+    \[A_1 = \{a_{31}, a_{32}, a_{33},\dots\}\]
+    \[\vdots\]
+    Тогда их объединение имеет вид
+    \[\bigcup_{i=1}^\infty A_i = \left\{\begin{matrix}
+        a_{11}, & a_{12} & a_{13} & \cdots\\
+        a_{21}, & a_{22} & a_{23} & \cdots\\
+        a_{31}, & a_{32} & a_{33} & \cdots\\
+        \vdots & \vdots & \vdots & \ddots
+    \end{matrix}\right\}\]
+    Их можно занумеровать следующим образом
+    \begin{center}
+        \includegraphics[scale=0.5]{нумерация объединения.png}
+    \end{center}
+}
+\example{
+    Докажите, что множество рациональных чисел $\mb{Q}$ является счётным
+
+    Заметим, что при каждом фиксированном $n \in \mb{N}$ множество $\left\{\dfrac{m}{n}: m \in \mb{Z}\right\}$ является счётным 
+    
+    (из примера 1.8). Тогда, согласно примеру 1.9, множество
+    \[\mb{Q} = \bigcup_{i=1}^\infty \left\{\frac{m}{n}, m \in \mb{Z}\right\}\]
+    является счётным
+}
+\example{
+    Докажите, что отрезок $[0, 1]$ не является счётным множеством
+
+    Предположим противное: пусть точки отрезка $[0, 1]$ можно занумеровать в виде последовательности действительных чисел: $[0, 1] = \{x_1,\dots,x_n,\dots\}$. Каждое из этих чисел $x_n$
+    
+    запишем в виде бесконечной десятичной дроби. Получим
+    \[x_1 = 0.x_{11}x_{12}x_{13}\dots x_{1n}\dots\]
+    \[x_1 = 0.x_{21}x_{22}x_{23}\dots x_{2n}\dots\]
+    \[x_1 = 0.x_{31}x_{32}x_{33}\dots x_{3n}\dots\]
+    \[\vdots\]
+    Построим теперь действительное число $y = 0.y_1y_2y_3\dots y_n$, определяя его разряды $y_i$ по правилу
+    \[y_i = \begin{cases}
+        5, & x_{ii} \neq 5\\
+        6, & x_{ii} = 5
+    \end{cases}\]
+    Ясно, что $y \in [0, 1]$. При этом оно не равно ни одному из занумерованных чисел:
+    \[y \neq x_1,\text{ так как } y_1 \neq x_11\]
+    \[y \neq x_2,\text{ так как } y_2 \neq x_22\]
+    \[y \neq x_3,\text{ так как } y_1 \neq x_33\]
+    \[\vdots\]
+    Таким образом, $y$ не было занумеровано, хотя оно принадлежит отрезку, что приводит к противоречию, то есть $[0, 1]\ -$ несчётное множество
+}
+\newpage
+\setcounter{maindf}{2}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{2}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{2}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{2}
+\setcounter{subex}{0}
+
+\begin{center}
+    \huge Алгебры и сигма-алгебры множеств
+\end{center}
+
+\defin{
+    Пусть задано непустое множество $\Omega$. Система подмножеств $\mc{A}$ называется алгеброй, если для него выполнены следующие аксиомы:
+    \begin{enumerate}
+        \item[a1)] $\Omega \in \mc{A}$
+        \item[a2)] для любого $A \in \mc{A}$ имеет место $A^c \in \mc{A}$
+        \item[a3)] для любых $A_1, A_2 \in \mc{A}$ справедливо $A_1 \cup A_2 \in \mc{A}$
+    \end{enumerate}
+    При этом $\Omega$ называется единицей алгебры $\mc{A}$. Такое название объясняется тем, что если операцию пересечения воспринимать как алгебраическое умножение, то для $\Omega$ выполнено свойство, присущее алгебраической единице: $\forall A \in \mc{A}\ A \cap \Omega = A$
+}
+\example{
+    Пусть $\Omega = \{\heartsuit, \diamondsuit, \spadesuit, \clubsuit\}$.
+    
+    Какие из следующих систем подмножеств множества $\Omega$ являются алгебрами? 
+
+    \begin{enumerate}
+        \item[a)] $\mc{S}_1 = \{\varnothing, \Omega\}$;
+        \item[b)] $\mc{S}_2 = 2^\Omega \ -$ все подмножества множества $\Omega$;
+        \item[c)] $\mc{S}_3 = \{\{\heartsuit, \diamondsuit\}, \{\spadesuit, \clubsuit\}\}$;
+        \item[d)] $\mc{S}_4 = \{\varnothing, \Omega, \{\heartsuit, \diamondsuit\}\}$;
+        \item[e)] $\mc{S}_5 = \{\varnothing, \Omega, \{\heartsuit, \diamondsuit\}, \{\spadesuit, \clubsuit\}\}$.
+    \end{enumerate}
+
+    Ответ: $\mc{S}_1, \mc{S}_2, \mc{S}_5$ являются алгебрами; $\mc{S}_3$ и $\mc{S}_4$ не являются алгебрами.
+}
+\defin{
+    Пусть задано непустое множество $\Omega$. Система подмножеств $\mc{F}$ называется $\sigma$-алгеброй, если для него выполнены следующие аксиомы:
+    \begin{enumerate}
+        \item[$\sigma$1)] $\Omega \in \mc{F}$
+        \item[$\sigma$2)] для любого $A \in \mc{F}$ имеет место $A^c \in \mc{F}$
+        \item[$\sigma$3)] для любых $A_1,\dots, A_n,\ldots \in \mc{F}$ справедливо $\displaystyle\bigcup_{i=1}^\infty A_i \in \mc{F}$
+    \end{enumerate}
+    При этом $\Omega$ называется единицей $\sigma$-алгебры $\mc{F}$.
+}
+\example{
+    Пусть $\Omega = \{\heartsuit, \diamondsuit, \spadesuit, \clubsuit\}$.
+    
+    Какие из следующих систем подмножеств множества $\Omega$ являются $\sigma$-алгебрами? 
+
+    \begin{enumerate}
+        \item[a)] $\mc{S}_1 = \{\varnothing, \Omega\}$;
+        \item[b)] $\mc{S}_2 = 2^\Omega \ -$ все подмножества множества $\Omega$;
+        \item[c)] $\mc{S}_3 = \{\{\heartsuit, \diamondsuit\}, \{\spadesuit, \clubsuit\}\}$;
+        \item[d)] $\mc{S}_4 = \{\varnothing, \Omega, \{\heartsuit, \diamondsuit\}\}$;
+        \item[e)] $\mc{S}_5 = \{\varnothing, \Omega, \{\heartsuit, \diamondsuit\}, \{\spadesuit, \clubsuit\}\}$.
+    \end{enumerate}
+
+    Ответ: $\mc{S}_1, \mc{S}_2, \mc{S}_5$ являются $\sigma$-алгебрами; $\mc{S}_3$ и $\mc{S}_4$ не являются $\sigma$-алгебрами.
+}
+\example{
+    Пусть $\Omega = (0, 1]$. Рассмотрим систему подмножеств $\mc{A}$ множества $\Omega$ такую, что
+    \[\mc{A} = \left\{A \subseteq \Omega: A = \bigsqcup_{k=1}^n (a_k, b_k], n \in \mb{N}\right\} \cup \{\varnothing\}\]
+    \begin{enumerate}
+        \item[a)] Докажите, что $\mc{A}$ является алгеброй
+        
+        Аксиомы алгебры a1-a3 проверяются непосредственно
+        \item[b)] Докажите, что $\mc{A}$ не является $\sigma$-алгеброй
+        
+        Пусть $A_1 = \varnothing$ и $A_i = \left(0, 1 - \dfrac{1}{i}\right]$ при $i \geq 2$. Тогда все множества $A_i \in \mc{A}$, но при этом
+        
+        $\displaystyle\bigcup_{i=1}^\infty A_i = (0, 1) \notin \mc{A}$, то есть аксиома $\sigma$3 не выполнена, поэтому $\mc{A}\ -$ не $\sigma$-алгебра
+    \end{enumerate}
+}
+\example{
+    Пусть задано произвольное непустое множество $\Omega$. Рассмотрим две системы множеств
+    \[\mc{F}_* = \{\varnothing, \Omega\}, \quad \mc{F}^* = 2^\Omega\]
+    Легко проверить, что $\mc{F}_*$ и $\mc{F}^*$ являются $\sigma$-алгебрами. Они называются тривиальными. При этом $\mc{F}_*$ называется "самой бедной"$\ \sigma$-алгеброй, а $\mc{F}^*\ -$ "самой богатой". Отметим, что они существуют в каждом непустом множестве $\Omega$
+}
+\propos{
+    \begin{enumerate}
+        \item[i)] если $\mc{A}\ -$ алгебра подмножеств множества $\Omega$, то $\varnothing \in \mc{A}$
+        \item[ii)] если $\mc{F}\ -\ \sigma$-алгебра подмножеств множества $\Omega$, то $\varnothing \in \mc{F}$
+    \end{enumerate}
+}
+\prof{
+    Пункты i и ii доказываются одинаково. По аксиоме a1 ($\sigma$1) $\Omega \in \mc{A} \ (\mc{F})$. Значит, по аксиоме a2 ($\sigma$2) $\varnothing = \Omega^c \in \mc{A}\ (\mc{F})$
+}
+\propos{
+    Пусть $\mc{A}\ -$ алгебра подмножеств множества $\Omega$. Тогда, если $A_1, A_2 \in \mc{A}$, то
+    \begin{enumerate}
+        \item[a)] $A_1 \cap A_2 \in \mc{A}$
+        \item[b)] $A_1 \setminus A_2 \in \mc{A}$
+    \end{enumerate}
+}
+\prof{
+    a) По формуле де Моргана
+    \[A_1 \cap A_2 = \left(A_1^c \cup A_2^c\right)^c\]
+    По условию $A_1 \in \mc{A}$ и $A_2 \in \mc{A}$. Тогда по аксиоме a2 $A_1^c \in \mc{A}$ и $A_2^c \in \mc{A} \implies$ по аксиоме a3
+    
+    $A_1^c \cup A_2^c \in \mc{A}$, поэтому по аксиоме а2 $A_1 \cap A_2 = \left(A_1^c \cup A_2^c\right) \in \mc{A}$
+
+    b) По условию $A_1 \in \mc{A}$ и $A_2 \in \mc{A}$. Тогда по доказанному в пункте a) $A_1 \setminus A_2 = A_1 \cap A_2^c \in \mc{A}$ 
+}
+\propos{
+    Всякая $\sigma$-алгебра является алгеброй
+}
+\prof{
+    Пусть $\mc{F}\ -\ \sigma$-алгебра множества $\Omega$. Тогда для неё выполнены аксиомы $\sigma$1-$\sigma$3. Надо доказать,
+    
+    что для неё также выполнены аксиомы a1-a3. Аксиомы a1 и a2 не нуждаются в доказательстве, они совпадают с $\sigma$1 и $\sigma$2 соответственно 
+
+    Докажем a3. Пусть $A_1, A_2 \in \mc{F}$, а для $i \geq 3\ A_i = \varnothing$. По утверждению 2.1 ii $A_i \in \mc{F}$. Значит, по аксиоме $\sigma$3
+    \[\bigcup_{i=1}^n A_i = A_1 \cup A_2 \cup \varnothing \cup \varnothing \cup \cdots = A_1 \cup A_2 \in \mc{F}\]
+    то есть выполняется аксиома a3
+}
+\textit{Следствие 2.1: из утверждений 2.2 и 2.3 следует, что если $\mc{F}\ -\ \sigma$-алгебра и $A_1, A_2 \in \mc{F}$, то}
+\[A_1 \cup A_2 \in \mc{F} \quad A_1 \cap A_2 \in \mc{F} \quad A_1 \setminus A_2 \in \mc{F}\]
+\propos{
+    Пусть $\mc{F}\ - \ \sigma$-алгебра множества $\Omega$ и $A_1\dots, A_n, \ldots \in \mc{F}$. Тогда $\displaystyle \bigcap_{i=1}^\infty A_i \in \mc{F}$
+}
+\prof{
+    По формуле де Моргана
+    \[\bigcap_{i=1}^\infty A_i \in \mc{F} = \left(\bigcup_{i=1}^\infty A_i^c\right)^c\]
+    В силу $\sigma$2 $A_i^c \in \mc{F}$. В силу $\sigma$3 $\displaystyle \bigcup_{i=1}^\infty A_i^c \in \mc{F} \implies$ в силу $\sigma$2 $\displaystyle \bigcap_{i=1}^\infty A_i \in \mc{F} = \left(\bigcup_{i=1}^\infty A_i^c\right)^c \in \mc{F}$
+}
+\defin{
+    Система множеств $\mc{S}$ называется конечной, если она содержит конечное количество элементов (при этом сами элементы могут быть бесконечными)
+}
+\propos{
+    Любая конечная алгебра является $\sigma$-алгеброй
+}
+\prof{
+    Пусть $\mc{A} = \{B_1,\dots, B_m\}\ -$ конечная алгебра с единицей $\Omega \implies$ для неё выполнены аксиомы a1-a3. Докажем, что выполнены и аксиомы $\sigma$1-$\sigma$3. Аксиомы $\sigma$1 и $\sigma$2 не нуждаются в доказательстве, они совпадают с a1 и a2 соответственно.
+    
+    Докажем $\sigma_3$. Поскольку $\mc{A}$ конечна, то в объединении $\displaystyle \bigcup_{i=1}^\infty A_i$ встречается только конечное число попарно различных множеств. Поэтому $\exists J \subseteq \{1,\dots,m\}$ такое, что $\displaystyle \bigcup_{i=1}^\infty A_i = \bigcup_{j\in J} B_j$. Тогда, учитывая, что алгебра замкнута относительно конечных объединений, получаем, что
+    \[\bigcup_{j\in J} B_j = \bigcup_{i=1}^\infty A_i \in \mc{A}\]
+    то есть выполняется аксиома $\sigma$3
+}
+\textit{Замечание 2.1: в примере 2.1 системы $\mc{S}_1,\,\mc{S}_2,\,\mc{S}_5$ являются конечными алгебрами, поэтому по утверждению 2.5 они автоматически являются $\sigma$-алгебрами}
+\example{
+    Пусть $\Omega = \{\heartsuit, \diamondsuit, \spadesuit, \clubsuit\},\quad
+    \mc{F}_1 = \{\varnothing, \Omega, \{\heartsuit\}, \{\diamondsuit, \spadesuit, \clubsuit\}\}$, $\mc{F}_2 = \{\varnothing, \Omega, \{\heartsuit, \diamondsuit\}, \{\clubsuit\}\}$.
+    \begin{enumerate}
+    \item[(a)] Убедитесь в том, что $\mc{F}_1$ и $\mc{F}_2$ являются $\sigma$-алгебрами.
+    \item[(b)] Найдите $\mc{F}_1 \cap \mc{F}_2$.
+    \item[(c)] Является ли $\mc{F}_1 \cap \mc{F}_2$ $\sigma$-алгеброй?
+    \item[(d)] Найдите $\mc{F}_1 \cup \mc{F}_2$.
+    \item[(e)] Является ли $\mc{F}_1 \cup \mc{F}_2$ $\sigma$-алгеброй?
+    \end{enumerate}
+
+    Ответы:
+    \begin{itemize}
+    \item[(b)] $\mc{F}_1 \cap \mc{F}_2 = \{\varnothing, \Omega\}$
+
+    \item[(c)] $\mc{F}_1 \cap \mc{F}_2$ — $\sigma$-алгебра 
+    (заметим, что пересечение любого семейства $\sigma$-алгебр с одной и той же единицей 
+    является $\sigma$-алгеброй)
+
+    \item[(d)] 
+    \[
+    \mc{F}_1 \cup \mc{F}_2 =
+    \{\varnothing, \Omega, \{\heartsuit\}, \{\diamondsuit, \spadesuit, \clubsuit\},
+    \{\heartsuit, \diamondsuit\}, \{\clubsuit\}\}
+    \]
+
+    \item[(e)] $\mc{F}_1 \cup \mc{F}_2$ не является $\sigma$-алгеброй, 
+    так как, например, $\{\heartsuit\} \in \mc{F}_1 \cup \mc{F}_2$, 
+    $\{\clubsuit\} \in \mc{F}_1 \cup \mc{F}_2$, но
+    \[
+    \{\heartsuit\} \cup \{\clubsuit\} = \{\heartsuit, \clubsuit\} \notin \mc{F}_1 \cup \mc{F}_2.
+    \]
+    Более того, $\mc{F}_1 \cup \mc{F}_2$ не является даже алгеброй
+    \end{itemize}
+}
+\propos{
+    Пересечение любого семейства $\sigma$-алгебр с одной и той же единицей является $\sigma$-алгеброй
+}
+\prof{
+    Пусть $\mc{F}_j,\ j \in J\ -$ произвольное семейство $\sigma$-алгебр с одной и той же единицей $\Omega$. Требуется показать, что 
+    \[\widehat{\mc{F}} = \bigcap_{j\in J} A_j = \left\{A: \forall j\in J\ A \in \mc{F}_j\right\}\]
+    является $\sigma$-алгеброй. Проверим аксиомы $\sigma$1-$\sigma$3:
+
+    \begin{enumerate}
+        \item так как все $\mc{F}_j$ являются $\sigma$-алгебрами с единицей $\Omega$, то по аксиоме $\sigma$1 $\Omega \in\mc{F}_j \implies \Omega \in \widehat{\mc{F}}$
+        \item Пусть $A \in \widehat{\mc{F}}$. Тогда, учитывая, что все $\mc{F}_j$ являются $\sigma$-алгебрами, то по аксиоме $\sigma$2
+        
+        $A^c \in \mc{F}_j \implies A^c \in \widehat{\mc{F}}$
+
+        \item Пусть $A_1,\dots,A_n,\ldots \in \widehat{\mc{F}}$. Тогда, учитывая, что все $\mc{F}_j$ являются $\sigma$-алгебрами, то по аксиоме $\sigma$3
+        
+        $\displaystyle \bigcup_{i=1}^\infty A_i \in \mc{F}_j \implies \bigcup_{i=1}^\infty A_i \in \widehat{\mc{F}}$
+    \end{enumerate}
+    Все три аксиомы выполнены $\implies \mc{F}\ -\ \sigma$-алгебра
+}
+\defin{
+    Пусть задано непустое множество $\Omega$ и $\mc{S}\ -$ некоторая непустая система подмножеств $\Omega$. Минимальной $\sigma$-алгеброй, содержащей систему множеств $\mc{S}$, называется такая $\sigma$-алгебра $\sigma(\mc{S})$, что
+    \begin{enumerate}
+        \item $\mc{S} \subseteq \sigma(\mc{S})$
+        \item для любой $\sigma$-алгебры $\mc{G}$, содержащей $\mc{S}$, справедливо также $\sigma(\mc{S}) \subseteq \mc{G}$
+    \end{enumerate}
+    В таком случае $\sigma(\mc{S})$ также называется $\sigma$-алгеброй, порождённой системой множеств $\mc{S}$
+}
+\propos{
+    Пусть задано непустое множество $\Omega$. Докажите, что для любой непустой системы $\mc{S}$ подмножеств $\Omega$ существует минимальная $\sigma$-алгебра $\sigma(\mc{S})$, содержащая $\mc{S}$
+}
+\prof{
+    Пусть $\{\mc{F}_j\}_{j\in J}\ -$ совокупность всех $\sigma$-алгебр подмножеств $\Omega$, содержащих $\mc{S}$ (она непуста, так как содержит $\sigma$-алгебру $2^\Omega$)
+
+    Положим $\widehat{\mc{F}} = \displaystyle \bigcap_{j\in J} \mc{F}_j$. По утверждению 2.6 эта система является $\sigma$-алгеброй.
+    
+    Так как $\forall j \in J\ \mc{S} \subseteq \mc{F}_j$, то $S \subseteq \widehat{\mc{F}}$, то есть такая $\sigma$-алгебра существует
+
+    Наконец, докажем минимальность $\widehat{\mc{F}}$. Пусть $\mc{G}\ -$ произвольная $\sigma$-алгебра подмножеств $\Omega$, содержащая $\mc{S}$. Но тогда $\mc{G} \in \{\mc{F}_j\}_{j \in J}$ по построению $\implies \exists j_0 \in J \ F_{j_0} = \mc{G}$, поэтому $\widehat{\mc{F}} = \displaystyle \bigcap_{j\in J}\mc{F}_j \subseteq \mc{G}$, то есть $\widehat{\mc{F}}$ минимальна
+}
+\example{
+    Пусть $\Omega = \{\heartsuit, \diamondsuit, \spadesuit, \clubsuit\}, \quad
+    \mc{S} = \{\{\heartsuit\}, \{\diamondsuit\}\}$. Найдите минимальную $\sigma$-алгебру $\sigma(\mc{S})$, содержащую 
+    
+    систему $\mc{S}$.
+
+    Обозначим $D_1 = \{\heartsuit\}, D_2 = \{\diamondsuit\}$. По условию $D_1, D_2 \in \sigma(\mc{S})$. В силу следствия 2.1 имеем:
+    \begin{itemize}
+        \item $D_3 = \{\spadesuit, \clubsuit\} = \Omega \setminus (D_1 \cup D_2) \in \sigma(\mc{S});$
+        \item $\{\heartsuit, \diamondsuit\} = D_1 \cup D_2 \in \sigma(\mc{S});$
+        \item $\{\heartsuit, \spadesuit, \clubsuit\} = D_1 \cup D_3 \in \sigma(\mc{S});$
+        \item $\{\diamondsuit, \spadesuit, \clubsuit\} = D_2 \cup D_3 \in \sigma(\mc{S}).$
+    \end{itemize}
+
+    Кроме того, $\Omega = D_1 \cup D_2 \cup D_3 \in \sigma(\mc{S})$. Поскольку $\sigma(\mc{S})\ -$ это $\sigma$-алгебра, то $\varnothing \in \sigma(\mc{S})$.
+
+    Таким образом, мы получили, что
+    \[\mc{F}_0 = \{
+    \{\heartsuit\}, \{\diamondsuit\}, \{\spadesuit, \clubsuit\},
+    \{\heartsuit, \diamondsuit\},
+    \{\heartsuit, \spadesuit, \clubsuit\},
+    \{\diamondsuit, \spadesuit, \clubsuit\},
+    \Omega, \varnothing
+    \} \subseteq \sigma(\mc{S}).\]
+
+    Заметим, что система множеств $\mc{F}_0$ является $\sigma$-алгеброй и при этом $\mc{S} \subset \mc{F}_0$.
+    Тогда, учитывая, что $\mc{F}_0\ -$ это некоторая $\sigma$-алгебра, содержащая систему $\mc{S}$, 
+    а $\sigma(\mc{S})$ — это минимальная $\sigma$-алгебра, содержащая систему $\mc{S}$, получаем, что
+    \[
+    \sigma(\mc{S}) \subseteq \mc{F}_0.
+    \]
+
+    Из включений получаем:
+    \[
+    \sigma(\mc{S}) = \mc{F}_0 =
+    \{
+    \{\heartsuit\}, \{\diamondsuit\}, \{\spadesuit, \clubsuit\},
+    \{\heartsuit, \diamondsuit\},
+    \{\heartsuit, \spadesuit, \clubsuit\},
+    \{\diamondsuit, \spadesuit, \clubsuit\},
+    \Omega, \varnothing
+    \}.
+    \]
+
+    Данная $\sigma$-алгебра состоит из восьми элементов.
+}
+\defin{
+    Минимальная $\sigma$-алгебра, содержащая все полуинтервалы вида $(a, b] \subseteq \mb{R}$, $-\infty < a < b < \infty$, 
+    
+    называется борелевской $\sigma$-алгеброй на $\mb{R}$ и обозначается как $\mc{B}(\mb{R})$. Элементы борелевской $\sigma$-алгебры называются борелевскими множествами в $\mb{R}$
+}
+\example{
+    Пусть $-\infty < a \leq b < \infty$. Докажите, что следующие множества являются борелевскими
+    \begin{enumerate}
+        \item[a)] $\mb{R}$
+        \item[b)] $\varnothing$
+        \item[c)] $(a, b]$
+        \item[d)] $\{b\}$
+        \item[e)] $(a, b)$
+        \item[f)] $[a, b)$
+        \item[g)] $[a, b]$
+        \item[h)] $(a, \infty)$
+        \item[i)] $[a, \infty)$
+        \item[j)] $(-\infty, b]$
+        \item[k)] $(-\infty, b)$
+        \item[l)] любое конечное множество $\{b_1,\dots, b_n\}$
+        \item[m)] любое счётное множество $\{b_1,\dots, b_n, \ldots\}$
+        \item[n)] $\mb{Q}$
+        \item[o)] $\mb{R} \setminus \mb{Q}$
+    \end{enumerate}
+    \textit{данный пример разбирался на семинарах, поэтому тут его не будет}
+}
+\propos{
+    Пусть $\mc{F}\ -$ $\sigma$-алгебра подмнодеств множества $\Omega$ и $B \subseteq \Omega$, причём $B$ необязательно принадлежит $\mc{F}$. Рассмотрим совокупность множеств $\mc{F}\big|_{B} = \{A \cap B: A \in \mc{F}\}$, которая называется следом $\mc{F}$ на множестве $B$. Тогда $\mc{F}\big|_B$ является $\sigma$-алгеброй с единицей $B$
+}
+\prof{
+    Прежде всего отметим, что если $C \in \mc{F}\big|_B$, то $C = A \cap B,\ A \in \mc{F}$, откуда следует, что $C \subseteq B \implies C \cap B = C$, то есть $B$ является единицей множества $\mc{F}\big|_B$. Значит, для системы $\mc{F}\big|_B$ множество $B$ выступает в роли $\Omega \implies$ дополнением к $C \in \mc{F}\big|_B$ является множество $B \setminus C$. Теперь проверим справедливость аксиом $\sigma$1-$\sigma$3
+    \begin{enumerate}
+        \item $B \in \mc{F}\big|_B$, так как $B \cap \Omega = B$ и $\Omega \in \mc{F}$
+        \item Пусть $C \in \mc{F}\big|_B$, то есть $C = A \cap B,\ A \in \mc{F}$. Тогда
+        \[B \setminus C = B \setminus (A \cap B) = B  \setminus A = B \cap (\Omega \setminus A) = \underbrace{(\Omega \setminus A)}_{\in \mc{F} \text{ по $\sigma$2}} \cap B \in \mc{F}\big|_B\]
+        \item Пусть $C_1\dots,C_n,\ldots \in \mc{F}\big|_B$, то есть $\forall i \in \mb{N}\ \exists A_i \in \mc{F}\ C_i = A_i \cap B$. Тогда
+        \[\bigcup_{i=1}^\infty C_i = \bigcup_{i=1}^\infty (A_i \cap B) = \underbrace{\left(\bigcup_{i=1}^\infty A_i\right)}_{\in \mc{F} \text{ по $\sigma$3}} \cap B \in \mc{F}\big|_B\]
+    \end{enumerate} 
+}
+\defin{
+    Пусть задано непустое множество $B \in \mc{B}(\mb{R})$. Борелевской $\sigma$-алгеброй на множестве $D$
+    
+    называется след $\mc{B}(\mb{R})$ на множестве $D$. Обозначается она как $\mc{B}(D)$. Таким образом
+    \[\mc{B}(D) = \mc{B}(\mb{R})\big|_D = \{C \cap D: C \in \mc{B}(\mb{R})\}\]
+    \textit{Замечание 2.2: по утверждению 2.8 $\mc{B}(D)$ является $\sigma$-алгеброй}
+}
+\example{
+    Пусть $D \in \mc{B}(\mb{R})$. Докажите, что $B \in \mc{B}(D) \iff B \in \mc{B}(\mb{R})$ и $B \subseteq D$
+    
+    $(\implies)$ Пусть $B \in \mc{B}(D)$. Тогда, так как $\mc{B}(D) = \{C \cap D: C \in \mc{B}(\mb{R})\}$, то $B$ представимо в виде $B = C \cap D,\ C \in \mc{B}(\mb{R})$. Значит, $B = \underbrace{C}_{\in\mc{B}(\mb{R})} \cap \underbrace{D}_{\in\mc{B}(\mb{R})} \cap \mc{B}(\mb{R})$ и $B = C \cap D \subseteq D$
+
+    $(\impliedby)$ Пусть теперь $B \in \mc{B}(\mb{R})$ и $B \subseteq D$. Тогда, так как $B = \underbrace{B}_{\in\mc{B}(\mb{R})} \cap D$, то $B \in \mc{B}(D)$
+}
+\newpage
 \setcounter{maindf}{3}
 \setcounter{subdf}{0}
 
@@ -11,23 +619,6 @@
 
 \setcounter{mainex}{3}
 \setcounter{subex}{0}
-\begin{center}
-    \textbf{\Huge{Теория вероятности и математическая статистика}}
-    \vspace{5cm}
-
-    Конспекты лекций Коссовой Е.В. (теорвер) и Борзых Д.А. (матстат)
-
-    Факультет экономических наук, 2025/2026 гг.
-
-    \vspace{5cm}
-
-    Особую благодарность хочу выразить студентке ЭАДа Доможаковой Валентине, на основе её записей составлена значительная часть данного конспекта.
-
-    \vspace{10cm}
-    \textit{Примечание: данные конспекты начинаются примерно с октября 2025 года, за материалом до этого времени обращайтесь к конспектам Д.А. Борзых}
-
-\end{center}
-\newpage
 \begin{center}
     \huge{Вероятностная мера}
 \end{center}
@@ -1900,12 +2491,14 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \end{pmatrix}\ -$ единичная матрица
     \\
     \\
-    Тогда случайный вектор $\xi$ (в $\mb{R}^k$) имеет многомерное нормальное распределение, если $\xi = Az + b$, где $z = (z_1,\dots,z_n)^T \sim \operatorname{N}\,(0, I),\ A\ -$ матрица полного ранга (то есть $\operatorname{rk} A = k$), \\$b \in \mb{R}^k$
+    Тогда случайный вектор $\xi$ (в $\mb{R}^k$) имеет многомерное нормальное распределение, если $\xi = AZ + b$, где $Z = (Z_1,\dots,Z_n)^T \sim \operatorname{N}\,(0, I),\ A\ -$ матрица полного ранга (то есть $\operatorname{rk} A = \min\{n, k\}$), \\$b \in \mb{R}^k$
 
-    \textit{Замечание: $\mb{E}(\xi) = b,\ \cov \xi = A\cdot \cov z\cdot A^T = AA^T$}
+    \textit{Замечание: $\mb{E}(\xi) = b,\ \cov \xi = A\cdot \cov Z\cdot A^T = AA^T$}
 }
 \defin{
-    Случайная величина $\xi \sim \operatorname{N}\,(0, C)$, если $\forall a_1,\dots,a_n \in \mb{R} \implies \eta = a_1\xi_1 + \cdots + a_n\xi_n$ имеет либо нормальное, либо вырожденное распределение $(\eta \sim \operatorname{N}\,(0, a^TCa))$
+    Случайная величина $\xi \sim \operatorname{N}\,(0, C)$, если $\forall a_1,\dots,a_n \in \mb{R} \implies \eta = a_1\xi_1 + \cdots + a_n\xi_n$ имеет либо
+    
+    нормальное, либо вырожденное распределение $(\eta \sim \operatorname{N}\,(0, a^TCa))$
 }
 \propos{
     Свойства многомерного нормального распределения:
@@ -2348,6 +2941,10 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \setcounter{subta}{0}
 \begin{center}
     \Huge МАТЕМАТИЧЕСКАЯ СТАТИСТИКА
+
+    Введение. Основные понятия. 
+
+    Случайная выборка и её основные характеристики
 \end{center}
 \textit{Наконец-то из небытия вышел Дмитрий Александрович}
 
@@ -3364,4 +3961,133 @@ plot (\x,{1.23/(0.5*(\x-1))});
     То есть
     \[\frac{g\left(\widehat{\theta}_n\right) - g(\theta)}{\left(g'(\theta)\right)^2\sqrt{\frac{\sigma^2(\theta)}{n}}} = g'(\xi_n)\cdot\frac{\widehat{\theta}_n - \theta}{\left(g'(\theta)\right)^2\sqrt{\frac{\sigma^2(\theta)}{n}}} \xrightarrow[]{d} Z \sim \operatorname{N}\,(0, 1)\]
 }
+\example{
+    $X\ -$ случайная выборка, $X_i \sim \Poi(\lambda),\ \lambda > 0$
+    \begin{enumerate}
+        \item[a)] С помощью ЦПТ покажите, что
+        \[\overline{X}_n \asy \operatorname{N}\left(\lambda, \frac{\lambda}{n}\right)\]
+        \[\mb{E}\left(\overline{X}_n\right) =  \mb{E}(X_i)= \lambda\]
+        \[\Var\left(\overline{X}_n\right) = \frac{\Var(X_i)}{n} = \frac{\lambda}{n}\]
+        \[\implies \frac{\overline{X}_n - \mb{E}\left(\overline{X}_n\right)}{\sqrt{\Var\left(\overline{X}_n\right)}} = \frac{\overline{X}_n - \lambda}{\sqrt{\frac{\lambda}{n}}} \xrightarrow{d} \operatorname{N}(0, 1)\]
+        \item[b)] используя пункт a докажите, что
+        \[\overline{X}_n \asy \operatorname{N}\left(\lambda, \dfrac{\overline{X}_n}{n}\right)\]
+        \[\frac{\overline{X}_n - \lambda}{\sqrt{\frac{\overline{X}_n}{n}}} = \frac{\overline{X}_n - \lambda}{\sqrt{\frac{\lambda}{n}}} \cdot \frac{\sqrt{\frac{\lambda}{n}}}{\sqrt{\frac{\overline{X}_n}{n}}} = \underbrace{\frac{\overline{X}_n - \lambda}{\sqrt{\frac{\lambda}{n}}}}_{\xrightarrow{d} Z \sim \operatorname{N}\,(0, 1)} \cdot \underbrace{\sqrt{\frac{\lambda}{\overline{X}_n}}}_{\xrightarrow{P} 1} \xrightarrow[\text{по лемме 6.1}]{d} Z \sim \operatorname{N}\,(0,1)\]
+        Рассмотрим $g(x) = \dfrac{\lambda}{x},\ x > 0\ -$ непрерывную функцию $\implies$ непрерывную в точке $x \lambda$
+
+        Тогда по ЗБЧ $\overline{X}_n \xrightarrow{P} \mb{E}(X_i) = \lambda \implies$ по теореме Слуцкого
+        \[\sqrt{\frac{\lambda}{\overline{X}_n}} = g\left(\overline{X}_n\right) \xrightarrow{P} g(\lambda) = \sqrt{\frac{\lambda}{\lambda}} = 1\]
+        \item[c)] С помощью дельта-метода покажите, что
+        \[e^{-\overline{X}_n} \asy \operatorname{N}\left(e^{-\lambda}, e^{-2\lambda} \cdot \frac{\lambda}{n}\right)\]
+        1) $\overline{X}_n = \widehat{\theta} \asy \operatorname{N}\left(\theta = \lambda, \dfrac{\sigma^2(\theta)}{n} = \dfrac{\lambda}{n}\right)$
+
+        2) $\Theta = \{\lambda: \lambda > 0\ = (0, \infty)\} -$ открытый интервал (луч)
+
+        3) $g(t) = e^{-t}\ -$ непрерывно дифференцируемая
+
+        4) $g'(t) = -e^{-t} \neq 0,\ \forall t \in \Theta$ 
+        
+        Тогда по теореме 6.1
+        \[e^{-\overline{X}_n} = g\left(\widehat{\theta}_n\right) \asy \operatorname{N}\left(g(\theta) = e^{-\lambda}, \left(g'(\theta)\right)^2 \cdot \frac{\sigma^2(\theta)}{n} = e^{-2\lambda} \cdot \frac{\lambda}{n}\right)\]
+        \item[d)] используя пункт c докажите, что
+        \[e^{-\overline{X}_n} \asy \operatorname{N}\left(e^{-\lambda}, e^{-2\overline{X}_n} \cdot \frac{\overline{X}_n}{n}\right)\]
+        \[\frac{e^{-\overline{X}_n} - e^{-\lambda}}{\sqrt{e^{-2\overline{X}_n} \cdot \frac{\overline{X}_n}{n}}} = \frac{e^{-\overline{X}_n} - e^{-\lambda}}{\sqrt{e^{-2\lambda}\cdot\frac{\lambda}{n}}} \cdot \frac{\sqrt{e^{-2\lambda}\cdot\frac{\lambda}{n}}}{\sqrt{e^{-2\overline{X}_n}\cdot\frac{\overline{X}_n}{n}}} = \underbrace{\frac{e^{-\overline{X}_n} - e^{-\lambda}}{\sqrt{e^{-2\lambda}\frac{\lambda}{n}}}}_{\xrightarrow{d} Z \sim \operatorname{N}\,(0, 1)} \cdot \underbrace{\sqrt{\frac{e^{-2\lambda}\cdot\lambda}{e^{-2\overline{X}_n}\overline{X}_n}}}_{\xrightarrow{P} 1} \xrightarrow[\text{по лемме 6.1}]{d} Z \sim \operatorname{N}\,(0,1)\]
+
+    \end{enumerate}
+}
+\setcounter{maindf}{7}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{7}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{7}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{7}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{7}
+\setcounter{subta}{0}
+
+\setcounter{mainle}{7}
+\setcounter{suble}{0}
+\newpage
+\begin{center}
+    \huge Асимптотические свойства метода моментов
+\end{center}
+\begin{center}
+    Состоятельность и асимтотическая нормальность выборочных моментов
+\end{center}
+\propos{
+    Пусть $X\ -$ случайная выборка с конечным $k-$м начальным моментом $\mu_k = \mb{E}\left(X_i^k\right)$. Тогда
+    
+    последовательность выборочных моментов $\widehat{\mu}_{kn} = \dfrac{1}{n}\sum_{i=1}^{n}X_i^k$ состоятельна
+}
+\prof{
+    По ЗБЧ:
+    \[\widehat{\mu}_{kn} = \frac{1}{n}\sum_{i=1}^{n} X_i^k \xrightarrow{P} \mb{E}\left(x_i^k\right) = \mu_k\]
+}
+\propos{
+    Пусть $X\ -$ случайная выборка с конечным $2k$-м начальным моментом $\mu_{2k}$. Тогда последовательность выборочных моментов $\widehat{\mu}_{kn} \asy \operatorname{N}\left( \mu_k, \dfrac{\mu_{2k} - \mu_k^2}{n}\right)$
+}
+\prof{
+    \[\mb{E}\left(\widehat{\mu}_{kn}\right) = \frac{1}{n}\sum_{i=1}^{n}\mb{E}\left(X_i^k\right) = \mu_k\]
+    \[\Var\left(X_i\right) = \mb{E}\left(X_i^{2k}\right) - \mb{E}^2\left(X_i^k\right) = \mu_{2k} - \mu_k^2\]
+    \[\implies \Var\left(\widehat{\mu}_{kn}\right) = \frac{1}{n^2}\sum_{i=1}^{n} \Var\left(X_i^k\right) = \frac{\mu_{2k} - \mu_k^2}{n}\]
+    Тогда по ЦПТ:
+    \[\frac{\widehat{\mu}_{kn} - \mu_k}{\sqrt{\frac{\mu_{2k} - \mu_k^2}{n}}} \xrightarrow{d} \operatorname{N}\left(0, 1\right)\]
+}
+\begin{center}
+    Состоятельность и асимптотическая нормальность оценок по методу моментов 
+    
+    (в случае одномерного параметра)
+\end{center}
+Нам надо оценить параметр $\theta \in \Theta$
+
+$\Theta \subseteq \mb{R}\ -$ открытый интервал (возможно, бесконечный)
+
+Допустим, мы выбрали теоретический момент $m = \varphi(\theta)$
+
+Предположим, что это уравнение задаёт биективное отображение $\varphi: \Theta \to M,\ m = \varphi(\theta)$, где
+
+$M\ -$ некоторый открытый интервал в $\mb{R}$. Это означает, что $\forall m \in M$ уравнение имеет единственное решение $\theta = \psi(m)$. Предположим, что $\psi(m)$ непрерывна.
+
+Если в уравнении вместо $m$ мы подставим выборочный момент $\widehat{m}_n$, то мы получим моментное тождество $\widehat{m}_n = \varphi(\theta)$, решив которое относительно $\theta$, получим оцнеку параметра $\theta$ по методу моментов
+
+$\widehat{\theta}_n = \psi\left(\widehat{m}_n\right)$
+
+В силу утверждения 7.1 $\widehat{m} = \widehat{\mu}_{kn}$ является состоятельной оценкой для теоретического момента $m = \mu_{k}$
+
+Тогда по теореме Слуцкого
+\[\widehat{\theta} = \psi\left(\widehat{m}_n\right)\psi\left(\widehat{\mu}_{kn}\right) \xrightarrow{P} \psi(\mu_k) = \psi(m) = \theta\]
+$\implies \widehat{\theta}_n$ состоятельна
+
+В силу утверждения 7.2 $\widehat{m}_n = \widehat{\mu}_{kn} \asy \operatorname{N} \left(\mu_k, \dfrac{\mu_{2k} - \mu_k^2}{n}\right)$
+
+Предположим, что функция $\psi(m)$ непрерывно дифференцируемая на $M$ и $\psi'(m) \neq 0,\ m \in M$. Тогда
+
+по теореме 6.1
+\[\widehat{\theta}_n = \psi\left(\widehat{m}_n\right) = \psi\left(\widehat{\mu}_{kn}\right) \asy \operatorname{N}\left(\underbrace{\psi(\mu_k)}_{=\psi(m) = \theta}, \left(\psi'(\mu_k)\right)^2 \cdot \frac{\mu_{2k} - \mu_k^2}{n}\right)\]
+\textit{Похожие соображения справедливы для больших размерностей векторов параметров}
+\setcounter{maindf}{8}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{8}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{8}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{8}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{8}
+\setcounter{subta}{0}
+
+\setcounter{mainle}{8}
+\setcounter{suble}{0}
+\newpage
+\begin{center}
+    \huge Асимптотические свойства метода максимального правдоподобия
+\end{center}
 \end{document}

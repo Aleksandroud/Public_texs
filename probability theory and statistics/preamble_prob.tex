@@ -71,15 +71,21 @@
 
 % Определяем стили блоков
 \usepackage{xcolor}
-
+% myrose = #FFB5C1
+% myred = #FF6464
+% mybrown = #D2B48C
+% mycyan = #87CEEB
+% myorange = #FFB000
+% mypurple = #D8BFD8
+% mygreen = #14DE14
 % --- Однострочное создание блоков \problem, \solution, \answer ---
-\definecolor{myrose}{RGB}{255,182,193} % Розовый
-\definecolor{myred}{RGB}{255,100,100} % Красный
-\definecolor{mybrown}{RGB}{210,180,140} % Светло-коричневый
-\definecolor{mycyan}{RGB}{135,206,235}  % Голубой
-\definecolor{myorange}{RGB}{255,165,0}   % Оранжевый
-\definecolor{mypurple}{RGB}{216,191,216} % Светло-фиолетовый
-\definecolor{mygreen}{RGB}{20,220,20}
+\definecolor{myrose}{HTML}{FFB5C1} % Розовый
+\definecolor{myred}{HTML}{FF6464} % Красный
+\definecolor{mybrown}{HTML}{D2B48C} % Светло-коричневый
+\definecolor{mycyan}{HTML}{87CEEB}  % Голубой
+\definecolor{myorange}{HTML}{FFB000}   % Оранжевый
+\definecolor{mypurple}{HTML}{D8BFD8} % Светло-фиолетовый
+\definecolor{mygreen}{HTML}{14DE14} % mygreen
 \newcommand{\thletter}{}
 
 \newcommand{\thtitle}{
@@ -218,8 +224,8 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.3mm} % Толщина линии в колонтитулах
 
-\rhead{Теория вероятностей и математическая статистика}
-\lhead{Благий Александр}
+\rhead{Теория вероятности и математическая статистика}
+\lhead{ФЭН ВШЭ, 2025-2026}
 \headsep=25pt
 \footskip=15mm
 \textheight=700pt
@@ -233,9 +239,10 @@
 \usepackage{cancel}                 % Зачёркивание в формулах
 \usepackage{diagbox}
 \usepackage[unicode, colorlinks, urlcolor=darkblue, linkcolor=violet]{hyperref}
+\usetikzlibrary{matrix}
 % Замены часто употребляемых шрифтов
-\newcommand{\mb}[1]{\mathbb{#1}\,}
-\newcommand{\mc}[1]{\mathcal{#1}\,}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\ms}[1]{\mathscr{#1}\,}
 
 \newcommand{\cov}{\operatorname{cov}\,}
