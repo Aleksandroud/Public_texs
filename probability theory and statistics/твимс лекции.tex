@@ -4042,33 +4042,78 @@ plot (\x,{1.23/(0.5*(\x-1))});
     
     (в случае одномерного параметра)
 \end{center}
-Нам надо оценить параметр $\theta \in \Theta$
+\prof{
+    Нам надо оценить параметр $\theta \in \Theta$
 
-$\Theta \subseteq \mb{R}\ -$ открытый интервал (возможно, бесконечный)
+    $\Theta \subseteq \mb{R}\ -$ открытый интервал (возможно, бесконечный)
 
-Допустим, мы выбрали теоретический момент $m = \varphi(\theta)$
+    Допустим, мы выбрали теоретический момент $m = \varphi(\theta)$
 
-Предположим, что это уравнение задаёт биективное отображение $\varphi: \Theta \to M,\ m = \varphi(\theta)$, где
+    Предположим, что это уравнение задаёт биективное отображение $\varphi: \Theta \to M,\ m = \varphi(\theta)$, где
 
-$M\ -$ некоторый открытый интервал в $\mb{R}$. Это означает, что $\forall m \in M$ уравнение имеет единственное решение $\theta = \psi(m)$. Предположим, что $\psi(m)$ непрерывна.
+    $M\ -$ некоторый открытый интервал в $\mb{R}$. Это означает, что $\forall m \in M$ уравнение имеет
+    
+    единственное решение $\theta = \psi(m)$. Предположим, что $\psi(m)$ непрерывна.
 
-Если в уравнении вместо $m$ мы подставим выборочный момент $\widehat{m}_n$, то мы получим моментное тождество $\widehat{m}_n = \varphi(\theta)$, решив которое относительно $\theta$, получим оцнеку параметра $\theta$ по методу моментов
+    Если в уравнении вместо $m$ мы подставим выборочный момент $\widehat{m}_n$, то мы получим моментное тождество $\widehat{m}_n = \varphi(\theta)$, решив которое относительно $\theta$, получим оцнеку параметра $\theta$ по методу моментов
 
-$\widehat{\theta}_n = \psi\left(\widehat{m}_n\right)$
+    $\widehat{\theta}_n = \psi\left(\widehat{m}_n\right)$
 
-В силу утверждения 7.1 $\widehat{m} = \widehat{\mu}_{kn}$ является состоятельной оценкой для теоретического момента $m = \mu_{k}$
+    В силу утверждения 7.1 $\widehat{m} = \widehat{\mu}_{kn}$ является состоятельной оценкой для теоретического момента $m = \mu_{k}$
 
-Тогда по теореме Слуцкого
-\[\widehat{\theta} = \psi\left(\widehat{m}_n\right)\psi\left(\widehat{\mu}_{kn}\right) \xrightarrow{P} \psi(\mu_k) = \psi(m) = \theta\]
-$\implies \widehat{\theta}_n$ состоятельна
+    Тогда по теореме Слуцкого
+    \[\widehat{\theta} = \psi\left(\widehat{m}_n\right)\psi\left(\widehat{\mu}_{kn}\right) \xrightarrow{P} \psi(\mu_k) = \psi(m) = \theta\]
+    $\implies \widehat{\theta}_n$ состоятельна
 
-В силу утверждения 7.2 $\widehat{m}_n = \widehat{\mu}_{kn} \asy \operatorname{N} \left(\mu_k, \dfrac{\mu_{2k} - \mu_k^2}{n}\right)$
+    В силу утверждения 7.2 $\widehat{m}_n = \widehat{\mu}_{kn} \asy \operatorname{N} \left(\mu_k, \dfrac{\mu_{2k} - \mu_k^2}{n}\right)$
 
-Предположим, что функция $\psi(m)$ непрерывно дифференцируемая на $M$ и $\psi'(m) \neq 0,\ m \in M$. Тогда
+    Предположим, что функция $\psi(m)$ непрерывно дифференцируемая на $M$ и $\psi'(m) \neq 0,\ m \in M$. Тогда
 
-по теореме 6.1
-\[\widehat{\theta}_n = \psi\left(\widehat{m}_n\right) = \psi\left(\widehat{\mu}_{kn}\right) \asy \operatorname{N}\left(\underbrace{\psi(\mu_k)}_{=\psi(m) = \theta}, \left(\psi'(\mu_k)\right)^2 \cdot \frac{\mu_{2k} - \mu_k^2}{n}\right)\]
-\textit{Похожие соображения справедливы для больших размерностей векторов параметров}
+    по теореме 6.1
+    \[\widehat{\theta}_n = \psi\left(\widehat{m}_n\right) = \psi\left(\widehat{\mu}_{kn}\right) \asy \operatorname{N}\left(\underbrace{\psi(\mu_k)}_{=\psi(m) = \theta}, \left(\psi'(\mu_k)\right)^2 \cdot \frac{\mu_{2k} - \mu_k^2}{n}\right)\]
+    \vspace{2cm}
+}
+\begin{center}
+    Состоятельность и асимптотическая нормальность оценок по методу моментов в случае двумерного параметра
+\end{center}
+\prof{
+    Нам надо найти вектор $\theta = (\theta_1, \theta_2) \in \Theta \subseteq \mb{R}^2$
+
+    Мы выбрали два теоретических момента $m_1 = \varphi_1(\theta_1, \theta_2)$ и $m_1 = \varphi_2(\theta_1, \theta_2)$ и составили систему
+    \[\begin{cases}
+        m_1 = \varphi_1(\theta_1, \theta_2)\\
+        m_2 = \varphi_2(\theta_1, \theta_2)
+    \end{cases}\]
+    Предположим, что эта система задаёт биективное отображение $\varphi: \Theta \to M$, $(m_1, m_2) = \varphi(\varphi_1, \varphi_2) = \\
+    = \left(\varphi_1(\theta_1, \theta_2), \varphi_2(\theta_1, \theta_2)\right),\ M \subseteq \mb{R}^2$
+
+    Это означает, что $\forall (m_1, m_2) \in M$ система имеет решение
+    \[\begin{cases}
+        \theta_1 = \psi_1(m_1, m_2)\\
+        \theta_2 = \psi_2(m_1, m_2)
+    \end{cases}\]
+    Предположим, что функции $\psi_1$ и $\psi_2$ непрерывны.
+
+    Если в исходной системе вместо $m_1$ и $m_2$ мы подставим соответствующие выборочные моменты $\widehat{m}_1$ и $\widehat{m}_2$, то мы придём к системе моментных тождеств
+    \[\begin{cases}
+        \widehat{m}_1 = \varphi(\theta_1, \theta_2)\\
+        \widehat{m}_2 = \varphi(\theta_1, \theta_2)\\
+    \end{cases}\]
+    решив которое относительно $\theta_1$ и $\theta_2$, получим оценки параметров $\widehat{\theta}_1$ и $\widehat{\theta}_2$ по методу моментов
+    \[\begin{cases}
+        \widehat{\theta}_{1n} = \psi_1\left(\widehat{m}_1, \widehat{m}_2\right)
+        \widehat{\theta}_{2n} = \psi_2\left(\widehat{m}_1, \widehat{m}_2\right)
+    \end{cases}\] 
+    В силу утверждения 7.1 выборочный момент $\widehat{m}_{1n} = \widehat{\mu}_{kn}$ и $\widehat{m}_{2n} = \widehat{\mu}_{ln}\ (k \neq l)$ являются
+    
+    состоятельными оценками теоретических моментов $m_1 = \mu_k$ и $m_2 = \mu_l$
+
+    $\implies$ по теореме Слуцкого 
+    \[\widehat{\theta}_{1n} = \psi_1\left(\widehat{m}_{1n}, \widehat{m}_{2n}\right) = \psi_1\left(\widehat{\mu}_{kn}, \widehat{\mu}_{ln}\right) \xrightarrow{P} \psi_1(\mu_k, \mu_l) = \psi_1(m_1, m_2) = \theta_1\]
+    Аналогично
+    \[\widehat{\theta}_{2n} = \psi_2\left(\widehat{m}_{1n}, \widehat{m}_{2n}\right) = \psi_2\left(\widehat{\mu}_{kn}, \widehat{\mu}_{ln}\right) \xrightarrow{P} \psi_2(\mu_k, \mu_l) = \psi_2(m_1, m_2) = \theta_2\]
+
+}
 \setcounter{maindf}{8}
 \setcounter{subdf}{0}
 
@@ -4088,6 +4133,48 @@ $\implies \widehat{\theta}_n$ состоятельна
 \setcounter{suble}{0}
 \newpage
 \begin{center}
-    \huge Асимптотические свойства метода максимального правдоподобия
+    \huge Свойство инвариантности оценок максимального правдоподобия
 \end{center}
+\prof{
+    Пусть $X\ -$ случайная выборка и $\mc{L}\left(x_1, \dots, x_n;\theta\right)\ -$ её функция правдоподобия.
+
+    Допустим, что в нашей вероятностной модели мы хотим сделать замену параметра $\theta \in \Theta \subseteq \mb{R}^n$
+
+    на параметр $\gamma \in \Gamma \subseteq \mb{R}^n$, которые связаны биективным отображением
+    \[\varphi: \Theta \to \Gamma,\ \varphi(\theta) = \gamma\]
+
+    Пусть $\psi: \Gamma \to \Theta,\ \psi(\gamma) = \varphi^{-1}(\gamma) = \theta$.
+
+    После замены функция правдоподобия $\mc{L}(x_1,\dots, x_n;\theta)$ примет вид $\mc{L}(x_1,\dots, x_n; \psi(\gamma))$.
+
+    Отметим, что оценки максимального правдоподобия $\widehat{\theta}$ и $\widehat{\gamma}$ определяются как
+    \[\widehat{\theta} \in \argmax{\theta\in\Theta} \mc{L}(x_1, \dots, x_n;\theta)\]
+    \[\widehat{\gamma} \in \argmax{\gamma\in\Gamma} \mc{L}(x_1, \dots, x_n;\gamma)\]
+
+    Пусть есть $\widehat{\theta}$ такая, что
+    \[\mc{L}\left(x_1, \dots, x_n;\widehat{\theta}\right) = \max_{\theta \in \Theta} \mc{L}(x_1, \dots, x_n;\theta)\]
+    В силу биективности отображения $\psi$ $\exists!\, \widetilde{\gamma} \in \Gamma$ такая, что
+    \[\psi\left(\widetilde{\gamma}\right) = \widehat{\theta}\]
+    Заметим, что
+    \[\max_{\theta \in \Theta} \mc{L}(x_1, \dots, x_n;\theta) = \max_{\gamma \in \Gamma} \mc{L}(x_1, \dots, x_n;\psi(\gamma))\]
+    Поэтому
+    \[\mc{L}\left(x_1, \dots, x_n;\widehat{\theta}\right) = \max_{\theta \in \Theta} \mc{L}(x_1, \dots, x_n;\theta) = \max_{\gamma \in \Gamma} \mc{L}(x_1, \dots, x_n;\psi(\gamma))\]
+    \[\implies \widetilde{\gamma} \in \underset{\gamma \in \Gamma}{\operatorname{argmax}\,} \mc{L}(x_1, \dots, x_n;\psi(\gamma))\]
+    $\implies \widetilde{\gamma}$ является оценкой максимального правдоподобия для $\gamma \implies \widetilde{\gamma} = \widehat{\gamma}$
+    \[\implies \widehat{\gamma} = \widetilde{\gamma} = \varphi\left(\psi\left(\widetilde{\gamma}\right)\right) = \varphi\left(\widehat{\theta}\right) \implies \widehat{\gamma} = \varphi\left(\widehat{\theta}\right)\ \text{(*)}\]
+    (*) называется свойством инвариантности оценки максимального
+}
+\example{
+    $X\ -$ случайная выборка, $X_i \sim \operatorname{N}\left(0, \theta^2\right)$, где $\theta \in \Theta = (0, +\infty)$
+    \begin{enumerate}
+        \item[a)] $\widehat{\theta}\ -$ ОМП для $\theta$
+        \[\mc{L}(x_1,\dots, x_n;\theta) = \prod_{i=1}^nf_{X_i}(x_i) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\theta^2}}e^{-\frac{x_i^2}{2\sigma}} = (2pi)^{-\frac{n}{2}}\theta^{-n}e^{-\dfrac{\displaystyle\sum_{i=1}^nx_i^2}{2\theta^2}}\]
+        \[\implies \ell(x_1,\dots, x_n;\theta) = -\frac{n}{2}\ln 2\pi - n\ln \theta - \frac{\displaystyle \sum_{i=1}^{n} x_i^2}{2\theta^2}\]
+        \[\frac{\partial \ell}{\partial \theta} = -\frac{n}{}\theta + \frac{\displaystyle \sum_{i=1}^{n} x_i^2}{\theta^3} = 0\]
+        \[\implies -n\theta^2 + \sum_{i=1}^{n}x_i^2 = 0\]
+        \[\implies \widehat{\theta} = \sqrt{\frac{1}{n} \sum_{i=1}^{n}x_i^2}\]
+        \item[b)] с помощью свойства инвариантности ОМП найдите оценку для параметра $\gamma = \theta^2 \in \Gamma = (0, +\infty)$
+        \[\widehat{\gamma} = \varphi\left(\widehat{\theta}\right) = \left(\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_i^2}\right)^2 = \frac{1}{n}\sum_{i=1}^{n}x_i^2\]
+    \end{enumerate}
+}
 \end{document}
