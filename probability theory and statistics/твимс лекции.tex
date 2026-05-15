@@ -4168,13 +4168,151 @@ plot (\x,{1.23/(0.5*(\x-1))});
     $X\ -$ случайная выборка, $X_i \sim \operatorname{N}\left(0, \theta^2\right)$, где $\theta \in \Theta = (0, +\infty)$
     \begin{enumerate}
         \item[a)] $\widehat{\theta}\ -$ ОМП для $\theta$
-        \[\mc{L}(x_1,\dots, x_n;\theta) = \prod_{i=1}^nf_{X_i}(x_i) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\theta^2}}e^{-\frac{x_i^2}{2\sigma}} = (2pi)^{-\frac{n}{2}}\theta^{-n}e^{-\dfrac{\displaystyle\sum_{i=1}^nx_i^2}{2\theta^2}}\]
-        \[\implies \ell(x_1,\dots, x_n;\theta) = -\frac{n}{2}\ln 2\pi - n\ln \theta - \frac{\displaystyle \sum_{i=1}^{n} x_i^2}{2\theta^2}\]
-        \[\frac{\partial \ell}{\partial \theta} = -\frac{n}{}\theta + \frac{\displaystyle \sum_{i=1}^{n} x_i^2}{\theta^3} = 0\]
+        \[\mc{L}(x_1,\dots, x_n;\theta) = \prod_{i=1}^nf_{X_i}(x_i) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\theta^2}}e^{-\frac{x_i^2}{2\theta^2}} = (2pi)^{-\frac{n}{2}}\theta^{-n}e^{-\dfrac{1}{2\theta^2}\displaystyle\sum_{i=1}^nx_i^2}\]
+        \[\implies \ell(x_1,\dots, x_n;\theta) = -\frac{n}{2}\ln 2\pi - n\ln \theta - \frac{1}{2\theta^2}\sum_{i=1}^{n} x_i^2\]
+        \[\frac{\partial \ell}{\partial \theta} = -\frac{n}{\theta} + \frac{1}{\theta^3}\sum_{i=1}^{n} x_i^2 = 0\]
         \[\implies -n\theta^2 + \sum_{i=1}^{n}x_i^2 = 0\]
         \[\implies \widehat{\theta} = \sqrt{\frac{1}{n} \sum_{i=1}^{n}x_i^2}\]
         \item[b)] с помощью свойства инвариантности ОМП найдите оценку для параметра $\gamma = \theta^2 \in \Gamma = (0, +\infty)$
         \[\widehat{\gamma} = \varphi\left(\widehat{\theta}\right) = \left(\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_i^2}\right)^2 = \frac{1}{n}\sum_{i=1}^{n}x_i^2\]
     \end{enumerate}
+}
+
+\setcounter{maindf}{9}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{9}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{9}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{9}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{9}
+\setcounter{subta}{0}
+
+\setcounter{mainle}{9}
+\setcounter{suble}{0}
+\newpage
+\begin{center}
+    \huge Асимптотические свойства оценок максимального правдоподобия
+\end{center}
+
+\theorem{
+    Пусть $\theta_0 \in \Theta \subseteq \mb{R}^n$ и выполняются следующие условия:
+    \begin{enumerate}
+        \item $\Theta\ -$ открытый интервал (возможно, бесконечный)
+        \item $A = \{x \in \mb{R}: f(x; \theta) > 0\}$ не зависит от $\theta \in \Theta$
+        \item $f(x;\theta)$ трижды непрерывно дифференцируемая по $\theta \in \Theta$ при каждом $x \in A$
+        \item $\displaystyle \int\limits_{-\infty}^\infty f(x,\theta)\,dx$ можно дважды продифференцировать под знаком интеграла
+        \item Информация Фишера: $I_1(\theta) = \mb{E}_\theta\left(\left(\dfrac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2\right)$ удовлетворяет условию $0 < I_1(\theta_0) < \infty$
+        \item $\exists$ борелевская функция $H(x)$ и константа $M$ такие, что:
+        \[\forall x\in A\ \forall \theta \in \Theta \left|\frac{\partial^2}{\partial \theta^2}\ln f(x;\theta)\right| \leq H(x) \text{ и } \forall \theta \in \Theta\ \mb{E}_\theta (H(X_1)) \leq M\]
+    \end{enumerate}
+    Предположим также, что $\forall n \geq 1\ \forall (x_1,\dots, x_n) \in A \times \cdots \times A = A^n$ верно, что 
+    
+    $\ell(x_1,\dots, x_n; \theta) = \displaystyle \sum_{i=1}^{n}\ln f(x_i; \theta)$ имеет лишь одну точку глобального максимума $\widehat{\theta}_n = \theta_n(x_1,\dots,x_n)$ (по $\theta$), лежащую внутри области $\Theta$\\[5mm]
+
+    Тогда оценка $\widehat{\theta}_n$ является:
+    \begin{enumerate}
+        \item[i)] состоятельной
+        \item[ii)] асимптотически нормальной, то есть $\widehat{\theta}_n \asy \operatorname{N}\left(\theta_0, I_n^{-1}(\theta_0)\right)$, где $I_n(\theta) = nI_1(\theta)$
+    \end{enumerate}
+}
+\prof{
+    (i) Условие правдоподобия:
+    \[\frac{\partial}{\partial\theta}\ell(X_1,\dots, X_n;\theta) = 0 \tag{1*}\]
+    Разложим LHS (1*) по формуле Тейлора с остаточным членом в форме Лагранжа в окрестности точки $\theta_0$:
+    \[\frac{\partial}{\partial\theta}\ell(X_1,\dots, X_n;\theta) = \frac{\partial}{\partial\theta}\ell(X_1,\dots, X_n;\theta_0) + (\theta - \theta_0)\frac{\partial^2}{\partial^2\theta}\ell(X_1,\dots, X_n;\theta_0) + \frac{1}{2}(\theta - \theta_0)^2\frac{\partial^3}{\partial^3\theta}\ell\left(X_1,\dots, X_n;\widetilde{\theta}\right) \tag{2*}\]
+    где $\widetilde{\theta} \in [\theta_0, \theta]$
+
+    Разделим (2*) на $n$:
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots, X_n;\theta) = \overbrace{\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots, X_n;\theta_0)}^{=B_{0n}} + (\theta - \theta_0)\overbrace{\frac{1}{n}\frac{\partial^2}{\partial^2\theta}\ell(X_1,\dots, X_n;\theta_0)}^{=B_{1n}} + \frac{1}{2n}(\theta - \theta_0)^2\frac{\partial^3}{\partial^3\theta}\ell\left(X_1,\dots, X_n;\widetilde{\theta}\right) \tag{3*}\]
+
+    Рассмотрим отдельно коэффициент при остаточном члене:
+    \[\frac{\partial^3}{\partial^3\theta}\ell(X_1,\dots, X_n;\widetilde{\theta}) = \frac{\partial^3}{\partial^3\theta} \left(\sum_{k=1}^{n}\ln f\left(X_k,\widetilde{\theta}\right)\right) \tag{4*}\]
+
+
+
+    Из условия 6 $\implies \displaystyle \left|\frac{\partial^3}{\partial^3\theta}\ln f(X_k,\widetilde{\theta})\right| \leq H(X_k)$, поэтому $\exists \widetilde{\delta}_k: \left|\widetilde{\delta}_k\right| \leq 1$ такая, что:
+    \[\frac{\partial^3}{\partial^3\theta}\ln f(X_k,\widetilde{\theta}) = \widetilde{\delta}_k \cdot H(X_k) \tag{4*}\]
+    Подставим 5* в 4*:
+    \[\frac{\partial^3}{\partial^3\theta}\ell(X_1,\dots, X_n;\widetilde{\theta}) = \sum_{i=1}^{n}\widetilde{\delta}_k \cdot H(X_k) \tag{6*}\]
+
+    Отметим, что можно считать, $H(X) \geq 1\ \forall x \in R$, иначе добавим единицу. 
+
+    Положим
+    \[\widetilde{\delta} = \dfrac{\displaystyle \sum_{k=1}^{n} \widetilde{\delta}_k \cdot H(X_k)}{\displaystyle \sum_{k=1}^{n}H(X_k)} \tag{7*}\]
+    Тогда его знаменатель не обращается в ноль и $\widetilde{\delta} \leq 1$
+
+    Из (6*) и (7*):
+    \[\frac{\partial^3}{\partial^3\theta}\ell(X_1,\dots, X_n;\widetilde{\theta}) = \widetilde{\delta}\sum_{k=1}^{n}H(X_k) \tag{8}\]
+
+    Положим $B_{2n} = \displaystyle \frac{1}{n}\sum_{k=1}^{n} H(X_k)$. Тогда из (3*) и (8*) и определения $B_{0n}, B_{1n}$ и $B_{2n}$:
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots, X_n;\theta) = B_{0n} + (\theta - \theta_0)B_{1n} + (\theta - \theta_0)^2\cdot \frac{1}{2}\widetilde{\delta}B_{2n} \tag{9*}\]
+    По ЗБЧ:
+    \[B_{0n} = \frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots, X_n;\theta) = \frac{1}{n}\frac{\partial}{\partial\theta}\sum_{k=1}^{n}\ln f(X_k;\theta) = \frac{1}{n}\sum_{k=1}^{n}\frac{\partial}{\partial\theta}\ln f(X_k;\theta) \xrightarrow{P} \mb{E}_{\theta_0}\left(\frac{\partial}{\partial\theta}\ln f(X_k;\theta)\right) = ?\]
+    если конечно
+
+    Аналогично:
+    \[B_{1n} = \frac{1}{n}\frac{\partial^2}{\partial\theta^2}\ell(X_1,\dots,X_n;\theta) = \frac{1}{n}\frac{\partial^2}{\partial\theta^2} = \frac{1}{n}\frac{\partial^2}{\partial\theta^2}\sum_{k=1}^{n}\ln f(X_k;\theta) = \frac{1}{n}\sum_{k=1}^{n}\frac{\partial^2}{\partial\theta^2}\ln f(X_k;\theta) \xrightarrow{P} \mb{E}_{\theta_0}\left(\frac{\partial^2}{\partial\theta^2}\ln f(X_k;\theta)\right) = ?\]
+
+    Заметим, что
+    \[\frac{\partial}{\partial\theta} \ln f(x; \theta) = \frac{\partial}{\partial\theta} \cdot \frac{1}{f(x;\theta)} \tag{10*}\]
+    Тогда:
+    \[\mb{E}_{\theta_0}\left(\frac{\partial}{\partial\theta}\ln f(X_k;\theta)\right) = \int\limits_A \frac{\partial}{\partial\theta}\ln f(x;\theta)\,dx = \int\limits_A \frac{\partial}{\partial\theta} f(x;\theta) \cdot \frac{1}{f(x;\theta)} = \frac{\partial}{\partial\theta}\int\limits_{-\infty}^\infty f(x;\theta)\,dx = \frac{\partial 1}{\partial\theta} = 0 \tag{11*}\]
+    Продифференцируем (10*):
+    \[\frac{\partial^2}{\partial\theta^2} \ln f(x; \theta) = \frac{\partial^2}{\partial\theta^2} f(x; \theta) \cdot \frac{1}{f(x;\theta)} - \left(\frac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2 \tag{12*}\]
+    В силу условия 4:
+    \[\int\limits_A \frac{\partial^2}{\partial\theta^2}f(x; \theta)\,dx = \frac{\partial^2}{\partial\theta^2}\int\limits_{-\infty}^\infty f(x;\theta)\,dx = 0 \tag{15*}\]
+    Поэтому
+    \[\mb{E}\left(\frac{\partial^2}{\partial\theta^2} \ln f(x; \theta)\right) = \int\limits_A \frac{\partial^2}{\partial\theta^2} \ln f(x; \theta) \cdot f(x;\theta)\,dx = \int\limits_A \left(\frac{\partial^2}{\partial\theta^2} f(x; \theta) \cdot \frac{1}{f(x;\theta)} - \left(\frac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2\right) \cdot f(x;\theta)\,dx =\]
+
+    \[= \int\limits_A\frac{\partial^2}{\partial\theta^2} f(x; \theta) \cdot \frac{1}{f(x;\theta)}\,dx - \int\limits_A \left(\frac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2\cdot f(x;\theta)\,dx = -I_1(\theta) \tag{16*}\]
+
+    \[B_{2n} = \frac{1}{n}\sum_{k=1}^{n}H(X_k) \xrightarrow{P} \mb{E}_{\theta_0}\left(H(X_k)\right) \leq M \tag{17*}\]
+
+    Из (15*)-(17*) следует, что $\forall h > 0$ при $n \to \infty$ имеет место:
+    \[P_{\theta_0}\left(|B_{0n}| > h^2\right) \to 0 \tag{18*}\]
+    \[P_{\theta_0}\left(-\frac{I_i(\theta_0)}{2} < B_{1n}\right) \to 0 \tag{19*}\]
+    \[P_{\theta_0}\left(|B_{2n}| > 2M\right) \to 0 \tag{20*}\]
+
+    Условия (18*)-(20*) означают, что $\forall h >0\ \exists n_0 \in \mb{N}: \forall n \geq n_0$:
+    \[P_{\theta_0}\left(|B_{0n}| > h^2\right) < \frac{\varepsilon}{3} \tag{21*}\]
+    \[P_{\theta_0}\left(-\frac{I_i(\theta_0)}{2} < B_{1n}\right) < \frac{\varepsilon}{3} \tag{22*}\]
+    \[P_{\theta_0}\left(|B_{2n}| > 2M\right) < \frac{\varepsilon}{3} \tag{23*}\]
+    Положим
+    \[S_n = \left\{|B_{0n}| \leq h^2\right\} \cap \left\{B_{1n} \leq -\frac{I_1(\theta_0)}{2}\right\} \cap \left\{|B_{2n}| \leq 2M\right\}\]
+    Тогда по формуле де Моргана
+    \[S_n^c = \left\{|B_{0n}| > h^2\right\} \cup \left\{-\frac{I_i(\theta_0)}{2} < B_{1n}\right\} \cup \left\{|B_{2n}| > 2M\right\}\]
+    Поэтому
+    \[P_{\theta_0}\left(S_n^c\right) \leq P_{\theta_0}\left(|B_{0n}| > h^2\right) + P_{\theta_0}\left(-\frac{I_i(\theta_0)}{2} < B_{1n}\right) + P_{\theta_0}\left(|B_{2n}| > 2M\right) < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon \tag{24*}\]
+    \[\implies P_{\theta_0}(S_n) > 1 - \varepsilon\]
+    По формуле (9*):
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)\Bigg|_{\theta=\theta_0-h} = B_{0n} - hB_{1n} + h^2\cdot\frac{1}{2}\widetilde{\delta}B_{2n} \tag{25*}\]
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)\Bigg|_{\theta=\theta_0+h} = B_{0n} + hB_{1n} + h^2\cdot\frac{1}{2}\widetilde{\delta}B_{2n} \tag{26*}\]
+    На множестве $S_n$ выполняются следующие условия
+    \[\left|B_{0n} + \frac{1}{2}\widetilde{\delta}B_{2n}h^2\right| \leq |B_{0n}| + \frac{1}{2}\left|\widetilde{\delta}\right||B_{2n}|h^2 \leq h^2 + \frac{1}{2} \cdot 1 \cdot 2M \leq (1 + M)h^2 \tag{27*}\]
+    \[B_{1n}h \leq -\frac{I_1(\theta)}{2}h \tag{28*}\]
+    \[B_{1n}h \leq -\frac{I_1(\theta)}{2}h\tag{29*}\]
+    Пусть $h < \dfrac{I_1(\theta_0)}{2(M+1)}$. Тогда
+    \[\frac{I_1(\theta_0)}{2} > (M+1)h\]
+    \[\implies \frac{I_1(\theta_0)}{2} - (M+1)h^2 > 0\tag{30*}\]
+    Поэтому
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)\Bigg|_{\theta=\theta_0-h} = -B_{1n}h + \left(B_{0n} + \frac{1}{2}\widetilde{\delta}B_{2n}h^2\right) \geq \frac{I_1(\theta_0)}{2} - (M+1)h^2 > 0 \tag{31*}\]
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)\Bigg|_{\theta=\theta_0+h} = B_{1n}h + \left(B_{0n} + \frac{1}{2}\widetilde{\delta}B_{2n}h^2\right) \leq (M+1)h^2 - \frac{I_1(\theta_0)}{2} > 0\tag{32*}\]
+    Поскольку $\dfrac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)$ непрерывна по $\theta$, то
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)\Bigg|_{\theta=\theta_0-h} > 0,\]
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)\Bigg|_{\theta=\theta_0+h} < 0,\]
+    \[\implies \exists \theta_n^* \in \left(\theta_n - h, \theta + h\right): \frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta) = 0\]
+    По условию теоремы $\exists!\,\widehat{\theta}_n$:
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta) = 0\]
+    \[\implies \widehat{\theta}_n = \theta_n^* \in \left(\theta_n - h, \theta_n + h\right)\]
+    Это свойство получено на множестве $S_n \implies S_n \subseteq \left\{\left|\widehat{\theta}_n - \theta_0\right| < h\right\}$, то есть
+    \[1 - \varepsilon < P_{\theta_0}(S_n) \leq P_{\theta_0}\left(\left|\widehat{\theta}_n - \theta_0\right| < h\right) \leq 1\]
+    \[\implies \widehat{\theta}_n \xrightarrow{P}\theta_0\]
+
 }
 \end{document}
