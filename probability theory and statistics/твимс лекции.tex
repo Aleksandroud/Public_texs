@@ -4196,6 +4196,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
 \setcounter{mainle}{9}
 \setcounter{suble}{0}
 \newpage
+\renewcommand{\thletter}{}
 \begin{center}
     \huge Асимптотические свойства оценок максимального правдоподобия
 \end{center}
@@ -4207,7 +4208,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
         \item $A = \{x \in \mb{R}: f(x; \theta) > 0\}$ не зависит от $\theta \in \Theta$
         \item $f(x;\theta)$ трижды непрерывно дифференцируемая по $\theta \in \Theta$ при каждом $x \in A$
         \item $\displaystyle \int\limits_{-\infty}^\infty f(x,\theta)\,dx$ можно дважды продифференцировать под знаком интеграла
-        \item Информация Фишера: $I_1(\theta) = \mb{E}_\theta\left(\left(\dfrac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2\right)$ удовлетворяет условию $0 < I_1(\theta_0) < \infty$
+        \item Информация Фишера: $I_1(\theta) = \mb{E}_\theta\left(\dfrac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2$ удовлетворяет условию $0 < I_1(\theta_0) < \infty$
         \item $\exists$ борелевская функция $H(x)$ и константа $M$ такие, что:
         \[\forall x\in A\ \forall \theta \in \Theta \left|\frac{\partial^2}{\partial \theta^2}\ln f(x;\theta)\right| \leq H(x) \text{ и } \forall \theta \in \Theta\ \mb{E}_\theta (H(X_1)) \leq M\]
     \end{enumerate}
@@ -4218,7 +4219,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     Тогда оценка $\widehat{\theta}_n$ является:
     \begin{enumerate}
         \item[i)] состоятельной
-        \item[ii)] асимптотически нормальной, то есть $\widehat{\theta}_n \asy \operatorname{N}\left(\theta_0, I_n^{-1}(\theta_0)\right)$, где $I_n(\theta) = nI_1(\theta)$
+        \item[ii)] $\widehat{\theta}_n \asy \operatorname{N}\left(\theta_0, I_n^{-1}(\theta_0)\right)$, где $I_n(\theta) = nI_1(\theta)$
     \end{enumerate}
 }
 \prof{
@@ -4308,11 +4309,208 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta)\Bigg|_{\theta=\theta_0+h} < 0,\]
     \[\implies \exists \theta_n^* \in \left(\theta_n - h, \theta + h\right): \frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta) = 0\]
     По условию теоремы $\exists!\,\widehat{\theta}_n$:
-    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta) = 0\]
+    \[\frac{1}{n}\frac{\partial}{\partial\theta}\ell(X_1,\dots,X_n;\theta) = 0 \tag{33*}\]
     \[\implies \widehat{\theta}_n = \theta_n^* \in \left(\theta_n - h, \theta_n + h\right)\]
     Это свойство получено на множестве $S_n \implies S_n \subseteq \left\{\left|\widehat{\theta}_n - \theta_0\right| < h\right\}$, то есть
     \[1 - \varepsilon < P_{\theta_0}(S_n) \leq P_{\theta_0}\left(\left|\widehat{\theta}_n - \theta_0\right| < h\right) \leq 1\]
-    \[\implies \widehat{\theta}_n \xrightarrow{P}\theta_0\]
+    \[\implies \widehat{\theta}_n \xrightarrow{P}\theta_0\]\vspace{1cm}
+
+    (ii) Подставив $\widehat{\theta}_n$ в формулу (9*) и учитывая равенство (33*), получим
+    \[B_{0n} + B_{1n}\left(\widehat{\theta}_n + \theta_0\right) + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta}_n - \theta_0\right)^2 = 0 \tag{34*}\]
+    Преобразуем равенство (34*):
+    \[B_{1n}\left(\widehat{\theta}_n - \theta_0\right) + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta} - \theta_0\right)^2 = -B_{0n}\]
+    \[\left(\widehat{\theta}_n - \theta_0\right)\left(B_{1n} + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta}_n - \theta_0\right)\right) = -B_{0n}\]
+    \[\widehat{\theta}_n - \theta_0 = -\frac{B_{0n}}{B_{1n} + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta}_n - \theta_0\right)}\]
+    \[\frac{\widehat{\theta}_n}{\sqrt{I_n^{-1}(\theta_0)}} = -\frac{B_{0n}}{B_{1n} + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta}_n - \theta_0\right)} \cdot \frac{1}{\sqrt{I_n^{-1}(\theta_0)}}\]
+    \[\frac{\widehat{\theta}_n}{\sqrt{I_n^{-1}(\theta_0)}} = -\frac{I_1(\theta)}{B_{1n} + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta}_n - \theta_0\right)} \cdot \frac{B_{0n}}{\sqrt{\frac{I_1(\theta)}{n}}} \tag{35*}\]
+    \[-\frac{I_1(\theta)}{B_{1n} + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta}_n - \theta_0\right)} \xrightarrow[?]{P} 1\]
+    \[\underbrace{B_{1n}}_{\xrightarrow{P}-I_1(\theta_0)} + \overbrace{\frac{1}{2}\underbrace{\widetilde{\delta}}_{|\cdot|\leq 1}\underbrace{B_{2n}}_{\xrightarrow{P}\mb{E}_{\theta_0}(H(X_k))}\underbrace{\left(\widehat{\theta}_n - \theta_0\right)}_{\xrightarrow[(i)]{P} 0}}^{\xrightarrow{P} 0} \xrightarrow{P} -I_1(\theta)\]
+    \[\implies -\frac{I_1(\theta)}{B_{1n} + \frac{1}{2}\widetilde{\delta}B_{2n}\left(\widehat{\theta}_n - \theta_0\right)} \xrightarrow{P} 1\]
+    \[B_{0n} = \frac{1}{n}\sum_{k=1}^{n}\frac{\partial}{\partial \theta}\ln f(X_k;\theta)\]
+    \[\mb{E}_{\theta_0}(B_{0n}) = \frac{1}{n}\sum_{k=1}^{n}\mb{E}\left(\frac{\partial}{\partial \theta}\ln f(X_k;\theta)\right) = 0\]
+    \[\Var_{\theta_0}(B_{0n}) = \frac{1}{n^2}\sum_{k=1}^{n}\underbrace{\Var_{\theta_0}\left(\frac{\partial}{\partial \theta}\ln f(X_k;\theta)\right)}_{=\mb{E}_{\theta_0}\left(\frac{\partial}{\partial \theta}\ln f(X_k;\theta)\right)^2 = I_1(\theta_0)} = \frac{1}{n^2} \cdot nI_1(\theta_0) = \frac{I_1{\theta_0}}{n}\]
+    \[\implies \frac{B_{0n}}{\sqrt{\frac{I_1(\theta)}{n}}} \xrightarrow{d} Z \sim \operatorname{N}(0, 1)\]
+}
+
+\setcounter{maindf}{10}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{10}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{10}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{10}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{10}
+\setcounter{subta}{0}
+
+\setcounter{mainle}{10}
+\setcounter{suble}{0}
+\newpage
+
+\begin{center}
+    Неравенство Рао-Кромера и эффективные оценки
+\end{center}
+\propos{
+    Неравенство Коши-Буняковского(-Шварца)
+
+    Пусть случайные величины $X$ и $Y$ имеют конечные дисперсии. Тогда справедливо неравенство
+    \[|\cov(X, Y)| \leq \sqrt{\Var(X)}\sqrt{\Var(Y)}\]
+}
+Пусть $X\ -$ случайная выборка из распределения с плотностью $f(x; \theta),\ \theta \in \Theta \subseteq \mb{R}$. Обозначим через $\mc{K}$ класс всех несмещённых оценок $\widehat{\theta} = \widehat{\theta}(X_1,\dots,X_n)$ неизвестногго параметра $\theta$, для которых 
+
+$\mb{E}_{\theta}\left(\widehat{\theta}\right)^2 < \infty,\ \forall\theta\in\Theta$
+\defin{
+    Оценка $\widehat{\theta} \in \mc{K}$ называется оптимальной, если
+    \[\forall \widetilde{\theta} = \widetilde{\theta}(X_1,\dots,X_n) \in \mc{K}\ \forall \theta\in\Theta: \Var_{\theta}\left(\widehat{\theta}\right) \leq \Var_{\theta}\left(\widetilde{\theta}\right)\]
+}
+\task{
+    Доказать, что $(a + b)^2 \leq 2a^2 + 2b^2$
+    \[2a^2 + 2b^2 - (a + b)^2 = 2a^2 + 2b^2 - a^2 - 2ab - b^2 = a^2 - 2ab + b^2 = (a - b)^2 \geq 0\]
+}
+\task{
+    Доказать, что $\forall \widehat{\theta}_1,\widehat{\theta}_2 \in \mc{K}$ верно
+    \[\widehat{\theta}_3 = \frac{1}{2}\left(\widehat{\theta}_1 + \widehat{\theta}_2\right) \in \mc{K}\]
+    \[\mb{E}_\theta\left(\widehat{\theta}_3\right) = \frac{1}{2}\mb{E}\left(\mb{E}_\theta\left(\widehat{\theta}_1\right) + \mb{E}_\theta\left(\widehat{\theta}_2\right)\right) = \theta\]
+    \[\mb{E}_\theta\left(\widehat{\theta}_3\right)^2 \frac{1}{4}\left(\widehat{\theta}_1 + \widehat{\theta}_2\right)^2 \leq \frac{1}{4}\mb{E}\left(2\widehat{\theta}_1^2 + 2\widehat{\theta}_2^2\right) = \frac{1}{2}\mb{E}\left(\widehat{\theta}_1\right)^2 + \frac{1}{2}\mb{E}\left(\widehat{\theta}_2\right)^2 < \infty\]
+}
+\propos{
+    Единственность оптимальной оценки
+
+    Пусть $\widehat{\theta}_1,\widehat{\theta}_2\in \mc{K}\ -$ две оптимальные оценки. Тогда $\forall\theta\in\Theta \implies \widehat{\theta}_1 = \widehat{\theta}_2$ п.н. 
+}
+\prof{
+    Зафиксируем $\forall\theta\in\Theta$
+
+    Положим $V = \Var\left(\widehat{\theta}_1\right) = \Var\left(\widehat{\theta}_2\right)$
+
+    Рассмотрим оценку $\widehat{\theta}_3 =\dfrac{1}{2}\left(\widehat{\theta}_1 + \widehat{\theta}_2\right)$
+
+    В силу задачи 10.2 $\widehat{\theta}_3 \in \mc{K}$. Значит
+    \[V \leq \Var_\theta\left(\widehat{\theta}_3\right) \tag{1*}\]
+    С другой стороны, в силу КБШ имеем
+    \[\Var\left(\widehat{\theta}_3\right) = \frac{1}{4}\left(\underbrace{\Var\left(\widehat{\theta}_1\right)}_{=V} + 2\underbrace{\cov\left(\widehat{\theta_1},\widehat{\theta}_2\right)}_{\leq\sqrt{\Var\left(\widehat{\theta}_1\right)}\sqrt{\Var\left(\widehat{\theta}_2\right)}} + \underbrace{\Var\left(\widehat{\theta}_2\right)}_{=V}\right) \leq V \tag{2*}\]
+    Из (1*), (2*) $\implies \Var_{\theta}\left(\widehat{\theta}_3\right) = V$ и $\cov\left(\widehat{\theta}_1,\widehat{\theta}_2\right) = V$
+
+    Поэтому
+    \[\Var_\theta\left(\widehat{\theta}_1 - \widehat{\theta}_2\right) = \Var_\theta\left(\widehat{\theta}_1\right) - 2\cov\left(\widehat{\theta}_1,\widehat{\theta}_2\right) + \Var_\theta\left(\widehat{\theta}_2\right) = V - 2V + V = 0\]
+    \[\implies \widehat{\theta}_1 - \widehat{\theta}_2 = c \text{ п.н.}\]
+    \[\implies \mb{E}_\theta\left(\widehat{\theta}_1\right) - \mb{E}_\theta\left(\widehat{\theta}_2\right) = \theta - \theta = 0 = c \implies c = 0 \implies \widehat{\theta}_1 = \widehat{\theta}_2 \text{ п.н.}\]
+}
+Предположим теперь, что выполнены следующие условия регулярности:
+\begin{enumerate}
+    \item[R1)] $\Theta\ -$ открытый интервал (возмножно, конечный)
+    \item[R2)] $A = \{x \in \mb{R}: f(x;\theta) > 0\}$ не зависит от $\theta$
+    \item[R3)] $\forall x \in A,\ \forall\theta\in \Theta\ \dfrac{\partial}{\partial\theta}f(x;\theta)$ существует и конечна
+    \item[R4)] $\forall\theta$ величина
+    \[V_i = \frac{\partial}{\partial\theta}\ln f(X_i;\theta)\]
+    удовлетворяет условиям:
+    \[\mb{E}_\theta(V_i) = 0 \text{ и } 0 < \Var_{\theta}(V_i) < \infty\]
+\end{enumerate}
+\defin{
+    \begin{itemize}
+        \item Функция $V_i = \dfrac{\partial}{\partial\theta}\ln f(X_i;\theta)$ называется функцией вклада (Score function) $i$-го наблюдения $X$
+        \item $V = \dfrac{\partial}{\partial\theta}\ln f(X_1,\dots,X_n;\theta)$ называется функцией вклада случайной выборки
+    \end{itemize}
+}
+\propos{
+    \[V = \sum_{i=1}^{n}V_i \tag{1}\]
+}
+\prof{
+    \[f(X_1,\dots,X_n;\theta) = \prod_{i=1}^{n}f(X_i;\theta)\]
+    \[\ln f(X_1,\dots,X_n;\theta) = \sum_{i=1}^{n}\ln f(X_i;\theta)\]
+    \[\frac{\partial}{\partial\theta} \ln f(X_1,\dots,X_n;\theta) = \sum_{i=1}^{n}\frac{\partial}{\partial\theta}\ln f(X_i;\theta)\]
+}
+\propos{
+    \[\mb{E}_\theta(V) = 0 \tag{2}\]
+    \[\Var_\theta(V) = n\Var_\theta(V_i) \tag{2}\]
+}
+\prof{
+    \[\mb{E}(V) \overset{\text{(1)}}{=} \sum_{i=1}^{n}\underbrace{\mb{E}(V_i)}_{=0\text{ по R4)}} = 0\]
+    \[\Var_\theta(V) \overset{V_1,\dots,V_n\ - \text{ нез.}}{=} \sum_{i=1}^{n}\Var_\theta(V_i) = n\Var_\theta(V_i)\]
+}
+\defin{
+    \begin{itemize}
+        \item Величина $I_1(\theta) = \mb{E}\left(V_1^2\right)$ называется информацией Фишера о параметре $\theta$, содержащейся в 
+        
+        первом наблюдении случайной выборки $X$
+        \item Величина $I_n(\theta) = \mb{E}\left(V:2\right)$ называется информацией Фишера о параметра $\theta$, содержащейся 
+        
+        в наблюдаемой выборке $X$
+    \end{itemize}
+}
+\propos{
+    \[I_1(\theta) = \Var_\theta(V_1) \tag{4}\]
+    \[I_n(\theta) = \Var_\theta(V) = nI_1(\theta) \tag{5}\]
+}
+\prof{
+    \[I_1(\theta) = \mb{E}_\theta(V_1^2) = \mb{E}\left(V_1^2\right) - \underbrace{\mb{E}^2(V_1)}_{=0 \text{ по R4)}} = \Var_\theta(V_1)\]
+    \[I_n(\theta) = \mb{E}_\theta\left(V^2\right) = \mb{E}_\theta\left(V^2\right) - \underbrace{\mb{E}^2(V)}_{=0\text{ по (2)}} = \Var_{\theta}(V) = n\Var_\theta(V_1) = nI_1(\theta)\]
+}
+Пусть $f(x;\theta)$ удовлетворяет условиям регулярности R1)-R4). Обозначим через $\mc{R}$ класс всех оценок $\widehat{\theta} = \widehat{\theta}(X_1,\dots,X_n) \in \mc{K}$ неизвестного параметра $\theta$, для которого выполнего дополнительное условие
+\[\frac{\partial}{\partial\theta}\int\limits_{\mb{R}^n}\widehat{\theta}(x_1,\dots,x_n)f(x_1,\dots,x_n) = \int\limits_{\mb{R}n}\widehat{\theta}(x_1,\dots,x_n)\frac{\partial}{\partial\theta}f(x_1,\dots,x_n;\theta)\,dx_1\dots,dx_n\]
+\renewcommand{\thletter}{неравенство Рао-Кромера}
+\theorem{
+    Пусть $f(x;\theta)$ удовлетворяет условиям регулярности R1)-R4). Тогда $\forall\widehat{\theta}(X_1,\dots,X_n) \in \mc{R}\ \forall\theta\in\Theta$ 
+    
+    выполнено неравенство
+    \[I_n^{-1}(\theta) \leq \Var_\theta\left(\widehat{\theta}\right)\]
+}
+\prof{
+    Пусть $\widehat{\theta} \in \mc{R}$
+
+    $\implies \widehat{\theta}$ является несмещённой, то есть $\forall\theta\in\Theta$
+    \[\int\limits_{\mb{R}^n}\widehat{\theta}(x_1,\dots,x_n)f(x_1,\dots,x_n;\theta)\,dx_1\dots dx_n = \theta  \tag{1*}\]
+    Продифференцировав (1*) по $\theta$ и учитывая формулу (6), получаем
+    \[\int\limits_{\mb{R}^n}\widehat{\theta}(x_1,\dots,x_n)\frac{\partial}{\partial\theta}f(x_1,\dots,x_n;\theta)\,dx_1\dots dx_n = 1  \tag{2*}\]
+    Перепишем LHS в следующем виде:
+    \[\text{LHS} = \int\limits_{A^n}\widehat{\theta}(x_1,\dots,x_n)\frac{\partial}{\partial\theta}f(x_1,\dots,x_n;\theta)\,dx_1\dots dx_n = \]
+    \[=\int\limits_{A^n}\widehat{\theta}(x_1,\dots,x_n) \frac{\partial}{\partial\theta}\ln f(x_1,\dots,x_n;\theta) \cdot f(x_1,\dots,x_n;\theta)\,dx_1\dots dx_n =\]
+    \[= \mb{E}\left(\widehat{\theta}(X_1,\dots,X_n)\frac{\partial}{\partial\theta}\ln f(x_1,\dots,x_n;\theta)\right) = \mb{E}\left(\widehat{\theta}V\right) = \cov\left(\widehat{\theta}, V\right) \tag{3*}\]
+    Из (2*), (3*) $\implies 1 = \cov\left(\widehat{\theta}, V\right)$
+    \[\implies 1 = \cov^2\left(\widehat{\theta}, V\right) \overset{\text{КБШ}}{\leq} \Var\left(\widehat{\theta}\right) \cdot \Var(V) = \Var\left(\widehat{\theta}\right) \cdot I_n(\theta)\]
+    \[\implies I_n^{-1}(\theta) \leq \Var_\theta\left(\widehat{\theta}\right)\]
+}
+\defin{
+    Оценка $\widehat{\theta} \in \mc{R}$ называется эффективной, если для неё неравенство Рао-Кромера обращается в
+    
+    равенство, то есть
+    \[\Var_\theta\left(\widehat{\theta}\right) = I_n^{-1}(\theta)\]
+}
+\renewcommand{\thletter}{}
+\theorem{
+    Пусть выполнены условия регулярности R1)-R4). Тогда, если в классе $\mc{R}$ существует эффективная оценка $\widehat{\theta}$, то она оптимальна и единственна
+}
+\prof{
+    По условию $\widehat{\theta}$ является эффективной, то есть
+    \[\Var_\theta\left(\widehat{\theta}\right) = I_n^{-1}(\theta) \tag{1*}\]
+    В силу неравенства Рао-Кромера
+    \[\forall\widetilde{\theta} \in \mc{R}\ \forall\theta\in\Theta: \ I_n^{-1} \leq \Var_\theta\left(\widetilde{\theta}\right)\]
+    Из (1*), (2*) $\implies$
+    \[\forall\widetilde{\theta} \in \mc{R}\ \forall\theta\in\Theta: \ \Var_\theta\left(\widehat{\theta}\right) \leq \Var_\theta\left(\widetilde{\theta}\right)\]
+    Докажем единственность $\widehat{\theta}$. Предположим, что в классе $\mc{R}$ есть ещё одна эффективная оценка $\theta^*$. Тогда, используя те же рассуждения, что и выше, мы приходим к тому, что оценка $\theta^*$ также является оптимальной. Тогда в силу утверждения 10.2
+    \[\forall\theta\in\Theta\ \widehat{\theta} = \theta^* \text{ п.н.}\]
+}
+\propos{
+    Пусть $f(x;\theta)$ удовлетворяет условиям регулярности R1)-R4). предположим дополнительно, что 
+    \[\forall x\in A \ \forall\theta\in\Theta\quad \dfrac{\partial^2}{\partial\theta^2}\]
+    существует и конечна, а также, что
+    \[\forall\theta\in\Theta: \int\limits_{\mb{R}}\frac{\partial^2}{\partial^2}f(x;\theta)\,dx = 0 \tag{7}\]
+    Тогда
+    \[I_1(\theta) = -\mb{E}_\theta\left(\frac{\partial^2}{\partial\theta^2}\ln f(X;\theta)\right) \tag{8}\]
+}
+\prof{
+    Покажем, что
+    \[\mb{E}_\theta\left(\frac{\partial^2}{\partial\theta^2}\ln f(X;\theta)\right) = -I_n(\theta)\]
+    \[\frac{\partial}{\partial\theta}\ln f(x;\theta) = \frac{\partial}{\partial\theta}f(x;\theta) \cdot \frac{1}{f(x;\theta)} \tag{1*}\]
+    Продифференцировав (1*), получаем:
+    \[\frac{\partial^2}{\partial\theta^2}\ln f(x;\theta) = \frac{\partial^2}{\partial\theta^2}f(x;\theta) \cdot \frac{1}{f(x;\theta)} - \left(\frac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2 \tag{2*}\]
+    \[\mb{E}\left(\frac{\partial^2}{\partial\theta^2}\ln f(x;\theta)\right) = \int\limits_A\frac{\partial^2}{\partial\theta^2}\ln f(x;\theta) \cdot f(x;\theta)\,dx = \int\limits_A\left(\frac{\partial^2}{\partial\theta^2}f(x;\theta) \cdot \frac{1}{f(x;\theta)} - \left(\frac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2\right)\cdot f(x;\theta)\,dx =\]
+    \[=\int\limits^A\frac{\partial^2}{\partial\theta^2}f(x;\theta) \cdot \frac{1}{f(x;\theta)}\cdot f(x;\theta)\,dx - \int\limits_A\left(\frac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2\cdot f(x;\theta)\,dx = \]
+    \[=\int\limits^A\frac{\partial^2}{\partial\theta^2}f(x;\theta)\,dx - \int\limits_A\left(\frac{\partial}{\partial\theta}\ln f(x;\theta)\right)^2\cdot f(x;\theta)\,dx = 0 - I_n(\theta) = -I_n(\theta)\]
 
 }
 \end{document}
