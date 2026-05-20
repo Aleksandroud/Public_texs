@@ -4425,7 +4425,7 @@ $\mb{E}_{\theta}\left(\widehat{\theta}\right)^2 < \infty,\ \forall\theta\in\Thet
     \[\frac{\partial}{\partial\theta} \ln f(X_1,\dots,X_n;\theta) = \sum_{i=1}^{n}\frac{\partial}{\partial\theta}\ln f(X_i;\theta)\]
 }
 \propos{
-    \[\mb{E}_\theta(V) = 0 \tag{2}\]
+    \[\mb{E}_\theta(V) = 0 \tag{1}\]
     \[\Var_\theta(V) = n\Var_\theta(V_i) \tag{2}\]
 }
 \prof{
@@ -4496,9 +4496,9 @@ $\mb{E}_{\theta}\left(\widehat{\theta}\right)^2 < \infty,\ \forall\theta\in\Thet
 }
 \propos{
     Пусть $f(x;\theta)$ удовлетворяет условиям регулярности R1)-R4). предположим дополнительно, что 
-    \[\forall x\in A \ \forall\theta\in\Theta\quad \dfrac{\partial^2}{\partial\theta^2}\]
+    \[\forall x\in A \ \forall\theta\in\Theta\quad \frac{\partial^2}{\partial^2\theta}f(x;\theta)\]
     существует и конечна, а также, что
-    \[\forall\theta\in\Theta: \int\limits_{\mb{R}}\frac{\partial^2}{\partial^2}f(x;\theta)\,dx = 0 \tag{7}\]
+    \[\forall\theta\in\Theta: \int\limits_{\mb{R}}\frac{\partial^2}{\partial^2\theta}f(x;\theta)\,dx = 0 \tag{7}\]
     Тогда
     \[I_1(\theta) = -\mb{E}_\theta\left(\frac{\partial^2}{\partial\theta^2}\ln f(X;\theta)\right) \tag{8}\]
 }
