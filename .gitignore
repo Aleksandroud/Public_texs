@@ -9,3 +9,5 @@
 обзор.pdf
 *.out
 *.bbl
+*.pre
+*.asy
