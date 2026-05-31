@@ -1110,7 +1110,7 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
     \[f_\eta(y) = f_\xi\left(\frac{y - \mu}{\sigma}\right) \cdot \frac{1}{\sigma}\]
 }
 \example{
-    Пусть $u \sim U[0, 1]\ -$ равномерное распределение случайной величины
+    Пусть $u \sim \operatorname{U}(0, 1)\ -$ равномерное распределение случайной величины
 
     $F_\xi(x)\ -$ распределение $\xi$ (непрерывная)
 
@@ -1920,7 +1920,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 
     Как посчитать $\mb{E}(S)$?
 
-    Возьмём $\nu \sim \operatorname{Poi}\,(\lambda),\ \xi_i \sim U[5, 10]$. Тогда
+    Возьмём $\nu \sim \operatorname{Poi}\,(\lambda),\ \xi_i \sim \operatorname{U}(5, 10)$. Тогда
 
     \[\mb{E}(S) = \mb{E}(\mb{E}(S\mid \nu)) = \sum_{k=0}^{\infty}\mb{E}(S\mid\nu=k)P(\nu = k) = \sum_{k=0}^{\infty}k\cdot 7.5P(\nu = k) =\]
     \[= 7.5\lambda \ \leftarrow \text{ математическое ожидание пуассоновской случайной величины}\]
@@ -2012,7 +2012,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 }
 \defin{
     Сходимость в среднем порядка $S$
-    \[\xi_n \xrightarrow[n \to \infty]{L_S}, \text{ если } \mb{E}\left|\xi_n - \xi\right|^S \xrightarrow[n \to \infty]{} 0\]
+    \[\xi_n \xrightarrow[n \to \infty]{L_S} \xi, \text{ если } \mb{E}\left|\xi_n - \xi\right|^S \xrightarrow[n \to \infty]{} 0\]
 }
 \hypertarget{problimflag}{}
 \defin{
@@ -2040,7 +2040,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \example{
         \[\begin{array}{c|c|c}
             \xi & 0 & n^7\\
-            \hline p & 1 - \frac{1}{n} & \frac{1}{n}
+            \hline p & 1 - 1/n & 1/n
         \end{array}\]
         \[\xi_n \xrightarrow[p \to \infty]{P} 0,\ \mb{E}(\xi_n) \xrightarrow[n \to \infty]{} \infty\]
         \[\mb{E}(\xi_n) = n^7 \cdot \frac{1}{n} = n^6 \xrightarrow[n \to \infty]{} \infty\]
@@ -2231,7 +2231,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 При этом его сложность растёт линейно по количествам измерений и точек (тогда как сложность большинства других методов численного подсчёта растёт экспоненциально по количеству измерений)
 \vspace{1mm}
 
-Пусть $(u_i, v_i) \sim \operatorname{U}[\square]\ -$ координаты $i$-й точки, $S, V \ -$ фигура и прямоугольник соответственно, 
+Пусть $(u_i, v_i) \sim \operatorname{U}(\square)\ -$ координаты $i$-й точки, $S, V \ -$ фигура и прямоугольник соответственно, 
 
 $N\ -$ общее количество точек в $V$, $N_S\ -$ количество точек, попавших в $S$. Тогда
 \[P\big((u_i, v_i) \in S\big) = \frac{|S|}{|V|} \approx \frac{N_S}{N} \implies |S| \approx \frac{N_S}{N} \cdot |V|\]
@@ -3547,7 +3547,7 @@ $(\impliedby)$
     Вывод: $\widehat{\theta}$ состоятельна
 
     Способ 2:
-    \[1)\ \mb{E}\left(\widehat{\theta}\right)\mb{E}\left(\frac{3}{2}\overline{X}\right) = \frac{3}{2}\mb{E}(X_i) = \frac{3}{2} \cdot \frac{2}{3}\theta = \theta\]
+    \[1)\ \mb{E}\left(\widehat{\theta}\right) = \mb{E}\left(\frac{3}{2}\overline{X}\right) = \frac{3}{2}\mb{E}(X_i) = \frac{3}{2} \cdot \frac{2}{3}\theta = \theta\]
     \[2)\ \Var\left(\widehat{\theta}\right) = \Var\left(\frac{3}{2}\overline{X}\right) = \frac{9}{4}\Var(X_n) = \frac{9}{4}\cdot \frac{\Var(X_i)}{n} = \frac{9}{4} \cdot \frac{\theta^2}{18n} \xrightarrow[n\to\infty]{} 0\]
     \[\implies \widehat{\theta}_n \xrightarrow[]{P} \theta\]
 }
@@ -3556,14 +3556,14 @@ $(\impliedby)$
 
     Найти:
     \begin{enumerate}
-        \item[a)] $\underset{n\to\infty}{\plim} e^{\overline{X}_n}$
+        \item[a)] $\underset{n\to\infty}{\plim\,} e^{\overline{X}_n}$
         
         $X_n \xrightarrow[]{P} \dfrac{2}{3}\theta$
 
         $g(x) = e^x$ непрерывна в $x = \dfrac{2}{3}\theta$
 
         \[\implies e^{\overline{X}_n} = g\left(\overline{X}_n\right) \xrightarrow[]{P} g\left(\frac{2}{3}\theta\right) = e^{\frac{2}{3}\theta}\]
-        \item[b)] $\displaystyle\underset{n\to\infty}{\plim} \sqrt{\dfrac{2}{n}\sum_{i=1}^{n}X_i^2}$
+        \item[b)] $\displaystyle\underset{n\to\infty}{\plim\,} \sqrt{\dfrac{2}{n}\sum_{i=1}^{n}X_i^2}$
         
         ЗБЧ: $\displaystyle \frac{1}{n} \sum_{i=1}^{n} X_i^2 \xrightarrow[]{P} \mb{E}\left(X_i^2\right) = \frac{\theta^2}{2}$
 
@@ -3608,7 +3608,7 @@ $(\impliedby)$
         \item теоретическим начальным моментом $k$-го порядка называется $\mu_k = \mb{E}\left(X_i^k\right)$
         \item выборочныи начальным моментом $k$-го порядка называется $\widehat{\mu}_k = \overline{X^k} = \displaystyle \frac{1}{n}\sum_{i=1}^{n}X_i^k$
         \item теоретическим центральным моментом $k$-го порядка называется $\nu_k = \mb{E}\left(X_i - \mb{E}(X_i)\right)^k$
-        \item теоретическим центральным моментом $k$-го порядка называется $\widehat{\nu}_k = \displaystyle \frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^k$
+        \item выборочныи центральным моментом $k$-го порядка называется $\widehat{\nu}_k = \displaystyle \frac{1}{n}\sum_{i=1}^{n}\left(X_i - \overline{X}\right)^k$
     \end{itemize}
 
     \textit{Замечание 5.1:} \begin{itemize}
@@ -3623,14 +3623,16 @@ $(\impliedby)$
 Составляем систему из $r$ уравнений
 \[\begin{cases}
     m_1(\theta_1,\dots,\theta_r) = \widehat{m}_1\\
-    \vdots \hspace{10cm} \text{(1)}\\
+    \vdots\\
     m_r(\theta_1,\dots,\theta_r) = \widehat{m}_r
-\end{cases}\]
+\end{cases}\tag{1}\]
 где $m_j = m_j(\theta_1,\dots,\theta_r)\ -$ теоретический (начальный или центральный) момент некоторого порядка, 
 
 а $\widehat{m}_j\ -$ соответствующий ему выборочный момент
 \defin{
-    Вектор $\widehat{\theta}_{MM} = \left(\widehat{\theta}_{1,MM}, \dots, \widehat{\theta}_{r,MM}\right)$, являющийся решением системы (1) называется оценкой вектора $\theta = (\theta_1,\dots, \theta_r)$ с помощью метода моментов
+    Вектор $\widehat{\theta}_{MM} = \left(\widehat{\theta}_{1,MM}, \dots, \widehat{\theta}_{r,MM}\right)$, являющийся решением системы (1) называется оценкой вектора
+    
+    $\theta = (\theta_1,\dots, \theta_r)$ по методу моментов
 }
 \example{
     Продолжение примера 2.3
@@ -3655,21 +3657,21 @@ $(\impliedby)$
 \example{
     $X\ -$ случайная выборка, $X_i \sim \operatorname{U}\,(a, b),\ a < 0\ -$ неизвестные параметры
 
-    Перый начальный и второй центральный:
+    Первый начальный и второй центральный:
 
     \[\begin{cases}
         \mu_1 = \widehat{\mu}_1\\
         \nu_2 = \widehat{\nu}_2
-    \end{cases}\quad \text{(1*)}\]
-    \[\mu_1 = \mb{E}(X_i) = \frac{a + b}{2}\quad \text{(2*)}\]
-    \[\nu_2 = \Var(X_i) = \frac{(b - a)^2}{12}\quad \text{(3*)}\]
+    \end{cases} \tag{1*}\]
+    \[\mu_1 = \mb{E}(X_i) = \frac{a + b}{2} \tag{2*}\]
+    \[\nu_2 = \Var(X_i) = \frac{(b - a)^2}{12} \tag{3*}\]
     \[\begin{cases}
         \frac{a + b}{2} = \widehat{\mu}_1\\
         \frac{(b - a)^2}{12} = \widehat{\nu}_2
-    \end{cases} \quad \text{(4*)}\]
+    \end{cases} \tag{4*}\]
     Из второго уравения (4*)
     \[b - a = \sqrt{12\widehat{\nu}_2} \quad \text{(5*)}\]
-    Первое урвение (4*) умножим на 2
+    Первое уравнение (4*) умножим на 2
     \[a + b = 2\widehat{\mu}_2\]
     (5*) + (6*)
     \[2b = 2\widehat{\mu}_1 + \sqrt{12\widehat{\nu}_2}\]
@@ -3823,10 +3825,10 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[\mc{L}(x_1,\dots,x_n; a, b) = f_{X_1,\dots,X_n}(x_1,\dots,x_n; a ,b) = f_{X_1}(x_1; a, b) \cdots f_{X_n}(x_n;a, b) =\]
     \[= \frac{1}{b - a} \mb{1}_{[a, b]}(x_1) \cdots \frac{1}{b - a} \mb{1}_{[a, b]}(x_n) =\]
     Заметим, что
-    \[(\forall i = 1,\dots, n,\ a \leq x_i \leq b) \iff (a \leq \min_{1 \leq i \leq n} x_i \text{ и } \max_{1 \leq i \leq n} x_i \leq b)\]
+    \[(\forall i = 1,\dots, n,\ a \leq x_i \leq b) \iff \left(a \leq \min_{1 \leq i \leq n} x_i \text{ и } \max_{1 \leq i \leq n} x_i \leq b\right)\]
     Поэтому
     \[= \frac{1}{(b - a)^n} \cdot \mb{1}(a \leq \min_{1 \leq i \leq n} x_i) \cdot \mb{1}(\max_{1 \leq i \leq n} x_i \leq b)\]
-    То есть $\widehat{a}_{ML} = \min X_i = X_{(1)},\ \widehat{b}_{ML} = \max X_i = X_{(n)}$
+    То есть $\displaystyle\widehat{a}_{ML} = \min_{1 \leq i \leq n} X_i = X_{(1)},\ \widehat{b}_{ML} = \max_{1 \leq i \leq n} X_i = X_{(n)}$
 }
 \example{
     $X\ -$ случайная выборка
@@ -3841,7 +3843,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
         \frac{1}{2} - \theta, & x_i = -2\\
         \frac{1}{2}, & x_i = 0\\
         \theta, & x_i = 1
-    \end{cases} = \left(\frac{1}{2} - \theta\right)^{\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\mb{1}_{0}(x_i)} \cdot \theta^{\mb{1}_{1}(x_i)} \quad \text{(1*)}\]
+    \end{cases} = \left(\frac{1}{2} - \theta\right)^{\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\mb{1}_{0}(x_i)} \cdot \theta^{\mb{1}_{1}(x_i)} \tag{1*}\]
     Итого
     \[= \prod_{i=1}^{n}P_\theta(X_i = x_i) = \prod_{i=1}^{n} \left(\frac{1}{2} - \theta\right)^{\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\mb{1}_{0}(x_i)} \cdot \theta^{\mb{1}_{1}(x_i)} =\]
     \[= \left(\frac{1}{2}-\theta\right)^{\displaystyle \sum_{i=1}^{n}\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\displaystyle \sum_{i=1}^{n}\mb{1}_{0}(x_i)} \cdot \theta^{\displaystyle \sum_{i=1}^{n}\mb{1}_{1}(x_i)}=\]
@@ -3981,7 +3983,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
         \[e^{-\overline{X}_n} \asi \operatorname{N}\left(e^{-\lambda}, e^{-2\lambda} \cdot \frac{\lambda}{n}\right)\]
         1) $\overline{X}_n = \widehat{\theta} \asi \operatorname{N}\left(\theta = \lambda, \dfrac{\sigma^2(\theta)}{n} = \dfrac{\lambda}{n}\right)$
 
-        2) $\Theta = \{\lambda: \lambda > 0\ = (0, \infty)\} -$ открытый интервал (луч)
+        2) $\Theta = \{\lambda: \lambda > 0\} = (0, \infty) -$ открытый интервал (луч)
 
         3) $g(t) = e^{-t}\ -$ непрерывно дифференцируемая
 
@@ -4162,14 +4164,14 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[\mc{L}\left(x_1, \dots, x_n;\widehat{\theta}\right) = \max_{\theta \in \Theta} \mc{L}(x_1, \dots, x_n;\theta) = \max_{\gamma \in \Gamma} \mc{L}(x_1, \dots, x_n;\psi(\gamma))\]
     \[\implies \widetilde{\gamma} \in \underset{\gamma \in \Gamma}{\operatorname{argmax}\,} \mc{L}(x_1, \dots, x_n;\psi(\gamma))\]
     $\implies \widetilde{\gamma}$ является оценкой максимального правдоподобия для $\gamma \implies \widetilde{\gamma} = \widehat{\gamma}$
-    \[\implies \widehat{\gamma} = \widetilde{\gamma} = \varphi\left(\psi\left(\widetilde{\gamma}\right)\right) = \varphi\left(\widehat{\theta}\right) \implies \widehat{\gamma} = \varphi\left(\widehat{\theta}\right)\ \text{(*)}\]
-    (*) называется свойством инвариантности оценки максимального
+    \[\implies \widehat{\gamma} = \widetilde{\gamma} = \varphi\left(\psi\left(\widetilde{\gamma}\right)\right) = \varphi\left(\widehat{\theta}\right) \implies \widehat{\gamma} = \varphi\left(\widehat{\theta}\right) \tag{*}\]
+    (*) называется свойством инвариантности оценки максимального правдоподобия
 }
 \example{
     $X\ -$ случайная выборка, $X_i \sim \operatorname{N}\left(0, \theta^2\right)$, где $\theta \in \Theta = (0, +\infty)$
     \begin{enumerate}
         \item[a)] $\widehat{\theta}\ -$ ОМП для $\theta$
-        \[\mc{L}(x_1,\dots, x_n;\theta) = \prod_{i=1}^nf_{X_i}(x_i) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\theta^2}}e^{-\frac{x_i^2}{2\theta^2}} = (2pi)^{-\frac{n}{2}}\theta^{-n}e^{-\dfrac{1}{2\theta^2}\displaystyle\sum_{i=1}^nx_i^2}\]
+        \[\mc{L}(x_1,\dots, x_n;\theta) = \prod_{i=1}^nf_{X_i}(x_i) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\theta^2}}\exp\left({-\frac{x_i^2}{2\theta^2}}\right) = (2pi)^{-\frac{n}{2}}\theta^{-n}\exp\left({-\dfrac{1}{2\theta^2}\displaystyle\sum_{i=1}^nx_i^2}\right)\]
         \[\implies \ell(x_1,\dots, x_n;\theta) = -\frac{n}{2}\ln 2\pi - n\ln \theta - \frac{1}{2\theta^2}\sum_{i=1}^{n} x_i^2\]
         \[\frac{\partial \ell}{\partial \theta} = -\frac{n}{\theta} + \frac{1}{\theta^3}\sum_{i=1}^{n} x_i^2 = 0\]
         \[\implies -n\theta^2 + \sum_{i=1}^{n}x_i^2 = 0\]
@@ -4353,7 +4355,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
 \newpage
 
 \begin{center}
-    Неравенство Рао-Кромера и эффективные оценки
+    \huge Неравенство Рао-Кромера и эффективные оценки
 \end{center}
 \propos{
     Неравенство Коши-Буняковского(-Шварца)
@@ -4363,7 +4365,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
 }
 Пусть $X\ -$ случайная выборка из распределения с плотностью $f(x; \theta),\ \theta \in \Theta \subseteq \mb{R}$. Обозначим через $\mc{K}$ класс всех несмещённых оценок $\widehat{\theta} = \widehat{\theta}(X_1,\dots,X_n)$ неизвестного параметра $\theta$, для которых 
 
-\[\mb{E}_{\theta}\left(\widehat{\theta}\right)^2 < \infty,\ \forall\theta\in\Theta\]
+\[\mb{E}_{\theta}\left(\widehat{\theta}^2\right) < \infty,\ \forall\theta\in\Theta\]
 \defin{
     Оценка $\widehat{\theta} \in \mc{K}$ называется оптимальной, если
     \[\forall \widetilde{\theta} = \widetilde{\theta}(X_1,\dots,X_n) \in \mc{K}\ \forall \theta\in\Theta: \Var_{\theta}\left(\widehat{\theta}\right) \leq \Var_{\theta}\left(\widetilde{\theta}\right)\]
@@ -4633,7 +4635,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     $L,\ R = ?$:
     \[\forall\mu\in\mb{R}\ P(L \leq \mu \leq R) = \gamma\]
 
-    Рассмотрим $G(X_1,\dots,X_n) = \dfrac{\overline{X} - \mu}{\sigma^2} \sim \operatorname{N}\,(0,1) \forall\mu$
+    Рассмотрим $G(X_1,\dots,X_n) = \dfrac{\overline{X} - \mu}{\sigma^2} \sim \operatorname{N}\,(0,1)\ \forall\mu$
 
     $\implies$ распределение не зависит от $\mu$
 

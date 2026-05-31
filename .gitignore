@@ -3,10 +3,6 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
-бонуска.tex
-бонуска.pdf
-обзор.tex
-обзор.pdf
 *.out
 *.bbl
 *.pre
