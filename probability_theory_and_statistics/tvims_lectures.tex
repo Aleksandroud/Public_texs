@@ -4694,4 +4694,89 @@ draw((0,0)--(0,0.42), dashed);
     \[-\overline{X} + z_{\alpha/2}\sqrt{\frac{\sigma^2}{n}} \leq -\mu \leq -\overline{X} + z_{1-\alpha/2}\sqrt{\frac{\sigma^2}{n}}\]
     \[\overline{X} - z_{1-\alpha/2}\sqrt{\frac{\sigma^2}{n}} \leq \mu \leq \overline{X} - z_{\alpha/2}\sqrt{\frac{\sigma^2}{n}}\]
 \end{enumerate}
+\defin{
+    Асимптотическим доверительным интервалом уровня доверия $\gamma \in (0, 1)$ для неизвестного параметра $\theta$ называется такой интервал $[L_n(X_1,\dots,X_n), R_n(X_1,\dots,X_n)]$, что
+    \[\forall\theta\in\Theta\ \lim_{n\to\infty}P_\theta(L_n(X_1,\dots,X_n) \leq \theta \leq R_n(X_1,\dots,X_n)) \geq \gamma\]
+}
+\example{
+    $X\ -$ случайная выборка, $X_i \sim \Exp\,(\lambda),\ \lambda > 0$
+
+    $n = 100,\ \overline{X}_n = 0.52$. С помощью ЦПТ постройте приближённый 95\%-й доверительный интервал для $\lambda$
+
+    \[T_n = \frac{\overline{X} - \mb{E}\left(\overline{X}\right)}{\sqrt{\Var\left(\overline{X}\right)}} = \frac{\overline{X} - \frac{1}{\lambda}}{\sqrt{\frac{1}{n\lambda^2}}} \xrightarrow{d} \operatorname{N}\,(0, 1)\]
+    $n\ -$ большое (100), поэтому
+    \[T_n \approx Z \sim \operatorname{N}\,(0,1)\]
+    \[P(-1.96 \leq T_n \leq 1.96) \approx 0.95\]
+    \[-1.96 \leq T_n \leq 1.96\]
+    \[-1.96 \leq \frac{\overline{X} - \frac{1}{\lambda}}{\sqrt{\frac{1}{n\lambda^2}}} \leq 1.96\]
+    \[-1.96 \leq \frac{\lambda\overline{X} - 1}{\sqrt{\frac{1}{n}}} \leq 1.96\]
+    \[-\frac{1.96}{\sqrt{n}} \leq \lambda\overline{X} - 1 \leq \frac{1.96}{\sqrt{n}}\]
+    \[\frac{1 - \frac{1.96}{\sqrt{n}}}{\overline{X}} \leq \lambda \leq \frac{1 + \frac{1.96}{\sqrt{n}}}{\overline{X}}\]
+    \[L_n = -\frac{1 - \frac{1.96}{\sqrt{n}}}{\overline{X}} = \frac{1 - \frac{1.96}{\sqrt{100}}}{0.52} = 1.55\]
+    \[R_n = -\frac{1 - \frac{1.96}{\sqrt{n}}}{\overline{X}} = \frac{1 + \frac{1.96}{\sqrt{100}}}{0.52} = 2.3\]
+}
+\example{
+    $X\ -$ случайная выборка, $X_i \sim \Be\,(p)$
+
+    $n = 100$, 55 нулей, 45 единиц
+
+    Построить приближённый 90\%-й доверительный интервал для $p$
+
+    \[T_n = \frac{\overline{X} - p}{\sqrt{\frac{p(1-p)}{n}}}\]
+    Заметим, что
+    \[\frac{\overline{X} - p}{\sqrt{\frac{\overline{X}\left(1-\overline{X}\right)}{n}}} = \overbrace{\frac{\overline{X} - p}{\sqrt{\frac{p(1-p)}{n}}}}^{\xrightarrow{d}\operatorname{N}\,(0,1)} \cdot \overbrace{\frac{\sqrt{\sqrt{\frac{p(1-p)}{n}}}}{\overline{X}\left(1-\overline{X}\right)}{n}}^{\xrightarrow{P} 1} \xrightarrow{d} \operatorname{N}\,(0,1)\]
+    \[-1.64 \leq \frac{\overline{X} - p}{\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}}} \leq 1.64\]
+    \[-1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}} \leq \overline{X} - p \leq 1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}}\]
+    \[\overline{X} - 1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}} \leq p \leq \overline{X} + 1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}}\]
+    \[L = 0.45 - 1.64\sqrt{\frac{0.45(1 - 0.45)}{100}} = 0.37\]
+    \[R = 0.45 + 1.64\sqrt{\frac{0.45(1 - 0.45)}{100}} = 0.53\]
+}
+\example{
+    \textit{Пример навеян Кин-Дза-Дзой}
+
+    $X\ -$ случайная выборка, $X_i\ -$ заработок за $i$-й день (в чатлах), $X_i \sim \Poi\,(\lambda)$
+
+    $n = 100,\ \displaystyle\sum_{i=1}^{n}X_i = 250$
+
+    \begin{enumerate}
+        \item[a)] найти ОМП
+        \[\mc{L}(x_1,\dots,x_n;\lambda) = \prod_{i=1}^{n}P(X_i = x_i) = \prod_{i=1}^{n}\frac{\lambda^{x_i}}{x_i!}e^{-\lambda} = \frac{1}{x_1!\dots x_n!}\lambda^{\sum_{i=1}^{n}x_i}e^{-\lambda n}\]
+        \[\ell(x_1,\dots,x_n;\lambda) = -\ln(x_1!\cdots x_n!) + \sum_{i=1}^{n}x_i \ln \lambda - n\lambda \to \max_{\lambda > 0}\]
+        \[\frac{\partial\ell}{\partial\lambda} = \frac{1}{\lambda}\sum_{i=1}^{n}x_i - n = 0\]
+        \[\implies \widehat{\lambda}_{ML} = \overline{X} = \frac{250}{100} = 2.5\]
+        \item[b)] найти $I_n(\lambda)$
+        \[I_1(\lambda) = \mb{E}\left(\left(\frac{\partial\ell}{\partial\lambda}\right)^2\right) = \mb{E}\left(\frac{X_1}{\lambda} - 1\right)^2 = \frac{\mb{E}(X_1 - \lambda^2)}{\lambda^2} = \frac{\Var\,(X_1)}{\lambda^2} = \frac{\lambda}{\lambda^2} = \frac{1}{\lambda}\]
+        \[\implies I_n(\lambda) = \frac{n}{\lambda}\]
+        \item[c)] построить приближённый 95\%-й доверительный интервал для $\lambda$
+        
+        по теореме 9.1 $\widehat{\theta}_n \asi \operatorname{N}\left(\theta, I_n^{-1}(\theta)\right) = \operatorname{N}\left(\theta, I_n^{-1}\left(\widehat{\theta}\right)\right)$
+
+        \[z_{0.025} = -1.96 \leq \frac{\overline{X} - \lambda}{\sqrt{\frac{\overline{X}}{n}}} \leq z_{0.975} = 1.96\]
+        \[-1.96\sqrt{\frac{\overline{X}}{n}} \leq \overline{X} - \lambda \leq 1.96\sqrt{\frac{\overline{X}}{n}}\]
+        \[\overline{X} - 1.96\sqrt{\frac{\overline{X}}{n}} \leq \lambda \leq \overline{X} + 1.96\sqrt{\frac{\overline{X}}{n}}\]
+        \[\implies L = 2.5 - 1.96 \cdot \sqrt{\frac{2.5}{100}} = 2.19\]
+        \[R = 2.5 + 1.96 \cdot \sqrt{\frac{2.5}{100}} = 2.81\]
+
+
+    \end{enumerate}
+}
+\example{
+    Продолжение прошлого примера \textit{(не спрашивайте, что с нумерацией, я сам не знаю)}
+    \begin{enumerate}
+        \item[с)] (первые две буквы повторяются с прошлым примером)
+        \[g(\lambda) = P(X_i = 0) = \frac{\lambda^0}{0!}e^{-\lambda} = e^{-\lambda}\]
+        \item[d)] $g\left(\widehat{\lambda}\right) \asi ?$
+        
+        По дельта-методу $g\left(\widehat{\theta}\right) \asi \operatorname{N}\left(g(\theta), \left(g'(\theta)\right)^2I_n^{-1}(\theta)\right) = \operatorname{N}\left(g(\theta), \left(g'\left(\widehat{\theta}\right)\right)^2I_n^{-1}\left(\widehat{\theta}\right)\right)$
+
+        \[g\left(\widehat{\lambda}\right) \asi \operatorname{N}\left(e^{-\lambda}, e^{-2\overline{X}} \cdot \frac{\overline{X}}{n}\right)\]
+
+        \item[e)] построить приближённый 95\%-й доверительный интервал для $g(\lambda)$
+        \[-1.96 = \frac{e^{-\overline{X}} - e^{-\lambda}}{\sqrt{e^{-2\overline{X}}\frac{\overline{X}}{n}}} \leq 1.96\]
+        \[\vdots\]
+        \[e^{-\overline{X}} - 1.96\sqrt{e^{-2\overline{X}}\cdot \frac{\overline{X}}{n}} \leq e^{-\lambda} \leq e^{-\overline{X}} + 1.96\sqrt{e^{-2\overline{X}}\cdot \frac{\overline{X}}{n}}\]
+        \[L = e^{-\overline{X}} - 1.96\sqrt{e^{-2\overline{X}}\cdot \frac{\overline{X}}{n}} = 0.057\]
+        \[R = e^{-\overline{X}} + 1.96\sqrt{e^{-2\overline{X}}\cdot \frac{\overline{X}}{n}} = 0.108\]
+    \end{enumerate}
+}
 \end{document}
