@@ -4779,4 +4779,210 @@ draw((0,0)--(0,0.42), dashed);
         \[R = e^{-\overline{X}} + 1.96\sqrt{e^{-2\overline{X}}\cdot \frac{\overline{X}}{n}} = 0.108\]
     \end{enumerate}
 }
+\setcounter{maindf}{12}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{12}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{12}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{12}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{12}
+\setcounter{subta}{0}
+
+\setcounter{mainle}{12}
+\setcounter{suble}{0}
+\begin{center}
+    \huge Тестирование гипотез. Наиболее мощный критерий. Критерий Неймана-Пирсона
+\end{center}
+\begin{itemize}
+    \item Любое высказывание о распределении случайной выборки $X$ называется статистической гипотезой (или просто гипотезой).
+    \item Гипотезы в математической статистике принято обозначать буквой $H$ и после двоеточия писать, в чём именно состоит гипотеза. Например, $H: X_i \sim \operatorname{N}\,(0, 1)$
+    \item Если гипотез несколько, то их снабжают индексами. Например, $H_0: X_i \sim \operatorname{N}\,(0,1)$ и $H_1: X_i \sim \operatorname{N}\,(0, 2)$.
+    \item Если гипотеза однозначно характеризует распределение случайной выборки, то она называется простой
+    \item В противном случае сложной
+    \item Например, $H_0: \sim \operatorname{N}\,(0, 1)$ и $H_1: X_i \sim \operatorname{N}\,(0,2)\ -$ простые гипотезы, а $H_2: X_i \sim \operatorname{N}\left(0, \sigma^2\right),\ \sigma^2 > 0\ -$ неизвестный параметр, $-$ сложная
+    \item Пусть есть две статистические гипотезы $H_0$ и $H_1$
+    \item Назовём $H_0$ основной гипотезой, $H_1\ -$ альтернативной
+    \item Правило, позволяющее по реализации случайной выборки принять $H_0$ или $H_1$, называется статистическим критерием
+    \item Введём понятие $S$-критерия. Для этого в выборочном пространстве $\mb{R}^n$ зададим критическое множество $S \subseteq \mb{R}^n$. Тогда статистическим критерием, порождённым, множеством $S$ (или $S$-критерием), называется правило:
+    \begin{itemize}
+        \item если реализация выборки $(x_1,\dots,x_n) \in S$, то принимаем гипотезу $H_0$
+        \item если же $(x_1,\dots,x_n) \in\mb{R}^n \setminus S$, то принимаем $H_1$
+    \end{itemize}
+\end{itemize}
+Рассмотрим 4 ситуации
+\[\begin{array}{c|c|c}
+    & \text{верна } H_0 & \text{верна } H_1\\\hline
+    \text{принимаем } H_0 & \text{верное решение} & \text{ошибка II рода}\\\hline
+    \text{принимаем } H_1 & \text{ошибка I рода} & \text{верное решение}
+\end{array}\]
+\vspace{1cm}
+\begin{center}
+    Тестирование простой основной гипотезы против альтернативной простой
+\end{center}
+\begin{itemize}
+    \item Пусть $X\ -$ случайная выборка с плотностью распределения $f_{X_1,\dots,X_n}(x_1,\dots,x_n)$
+    \item Пусть заданы две конкретные плотности распределения $f_0(x_1,\dots,x_n)$ и $f_1(x_1,\dots,x_n)$, причём $f_0(x_1,\dots,x_n) \neq f_1(x_1,\dots,x_n)$
+    \item мы хотим проверить гипотезы
+    \[H_0: f_{X_1,\dots,X_n}(x_1,\dots,x_n) = f_0(x_1,\dots,x_n)\]
+    \[H_1: f_{X_1,\dots,X_n}(x_1,\dots,x_n) = f_1(x_1,\dots,x_n)\]
+    \item В выборочном пространстве зададим критическое множество $S$. Тогда 
+    \[P_0((X_1,\dots,X_n) \in S) = \int\limits_Sf_0(x_1,\dots,x_n)\,dx_1\dots dx_n\]
+    $-$ вероятность ошибки I рода
+    \[P_1((X_1,\dots,X_n) \notin S) = \int\limits_{\mb{R}^n\setminus S} f_1(x_1,\dots,x_n)\,dx_1\dots dx_n\]
+    $-$ вероятность ошибки II рода
+    \[P_1((X_1,\dots,X_n) \in S) = \int\limits_{S} f_1(x_1,\dots,x_n)\,dx_1\dots dx_n\]
+    $-$ мощность критерия
+    \item Зададим некоторое число $\alpha \in (0, 1)$, которое назовём уровнем значимости
+    \item На практике $\alpha$ выбирают маленьким (порядка 1e-02 и меньше)
+\end{itemize}
+Обозначим через $\mc{K}_\alpha$ семейство всех критических множеств $S\subseteq \mb{R}^n$, для которых верно
+\[P_0((X_1,\dots,X_n) \in S) = \alpha\]
+Мы хотим найти такое критическое множество $S^* \in \mc{K}_\alpha$, что:
+\[\forall S\in\mc{K}_\alpha\ P_1((X_1,\dots,X_n) \in S^*) \geq P_1((X_1,\dots,X_n) \in S)\]
+\renewcommand{\thletter}{критерий Неймана-Пирсона}
+\theorem{
+    Пусть выполнены перечисленные выше условия и задан уровень значимости $\alpha\in (0, 1)$. 
+    
+    Рассмотрим критическое множество вида
+    \[S_c = \left\{(x_1,\dots,x_n)\in\mb{R}^n: f_1(x_1,\dots,x_n) \geq c\cdot f_0(x_1,\dots,x_n)\right\} \tag{1}\] 
+    Будем предполагать, что для указанного выше числа $\alpha$ существует константа $c$ такая, 
+    
+    что $S_c\in\mc{K}_\alpha$. Тогда для любого конкурирующего статистического критерия $S \in \mc{K}_\alpha$ справедливо неравенство
+    \[P_0((X_1,\dots,X_n) \in S_c) \geq P_1((X_1,\dots,X_n) \in S_c)\]
+    То есть $S^* = S_c$
+}
+\prof{
+    Обозначим выборку за $X$, а $x$ за числовой вектор. Рассмотрим
+    \[P_0(X \in S_c \setminus (S_c \cap S)) = \underbrace{P_0(X \in S_c)}_{=\alpha} - P_0(X \in S_c \cap S) = P_0(X\in S) - P_0(X \in S_c \cap S) = P(X \in S \setminus (S_c \cap S)) \tag{2}\]
+    \[P_1(X \in S_c \setminus (S_c \cap S)) = \int\limits_{S_c \setminus (S_c \cap S)} \underbrace{f_1(x)}_{\geq c\cdot f_0(x)}\,dx \geq c\int\limits_{S_c \setminus (S_c \cap S)}f_0(x)\,dx = cP_0(X\in S\setminus (S_c \cap S)) \overset{\text{(2)}}{=}\] 
+    \[= \int\limits_{S\setminus (S_c \cap S)} \underbrace{cf_0(x)}_{>f_1(x)}\,dx \geq \int\limits_{S\setminus (S_c \cap S)}f_1(x)\,dx = P_1(X\in S \setminus (S_c \cap S))\]
+    Итого
+    \[P_1(X \in S_c \setminus (S_c \cap S)) \geq P_1(X\in S \setminus (S_c \cap S))\]
+    \[P_1(X \in S_c \setminus (S_c \cap S)) + P_1(X \in S_c\cap S) \geq P_1(X\in S \setminus (S_c \cap S)) + P_1(X \in S_c\cap S)\]
+    \[P_1(X\in S_c) \geq P_1(X\in S)\]
+}
+\example{
+    Пусть $X\ -$ случайная выборка из одного наблюдения с плотностью
+    \[f(x;\theta) = \begin{cases}
+        \theta x^{\theta-1}, & x\in (0, 1)\\
+        0, & x\notin (0,1)
+    \end{cases},\  \theta >0\]
+    \[H_0: \theta = 1 \quad \text{vs} \quad H_1: \theta = 2\]
+    С помощью критерия Неймана-Пирсона найти наиболее мощный критерий, имеющий уровень значимости $\alpha = 0.05$. Найти мощность этого критерия
+    \[S_c = \{x\in \mb{R}: f_1(x) \geq c\cdot f_0(x)\}\]
+    \[\implies f_1(x) = 2x,\ x\in (0, 1)\]
+    \[f_0(x) = 1,\ x\in (0, 1)\]
+    \[x\in S_c \iff \frac{f_1(x)}{f_0(x)}\geq c \iff \frac{2x}{1} \geq c \iff 2x \geq c \iff x \geq \frac{c}{2}\]
+    \[0.05 = \alpha = P_0(X\in S_c) = P_0\left(X \geq \frac{c}{2}\right) = \int\limits_\frac{c}{2}^\infty f_0(x)\,dx = \int\limits_{\frac{c}{2}}^1dx = 1 - \frac{c}{2}\]
+    \[1 - \frac{c}{2} = 0.05 \implies \frac{c}{2} = 0.95 \implies c = 1.9\]
+    Критерий: 
+    
+    если $x \geq 0.95$, то $H_1$
+
+    если $x < 0.95$, то $H_0$
+    \[P_1(X \in S_c) = P_1(X \geq 0.95) = \int\limits_{0.95}^\infty f_1(x)\,dx = \int\limits_{0.95}^12x\,dx = 1 - 0.95^2 = 0.0975\]
+    \begin{center}
+        \begin{tikzpicture}[scale=3]
+
+        % оси
+        \draw[->, thick] (-0.1,0) -- (1.45,0) node[right] {};
+        \draw[->, thick] (0,-0.1) -- (0,2.3);
+
+        % отметки на осях
+        \draw (0,1) node[left] {$1$};
+        \draw (0,2) node[left] {$2$};
+
+        \draw (1,0) node[below] {$1$};
+
+        % пустая точка (0,1)
+        \draw[fill=black] (0,1) circle (0.025);
+
+        % горизонталь y=1
+
+        % треугольная плотность f2
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (1,2);
+
+
+        % штриховка H0
+        \fill[teal!10]
+        (0,0)--(0.5,1)--(0.5,0)--cycle;
+
+        \begin{scope}
+        \clip (0,0)--(0.5,1)--(0.5,0)--cycle;
+        \foreach \t in {-0.3,-0.15,...,1.1}
+            \draw[teal] (\t,-0.1)--(\t+0.6,1.2);
+        \end{scope}
+
+        % прямоугольная плотность f1
+        \draw[blue!70!black, very thick]
+        (0.5,0)--(0.5,1)--(1,2)--(1,0)--cycle;
+
+        % штриховка H1
+        \fill[blue!10]
+        (0.5,0)--(0.5,1)--(1,2)--(1,0)--cycle;
+
+        \begin{scope}
+        \clip (0.5,0)--(0.5,1)--(1,2)--(1,0)--cycle;
+        \foreach \t in {-0.5,-0.35,...,1.5}
+            \draw[blue!70!black] (\t,-0.2)--(\t+0.8,2.2);
+        \end{scope}
+
+        % точка (1,1)
+        \fill (1,1) circle (0.025);
+
+        % подписи
+        \node[teal] at (0.73,1.88) {$f_1(x)$};
+        \node[black] at (1.3,1) {$f_0(x)$};
+
+        % разделяющая вертикаль
+        \draw[blue] (0.5,0)--(0.5,1);
+
+        % скобки H0 и H1
+        \draw[decorate,decoration={brace,mirror,amplitude=4pt}]
+        (0,-0.12)--(0.5,-0.12)
+        node[midway,yshift=-0.35cm] {$H_0$};
+
+        \draw[decorate,decoration={brace,mirror,amplitude=4pt}]
+        (0.5,-0.12)--(1,-0.12)
+        node[midway,yshift=-0.35cm] {$H_1$};
+
+        % xi/2 = 0.35
+        \node at (0.5,-0.28) {$\dfrac{c}{2}$};
+        \node at (0.5,-0.48) {$=0.95$};
+        \node at (1.5,0.5) {$\xleftarrow{}\substack{\text{вероятность ошибки}\\ \text{I рода}}$};
+        \draw[thick] (0,1) -- (1,1);
+        \draw[teal, very thick] (A)--(B);
+
+        \end{tikzpicture}
+    \end{center}
+}
+\example{
+    $X\ -$ случайная выборка, $X_i \sim \operatorname{N}\,\left(\mu, \sigma^2\right),\ \mu$ неизвестно, $\sigma^2 = 4$, $n = 16$
+
+    $H_0: \mu=0\quad \text{vs} \quad H_1: \mu=2$
+
+    С помощью критерия Неймана-Пирсона найдите наиболее мощный критерий, имеющий уровень значимости $\alpha = 0.05$, и найдите его мощность
+
+    \[f_0(x_1,\dots,x_n) = \prod_{i=1}^{16}f_{X_i}(x_i) = \prod_{i=1}^{16}\frac{1}{\sqrt{2\pi\cdot 4}}\exp\left(-\frac{x_i^2}{2\cdot 4}\right) = \frac{1}{\left(8\pi\right)^8}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{16}x_i^2\right)\]
+    \[f_1(x_1,\dots,x_n) = \prod_{i=1}^{16}f_{X_i}(x_i) = \prod_{i=1}^{16}\frac{1}{\sqrt{2\pi\cdot 4}}\exp\left(-\frac{(x_i - 2)^2}{2\cdot 4}\right) = \frac{1}{\left(8\pi\right)^8}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{16}(x_i - 2)^2\right)\]
+    \[\frac{f_1(x_1,\dots,x_n)}{f_0(x_1,\dots,x_n)} = \frac{\frac{1}{\left(8\pi\right)^8}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i - 2)^2\right)}{\frac{1}{\left(8\pi\right)^8}\exp\left(-\frac{1}{8}\sum_{i=1}^{n}x_i^2\right)} = \exp\left(-\frac{1}{8}\sum_{i=1}^{16}(x_i - 2)^2 + \frac{1}{8}\sum_{i=1}^{16}x_i^2\right) =\]
+    \[= \exp\left(\frac{1}{8}\left(4\sum_{i=1}^{16}x_i - 64\right)\right) \geq c\]
+    Прологарифмируем:
+    \[\frac{1}{8}\left(4\sum_{i=1}^{16}x_i - 64\right) \geq \ln c\]
+    \[\sum_{i=1}^{16}x_i - 16 \geq 2\ln c\]
+    \[\overline{x} - 1 \geq \frac{2\ln c}{16}\]
+    \[\overline{x} \geq 1 + \frac{\ln c}{8}\]
+    $X_i \sim \operatorname{N}\,\left(0,\sigma^2=4\right) \implies \overline{X} \sim \operatorname{N}\,\left(0, \frac{\sigma^2}{n} = \frac{1}{4}\right)$
+    \[0.05 = \alpha = P\left(\overline{X} \geq 1 + \frac{\ln c}{8}\right) = P_0\left(\frac{\overline{X} - 0}{\sqrt{\frac{1}{4}}} \geq \frac{1 + \frac{\ln c}{8}}{\sqrt{\frac{1}{4}}}\right) = P_0(Z \geq 2 + \frac{\ln c}{4})\]
+    \[2 + \frac{\ln c}{4} = z_{0.95} = 1.64\]
+    \[c \approx 0.237\]
+    \[P_{H_1}(X \in S_c) = P_{H_1}\left(\overline{X} \geq 0.82\right) = P_{H_1}\left(\frac{\overline{X} - 2}{\sqrt{\frac{1}{4}}} \geq \frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) = P_{H_1}\left(Z \geq \frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) = 1 - \Phi\left(\frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) \approx 0.99\]
+}
 \end{document}
