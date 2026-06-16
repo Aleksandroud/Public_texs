@@ -4980,9 +4980,284 @@ draw((0,0)--(0,0.42), dashed);
     \[\overline{x} - 1 \geq \frac{2\ln c}{16}\]
     \[\overline{x} \geq 1 + \frac{\ln c}{8}\]
     $X_i \sim \operatorname{N}\,\left(0,\sigma^2=4\right) \implies \overline{X} \sim \operatorname{N}\,\left(0, \frac{\sigma^2}{n} = \frac{1}{4}\right)$
-    \[0.05 = \alpha = P\left(\overline{X} \geq 1 + \frac{\ln c}{8}\right) = P_0\left(\frac{\overline{X} - 0}{\sqrt{\frac{1}{4}}} \geq \frac{1 + \frac{\ln c}{8}}{\sqrt{\frac{1}{4}}}\right) = P_0(Z \geq 2 + \frac{\ln c}{4})\]
+    \[0.05 = \alpha = P\left(\overline{X} \geq 1 + \frac{\ln c}{8}\right) = P_0\left(\frac{\overline{X} - 0}{\sqrt{\frac{1}{4}}} \geq \frac{1 + \frac{\ln c}{8}}{\sqrt{\frac{1}{4}}}\right) = P_0\left(Z \geq 2 + \frac{\ln c}{4}\right)\]
     \[2 + \frac{\ln c}{4} = z_{0.95} = 1.64\]
     \[c \approx 0.237\]
     \[P_{H_1}(X \in S_c) = P_{H_1}\left(\overline{X} \geq 0.82\right) = P_{H_1}\left(\frac{\overline{X} - 2}{\sqrt{\frac{1}{4}}} \geq \frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) = P_{H_1}\left(Z \geq \frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) = 1 - \Phi\left(\frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) \approx 0.99\]
 }
+\newpage
+\setcounter{maindf}{13}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{13}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{13}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{13}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{13}
+\setcounter{subta}{0}
+
+\setcounter{mainle}{13}
+\setcounter{suble}{0}
+\begin{center}
+    \huge Тестирование гипотез: сложные гипотезы
+\end{center}
+$X\ -$ случайная выборка, $f(x_1,\dots,x_n;\theta)\ -$ её плотность, где $\theta\in\Theta\ -$ неизвестный параметр
+
+Пусть заданы множества $\Theta_0,\,\Theta_1\subseteq\Theta$ такие, что $\Theta\cap\Theta_1 = \varnothing$
+
+Мы хотим проверить гипотезу $H_0:\theta\in\Theta_0$ против альтернативной $H_1:\theta\in\Theta_1$
+
+В выборочном пространстве $\mb{R}^n$ зададим критическое множество $S$
+
+Определим функцию мощности $S$-критерия
+\[W(\theta; S) = P_\theta\left((X_1,\dots,X_n)\in S\right) = \int\limits_Sf(x_1,\dots,x_n;\theta)dx_1\dots dx_n\]
+С помощью функции мощности можно выразить вероятности ошибок I и II рода, а также мощность критерия
+
+\begin{itemize}
+    \item Если $\theta\in\Theta_0$, то вероятность ошибки I рода задаётся формулой
+    \[P_\theta((X_1,\dots,X_n)\in S) = \int\limits_Sf(x_1,\dots,x_n;\theta)dx_1\dots dx_n = W(\theta; S)\]
+    \item Если $\theta\in\Theta_1$, nо вероятность ошибки II рода задаётся формулой
+    \[P_\theta((X_1,\dots,X_n)\notin S) = \int\limits_{\mb{R}^n\setminus S}f(x_1,\dots,x_n;\theta)dx_1\dots dx_n = 1 - W(\theta; S)\]
+    \item $\theta\in\Theta_1$, то мощность критерия описывается как
+    \[P_\theta((X_1,\dots,X_n)\in S) = \int\limits_Sf(x_1,\dots,x_n;\theta)dx_1\dots dx_n = W(\theta; S)\]
+\end{itemize}
+Размером $S$-критерия называется число
+\[\sup_{\theta\in\Theta_0} W(\theta;S) = \sup_{\theta\in\Theta_0}P_\theta((X_1,\dots,x_n)\in S)\]
+Иными словами, это максимально возможная вероятность ошибки I рода
+
+Число $\alpha\in(0,1)$, ограничивающее сверху размер $S$-критерия, называется уровнем значимости
+\[\sup_{\theta\in\Theta_0}W(\theta; S) \leq \alpha\]
+Обозначим через $\mc{K}_\alpha$ семейство всех критических множеств $S$, для которых $\displaystyle\sup_{\theta\in\Theta}W(\theta; S) = \alpha$
+
+Критерий $S^*\in\mc{K}_\alpha$ называется равномерно наиболее мощным, если $\forall$ другого $S\in\mc{K}_\alpha$ верно
+\[W(\theta; S^*) \leq W(\theta;S),\ \forall\theta\in\Theta_0\]
+\[W(\theta; S^*) \geq W(\theta;S),\ \forall\theta\in\Theta_1\]
+\example{
+    Пусть $X\ -$ случайная выборка, $X_i\sim \operatorname{N}\left(\mu,\sigma^2\right)$, $\mu$ неизвестно, $\sigma^2 > 0$ известно
+
+    Пусть заданы два числа $\mu_0$ и $\mu_1$, причём $\mu_0 < \mu_1$
+
+    $H_0: \mu = \mu_0$, $H_1: \mu = \mu_1$
+
+    С помощью критерия Неймана-Пирсона найдите наиболее мощный критерий, имеющий уровень значимости $\alpha$, и найдите мощность этого критерия
+    \[S_c = \{x = (x_1,\dots,x_n): f_1(x_1,\dots,x_n) \geq cf_0(x_1,\dots,x_n)\}\]
+    \[f_0(x_1,\dots,x_n) = \prod_{i=1}^n\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}} = \frac{1}{\left(\sqrt{2\pi\sigma^2}\right)^n}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i-\mu_0)^2\right)\]
+    \[f_1(x_1,\dots,x_n) = \frac{1}{\left(\sqrt{2\pi\sigma^2}\right)^n}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i-\mu_1)^2\right)\]
+    \[\frac{f_1(x_1,\dots,x_n)}{f_0(x_1,\dots,x_n)} \geq c\]
+    \[\frac{\displaystyle\frac{1}{\left(\sqrt{2\pi\sigma^2}\right)^n}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i-\mu_1)^2\right)}{\displaystyle\frac{1}{\left(\sqrt{2\pi\sigma^2}\right)^n}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i-\mu_1)^2\right)} \geq c\]
+    \[\frac{1}{2\sigma^2}\exp\left(\sum_{i=1}^{n}(x_i-\mu_0)^2 - \sum_{i=1}^n(x_i-\mu_1)^2\right) \geq c\]
+    \[\sum_{i=1}^{n}(x_i-\mu_0)^2 - \sum_{i=1}^n(x_i-\mu_1)^2 \geq 2\sigma^2\ln c\]
+    \[2(\mu_1-\mu_0)\underbrace{\sum_{i=1}^{n}x_i}_{n\overline{x}} - \left(\mu_1^2 - \mu_0^2\right)n \geq 2\sigma^2\ln c\]
+    \[2(\mu_1-\mu_0)n\overline{x} \geq \left(\mu_1^2-\mu_0^2\right)n + 2\sigma^2\ln c\]
+    Так как $\mu_1 > \mu_0$, то знак неравенства не изменится
+    \[\overline{x} \geq \frac{\left(\mu_1^2 - \mu_0^2\right)}{2(\mu_1 - \mu_0)n} + \frac{2\sigma^2\ln c}{2(\mu_1 - \mu_0)} \cdot \frac{1}{n}\]
+    \[\overline{x} \geq \frac{\mu_1 + \mu_0}{2} + \frac{\sigma^2\ln c}{n(\mu_1 - \mu_0)} = c_1\]
+    \[\implies S_c = \left\{x = (x_1,\dots,x_n): \overline{x} \geq c_1\right\}\]
+    \[\alpha = P_0(X\in S_c) = P_0\left(\overline{X} \geq c_1\right) = P_0\left(\frac{\overline{X} - \mu_0}{\sqrt{\frac{\sigma^2}{n}}} \geq \frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}}\right) = 1 - \Phi\left(\frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}}\right)\]
+    \[\iff \frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}} = z_{1-\alpha}\]
+    \[c_1 = \mu_0 + \frac{\sigma^2}{n}z_{1-\alpha}\]
+    \[S_c = \left\{x: \overline{x} \geq \mu_0 + \frac{\sigma^2}{n}z_{1-\alpha}\right\}\ -\ \text{не зависит от } \mu_1 > \mu_0\]
+    Значит, $S_c\ -$ равномерно наиболее мощный критерий
+
+    \[P_1(X\in S_c) = P_1\left(\overline{X} \geq \mu_0 + \sqrt{\frac{\sigma^2}{n}}z_{1-\alpha}\right) = P_1\left(\frac{\overline{X} - \mu_1}{\sqrt{\frac{\sigma^2}{n}}} \geq \frac{\mu_0 + \sqrt{\frac{\sigma^2}{n}}z_{1-\alpha} - \mu_1}{\sqrt{\frac{\sigma^2}{n}}}\right) =\]
+    \[= P_1\left(\frac{\overline{X} - \mu_1}{\sqrt{\frac{\sigma^2}{n}}} \geq z_{1-\alpha} + \frac{\mu_0 - \mu_1}{\sqrt{\frac{\sigma^2}{n}}}\right) = 1 - \Phi\left(z_{1-\alpha} + \frac{\mu_0 - \mu_1}{\sqrt{\frac{\sigma^2}{n}}}\right)\]
+}
+\task{
+    Условие такое же, как в примере выше, но $\mu_1 < \mu_0$
+
+    Ответ: наиболее мощный критерий:
+    \[S_c = \left\{x: \overline{x} \leq \mu_0 + \sqrt{\frac{\sigma^2}{n}}z_{\alpha}\right\}\]
+    Мощность критерия:
+    \[W(\mu_1) = \Phi\left(z_\alpha + \frac{\mu_0 - \mu_1}{\sqrt{\frac{\sigma^2}{n}}}\right)\]
+}
+Итог: $H_0: \mu = \mu_0$
+\begin{enumerate}
+    \item $H_1: \mu > \mu_0\ -$ правосторонняя альтернатива
+    \[S_c = \left\{x: \frac{\overline{x} - \mu_0}{\sqrt{\frac{\sigma^2}{n}}} \geq z_{1-\alpha}\right\}\]
+\end{enumerate}
+\begin{center}
+\begin{asy}
+size(11cm);
+
+import graph;
+
+real f(real x)
+{
+  return exp(-x^2/2)/sqrt(2*pi);
+}
+
+real b=1;
+
+draw((-2.5,0)--(2.6,0), Arrow);
+label("$x$", (2.5,0), S);
+draw((0,-0.2)--(0,1), Arrow);
+label("$y$", (0,1), W);
+
+draw(graph(f,-2.5,2.5), black+1bp);
+
+fill(graph(f,2.5,b)--(b,0)--(2.5,0)--cycle,
+     lightgray);
+
+dot((b,0));
+label("$z_{1 - \alpha}$", (b,0), S);
+label("$\alpha$", (b,f(b)), NE);
+draw((b, 0)--(b, f(b)));
+
+\end{asy}
+\end{center}
+\begin{enumerate}
+    \item[2.] $H_1: \mu < \mu_0\ -$ левосторонняя альтернтива
+    \[S_c = \left\{x: \frac{\overline{x} - \mu_0}{\sqrt{\frac{\sigma^2}{n}}} \leq z_{1-\alpha}\right\}\]
+\end{enumerate}
+\begin{center}
+\begin{asy}
+size(11cm);
+
+import graph;
+
+real f(real x)
+{
+  return exp(-x^2/2)/sqrt(2*pi);
+}
+
+real b=-1;
+
+draw((-2.5,0)--(2.6,0), Arrow);
+label("$x$", (2.5,0), S);
+draw((0,-0.2)--(0,1), Arrow);
+label("$y$", (0,1), W);
+
+draw(graph(f,-2.5,2.5), black+1bp);
+
+fill(graph(f,-2.5,b)--(b,0)--(-2.5,0)--cycle,
+     lightgray);
+
+dot((b,0));
+label("$\alpha$", (b,f(b)), NW);
+label("$z_{\alpha}$", (b,0), S);
+draw((b, 0)--(b, f(b)));
+\end{asy}
+\end{center}
+\begin{enumerate}
+    \item[3.] $H_1: \mu \neq \mu_0\ -$ двусторонняя альтернатива
+    \[S = \left\{x: \frac{\left|\overline{x} - \mu_0\right|}{\sqrt{\frac{\sigma^2}{n}}} \geq z_{\frac{\alpha}{2}}\right\}\]
+\end{enumerate}
+\begin{center}
+\begin{asy}
+size(11cm);
+
+import graph;
+
+real f(real x)
+{
+  return exp(-x^2/2)/sqrt(2*pi);
+}
+real a=1;
+real b=-1;
+
+draw((-2.5,0)--(2.6,0), Arrow);
+label("$x$", (2.5,0), S);
+draw((0,-0.2)--(0,1), Arrow);
+label("$y$", (0,1), W);
+
+draw(graph(f,-2.5,2.5), black+1bp);
+
+fill(graph(f,-2.5,b)--(b,0)--(-2.5,0)--cycle,
+     lightgray);
+fill(graph(f,2.5,a)--(a,0)--(2.5,0)--cycle,
+     lightgray);
+dot((b,0));
+dot((a,0));
+label("$\frac{\alpha}{2}$", (b,f(b)), NW);
+draw((b, 0)--(b, f(b)));
+label("$\frac{\alpha}{2}$", (a,f(a)), NE);
+draw((a, 0)--(a, f(a)));
+label("$z_{1 - \frac{\alpha}{2}}$", (a,0), S);
+label("$z_{\frac{\alpha}{2}}$", (b,0), S);
+
+\end{asy}
+\end{center}
+\newpage
+\setcounter{maindf}{15}
+\setcounter{subdf}{0}
+
+\setcounter{mainth}{15}
+\setcounter{subth}{0}
+
+\setcounter{mainpr}{15}
+\setcounter{subpr}{0}
+
+\setcounter{mainex}{15}
+\setcounter{subex}{0}
+
+\setcounter{mainta}{15}
+\setcounter{subta}{1}
+
+\setcounter{mainle}{15}
+\setcounter{suble}{0}
+\textit{14 параграф про примеры тестирования стандартных гипотез}
+\begin{center}
+    \huge Тест отношения правдоподобия\\
+    (Likelyhood Ratio test $\equiv$ LR-test)
+\end{center}
+Пусть 
+\begin{itemize}
+    \item $X$ $-$ случайная выборка
+    \item $x\ -$ её реализация
+    \item $\theta = (\theta_1,\dots,\theta_k)\ -$ вектор неизвестных параметров
+    \item $\theta\subseteq \mb{R}^k\ -$ множество допустимых значений $\theta$
+    \item $\mc{L}(x;\theta)\ -$ функция прадоподобия
+    \item $\ell(x;\theta) = \ln \mc{L}(x;\theta)$
+\end{itemize}
+\[H_0:\begin{cases}
+    c_1(\theta) = q_1\\
+    c_2(\theta) = q_2\\
+    \vdots\\
+    c_r(\theta) = q_r\\
+\end{cases} \ - \  \text{система (нелинейных) ограничений}\]
+\begin{itemize}
+    \item $\Theta_{UR} = \Theta$ (UR $\equiv$ unrestricted)
+    \item $\Theta_{UR} = \left\{\theta: \theta \text{ удовлетворяет ограничению } H_0\right\}$ (R $\equiv$ restricted)
+    \item $\widehat{\theta}_{UR} = \argmax{\theta\in\Theta_{UR}}\,\ell(x;\theta)$
+    \item $\widehat{\theta}_{R} = \argmax{\theta\in\Theta_{R}}\,\ell(x;\theta)$
+\end{itemize}
+Тогда
+\[LR = -2\left(\ell\left(X;\widehat{\theta}_R\right) - \ell\left(X;\widehat{\theta}_{UR}\right)\right) \underset{H_0}{\asi} \operatorname{H}_r\]
+где $r\ -$ число ограничений в гипотезе $H_0$
+\task{
+    $X\ -$ случайная выборка, $X_i \sim \operatorname{N}\left(\mu, \sigma^2 = \nu\right),\ \mu, \nu$ неизвестны.
+
+    $n = 100,\ \displaystyle\sum_{i=1}^{n}x_i = 30,\ \sum_{i=1}^{n}x_i^2 = 146$ \textit{(146\%, ъеъ)}
+
+    С помощью LR-теста протестировать гипотезу $H_0:\nu = 1$ на уровне значимости $\alpha = 0.05$
+
+    Шаг 1:
+    \[\mc{L}(x;\mu,\nu) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\nu}}\exp\left(-\frac{(x_i - \mu)^2}{2\nu}\right) = (2\pi)^{-\frac{n}{2}}\nu^{-\frac{n}{2}}\exp\left(\frac{1}{2\nu}\sum_{i=1}^{n}(x_i-\mu)^2\right)\]
+    Шаг 2:
+    \[\ell(x;\mu,\nu) = -\frac{n}{2}\ln 2\pi - \frac{n}{2}\ln \nu - \frac{1}{2\nu}\sum_{i=1}^{n}(x_i -\mu)^2\]
+    Шаг 3: $\widehat{\mu}_{UR},\widehat{\nu}_{UR}\ -$ ?
+    \[\frac{\partial\ell}{\partial\mu} = -\frac{1}{2\nu}\cdot (-2)\sum_{i=1}^{n}(x_i - \mu) = \frac{1}{\nu}\sum_{i=1}^{n}(x_i - \mu) = 0\]
+    \[\sum_{i=1}^{n}(x_i - \mu) = \sum_{i=1}^{n}x_i - n\mu = 0\]
+    \[\widehat{\mu}_{UR} = \overline{x} = \frac{30}{100} = 0.3\]
+    \[\frac{\partial\ell}{\partial\nu} = -\frac{n}{2\nu} + \frac{1}{\nu^2}\sum_{i=1}^{n}(x_i - \mu)^2 = 0\]
+    \[-n\nu + \sum_{i=1}^{n}(x_i - \mu)^2\]
+    \[\widehat{\nu}_{UR} = \frac{1}{n}\sum_{i=1}^{n}(x_1 - \mu)^2 = \frac{1}{n}\sum_{i=1}^{n}\left(x_1 - \widehat{\mu}_{UR}\right)^2 = \frac{1}{n}\sum_{i=1}^{n}x_i^2 - \overline{x}^2 = \frac{146}{100} - (0.3)^2 = 1.46 - 0.09 = 1.37\]
+    Шаг 4: $\widehat{\mu}_{R},\widehat{\nu}_{R}\ -$ ? $\left(\widehat{\nu}_{R} = 1\right)$
+    \[\left.\frac{\partial}{\partial\mu}\right|_{\nu=1} = \frac{1}{1}\sum_{i=1}^{n}(x_i - \mu) = 0\]
+    \[\implies\widehat{\mu}_{R} = \overline{x} = 0.3\]
+    Шаг 5:
+    \[\ell\left(x;\widehat{\mu}_{UR},\widehat{\nu}_{UR}\right) = \frac{100}{2}\ln2\pi - \frac{100}{2}\ln 1.37 - \frac{1}{2\cdot 1.37}\overbrace{\sum_{i=1}^{n}(x_i - 0.3)^2}^{1.37 \cdot n} \approx -157.63\]
+    \[\ell\left(x;\widehat{\mu}_{R},\widehat{\nu}_{R}\right) = \frac{100}{2}\ln2\pi - \frac{100}{2}\ln 1 - \frac{1.37 \cdot 100}{2 \cdot 1} \approx -160.39\]
+    \[LR_{obs} = -2\left(\ell\left(x;\widehat{\mu}_{R},\widehat{\nu}_{R}\right) - \ell\left(x;\widehat{\mu}_{UR},\widehat{\nu}_{UR}\right)\right) = -2(-160.39 + 157.663) = 5.52\]
+    По таблице $\chi_{0.95}^2(1) \approx 3.84 < 5.52 \implies $ отвергаем $H_0$ и принимаем $H_1$ (то есть отрицание $H_0$)
+}
+\vspace{6cm}
+\begin{center}
+    \huge ТВиМС В С Ё
+\end{center}
 \end{document}
