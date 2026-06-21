@@ -3203,7 +3203,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     Пусть $-\infty \leq a < b \leq +\infty$ и функция $g: (a, b) \to \mb{R},\ g \in C^2(a, b)$, причём $g''(x) > 0\ \forall x \in (a, b)$
 
     Пусть $X: \Omega \to (a, b)\ -$ случайная величина, $\mb{E}(X) < \infty$. Тогда
-    \[\mb{E}(g(x)) \geq g(\mb{E}(x)) \qquad \text{(1)}\]
+    \[\mb{E}(g(x)) \geq g(\mb{E}(x)) \tag{1}\]
     причём равенство достигается $\iff X \equiv \const$ п.н.
 
     \vspace{1cm}
@@ -3211,30 +3211,31 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 }
 \prof{
     Пусть $\mu = \mb{E}(X)$. Разложим функцию $g(x)$ в точке $x = \mu$ по Тейлору с остаточным членом в форме Лагранжа до членов первого порядка, т.е.
-    \[g(x) = g(\mu) + g'(\mu)(x - \mu) + \frac{g''(\xi)}{2!}(x - \mu)^2, \quad \text{где $\xi$ лежит между $x$ и $\mu$} \qquad \text{(1*)}\]
+    \[g(x) = g(\mu) + g'(\mu)(x - \mu) + \frac{g''(\xi)}{2!}(x - \mu)^2, \quad \text{где $\xi$ лежит между $x$ и $\mu$} \tag{1*}\]
     Зафиксируем $\forall\omega \in \Omega$. В формуле (1) вместо $x$ подставим $X(\omega)$ и вместо $\xi$ подставим $\xi(\omega)$:
-    \[g(X(\omega)) = g(\mu) + g'(\mu)(X(\omega) - \mu) + \frac{g''(\xi(\omega))}{2!}(X(\omega) - \mu)^2 \qquad \text{(2*)}\]
+    \[g(X(\omega)) = g(\mu) + g'(\mu)(X(\omega) - \mu) + \frac{g''(\xi(\omega))}{2!}(X(\omega) - \mu)^2 \tag{2*}\]
     Возьмём от обеих частей равенства математическое ожидание
-    \[\mb{E}(g(X)) = g(\mu) + \underbrace{g'(\mu)(\mb{E}(X) - \mu)}_{=0} + \underbrace{\mb{E}\left(\frac{g''(\xi)}{2!}(X - \mu)^2\right)}_{\geq 0} \geq g(\mu) = g(\mb{E}(X)) \qquad \text{(3*)}\]
+    \[\mb{E}(g(X)) = g(\mu) + \underbrace{g'(\mu)(\mb{E}(X) - \mu)}_{=0} + \underbrace{\mb{E}\left(\frac{g''(\xi)}{2!}(X - \mu)^2\right)}_{\geq 0} \geq g(\mu) = g(\mb{E}(X)) \tag{3*}\]
     Из формулы (3*) видно, что (1) обращается в равенство, т.е.
     \[\mb{E}(g(X)) = g(\mb{E}(x)) \iff \mb{E}\left(\frac{g''(\xi)}{2!}(X - \mu)^2\right) = 0\]
-    Заметим, что в скобках стоит неотрицательная случайная величина, чьё математическое ожидание равно $0$. Значит, по утверждению 2.1 (на самом деле свойству математического ожидания)
+    Заметим, что в скобках стоит неотрицательная случайная величина, чьё математическое ожидание равно $0$. Значит, по выводу из задачи 2.1 (на самом деле свойству математического ожидания)
     \[\frac{g''(\xi)}{2!}(X - \mu)^2 = 0 \text{ п.н.} \qquad \text{(4*)}\]
     Учитывая, что $g''(\xi) > 0$, равенство (4*) равносильно
     \[(X - \mu)^2 = 0 \text{ п.н.} \iff X = \mu \text{ п.н.}\]
 }
 \example{
-    Пусть $X\ -$ случайная выборка, $X_i \sim \Geo(p)$. Является ли оценка $\widehat{p} = \dfrac{1}{\overline{X}}$ несмещённой?
+    Пусть $X\ -$ случайная выборка, $X_i \sim \Geo\,(p)$. Является ли оценка $\widehat{p} = \dfrac{1}{\overline{X}}$ несмещённой?
     \[\mb{E}(X_i) = \frac{1}{p}\]
     \[g(x) = \frac{1}{x} \implies g'(x) = -\frac{1}{x^2} \implies g''(x) = \frac{2}{x^3} > 0\ \text{(при $x > 0$)}\]
     \[\implies \mb{E}\left(\widehat{p}\right) = \mb{E}\left(g\left(\overline{X}\right)\right) = \mb{E}\left(\frac{1}{\overline{X}}\right) > \frac{1}{\mb{E}\left(\overline{X}\right)} = \frac{1}{\mb{E}(X_i)} = \frac{1}{1/p} = p\]
     $\implies \widehat{p}$ смещена вверх (то есть завышает теоретическое значение $p$) 
 }
 \example{
-    Пусть $X\ -$ случайная выборка, которое cостоит из одного наблюдения $X \sim \Be(p)$. Предложите несмещённую оценку для функции $\dfrac{1}{p}$ или докажите, что его не существует
-    \hspace{1cm}
+    Пусть $X\ -$ случайная выборка, которое cостоит из одного наблюдения $X \sim \Be\,(p)$. Предложите 
+    
+    несмещённую оценку для функции $\dfrac{1}{p}$ или докажите, что его не существует\\[1cm]
     От противного: предположим, что $\exists$ несмещённая оценка $g(X)$ для $\dfrac{1}{p}$. Тогда
-    \[\mb{E}(g(X)) = g(0) \cdot (1 - p) + g(1) \cdot p = \frac{1}{p},\ \forall p\in (0, 1) \qquad \text{(1*)}\]
+    \[\mb{E}(g(X)) = g(0) \cdot (1 - p) + g(1) \cdot p = \frac{1}{p},\ \forall p\in (0, 1) \tag{1*}\]
     Переходя к пределу при $p \to 0^+$ в (1*) получаем, что $LHS(p) \to 0$, а $RHS(p) \to +\infty$
 }
 \propos{
@@ -3485,7 +3486,7 @@ $(\impliedby)$
     \item $\forall \theta \in \Theta \ \mb{E}\left(\widehat{\theta}_n\right) \xrightarrow[n\to\infty]{} \theta$
     \item $\forall \theta \in \Theta\ \Var\left(\widehat{\theta}_n\right) \xrightarrow[n\to\infty]{} 0$
 \end{enumerate}
-то $\widehat{\theta}_n \xrightarrow[]{P} \theta$, то есть $\widehat{\theta}_n$ является состоятельной
+то $\widehat{\theta}_n \xrightarrow[]{P} \theta$
 
 }
 
@@ -3630,7 +3631,7 @@ $(\impliedby)$
 
 а $\widehat{m}_j\ -$ соответствующий ему выборочный момент
 \defin{
-    Вектор $\widehat{\theta}_{MM} = \left(\widehat{\theta}_{1,MM}, \dots, \widehat{\theta}_{r,MM}\right)$, являющийся решением системы (1) называется оценкой вектора
+    Вектор $\widehat{\theta}_{MM} = \left(\widehat{\theta}_{1,MM}, \dots, \widehat{\theta}_{r,MM}\right)$, являющийся решением системы (1), называется оценкой вектора
     
     $\theta = (\theta_1,\dots, \theta_r)$ по методу моментов
 }
@@ -3835,12 +3836,12 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[\begin{array}{c|c|c|c}
         X_i & -2 & 0 & 1\\
         \hline
-        P_{X_i} & \frac{1}{2} - \theta & \frac{1}{2} & \theta
+        P_{X_i} & 0.5 - \theta & 0.5 & \theta
     \end{array}\]
     $0 < \theta < \dfrac{1}{2}$, $\widehat{\theta}_{ML}\ -\ ?$
     \[\mc{L}(x_1,\dots,x_n; \theta) = P_{\theta}\left(\{X_1 = x_1\} \cap \cdots \cap \{X_n = x_n\}\right) = P(X_1 = x_1) \cdots P(X_n = x_n)\]
     \[P_\theta(X_i = x_i) = \begin{cases}
-        \frac{1}{2} - \theta, & x_i = -2\\
+        \frac{1}{2} - \theta, & x_i = -2\\[1mm]
         \frac{1}{2}, & x_i = 0\\
         \theta, & x_i = 1
     \end{cases} = \left(\frac{1}{2} - \theta\right)^{\mb{1}_{-2}(x_i)} \cdot \left(\frac{1}{2}\right)^{\mb{1}_{0}(x_i)} \cdot \theta^{\mb{1}_{1}(x_i)} \tag{1*}\]
@@ -4028,7 +4029,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
 }
 \prof{
     По ЗБЧ:
-    \[\widehat{\mu}_{kn} = \frac{1}{n}\sum_{i=1}^{n} X_i^k \xrightarrow{P} \mb{E}\left(x_i^k\right) = \mu_k\]
+    \[\widehat{\mu}_{kn} = \frac{1}{n}\sum_{i=1}^{n} X_i^k \xrightarrow{P} \mb{E}\left(X_i^k\right) = \mu_k\]
 }
 \propos{
     Пусть $X\ -$ случайная выборка с конечным $2k$-м начальным моментом $\mu_{2k}$. Тогда последовательность выборочных моментов $\widehat{\mu}_{kn} \asi \operatorname{N}\left( \mu_k, \dfrac{\mu_{2k} - \mu_k^2}{n}\right)$
@@ -4405,7 +4406,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
 }
 Предположим теперь, что выполнены следующие условия регулярности:
 \begin{enumerate}
-    \item[R1)] $\Theta\ -$ открытый интервал (возмножно, конечный)
+    \item[R1)] $\Theta\ -$ открытый интервал (возмножно, бесконечный)
     \item[R2)] $A = \{x \in \mb{R}: f(x;\theta) > 0\}$ не зависит от $\theta$
     \item[R3)] $\forall x \in A,\ \forall\theta\in \Theta\ \dfrac{\partial}{\partial\theta}f(x;\theta)$ существует и конечна
     \item[R4)] $\forall\theta$ величина
@@ -4442,7 +4443,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
         \item Величина $I_1(\theta) = \mb{E}\left(V_1^2\right)$ называется информацией Фишера о параметре $\theta$, содержащейся в 
         
         первом наблюдении случайной выборки $X$
-        \item Величина $I_n(\theta) = \mb{E}\left(V:2\right)$ называется информацией Фишера о параметра $\theta$, содержащейся 
+        \item Величина $I_n(\theta) = \mb{E}\left(V^2\right)$ называется информацией Фишера о параметра $\theta$, содержащейся 
         
         в наблюдаемой выборке $X$
     \end{itemize}
@@ -4456,7 +4457,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
     \[I_n(\theta) = \mb{E}_\theta\left(V^2\right) = \mb{E}_\theta\left(V^2\right) - \underbrace{\mb{E}^2(V)}_{=0\text{ по (2)}} = \Var_{\theta}(V) = n\Var_\theta(V_1) = nI_1(\theta)\]
 }
 Пусть $f(x;\theta)$ удовлетворяет условиям регулярности R1)-R4). Обозначим через $\mc{R}$ класс всех оценок $\widehat{\theta} = \widehat{\theta}(X_1,\dots,X_n) \in \mc{K}$ неизвестного параметра $\theta$, для которого выполнего дополнительное условие
-\[\frac{\partial}{\partial\theta}\int\limits_{\mb{R}^n}\widehat{\theta}(x_1,\dots,x_n)f(x_1,\dots,x_n) = \int\limits_{\mb{R}n}\widehat{\theta}(x_1,\dots,x_n)\frac{\partial}{\partial\theta}f(x_1,\dots,x_n;\theta)\,dx_1\dots,dx_n\]
+\[\frac{\partial}{\partial\theta}\int\limits_{\mb{R}^n}\widehat{\theta}(x_1,\dots,x_n)f(x_1,\dots,x_n;\theta) = \int\limits_{\mb{R}n}\widehat{\theta}(x_1,\dots,x_n)\frac{\partial}{\partial\theta}f(x_1,\dots,x_n;\theta)\,dx_1\dots,dx_n\]
 \renewcommand{\thletter}{неравенство Рао-Кромера}
 \theorem{
     Пусть $f(x;\theta)$ удовлетворяет условиям регулярности R1)-R4). Тогда $\forall\widehat{\theta}(X_1,\dots,X_n) \in \mc{R}\ \forall\theta\in\Theta$ 
@@ -4618,7 +4619,9 @@ plot (\x,{1.23/(0.5*(\x-1))});
 }
 Пусть $X\ -$ случайная выборка с функцией распределения $F(x;\theta),\ \theta\in\Theta$
 \defin{
-    Доверительным интервалом уровня довения $\gamma\in(0, 1)$ для неизвестного параметра $\theta$ называется такой интервал $\left(L(X_1,\dots,X_n), R(X_1,\dots,X_n)\right)$, что
+    Доверительным интервалом уровня довения $\gamma\in(0, 1)$ для неизвестного параметра $\theta$ называется
+    
+    такой интервал $\left(L(X_1,\dots,X_n), R(X_1,\dots,X_n)\right)$, что
     \[P_\theta\left(L(X_1,\dots,X_n) \leq \theta \leq R(X_1,\dots,X_n)\right) \geq \gamma\]
 } 
 \defin{
@@ -4639,7 +4642,7 @@ plot (\x,{1.23/(0.5*(\x-1))});
 
     $\implies$ распределение не зависит от $\mu$
 
-    \item $g(x_1,\dots,x_n;\mu)$ непрерывна по $\mu$ и строго убывает
+    \item $G(x_1,\dots,x_n;\mu)$ непрерывна по $\mu$ и строго убывает
     
     $\implies G$ является ЦС для $\mu$
     
@@ -4695,7 +4698,9 @@ draw((0,0)--(0,0.42), dashed);
     \[\overline{X} - z_{1-\alpha/2}\sqrt{\frac{\sigma^2}{n}} \leq \mu \leq \overline{X} - z_{\alpha/2}\sqrt{\frac{\sigma^2}{n}}\]
 \end{enumerate}
 \defin{
-    Асимптотическим доверительным интервалом уровня доверия $\gamma \in (0, 1)$ для неизвестного параметра $\theta$ называется такой интервал $[L_n(X_1,\dots,X_n), R_n(X_1,\dots,X_n)]$, что
+    Асимптотическим доверительным интервалом уровня доверия $\gamma \in (0, 1)$ для неизвестного 
+    
+    параметра $\theta$ называется такой интервал $[L_n(X_1,\dots,X_n), R_n(X_1,\dots,X_n)]$, что
     \[\forall\theta\in\Theta\ \lim_{n\to\infty}P_\theta(L_n(X_1,\dots,X_n) \leq \theta \leq R_n(X_1,\dots,X_n)) \geq \gamma\]
 }
 \example{
@@ -4724,7 +4729,7 @@ draw((0,0)--(0,0.42), dashed);
 
     \[T_n = \frac{\overline{X} - p}{\sqrt{\frac{p(1-p)}{n}}}\]
     Заметим, что
-    \[\frac{\overline{X} - p}{\sqrt{\frac{\overline{X}\left(1-\overline{X}\right)}{n}}} = \overbrace{\frac{\overline{X} - p}{\sqrt{\frac{p(1-p)}{n}}}}^{\xrightarrow{d}\operatorname{N}\,(0,1)} \cdot \overbrace{\frac{\sqrt{\sqrt{\frac{p(1-p)}{n}}}}{\overline{X}\left(1-\overline{X}\right)}{n}}^{\xrightarrow{P} 1} \xrightarrow{d} \operatorname{N}\,(0,1)\]
+    \[\frac{\overline{X} - p}{\sqrt{\frac{\overline{X}\left(1-\overline{X}\right)}{n}}} = \overbrace{\frac{\overline{X} - p}{\sqrt{\frac{p(1-p)}{n}}}}^{\xrightarrow{d}\operatorname{N}\,(0,1)} \cdot \overbrace{\frac{\sqrt{\frac{p(1-p)}{n}}}{\sqrt{\frac{\overline{X}\left(1-\overline{X}\right)}{n}}}}^{\xrightarrow{P} 1} \xrightarrow{d} \operatorname{N}\,(0,1)\]
     \[-1.64 \leq \frac{\overline{X} - p}{\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}}} \leq 1.64\]
     \[-1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}} \leq \overline{X} - p \leq 1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}}\]
     \[\overline{X} - 1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}} \leq p \leq \overline{X} + 1.64\sqrt{\frac{\overline{X}\left(1 - \overline{X}\right)}{n}}\]
@@ -4859,9 +4864,9 @@ draw((0,0)--(0,0.42), dashed);
 }
 \prof{
     Обозначим выборку за $X$, а $x$ за числовой вектор. Рассмотрим
-    \[P_0(X \in S_c \setminus (S_c \cap S)) = \underbrace{P_0(X \in S_c)}_{=\alpha} - P_0(X \in S_c \cap S) = P_0(X\in S) - P_0(X \in S_c \cap S) = P(X \in S \setminus (S_c \cap S)) \tag{2}\]
-    \[P_1(X \in S_c \setminus (S_c \cap S)) = \int\limits_{S_c \setminus (S_c \cap S)} \underbrace{f_1(x)}_{\geq c\cdot f_0(x)}\,dx \geq c\int\limits_{S_c \setminus (S_c \cap S)}f_0(x)\,dx = cP_0(X\in S\setminus (S_c \cap S)) \overset{\text{(2)}}{=}\] 
-    \[= \int\limits_{S\setminus (S_c \cap S)} \underbrace{cf_0(x)}_{>f_1(x)}\,dx \geq \int\limits_{S\setminus (S_c \cap S)}f_1(x)\,dx = P_1(X\in S \setminus (S_c \cap S))\]
+    \[P_0(X \in S_c \setminus (S_c \cap S)) = \underbrace{P_0(X \in S_c)}_{=\alpha} - P_0(X \in S_c \cap S) = P_0(X\in S) - P_0(X \in S_c \cap S) = P_0(X \in S \setminus (S_c \cap S)) \tag{2}\]
+    \[P_1(X \in S_c \setminus (S_c \cap S)) = \int\limits_{S_c \setminus (S_c \cap S)} \underbrace{f_1(x)}_{\geq c\cdot f_0(x)}\,dx \geq c\int\limits_{S_c \setminus (S_c \cap S)}f_0(x)\,dx = cP_0(X\in S_c\setminus (S_c \cap S)) \overset{\text{(2)}}{=}\] 
+    \[= cP_0(X\in S\setminus (S_c \cap S)) = \int\limits_{S\setminus (S_c \cap S)} \underbrace{cf_0(x)}_{>f_1(x)}\,dx \geq \int\limits_{S\setminus (S_c \cap S)}f_1(x)\,dx = P_1(X\in S \setminus (S_c \cap S))\]
     Итого
     \[P_1(X \in S_c \setminus (S_c \cap S)) \geq P_1(X\in S \setminus (S_c \cap S))\]
     \[P_1(X \in S_c \setminus (S_c \cap S)) + P_1(X \in S_c\cap S) \geq P_1(X\in S \setminus (S_c \cap S)) + P_1(X \in S_c\cap S)\]
@@ -4979,11 +4984,12 @@ draw((0,0)--(0,0.42), dashed);
     \[\sum_{i=1}^{16}x_i - 16 \geq 2\ln c\]
     \[\overline{x} - 1 \geq \frac{2\ln c}{16}\]
     \[\overline{x} \geq 1 + \frac{\ln c}{8}\]
-    $X_i \sim \operatorname{N}\,\left(0,\sigma^2=4\right) \implies \overline{X} \sim \operatorname{N}\,\left(0, \frac{\sigma^2}{n} = \frac{1}{4}\right)$
+    $X_i \sim \operatorname{N}\,\left(0,\sigma^2=4\right) \implies \overline{X} \sim \operatorname{N}\,\left(0, \dfrac{\sigma^2}{n} = \dfrac{1}{4}\right)$
     \[0.05 = \alpha = P\left(\overline{X} \geq 1 + \frac{\ln c}{8}\right) = P_0\left(\frac{\overline{X} - 0}{\sqrt{\frac{1}{4}}} \geq \frac{1 + \frac{\ln c}{8}}{\sqrt{\frac{1}{4}}}\right) = P_0\left(Z \geq 2 + \frac{\ln c}{4}\right)\]
     \[2 + \frac{\ln c}{4} = z_{0.95} = 1.64\]
     \[c \approx 0.237\]
-    \[P_{H_1}(X \in S_c) = P_{H_1}\left(\overline{X} \geq 0.82\right) = P_{H_1}\left(\frac{\overline{X} - 2}{\sqrt{\frac{1}{4}}} \geq \frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) = P_{H_1}\left(Z \geq \frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) = 1 - \Phi\left(\frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) \approx 0.99\]
+    \[P_{H_1}(X \in S_c) = P_{H_1}\left(\overline{X} \geq 0.82\right) = P_{H_1}\left(\frac{\overline{X} - 2}{\sqrt{\frac{1}{4}}} \geq \frac{0.82 - 2}{\sqrt{\frac{1}{4}}}\right) = P_{H_1}\left(Z \geq -2.36\right) = 1 - \Phi\left(-2.36\right) =\]
+    \[= \Phi\left(2.36\right) \approx 0.991\]
 }
 \newpage
 \setcounter{maindf}{13}
@@ -5055,7 +5061,7 @@ $X\ -$ случайная выборка, $f(x_1,\dots,x_n;\theta)\ -$ её пл
     \[2(\mu_1-\mu_0)\underbrace{\sum_{i=1}^{n}x_i}_{n\overline{x}} - \left(\mu_1^2 - \mu_0^2\right)n \geq 2\sigma^2\ln c\]
     \[2(\mu_1-\mu_0)n\overline{x} \geq \left(\mu_1^2-\mu_0^2\right)n + 2\sigma^2\ln c\]
     Так как $\mu_1 > \mu_0$, то знак неравенства не изменится
-    \[\overline{x} \geq \frac{\left(\mu_1^2 - \mu_0^2\right)}{2(\mu_1 - \mu_0)n} + \frac{2\sigma^2\ln c}{2(\mu_1 - \mu_0)} \cdot \frac{1}{n}\]
+    \[\overline{x} \geq \frac{\left(\mu_1^2 - \mu_0^2\right)n}{2(\mu_1 - \mu_0)n} + \frac{2\sigma^2\ln c}{2(\mu_1 - \mu_0)} \cdot \frac{1}{n}\]
     \[\overline{x} \geq \frac{\mu_1 + \mu_0}{2} + \frac{\sigma^2\ln c}{n(\mu_1 - \mu_0)} = c_1\]
     \[\implies S_c = \left\{x = (x_1,\dots,x_n): \overline{x} \geq c_1\right\}\]
     \[\alpha = P_0(X\in S_c) = P_0\left(\overline{X} \geq c_1\right) = P_0\left(\frac{\overline{X} - \mu_0}{\sqrt{\frac{\sigma^2}{n}}} \geq \frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}}\right) = 1 - \Phi\left(\frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}}\right)\]
@@ -5227,7 +5233,7 @@ label("$z_{\frac{\alpha}{2}}$", (b,0), S);
     \item $\widehat{\theta}_{R} = \argmax{\theta\in\Theta_{R}}\,\ell(x;\theta)$
 \end{itemize}
 Тогда
-\[LR = -2\left(\ell\left(X;\widehat{\theta}_R\right) - \ell\left(X;\widehat{\theta}_{UR}\right)\right) \underset{H_0}{\asi} \operatorname{H}_r\]
+\[LR = -2\left(\ell\left(X;\widehat{\theta}_R\right) - \ell\left(X;\widehat{\theta}_{UR}\right)\right) \underset{H_0}{\sim} \operatorname{H}_r\]
 где $r\ -$ число ограничений в гипотезе $H_0$
 \task{
     $X\ -$ случайная выборка, $X_i \sim \operatorname{N}\left(\mu, \sigma^2 = \nu\right),\ \mu, \nu$ неизвестны.
@@ -5245,10 +5251,10 @@ label("$z_{\frac{\alpha}{2}}$", (b,0), S);
     \[\sum_{i=1}^{n}(x_i - \mu) = \sum_{i=1}^{n}x_i - n\mu = 0\]
     \[\widehat{\mu}_{UR} = \overline{x} = \frac{30}{100} = 0.3\]
     \[\frac{\partial\ell}{\partial\nu} = -\frac{n}{2\nu} + \frac{1}{\nu^2}\sum_{i=1}^{n}(x_i - \mu)^2 = 0\]
-    \[-n\nu + \sum_{i=1}^{n}(x_i - \mu)^2\]
+    \[-n\nu + \sum_{i=1}^{n}(x_i - \mu)^2 = 0\]
     \[\widehat{\nu}_{UR} = \frac{1}{n}\sum_{i=1}^{n}(x_1 - \mu)^2 = \frac{1}{n}\sum_{i=1}^{n}\left(x_1 - \widehat{\mu}_{UR}\right)^2 = \frac{1}{n}\sum_{i=1}^{n}x_i^2 - \overline{x}^2 = \frac{146}{100} - (0.3)^2 = 1.46 - 0.09 = 1.37\]
     Шаг 4: $\widehat{\mu}_{R},\widehat{\nu}_{R}\ -$ ? $\left(\widehat{\nu}_{R} = 1\right)$
-    \[\left.\frac{\partial}{\partial\mu}\right|_{\nu=1} = \frac{1}{1}\sum_{i=1}^{n}(x_i - \mu) = 0\]
+    \[\left.\frac{\partial\ell}{\partial\mu}\right|_{\nu=1} = \frac{1}{1}\sum_{i=1}^{n}(x_i - \mu) = 0\]
     \[\implies\widehat{\mu}_{R} = \overline{x} = 0.3\]
     Шаг 5:
     \[\ell\left(x;\widehat{\mu}_{UR},\widehat{\nu}_{UR}\right) = \frac{100}{2}\ln2\pi - \frac{100}{2}\ln 1.37 - \frac{1}{2\cdot 1.37}\overbrace{\sum_{i=1}^{n}(x_i - 0.3)^2}^{1.37 \cdot n} \approx -157.63\]
