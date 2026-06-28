@@ -310,7 +310,6 @@
 \setcounter{subex}{0}
 
 \begin{center}
-    \addcontentsline{toc}{subsection}{Алгебры и сигма-алгебры множеств}
     \huge Алгебры и сигма-алгебры множеств
 \end{center}
 
@@ -338,6 +337,8 @@
 
     Ответ: $\mc{S}_1, \mc{S}_2, \mc{S}_5$ являются алгебрами; $\mc{S}_3$ и $\mc{S}_4$ не являются алгебрами.
 }
+\addcontentsline{toc}{subsection}{Алгебры и сигма-алгебры множеств}
+
 \defin{
     Пусть задано непустое множество $\Omega$. Система подмножеств $\mc{F}$ называется $\sigma$-алгеброй, если для него выполнены следующие аксиомы:
     \begin{enumerate}
@@ -762,8 +763,6 @@ $\Omega$, $\sigma$-алгебра $\mc{F}$ подмножеств множест
 
 \setcounter{mainex}{4}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Классическая вероятностная схема}
-
     \huge{Классическая вероятностная схема}
 \end{center}
 $(\Omega,\, \mc{F},\, P)\ -$ вероятностное пространство
@@ -777,8 +776,10 @@ $P(A) = \dfrac{\# A}{\# \Omega}\ -$ классическая формула оп
 \\
 
 $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равновероятны)
+\addcontentsline{toc}{subsection}{Классическая вероятностная схема}
+
 \begin{center}
-    \huge{Независимость событий}
+    Независимость событий
 \end{center}
 \defin{
     Пусть $(\Omega, \mc{F}, P)\ -$ вероятностное пространство. События $A_1,\dots, A_n \in \mc{F}$ называются независимыми, если для всех $1 \leq i_1 \leq \cdots \leq i_k \leq n$
@@ -907,8 +908,6 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
 \setcounter{mainex}{5}
 \setcounter{subex}{0}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Измеримые функции и случайные величины}
-
     \huge{Измеримые функции и случайные величины}
 \end{center}
 \defin{
@@ -921,6 +920,8 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
 
     * построить функцию, которая НЕ являтся измеримой, довольно сложно, поэтому можно считать, что известные функции измеримы
 }
+\addcontentsline{toc}{subsection}{Измеримые функции и случайные величины}
+
 Замечание: $\xi(\omega)\ -$ случайная величина = измеримая функция
 \defin{
     Функция $g:\, \mb{R} \to \mb{R}$ называется борелевской, если она измерима относительно
@@ -973,8 +974,6 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
 }
 \newpage
 \begin{center}
-    \addcontentsline{toc}{subsection}{Функции распределения и функция плотности случайных величин}
-
     \huge{Функции распределения и функция плотности}
 
     \huge{случайных величин}
@@ -988,6 +987,8 @@ $\{\omega: \xi(\omega) > x\} \in \mc{F}\ \forall x \in \mb{R}$
 $(\mb{R}, \mc{B}(\mb{R}), P_\xi)$
 
 $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
+\addcontentsline{toc}{subsection}{Функции распределения и функция плотности случайных величин}
+
 \defin{
     Функцией распределения случайной величины $\xi$ называется
     \[F_\xi(x) = P(\xi \leq x),\]
@@ -1211,8 +1212,6 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
 \setcounter{subex}{0}
 
 \begin{center}
-    \addcontentsline{toc}{subsection}{Характеристики распределений}
-
     \huge{Характеристики распределений}
 \end{center}
 \defin{
@@ -1268,6 +1267,7 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
 
     Он используется, когда мы, например, не знаем распределения и должны получить всё из данных
 }
+\addcontentsline{toc}{subsection}{Характеристики распределений}
 
 Нужно различать понятия
 
@@ -1357,8 +1357,6 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 
 \newpage
 \begin{center}
-    \addcontentsline{toc}{subsection}{Свойства математического ожидания}
-
     \huge Свойства математического ожидания
 \end{center}
 \begin{enumerate}
@@ -1380,6 +1378,8 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     А также
     \[\sigma = \sqrt{\operatorname{Var}(\xi)}\ - \text{ стандартное отклонение}\]
 }
+\addcontentsline{toc}{subsection}{Свойства математического ожидания}
+
 \begin{center}
     \huge Свойства дисперсии
 \end{center}
@@ -1405,7 +1405,6 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \setcounter{mainex}{7}
 \setcounter{subex}{0}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Многомерные распределения}
 
     \huge Многомерные распределения
 \end{center}
@@ -1424,6 +1423,8 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
         \item $F_\xi$ непрерывна справа (слева) по $x_1$ и $x_2$
     \end{enumerate}
 }
+\addcontentsline{toc}{subsection}{Многомерные распределения}
+
 \defin{
     \[\lim_{x_1 \to \infty} F_\xi(x_1, x_2) = F_{\xi_2}(x_2)\]
     \[\lim_{x_2 \to \infty} F_\xi(x_1, x_2) = F_{\xi_1}(x_1)\]
@@ -1882,8 +1883,6 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \setcounter{mainex}{8}
 \setcounter{subex}{0}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Условные распределения и математическое ожидание}
-
     \huge Условные распределения
 \end{center}
 \defin{
@@ -1902,6 +1901,8 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 
     С этими условными распределениями работают ровно также, как с обычными
 }
+\addcontentsline{toc}{subsection}{Условные распределения и математическое ожидание}
+
 \begin{center}
     \huge Условное математическое ожидание
 \end{center}
@@ -1969,8 +1970,6 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \setcounter{mainex}{9}
 \setcounter{subex}{0}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Неравенства Маркова и Чебышёва}
-
     \huge Неравенства Маркова и Чебышёва
 \end{center}
 \hypertarget{markovflag}{}
@@ -1988,6 +1987,8 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Тогда $\eta \leq \xi$ п.н. $\implies \mb{E}(\xi) \leq \mb{E}(\eta)$
     \[\mb{E}(\eta) = 0 \cdot P(\xi < t) + tP(\xi \geq t) = tP(\xi \geq t) \leq \mb{E}(\xi) \implies P(\xi \geq t) \leq \frac{\mb{E}(\xi)}{t}\]
 }
+\addcontentsline{toc}{subsection}{Неравенства Маркова и Чебышёва}
+
 \hypertarget{chebyshevflag}{}
 \renewcommand{\thletter}{неравенство Чебышёва}
 \theorem{
@@ -2131,7 +2132,6 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \setcounter{subex}{0}
 
 \begin{center}
-    \addcontentsline{toc}{subsection}{Закон больших чисел}
 
     \huge Закон больших чисел
 \end{center}
@@ -2151,6 +2151,8 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Так как $0 \xrightarrow[n\to\infty]{} 0$ и $\dfrac{c}{n\varepsilon^2} \xrightarrow[n\to\infty]{} 0$, то по теореме о зажатой последовательности 
     \[P\left(\left|\overline{\xi} - \frac{1}{n}\sum_{i=1}^{n}\mu_i\right| \geq \varepsilon\right) \xrightarrow[n \to \infty]{} 0\]
 }
+\addcontentsline{toc}{subsection}{Закон больших чисел}
+
 \hypertarget{zbchflag}{}
 \propos{
     Следствие: ЗБЧ для н.о.р.с.в.
@@ -2354,7 +2356,6 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \setcounter{mainex}{11}
 \setcounter{subex}{0}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Центральная предельная теорема}
 
     \huge Центральная предельная теорема
 \end{center}
@@ -2369,6 +2370,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     Можно также записать
     \[\frac{\overline{\xi} - \mu}{\sigma/\sqrt{n}} \xrightarrow[n\to\infty]{d} Z \sim \operatorname{N}\,(0, 1),\quad \overline{\xi} = \frac{1}{n}\sum_{i=1}^{n}\xi_i\]
 }
+\addcontentsline{toc}{subsection}{Центральная предельная теорема}
+
 \renewcommand{\thletter}{Муавра-Лапласа (интегральная)}
 \theorem{
     Пусть $\xi_i \sim \Be(p) \implies \mb{E}(\xi_i) = p,\ \Var(\xi_i) = p(1-p)$
@@ -2493,8 +2496,6 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \textit{Перед получением верхней оценки царили те ещё страсти, котрые Елена Владимировна наблюдала в прямом эфире. В аспирантуре ВМК МГУ училась Ирина Шевцова (была у того же научрука, что и Елена Владимировна), и в кандидатской она снизила верхнюю оценку $c_0$ до $0.7$ (до этого с 50-х годов была $0.7866$). Тут встрепенулся мехмат, потому что теория вероятностей была и остается традиционно их сферой деятельности, и на спор начал пытаться понижать оценку ещё сильнее. В итоге они добились $0.69$. Тут уже Ирина напряглась, так как её кандидатская оказалась под угрозой срыва, но в итоге получила оценку $0.64$ и смогла защитить её и честь ВМК. В 2010 году Ирина Шевцова за оценку $0.4788$ получила степень доктора наук по теории вероятностей, хотя могла и раньше, но деканат (в котором были в основном старики) не пережил бы получение докторской до 30 лет (ещё и женщиной), поэтому её попросили дождаться 30-летия}
 \newpage
 \begin{center}
-    \addcontentsline{toc}{subsection}{Многомерное нормальное распределение}
-
     \huge Многомерное нормальное распределение
 \end{center}
 \setcounter{maindf}{12}
@@ -2514,6 +2515,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     В частности при $n = 1$:
     \[f_\xi(x) = \frac{1}{\sqrt{2\pi}}\frac{1}{\sigma}e^{-\frac{1}{2}(x - \mu)\frac{1}{\sigma^2}(x - \mu)}\]
 }
+\addcontentsline{toc}{subsection}{Многомерное нормальное распределение}
+
 \defin{
     Пусть $\xi_i \sim \operatorname{N}\,(0, 1)\ -$ независимы. Тогда
     \[f_\xi(x) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}x_i^2\right) = \frac{1}{\left(\sqrt{2\pi}\right)^n}\exp\left(-\frac{1}{2}\sum_{i=1}^{n}x_i^2\right)\]
@@ -2679,8 +2682,6 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \setcounter{mainex}{13}
 \setcounter{subex}{0}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Усечённое нормальное распределение и многомерая ЦПТ}
-
     \huge Усечённое (или урезанное, короче от англ. truncated) нормальное распределение
 \end{center}
 \defin{
@@ -2729,6 +2730,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         0, & x\leq a
     \end{cases}\ - \text{вообще не совпадает с исходным распределением}\]
 }
+\addcontentsline{toc}{subsection}{Усечённое нормальное распределение и многомерая ЦПТ}
+
 \example{
     \[\lambda(x) = \frac{\varphi(x)}{1 - \Phi(x)}\ - \text{ функция риска (мгновенная вероятность выхода из состояния $>a$)}\]
 }
@@ -2770,7 +2773,6 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \setcounter{mainle}{14}
 \setcounter{suble}{0}
 \begin{center}
-    \addcontentsline{toc}{subsection}{Распределения, связанные с нормальными}
 
     \huge Распределения, связанные с нормальными
 \end{center}
@@ -2785,6 +2787,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \textit{Напоминание:}
     \[\Gamma(z) = \int\limits_0^\infty z^{t-1}e^{-t}\,dt,\ z \in \mb{C}, \operatorname{Re} z > 0\]
 }
+\addcontentsline{toc}{subsection}{Распределения, связанные с нормальными}
+
 \propos{
     Свойства:
     \begin{enumerate}
@@ -3022,9 +3026,9 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \item $\exists \cov(X_i, X_j) = 0 \ \forall i \neq j$
     \end{enumerate}
 }
+\addcontentsline{toc}{section}{Математическая статистика}
 \addcontentsline{toc}{subsection}{Введение. Основные понятия. Случайная выборка и её основные характеристики}
 
-\addcontentsline{toc}{section}{Математическая статистика}
 \defin{
     \begin{itemize}
         \item $X(\omega) = \left(X_1(\omega), \dots, X_n(\omega)\right),\ \omega \in \Omega\ -$ случайная выборка (случайный вектор)

@@ -1,32 +1,32 @@
 \babel@toc {russian}{}\relax 
 \contentsline {section}{Теория вероятностей}{3}{subdf.1.1}%
 \contentsline {subsection}{Множества. Операции с множествами}{3}{section*.2}%
-\contentsline {subsection}{Алгебры и сигма-алгебры множеств}{11}{subex.1.11}%
+\contentsline {subsection}{Алгебры и сигма-алгебры множеств}{11}{subex.2.1}%
 \contentsline {subsection}{Вероятностная мера}{19}{subex.2.8}%
 \contentsline {subsection}{Классическая вероятностная схема}{23}{Item.12}%
-\contentsline {subsection}{Измеримые функции и случайные величины}{27}{subex.4.5}%
+\contentsline {subsection}{Измеримые функции и случайные величины}{27}{subdf.5.1}%
 \contentsline {subsection}{Функции распределения и функция плотности случайных величин}{29}{subex.5.2}%
-\contentsline {subsection}{Характеристики распределений}{35}{subex.5.6}%
-\contentsline {subsection}{Свойства математического ожидания}{37}{subex.6.3}%
-\contentsline {subsection}{Многомерные распределения}{38}{Item.36}%
-\contentsline {subsection}{Условные распределения и математическое ожидание}{51}{Item.56}%
-\contentsline {subsection}{Неравенства Маркова и Чебышёва}{53}{subex.8.1}%
-\contentsline {subsection}{Закон больших чисел}{58}{subex.9.3}%
-\contentsline {subsection}{Центральная предельная теорема}{62}{subex.10.5}%
-\contentsline {subsection}{Многомерное нормальное распределение}{66}{subth.11.3}%
-\contentsline {subsection}{Усечённое нормальное распределение и многомерая ЦПТ}{70}{subex.12.1}%
-\contentsline {subsection}{Распределения, связанные с нормальными}{72}{subex.13.2}%
-\contentsline {subsection}{Введение. Основные понятия. Случайная выборка и её основные характеристики}{76}{Item.74}%
+\contentsline {subsection}{Характеристики распределений}{35}{subdf.6.1}%
+\contentsline {subsection}{Свойства математического ожидания}{37}{subdf.6.3}%
+\contentsline {subsection}{Многомерные распределения}{38}{Item.39}%
+\contentsline {subsection}{Условные распределения и математическое ожидание}{51}{subdf.8.1}%
+\contentsline {subsection}{Неравенства Маркова и Чебышёва}{53}{subth.9.1}%
+\contentsline {subsection}{Закон больших чисел}{58}{subth.10.1}%
+\contentsline {subsection}{Центральная предельная теорема}{62}{subth.11.1}%
+\contentsline {subsection}{Многомерное нормальное распределение}{66}{subdf.12.1}%
+\contentsline {subsection}{Усечённое нормальное распределение и многомерая ЦПТ}{70}{subdf.13.1}%
+\contentsline {subsection}{Распределения, связанные с нормальными}{72}{subdf.14.1}%
 \contentsline {section}{Математическая статистика}{76}{Item.74}%
+\contentsline {subsection}{Введение. Основные понятия. Случайная выборка и её основные характеристики}{76}{section*.3}%
 \contentsline {subsection}{Несмещённые оценки}{81}{subdf.2.1}%
 \contentsline {subsection}{Сравнение двух оценок по эффективности}{86}{subdf.3.1}%
 \contentsline {subsection}{Состоятельные оценки}{88}{subdf.4.2}%
 \contentsline {subsection}{Основные способы получения оценок}{93}{subdf.5.1}%
-\contentsline {subsubsection}{Метод моментов (ММ)}{93}{section*.8}%
+\contentsline {subsubsection}{Метод моментов (ММ)}{93}{section*.9}%
 \contentsline {subsubsection}{Метод максимального правдоподобия (ММП или MLM)}{95}{Item.82}%
 \contentsline {subsection}{Асимптотическая нормальность и Дельта-метод}{99}{suble.6.1}%
 \contentsline {subsection}{Асимптотические свойства метода моментов}{103}{subpr.7.1}%
-\contentsline {subsection}{Свойство инвариантности оценок максимального правдоподобия}{106}{AMS.15}%
+\contentsline {subsection}{Свойство инвариантности оценок максимального правдоподобия}{106}{AMS.16}%
 \contentsline {subsection}{Асимптотические свойства оценок максимального правдоподобия}{108}{Item.92}%
 \contentsline {subsection}{Неравенство Рао-Кромера и эффективные оценки}{114}{subpr.10.1}%
 \contentsline {subsection}{Доверительные интервалы}{120}{suble.11.2}%
