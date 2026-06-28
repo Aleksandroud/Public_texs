@@ -1,0 +1,3 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{Теория вероятностей}{3}{subdf.1.1}%
+\contentsline {section}{Математическая статистика}{76}{Item.74}%
