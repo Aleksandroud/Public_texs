@@ -119,6 +119,7 @@
     а их пересечением $-$ множество
     \[\bigcap_{i \in I} A_i = \{\omega \in \Omega: \forall i \in I\ \omega \in A_i\}\]
 }
+\hypertarget{example:1.4}{}
 \example{
     Докажите, что
     \begin{enumerate}
@@ -196,7 +197,7 @@
     \end{enumerate}
 }
 \example{
-    \textit{Аналогичен примеру 1.4, только для двумерного случая}
+    \textit{Аналогичен \hyperlink{example:1.4}{примеру 1.4}, только для двумерного случая}
 
     Докажите, что
     \begin{enumerate}
@@ -233,6 +234,7 @@
 \defin{
     Бесконечное множество $A$ называется множеством мощности континуум (континуальным), если существует биекция $f: A \to [0, 1]$
 }
+\hypertarget{example:1.8}{}
 \example{
     Докажите, что множество целых чисел $\mb{Z}$ является счётным
 
@@ -270,7 +272,7 @@
 
     Заметим, что при каждом фиксированном $n \in \mb{N}$ множество $\left\{\dfrac{m}{n}: m \in \mb{Z}\right\}$ является счётным 
     
-    (из примера 1.8). Тогда, согласно примеру 1.9, множество
+    (из \hyperlink{example:1.8}{примера 1.8}). Тогда, согласно примеру 1.9, множество
     \[\mb{Q} = \bigcup_{i=1}^\infty \left\{\frac{m}{n}, m \in \mb{Z}\right\}\]
     является счётным
 }
@@ -590,6 +592,7 @@
     \end{enumerate}
     \textit{данный пример разбирался на семинарах, поэтому тут его не будет}
 }
+\hypertarget{prop:2.8}{}
 \propos{
     Пусть $\mc{F}\ -$ $\sigma$-алгебра подмнодеств множества $\Omega$ и $B \subseteq \Omega$, причём $B$ необязательно принадлежит $\mc{F}$. Рассмотрим совокупность множеств $\mc{F}\big|_{B} = \{A \cap B: A \in \mc{F}\}$, которая называется следом $\mc{F}$ на множестве $B$. Тогда $\mc{F}\big|_B$ является $\sigma$-алгеброй с единицей $B$
 }
@@ -608,7 +611,7 @@
     
     называется след $\mc{B}(\mb{R})$ на множестве $D$. Обозначается она как $\mc{B}(D)$. Таким образом
     \[\mc{B}(D) = \mc{B}(\mb{R})\big|_D = \{C \cap D: C \in \mc{B}(\mb{R})\}\]
-    \textit{Замечание 2.2: по утверждению 2.8 $\mc{B}(D)$ является $\sigma$-алгеброй}
+    \textit{Замечание 2.2: по \hypertarget{prop:2.8}{утверждению 2.1} $\mc{B}(D)$ является $\sigma$-алгеброй}
 }
 \example{
     Пусть $D \in \mc{B}(\mb{R})$. Докажите, что $B \in \mc{B}(D) \iff B \in \mc{B}(\mb{R})$ и $B \subseteq D$
@@ -791,7 +794,7 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
     \[P(A_2 \cap A_3) = P(A_2) \cdot P(A_3)\]
     \[P(A_1 \cap A_3) = P(A_1) \cdot P(A_3)\]
     \[P(A_1 \cap A_2 \cap A_3) = P(A_1) \cdot P(A_2) \cdot P(A_3)\]
-    Если события попарно независимы (то есть верно $P(A_i \cap A_j) = P(A_i) \cap P(A_j)\ \forall i,j$), то из этого не следует независимость в совокупности (когда для пересечения $\geq 3\ A_i$ верно)
+    Если события попарно независимы (то есть верно $P(A_i \cap A_j) = P(A_i) \cdot P(A_j)\ \forall i,j$), то из этого не следует независимость в совокупности (когда для пересечения $\geq 3\ A_i$ верно)
 }
 Замечание: отрицание $\left(A_i^c\right)$ не влияет на независимость
 \defin{
@@ -918,7 +921,7 @@ $\implies p_i = \dfrac{1}{n},\, n = \# \Omega$ (все исходы равнов
     $\xi = \xi(\omega), \ \omega \in \Omega$ называется измеримой ($\mc{F}$-измеримой), если
     \[\forall c \in \mb{R} \ \underbrace{\{\omega: \xi(\omega) > c\}}_{\text{условие измеримости}} \in \mc{F}\]
 
-    * построить функцию, которая НЕ являтся измеримой, довольно сложно, поэтому можно считать, что известные функции измеримы
+    \textit{*построить функцию, которая НЕ являтся измеримой относительно какой-то сигма-алгебры, довольно сложно, поэтому можно считать, что известные функции измеримы}
 }
 \addcontentsline{toc}{subsection}{Измеримые функции и случайные величины}
 
@@ -1069,7 +1072,7 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
 \example{
     \textit{Шёл как бонус}
 
-    Приведём случайную величину, функция распределения которой имеет разрывы в бесконечном числе точек
+    Приведём пример случайной величины, функция распределения которой имеет разрывы в бесконечном числе точек
 
     Определим случайную величину $\xi$ следующим образом
 
@@ -1103,7 +1106,7 @@ $P(\xi \in B) = P(\{\omega: \xi(\omega) \in B\}),\ B \in \mc{B}(\mb{R})$
         \item $F_\xi'(x) = f_\xi(x)$ во всех точках непрерывности функции распределения
     \end{enumerate}
 }
-\textit{Примечание: есть также и распределения промежуточного типа, называемые сингулярными, но в рамках курса они нам не понадобятся}
+\textit{Примечание: есть также и распределения промежуточного типа, называемые сингулярными, когда случайная величина не имеет плотности, но $P(\xi = x) = 0\ \forall x\in\mb{R}$, но в рамках курса они нам не\\понадобятся}
 \newpage
 
 \begin{center}
@@ -1285,13 +1288,13 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     То есть $\operatorname{VaR} = x_{0.99}$ (или $x_{0.95}$) $-$ квантиль
 }
 \defin{
-    \textit{по-хорошему, это определение должно быть свойством}
+    \textit{По-хорошему, это определение должно быть свойством}
 
     Математическим ожиданием случайной величины $\xi$ называется число
-    \[\mb{E}(\xi) = \left[\begin{matrix}
-        \displaystyle \sum_{i} x_i P(\xi = x_i) & \text{для дискретных распределений}\\
-        \displaystyle \int\limits_{-\infty}^\infty xf_\xi(x)\,dx & \text{для абсолютно непрерывных распределений}
-    \end{matrix}\right.\]
+    \[\mb{E}(\xi) = \left[\begin{array}{ll}
+        \displaystyle \sum_{i} x_i P(\xi = x_i) & -\text{ для дискретных распределений}\\
+        \displaystyle \int\limits_{-\infty}^\infty xf_\xi(x)\,dx & -\text{ для абсолютно непрерывных распределений}
+    \end{array}\right.\]
     !!!если ряд (интеграл) сходится абсолютно!!!
 
     \textit{Абсолютная сходимость нужна, чтобы, например, можно было менять слагаемые местами}
@@ -1365,7 +1368,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \textit{Доказательство шло как бонус}
     \item Если случайная величина $\xi \geq 0$ почти наверное (п.н.), то $\mb{E}(\xi) \geq 0$
     
-    \textit{Примечание: почти наверное $-$ это значит, что $P(\xi \geq 0) = 1$} 
+    \textit{Примечание: случайная величина $\xi$ принадлежит множеству $A$ почти наверное $-$ это значит, что $P(\xi \in A) = 1$} 
 
     \item Если $\xi \geq 0$ п.н. и $\mb{E}(\xi) = 0$, то $\xi = 0$ п.н.
     \item Если $\xi \geq \eta$, то $\mb{E}(\xi) \geq \mb{E}(\eta)$
@@ -1545,7 +1548,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \begin{center}
         \includegraphics[scale=0.3]{купол с геликом.jpg}
     \end{center}
-    Гелик находится в куполе радиусом $30$ метров и имеет приоткрытый люк на крыше. Это отверстие имеет размеры $4\times 5 \times 50$ сантиметров. Каков шанс того, что туда попадёт фейрверк?
+    Гелик находится в куполе радиусом $30$ метров и имеет приоткрытый люк на крыше. Это отверстие имеет размеры $4\times 5 \times 50$ сантиметров. Какова вероятность того, что туда попадёт фейрверк?
 
     \[P = \frac{5 \cdot 4 \cdot 50}{\frac{1}{2} \cdot \frac{4}{3}\pi\cdot 3000^3} \approx \frac{1000}{56520000000} = \frac{1}{56520000}\]
     \textit{(Он реально попал)}
@@ -1707,7 +1710,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \end{cases}\]
     Тогда
     \[\det J(x, y) = \begin{vmatrix}
-        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\
+        \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\[3mm]
         \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
     \end{vmatrix} = \begin{vmatrix}
         -1 & 1\\
@@ -1734,7 +1737,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \end{center}
     Также его называют свойством нестарения или отсутствия памяти
 
-    Заключается оно в том, что если какой-то конечный набор случайных величин независим и одинаково распределён, то их сумма имеет то же самое распределение, а в одном или нескольких параметрах лежит сумма параметров исходных распределений
+    Заключается оно в том, что если какой-то конечный набор случайных величин независим и имеет одно и то же распределение (возможно, с разными параметрами), то их сумма имеет то же самое распределение, а в одном или нескольких параметрах лежит сумма параметров исходных распределений
     
     Таким свойством обладают распределения
     \[\operatorname{N}\left(\mu, \sigma^2\right),\ \operatorname{Poi}\,(\lambda),\ \operatorname{Bi}\,(n, p),\ \operatorname{Gamma}\,(\alpha, \beta)\]
@@ -1743,21 +1746,21 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 }
 
 \defin{
-    Математическое ожидание от случайных величин $\xi_1,\dots, \xi_n$
-    \[\mb{E}\big(g(\xi_1,\dots, \xi_n)\big) = \left[\begin{matrix}
-        \displaystyle\sum_{i_1}\cdots\sum_{i_n}g(\xi_1,\dots,\xi_n) P(\xi_1 = x_{i1},\dots, \xi_n = x_{in}) \quad \text{для дискретных}\\
+    Математическое ожидание функции от случайных величин $\xi_1,\dots, \xi_n$
+    \[\mb{E}\big(g(\xi_1,\dots, \xi_n)\big) = \left[\begin{array}{ll}
+        \displaystyle\sum_{i_1}\cdots\sum_{i_n}g(\xi_1,\dots,\xi_n) P(\xi_1 = x_{i_1},\dots, \xi_n = x_{i_n}) \quad \text{для дискретных}\\
         \displaystyle\underset{\mb{R}^n}{\int\cdots\int} g(x_1,\dots, x_n)f_\xi(x_1,\dots, x_n)\,dx_1\cdots dx_n \quad \text{для абсолютно непрерывных}
-    \end{matrix}\right.\]
+    \end{array}\right.\]
 }
 \newpage
 \begin{center}
     \huge Ковариация и корреляция случайных величин
 \end{center}
 \defin{
-    \[\cov(\xi, \eta) = \mb{E}\big((\xi - \mb{E}(\xi))(\eta - \mb{E}(\eta))\big) = \left[\begin{matrix}
+    \[\cov(\xi, \eta) = \mb{E}\big((\xi - \mb{E}(\xi))(\eta - \mb{E}(\eta))\big) = \left[\begin{array}{ll}
         \displaystyle\sum_i\sum_j (x_i - \mb{E}(\xi))(y_j - \mb{E}(\eta)) P(\xi = x_i, \eta = y_j)\\
         \displaystyle \underset{\mb{R}^2}{\int\int}(x - \mb{E}(\xi))(y - \mb{E}(\eta))f(x, y)\,dxdy
-    \end{matrix}\right.\]
+    \end{array}\right.\]
     где $f(x, y)\ -$ совместная плотность $\xi$ и $\eta$
 
     По знаку ковариации можно определить, сонаправленно или противонаправленно изменяются случайные величины
@@ -1794,14 +1797,15 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     $\pi = \alpha \xi + (1 - \alpha) \eta,\ \alpha \geq 0$
 
     Цель: $\Var(\pi) \to \min_\alpha$
-    \[\Var(\pi) = \alpha^2 \cdot 16 + (1 - \alpha)^2\cdot + 2\alpha(1 - \alpha)\cdot (-9.6)\]
+    \[\Var(\pi) = \alpha^2 \cdot 16 + (1 - \alpha)^2\cdot 9 + 2\alpha(1 - \alpha)\cdot (-9.6)\]
     $-$ квадратичное уравнение относительно $\alpha \implies \min$ в вершине $\alpha_0 \approx 0.42$
 
     $\implies \Var (\pi_0) = 1.17$
 }
 \example{
-    \[\pi = \dfrac{1}{n}\xi_1 + \cdots + \dfrac{1}{n}\xi_n,\ \xi_1,\dots, \xi_n \text{ независимы}\]
-    \[\Var(\xi_1) = \cdots = \Var(\xi_n) = \sigma^2\]
+    Мы хотим снизить риск потери денег на инвестициях. Пусть $\xi_1,\dots, \xi_n\ -$ прибыльности активов, представляющие из себя независимые случайные величины с одинаковой дисперсией $\Var(\xi_i) = \sigma^2$. 
+    
+    Определим $\pi = \dfrac{1}{n}\xi_1 + \cdots + \dfrac{1}{n}\xi_n\ -$ прибыльность портфеля, состоящего из этих активов. Тогда
     \[\Var(\pi) = \frac{1}{n^2}\sigma^2 + \cdots + \frac{1}{n^2}\sigma^2 = \frac{\sigma^2}{n}\]
     Пример демонстрирует, зачем диверсифицировать инвестиционный портфель
 }
@@ -1908,10 +1912,10 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \end{center}
 \defin{
     Условное математическое ожидание $\xi$ при фиксированном $\eta$
-    \[\mb{E}(\xi\mid\eta=x) = \left[\begin{matrix}
+    \[\mb{E}(\xi\mid\eta=x) = \left[\begin{array}{ll}
         \displaystyle\sum_i a_i P(\xi = a_i\mid \eta = x)\\
         \displaystyle\int\limits_{-\infty}^\infty yf_{\xi\mid\eta=x}(y)\,dy
-    \end{matrix}\right.\]
+    \end{array}\right.\]
     Также, как и для обычного математического ожидания, ряд (интеграл) должен сходиться абсолютно
 
     $\mb{E}(\xi\mid\eta=x) = g(x)\ -$ это регрессия $\xi$ на $\eta$
@@ -2025,7 +2029,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 }
 Неравенство Чебышёва показывает, сколько потребуется измерений, чтобы получить результат, близкий к истинному значению с заданной точностью
 
-\textit{Правило трёх сигм}
+\textit{Правило трёх сигм (общий случай)}
 \[P(|\xi - \mb{E}(\xi)| \geq 3\sigma) \leq \frac{\Var(\xi)}{9\sigma^2} = \frac{\sigma^2}{9\sigma^2} = \frac{1}{9}\]
 
 \textit{Совет на будущее: помнить Чебышёва. Понадобится на эконометрике}
@@ -2119,6 +2123,9 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \[g(\xi_n) \xrightarrow[]{P} g(\xi), \text{ если } \xi_n \xrightarrow[]{P} \xi\]
 }
 \newpage
+\setcounter{mainta}{10}
+\setcounter{subta}{0}
+
 \setcounter{maindf}{10}
 \setcounter{subdf}{0}
 
@@ -2163,7 +2170,7 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
 \example{
     Зачем на лабораторная по физике делать несколько опытов?
 
-    Пусть $\xi_i = \mu_i + \varepsilon_i$, где $\mu_i \ -$ результат опыта (число), $\varepsilon_i \ -$ ошибка (случайная величина). 
+    Пусть $\xi_i = \mu_i + \varepsilon_i$, где $\mu_i \ -$ результат опыта (число), $\varepsilon_i \ -$ ошибка (случайная величина с нулевым математическим ожиданием). 
     
     Тогда при $n$ опытах
     \[\frac{1}{n}\sum_{i=1}^{n}\xi_i \approx \mu\]
@@ -2183,7 +2190,8 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     Иначе говоря,
     \[\widehat{p} \xrightarrow[n\to\infty]{P} p\]
 }
-\example{
+\hypertarget{task:10.1}{}
+\task{
     Вы начальник предвыборного штаба кого-то куда-то
 
     Сколько нужно опросить людей, чтобы определить шансы кандидата на победу с заданной точностью?
@@ -2344,6 +2352,9 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 
 }
 \newpage
+\setcounter{mainta}{11}
+\setcounter{subta}{0}
+
 \setcounter{maindf}{11}
 \setcounter{subdf}{0}
 
@@ -2387,7 +2398,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     где
     \[\Phi(x) = \int\limits_{-\infty}^x \frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}dt\ - \text{ функция стандартного нормального распределения}\]
 }
-\example{
+\task{
     Задача про доктора Спока
     \vspace{1cm}
 
@@ -2410,7 +2421,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \\
 После прочитанного она закрыла книжку и больше её не открывала. Позднее она прочитала (как раз у доктора Спока), что это нормально, и вздохнула с облегчением
 }
-\example{
+\task{
     Задача из теории страхования
     \vspace{1cm}
 
@@ -2424,8 +2435,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     \[R \approx 132117\]
     Выгода почти $20$-кратная
 }
-\example{
-    Продолжение задачи про предвыборный штаб
+\task{
+    Продолжение \hyperlink{task:10.1}{задачи про предвыборный штаб}
     \vspace{1cm}
 
     Хотим выяснить $n$, при котором
@@ -2540,7 +2551,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \propos{
     Свойства многомерного нормального распределения:
     \begin{enumerate}
-        \item $\mu = \mb{E}\xi,\ C = \cov \xi$
+        \item $\mu = \mb{E}(\xi),\ C = \cov \xi$
         \item $\eta = \underset{k\times n}{B}\underset{n\times 1}{\xi} + \underset{k\times 1}{\alpha},\ \operatorname{rk}B = k \implies \eta \sim \operatorname{N}\left(B\mu + \alpha, BCB^T\right)$
         
         В частности, любой подвектор нормального вектора нормален
@@ -2551,7 +2562,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
         \textit{Замечание: Пусть $\xi_1 \sim \operatorname{N}\,(0, 1)$,
         \begin{tabular}{c|cc}
             $\alpha$ & $-1$ & $1$\\ \hline
-            $\rho$ & $\frac{1}{2}$ & $\frac{1}{2}$
+            $\rho$ & $0.5$ & $0.5$
         \end{tabular}, $\xi_1$ и $\alpha$ независимы, $\xi_2 = \alpha\xi_1$. Покажем, что $\xi_2 \sim \operatorname{N}\,(0, 1),\ \corr(\xi_1, \xi_2) = 0$
         \[(1)\ F_{\xi_2}(x) = P(\xi_2 \leq x) = P(\xi_2 \leq x \mid \alpha = -1) \cdot P(\alpha = -1) + P(\xi_2 \leq x \mid \alpha = 1) \cdot P(\alpha = 1) =\]
         \[= \underbrace{P(-\xi_1 \leq -x)}_{\Phi(x)}\cdot \frac{1}{2}  + \underbrace{P(\xi_1\leq x)}_{\Phi(x)} \cdot \frac{1}{2} = \Phi(x)\]
@@ -2812,10 +2823,10 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
     Свойства:
     \begin{enumerate}
         \item $\mb{E}\left(\chi_k^2\right) = k, \Var\left(\chi_k^2\right) = 2k$
-        \item устойчивость относительно суммирования, то есть если $\gamma_i \sim \operatorname{H}_k, \gamma_2 \sim \operatorname{H}_m$,
+        \item устойчивость относительно суммирования, то есть если $\chi_1 \sim \operatorname{H}_k, \chi_2 \sim \operatorname{H}_m$,
         
-        $\gamma_1$ и $\gamma_2$ независимы, то
-        \[\gamma_1 + \gamma_2 \sim \operatorname{H}_{k+m}\]
+        $\chi_1$ и $\chi_2$ независимы, то
+        \[\chi_1 + \chi_2 \sim \operatorname{H}_{k+m}\]
         \begin{center}
             \begin{center}
                 \begin{tikzpicture}
@@ -2953,8 +2964,8 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \defin{
     Распределение Фишера (Фишера-Снедекора)
 
-    Пусть $\gamma_1 \sim \operatorname{H}_k, \gamma_2 \sim \operatorname{H}_m$, $\gamma_1$ и $\gamma_2$ независимы. Тогда
-    \[f_{k,m} = \frac{\gamma_1/k}{\gamma_2/m} \sim \operatorname{F}_{k,m}\]
+    Пусть $\chi_1 \sim \operatorname{H}_k, \chi_2 \sim \operatorname{H}_m$, $\chi_1$ и $\chi_2$ независимы. Тогда
+    \[f_{k,m} = \frac{\chi_1/k}{\chi_2/m} \sim \operatorname{F}_{k,m}\]
 }
 \propos{
     Свойства:
