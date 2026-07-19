@@ -127,17 +127,22 @@
         \item[b)] $(1, 2) = \displaystyle \bigcup_{i=1}^\infty \left[1 + \frac{1}{n}, 2 - \frac{1}{n}\right]$
     \end{enumerate}
 
-    (а) Сначала докажем, что $[1,2] \subseteq \displaystyle \displaystyle\bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. В самом леле, для каждого $n \in \mb{N}$
-    имеет место включение $[1, 2] \subseteq \displaystyle\left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$, поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
+    (а) Сначала докажем, что $[1,2] \subseteq \displaystyle \displaystyle\bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. В самом леле, для каждого $n \in \mb{N}$ имеет
     
-    Теперь докажем обратное включение. Пусть $x \in \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. Тогда для каждого $n$ верно $x \in \left(1 - \dfrac{1}{n}, 2 + \dfrac{1}{n}\right)$, то есть $1 - \dfrac{1}{n} < x < 2 + \dfrac{1}{n}$. 
+    место включение $[1, 2] \subseteq \displaystyle\left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$, поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
+    
+    Теперь докажем обратное включение. Пусть $x \in \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. Тогда для каждого $n$ верно
+    
+    $x \in \left(1 - \dfrac{1}{n}, 2 + \dfrac{1}{n}\right)$, то есть $1 - \dfrac{1}{n} < x < 2 + \dfrac{1}{n}$. 
     Переходя в данном неравенстве к пределу при $n \to \infty$ и учитывая, что
     при предельном переходе строгие неравенства переходят в нестрогие, получаем
     \[1 = \lim_{n\to\infty} \left(1 - \frac{1}{n}\right)\leq x \leq \lim_{n\to\infty} \left(2 + \frac{1}{n}\right) = 2\]
     то есть $x \in [1, 2]$. Поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
 
     (b) Докажем, что $(1, 2) \subseteq \displaystyle \bigcup_{i=1}^\infty \left[1 + \frac{1}{n}, 2 - \frac{1}{n}\right]$. Пусть $x \in (1, 2)$. Положим
-    $\varepsilon = \min \{x - 1, 2 - x\} > 0$. Поскольку $1 + \dfrac{1}{n} \to 1$ и $2 - \dfrac{1}{n} \to 2$ при $n \to \infty$, то найдётса такой номер $N \in \mb{N}$, что будут выполнены следующие два неравенства:
+    $\varepsilon = \min \{x - 1, 2 - x\} > 0$. Поскольку $1 + \dfrac{1}{n} \to 1$ и $2 - \dfrac{1}{n} \to 2$ при $n \to \infty$, то найдётся такой номер $N \in \mb{N}$, что будут
+    
+    выполнены следующие два неравенства:
     \[-\varepsilon < \left(1 + \frac{1}{N}\right) - 1 < \varepsilon\]
     и
     \[-\varepsilon < \left(2 - \frac{1}{N}\right) - 2 < \varepsilon\]
@@ -1583,8 +1588,6 @@ $\operatorname{VAR}$ $-$ какие-то там уравнения (\textit{ци
     \[= F_{\xi_1}(b_1)\left(F_{\xi_2}(b_2) - F_{\xi_2}(a_2)\right) - F_{\xi_1}(a_1)\left(F_{\xi_2}(b_2) - F_{\xi_2}(a_2)\right) =\]
     \[= \underbrace{\left(F_{\xi_1}(b_1) - F_{\xi_1}(a_1)\right)}_{P\big(\xi_1 \in (a_1, b_1]\big)}\underbrace{\left(F_{\xi_2}(b_2) - F_{\xi_2}(a_2)\right)}_{P\big(\xi_2 \in (a_2, b_2]\big)}\]
 }
-\newpage
-
 \defin{
     $\xi_1,\dots, \xi_n$ определены на $(\Omega, \mc{F}, P)$
 
@@ -2595,6 +2598,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
                 \end{pmatrix}\]
                 \[(x - \mu)^TC^{-1}(x - \mu) = \frac{1}{1 - \rho^2}\left\{\frac{(x_1 - \mu_1)^2}{\sigma_1^2} - \frac{2\rho(x_1 - \mu_1)(x_2 - \mu_2)}{\sigma_1\sigma_2} + \frac{(x_2 - \mu_2)^2}{\sigma_2^2}\right\}\]
                 \[f_\xi(x_1,x_2) = \frac{1}{2\pi}\frac{1}{\sigma_1\sigma_2\sqrt{1 - \rho^2}}\exp\left(-\frac{1}{2}\cdot\frac{1}{1 - \rho^2}\{\cdots\}\right)\]
+                \addcontentsline{toc}{subsubsection}{Двумерное нормальное распределение}
                 \textit{Замечание: Пусть $\begin{pmatrix}
                     Z_1\\
                     Z_2
@@ -2750,7 +2754,6 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 
 \textit{Также Елена Владимировна рассказала про случай с собрания преподавателей, где им рассказывали про вышку в цифрах, но там было такое, за распространение чего её могут уволить, поэтому я вам его тоже не покажу}
 
-\newpage
 \renewcommand{\thletter}{}
 \begin{center}
     \huge Многомерная центральная предельная теорема

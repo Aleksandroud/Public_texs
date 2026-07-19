@@ -14,6 +14,7 @@
 \contentsline {subsection}{Закон больших чисел}{58}{subth.10.1}%
 \contentsline {subsection}{Центральная предельная теорема}{62}{subth.11.1}%
 \contentsline {subsection}{Многомерное нормальное распределение}{66}{subdf.12.1}%
+\contentsline {subsubsection}{Двумерное нормальное распределение}{68}{subpr.12.2}%
 \contentsline {subsection}{Усечённое нормальное распределение и многомерая ЦПТ}{70}{subdf.13.1}%
 \contentsline {subsection}{Распределения, связанные с нормальными}{72}{subdf.14.1}%
 \contentsline {section}{Математическая статистика}{76}{Item.74}%
