@@ -55,9 +55,7 @@
     \textit{Замечание: пустое множество является подмножеством любого множества}
 }
 \defin{
-    Множества $A$ и $B$ называются равными (и пишут тогда $A = B$), если каждый элемент множества $A$ является элементом множества
-    
-    $B$ и наоборот. Иначе говоря, $A = B \iff A \subseteq B$ и $B \subseteq A$
+    \mbox{Множества $A$ и $B$ называются равными (и пишут тогда $A = B$), если каждый элемент множества} $A$ является элементом множества $B$ и наоборот. Иначе говоря, $A = B \iff A \subseteq B$ и $B \subseteq A$
 }
 Через $\# A$ будем обозначть количество (различных) элементов множества $A$\\[1cm]
 Множество $\Omega$ можно также задать с помощью характеристического свойства, определяющего элементы $\Omega$. Запись
@@ -68,9 +66,9 @@
 }
 \example{
     Пусть $\Omega = \{\heartsuit, \diamondsuit, \spadesuit, \clubsuit\}$. Тогда совокупность всех подмножеств $\Omega$ есть
-    \[2^\Omega = \{\varnothing, \{\heartsuit\}, \{\diamondsuit\}, \{\spadesuit\}, \{\clubsuit\},\]
-    \[\{\heartsuit, \diamondsuit\}, \{\heartsuit, \spadesuit\}, \{\heartsuit, \clubsuit\}, \{\diamondsuit, \spadesuit\}, \{\diamondsuit, \clubsuit\} \{\spadesuit, \clubsuit\}\]
-    \[\{\heartsuit, \diamondsuit, \spadesuit\}, \{\heartsuit, \diamondsuit, \clubsuit\}, \{\heartsuit, \spadesuit, \clubsuit\},\Omega\} \]
+    \[2^\Omega = \Big\{\varnothing, \{\heartsuit\}, \{\diamondsuit\}, \{\spadesuit\}, \{\clubsuit\},\]
+    \[\{\heartsuit, \diamondsuit\}, \{\heartsuit, \spadesuit\}, \{\heartsuit, \clubsuit\}, \{\diamondsuit, \spadesuit\}, \{\diamondsuit, \clubsuit\}, \{\spadesuit, \clubsuit\}\]
+    \[\{\heartsuit, \diamondsuit, \spadesuit\}, \{\heartsuit, \diamondsuit, \clubsuit\}, \{\heartsuit, \spadesuit, \clubsuit\},\,\Omega\Big\} \]
 }
 \example{
     Пусть $A = \{\heartsuit, \diamondsuit\},\ B = \{\{\heartsuit\}, \{\diamondsuit\}\},\ C = \{\heartsuit, \diamondsuit, \{\heartsuit\}, \{\diamondsuit\}\},\ D = \{\heartsuit, \diamondsuit, \{\heartsuit\}, \{\diamondsuit\}, \{\heartsuit, \diamondsuit\}\}$
@@ -129,15 +127,14 @@
 
     (а) Сначала докажем, что $[1,2] \subseteq \displaystyle \displaystyle\bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. В самом леле, для каждого $n \in \mb{N}$ имеет
     
-    место включение $[1, 2] \subseteq \displaystyle\left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$, поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
+    место включение $[1, 2] \subseteq \displaystyle\left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$, поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$.
     
     Теперь докажем обратное включение. Пусть $x \in \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$. Тогда для каждого $n$ верно
     
     $x \in \left(1 - \dfrac{1}{n}, 2 + \dfrac{1}{n}\right)$, то есть $1 - \dfrac{1}{n} < x < 2 + \dfrac{1}{n}$. 
-    Переходя в данном неравенстве к пределу при $n \to \infty$ и учитывая, что
-    при предельном переходе строгие неравенства переходят в нестрогие, получаем
+    Переходя в данном неравенстве к пределу при $n \to \infty$ и учитывая, что при предельном переходе строгие неравенства переходят в нестрогие, получаем
     \[1 = \lim_{n\to\infty} \left(1 - \frac{1}{n}\right)\leq x \leq \lim_{n\to\infty} \left(2 + \frac{1}{n}\right) = 2\]
-    то есть $x \in [1, 2]$. Поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$
+    то есть $x \in [1, 2]$. Поэтому $[1, 2] = \displaystyle \bigcap_{i=1}^\infty \left(1 - \frac{1}{n}, 2 + \frac{1}{n}\right)$.
 
     (b) Докажем, что $(1, 2) \subseteq \displaystyle \bigcup_{i=1}^\infty \left[1 + \frac{1}{n}, 2 - \frac{1}{n}\right]$. Пусть $x \in (1, 2)$. Положим
     $\varepsilon = \min \{x - 1, 2 - x\} > 0$. Поскольку $1 + \dfrac{1}{n} \to 1$ и $2 - \dfrac{1}{n} \to 2$ при $n \to \infty$, то найдётся такой номер $N \in \mb{N}$, что будут
@@ -2753,7 +2750,7 @@ $N\ -$ общее количество точек в $V$, $N_S\ -$ количе�
 \textit{Здесь должен был быть пример из презентации Елены Владимировны для ЦБ, но \sout{я вам его не покажу} его нельзя показывать (потому что договор о неразглашении)}
 
 \textit{Также Елена Владимировна рассказала про случай с собрания преподавателей, где им рассказывали про вышку в цифрах, но там было такое, за распространение чего её могут уволить, поэтому я вам его тоже не покажу}
-
+ 
 \renewcommand{\thletter}{}
 \begin{center}
     \huge Многомерная центральная предельная теорема
