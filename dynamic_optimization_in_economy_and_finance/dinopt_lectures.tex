@@ -15,8 +15,8 @@
 \tableofcontents
 \newpage
 \begin{center}
-    \huge{Оптимизаиция в дискретном времени}\\[1cm]
-    \large{Статическая оптимизация}\\[1cm]
+    \sect{\huge{Оптимизаиция в дискретном времени}}
+    \subsect{\large{Статическая оптимизация}}
 \end{center}
 Общая задача: $f(x) \to \max,\ x\in X \subseteq \mb{R}^n$.
 
@@ -42,34 +42,31 @@
 \end{enumerate}
 Если $\exists \varepsilon \ \forall y\in \varepsilon(x)\ (y\neq x)$ и $f(y) > f(x)$, то $x\ -$ точка локального (строгого) максимума.
 
-\begin{center}
-    Безусловный экстремум
-\end{center}
+\subsubsect{Безусловный экстремум}
 \[f(x) \to \max \quad f\ - \text{дважды дифференцируемая}\]
 Необходимое условие: $\nabla f(x_0) = 0$, где $\nabla f\ -$ градиент функции $f$.
 
 Достаточное условие: если $H \prec 0$, где
 \[H = \begin{pmatrix}
-\dfrac{\partial^2 f}{\partial x_1^2} & \cdots & \dfrac{\partial^2 f}{\partial x_1 \partial x_n} \\[0.3cm]
+\dfrac{\partial^2 f}{\partial x_1^2} & \cdots & \dfrac{\partial^2 f}{\partial x_1 \partial x_n} \\[0.5cm]
 \vdots & \ddots & \vdots \\[0.3cm]
 \dfrac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}
-\end{pmatrix},\] 
-то $\max$.
+\end{pmatrix} \text{ (то есть матрица Гессе отрицательно определена),}\] 
+то мы нашли точку максимума.
 
-(то есть матрица Гессе отрицательно определена).
-\renewcommand{\thletter}{Критерий Сильвестра}
-\theorem{
+
+
+Критерий Сильвестра:
+
+Пусть $\Delta_i\ -$ угловой минор порядка $i$ матрицы Гессе $H$. Тогда:
 \begin{enumerate}
     \item $\Delta_1 > 0,\dots,  \Delta_n > 0 \implies \min$;
     \item $\Delta_1 < 0, \Delta_2 > 0, \Delta_3 < 0,\ldots \implies \max$;
     \item $\exists$ отрицательный чётный минор $\implies$ не экстремум;
     \item Где-то стоят нули $\implies$ требуется дополнительное исследование.
 \end{enumerate}
-}
 
-\begin{center}
-    Условный экстремум с ограничениями типа равенства
-\end{center}
+\subsubsect{Условный экстремум с ограничениями типа равенства}
 \[\begin{cases}
     f(x) \to \max & x\in\mb{R}^n\\
     g(x) = b & b\in\mb{R}^m
@@ -102,9 +99,7 @@
     \item $\exists$ отрицательные миноры на чётном месте $\implies$ не экстремум;
     \item где-то стоят нули $\implies$ требуется дополнительное исследование.
 \end{enumerate}
-\begin{center}
-    Условный экстремум с ограничениями типа неравенства
-\end{center}
+\subsubsect{Условный экстремум с ограничениями типа неравенства}
 \[\begin{cases}
     f(x) \to \max & x\in\mb{R}^n\\
     g(x) \leq b & b\in\mb{R}^m
