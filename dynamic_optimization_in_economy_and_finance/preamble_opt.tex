@@ -1,0 +1,262 @@
+% Подключаем все нужные пакеты
+%%% Локализация и шрифты
+\usepackage{asymptote}
+\usepackage[utf8]{inputenc}          % Кодировка UTF-8
+\usepackage[T2A]{fontenc}            % Русская кодировка
+\usepackage[english,russian]{babel} % Локализация
+\usepackage{cmap}                    % Поддержка поиска в PDF
+\usepackage{tikz}
+\usepackage{xstring}
+\usepackage[left=20mm, top=10mm, right=20mm, bottom=10mm, nohead, nofoot]{geometry}
+\renewcommand{\baselinestretch}{1.0}% Межстрочный интервал
+\usepackage{ragged2e}               % Выравнивание текста
+\usepackage{microtype}              % Улучшение качества вывода текста
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\tcbuselibrary{listingsutf8, breakable, skins}
+\justifying
+\sloppy
+\tolerance=500
+\hyphenpenalty=10000
+\emergencystretch=3em
+
+\usepackage[normalem]{ulem}
+\pagestyle{empty} \textwidth=19.0cm \oddsidemargin=-1.3cm
+\textheight=26cm \topmargin=-3.0cm
+\tcbuselibrary{listingsutf8}
+\usepackage{pgfplots}
+\renewcommand{\rmdefault}{cmss}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{fillbetween}
+\usetikzlibrary{patterns}
+% Создаём новый счётчик задач
+
+% определение
+\newcounter{maindf}
+\newcounter{subdf}[maindf]
+
+\newcommand{\dfsub}{\arabic{maindf}.\arabic{subdf}}
+
+% теорема
+\newcounter{mainth}
+\newcounter{subth}[mainth]
+
+\newcommand{\thsub}{\arabic{mainth}.\arabic{subth}}
+
+% утверждение
+\newcounter{mainpr}
+\newcounter{subpr}[mainpr]
+
+\newcommand{\propsub}{\arabic{mainpr}.\arabic{subpr}}
+
+% пример
+\newcounter{mainex}
+\newcounter{subex}[mainex]
+
+\newcommand{\exsub}{\arabic{mainex}.\arabic{subex}}
+
+% задача
+\newcounter{mainta}
+\newcounter{subta}[mainta]
+
+\newcommand{\tasub}{\arabic{mainta}.\arabic{subta}}
+
+\newcounter{mainle}
+\newcounter{suble}[mainle]
+
+\newcommand{\lesub}{\arabic{mainle}.\arabic{suble}}
+
+\renewcommand{\familydefault}{\ttdefault}
+
+% Определяем стили блоков
+\usepackage{xcolor}
+% myrose = #FFB5C1
+% myred = #FF6464
+% mybrown = #D2B48C
+% mycyan = #87CEEB
+% myorange = #FFB000
+% mypurple = #D8BFD8
+% mygreen = #14DE14
+% --- Однострочное создание блоков \problem, \solution, \answer ---
+\definecolor{myrose}{HTML}{FFB5C1} % Розовый
+\definecolor{myred}{HTML}{FF6464} % Красный
+\definecolor{mybrown}{HTML}{D2B48C} % Светло-коричневый
+\definecolor{mycyan}{HTML}{87CEEB}  % Голубой
+\definecolor{myorange}{HTML}{FFB000}   % Оранжевый
+\definecolor{mypurple}{HTML}{D8BFD8} % Светло-фиолетовый
+\definecolor{mygreen}{HTML}{14DE14} % mygreen
+\newcommand{\thletter}{}
+
+\newcommand{\thtitle}{
+  \IfStrEq{\thletter}{}%  % Если thletter пустая
+    {\ttfamily}   % Выводим только теорему и её номер
+    {\ttfamily (\thletter)}% Иначе теорема + номер + название теоремы
+}
+
+% --- Определяем сокращённые версии окружений ---
+
+\newtcolorbox{defBox}{
+  breakable,
+  enhanced,
+  colback=violet!10!white,
+  colframe=mypurple,
+  fonttitle=\ttfamily,
+  title={Определение~\dfsub}
+}
+
+\newcommand{\defin}[1]{%
+  \refstepcounter{subdf}%
+  \begin{defBox}%
+    #1%
+  \end{defBox}%
+}
+
+\newtcolorbox{theoremBox}{
+  breakable,
+  enhanced,
+  colback=red!10!white,
+  colframe=myrose,
+  fonttitle=\ttfamily,
+  title={Теорема~\thsub \thtitle}
+}
+
+\newcommand{\theorem}[1]{%
+  \refstepcounter{subth}%
+  \begin{theoremBox}%
+    #1%
+  \end{theoremBox}%
+}
+
+\newtcolorbox{proposBox}{
+  breakable,
+  enhanced,
+  colback=brown!10!white,
+  colframe=mybrown,
+  fonttitle=\ttfamily,
+  title={Утверждение~\propsub}
+}
+
+\newcommand{\propos}[1]{%
+  \refstepcounter{subpr}%
+  \begin{proposBox}%
+    #1%
+  \end{proposBox}%
+}
+
+\newtcolorbox{proofBox}{
+  breakable,
+  enhanced,
+  colback=cyan!10!white,
+  colframe=mycyan,
+  fonttitle=\ttfamily,
+  title={Доказательство}
+}
+
+\newcommand{\prof}[1]{
+  \begin{proofBox}
+    #1
+  \end{proofBox}
+}
+
+\newtcolorbox{exampleBox}{
+  breakable,
+  enhanced,
+  colback=orange!10!white,
+  colframe=myorange,
+  fonttitle=\ttfamily,
+  title={Пример~\exsub}
+}
+
+\newcommand{\example}[1]{%
+  \refstepcounter{subex}%
+  \begin{exampleBox}%
+    #1%
+  \end{exampleBox}%
+}
+
+\newtcolorbox{taskBox}{
+  breakable,
+  enhanced,
+  colback=green!10!white,
+  colframe=mygreen,
+  fonttitle=\ttfamily,
+  title={Задача~\tasub}
+}
+
+\newcommand{\task}[1]{%
+  \refstepcounter{subta}%
+  \begin{taskBox}%
+    #1%
+  \end{taskBox}%
+}
+
+\newcommand{\leletter}{}
+
+\newcommand{\letitle}{
+  \IfStrEq{\leletter}{}%  % Если thletter пустая
+    {\ttfamily}   % Выводим только теорему и её номер
+    {\ttfamily (\leletter)}% Иначе теорема + номер + название теоремы
+}
+
+\newtcolorbox{lemmaBox}{
+  breakable,
+  enhanced,
+  colback=red!10!white,
+  colframe=myred,
+  fonttitle=\ttfamily,
+  title={Лемма~\lesub \letitle}
+}
+
+\newcommand{\lemma}[1]{%
+  \refstepcounter{suble}%
+  \begin{lemmaBox}%
+    #1%
+  \end{lemmaBox}%
+}
+
+% Команда для векторов
+\newcommand{\vect}[1]{\mathbf{#1}}
+\usepackage[upint]{stix2}
+
+%%% Колонтитулы
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.3mm} % Толщина линии в колонтитулах
+
+\rhead{Динамическая оптимизация в экономике и финансах}
+\lhead{ФЭН ВШЭ, 2026}
+\headsep=25pt
+\footskip=15mm
+\textheight=700pt
+\headheight=35pt % Возможно, понадобится увеличить до ~30pt. Проверьте log-файл.
+\parindent=0mm
+%%% Математика
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools} % Базовые математические пакеты
+\usepackage{icomma}   
+\usepackage{euscript}               % Шрифт Евклид
+\usepackage{mathrsfs}               % Красивый матшрифт
+\usepackage{cancel}                 % Зачёркивание в формулах
+\usepackage{diagbox}
+\usepackage[unicode, colorlinks, urlcolor=darkblue, linkcolor=violet]{hyperref}
+\usetikzlibrary{matrix}
+% Замены часто употребляемых шрифтов
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+
+\newcommand{\cov}{\operatorname{cov}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\corr}{\operatorname{corr}}
+\newcommand{\const}{\operatorname{const}}
+\newcommand{\Be}{\operatorname{Be}}
+\newcommand{\Bi}{\operatorname{Bi}}
+\newcommand{\Poi}{\operatorname{Poi}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\Geo}{\operatorname{Geo}}
+\newcommand{\bias}{\operatorname{bias}}
+\newcommand{\MSE}{\operatorname{MSE}}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\plim}{\operatorname{plim}}
+\newcommand{\asi}{\overset{asy}{\sim}}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}}}

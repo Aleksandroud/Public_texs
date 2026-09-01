@@ -1,0 +1,134 @@
+\documentclass[a4paper,11pt]{article}
+\input{preamble_opt}
+\begin{document}
+\begin{center}
+    \huge ДИНАМИЧЕСКАЯ ОПТИМИЗАЦИЯ В ЭКОНОМИКЕ И ФИНАНСАХ\\[10cm]
+\end{center}
+\begin{center}
+    Конспекты лекций Пильника Н.Е.\\[2cm]
+
+    Конспект подготовлен студентом ЭАДа Александром Благий\\[10cm]
+
+    Факультет Экономических наук, 2026
+\end{center}
+\newpage
+\tableofcontents
+\newpage
+\begin{center}
+    \huge{Оптимизаиция в дискретном времени}\\[1cm]
+    \large{Статическая оптимизация}\\[1cm]
+\end{center}
+Общая задача: $f(x) \to \max,\ x\in X \subseteq \mb{R}^n$.
+
+Решение: $x^*\in X^*$
+
+Тогда $x^*\ -$ точка максимума, а $f(x^*)\ -$ максимум функции $f$ на множестве $X$.\\[5mm]
+Случаи отстутствия максимума:
+\begin{enumerate}
+    \item $X = \varnothing$;
+    \item $X \neq \varnothing$, но $f(x)$ не ограничена сверху на $X$;
+    \item $X \neq \varnothing$, $f(x)$ ограничена сверху, но точная верхняя грань не достигается.
+\end{enumerate}
+\addcontentsline{toc}{section}{Оптимизация в дискретном времени}
+Если $g\ -$ монотонно возрастающая, то $g(f(x)) \to \max$ даёт то же $X^*$.
+
+Любая точка экстремума является:
+\begin{enumerate}
+    \item максимумом/минимумом;
+    \item глобальной/локальной;
+    \item строгой/нестрогой;
+    \item внутренней/граничной;
+    \item условной/безусловной.
+\end{enumerate}
+Если $\exists \varepsilon \ \forall y\in \varepsilon(x)\ (y\neq x)$ и $f(y) > f(x)$, то $x\ -$ точка локального (строгого) максимума.
+
+\begin{center}
+    Безусловный экстремум
+\end{center}
+\[f(x) \to \max \quad f\ - \text{дважды дифференцируемая}\]
+Необходимое условие: $\nabla f(x_0) = 0$, где $\nabla f\ -$ градиент функции $f$.
+
+Достаточное условие: если $H \prec 0$, где
+\[H = \begin{pmatrix}
+\dfrac{\partial^2 f}{\partial x_1^2} & \cdots & \dfrac{\partial^2 f}{\partial x_1 \partial x_n} \\[0.3cm]
+\vdots & \ddots & \vdots \\[0.3cm]
+\dfrac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}
+\end{pmatrix},\] 
+то $\max$.
+
+(то есть матрица Гессе отрицательно определена).
+\renewcommand{\thletter}{Критерий Сильвестра}
+\theorem{
+\begin{enumerate}
+    \item $\Delta_1 > 0,\dots,  \Delta_n > 0 \implies \min$;
+    \item $\Delta_1 < 0, \Delta_2 > 0, \Delta_3 < 0,\ldots \implies \max$;
+    \item $\exists$ отрицательный чётный минор $\implies$ не экстремум;
+    \item Где-то стоят нули $\implies$ требуется дополнительное исследование.
+\end{enumerate}
+}
+
+\begin{center}
+    Условный экстремум с ограничениями типа равенства
+\end{center}
+\[\begin{cases}
+    f(x) \to \max & x\in\mb{R}^n\\
+    g(x) = b & b\in\mb{R}^m
+\end{cases}\]
+где $f,\ g$ дважды дифференцируемы, $m < n$, а $X = \{x\mid g(x) = b\}$
+
+Условие Якоби выполнено, если $\operatorname{rk}\, J_g(x) = m$, где $J_g(x)\ -$ матрица Якоби функции $g$.\\[5mm]
+
+В точках, где это условие не выполнено, лагранжиан не работает.
+
+Для $\lambda \in\mb{R}^m$ введём функцию $\mc{L}(x,\lambda) = f(x) + \lambda^T(g(x) - b)$
+
+Необходимое условие:
+\[\begin{cases}
+    \dfrac{\partial \mc{L}}{\partial x_1} = \cdots = \dfrac{\partial\mc{L}}{\partial x_n} = 0;\\[3mm]
+    \dfrac{\partial \mc{L}}{\partial \lambda_1} = \cdots = \dfrac{\partial\mc{L}}{\partial \lambda_m} = 0.
+\end{cases}\]
+
+Составим $\widehat{H} = \begin{pmatrix}
+    0 & J_g(x)\\
+    J_g(x)^T & H
+\end{pmatrix}\ -$ матрицу Гессе лагранжиана $\mc{L}$.
+
+Смотрим на миноры порядка от $2m+1$ до $n + m$.
+
+Варианты:
+\begin{enumerate}
+    \item все миноры положительны $\implies$ локальный минимум;
+    \item знаки миноров чередуются, начиная с минуса $\implies$ локальный максимум;
+    \item $\exists$ отрицательные миноры на чётном месте $\implies$ не экстремум;
+    \item где-то стоят нули $\implies$ требуется дополнительное исследование.
+\end{enumerate}
+\begin{center}
+    Условный экстремум с ограничениями типа неравенства
+\end{center}
+\[\begin{cases}
+    f(x) \to \max & x\in\mb{R}^n\\
+    g(x) \leq b & b\in\mb{R}^m
+\end{cases}\]
+где $f,\ g$ дважды дифференцируемы, $m$ может быть больше $n$, а $X = \{x\mid g(x) \leq b\}$
+
+Для $\lambda \in\mb{R}^m$ введём функцию $\mc{L}(x,\lambda) = f(x) + \lambda^T(b - g(x))$
+
+Условия Каруша-Куна-Таккера (они же дополяющей жесткости):
+\[\begin{array}{l}
+    \forall j = 1,\dots, m\ \lambda_j \geq 0,\\
+    b_j - g_j(x) \geq 0,\\
+    \lambda_j(b_j - g_j(x)) = 0.
+\end{array}\]
+
+\addcontentsline{toc}{section}{Вариационное исчисление}
+
+
+
+
+\addcontentsline{toc}{section}{Оптимальное управление}
+
+
+
+
+\addcontentsline{toc}{section}{Динамическое программирование}
+\end{document}
