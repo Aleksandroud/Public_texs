@@ -5150,8 +5150,8 @@ $X\ -$ случайная выборка, $f(x_1,\dots,x_n;\theta)\ -$ её пл
     \[\implies S_c = \left\{x = (x_1,\dots,x_n): \overline{x} \geq c_1\right\}\]
     \[\alpha = P_0(X\in S_c) = P_0\left(\overline{X} \geq c_1\right) = P_0\left(\frac{\overline{X} - \mu_0}{\sqrt{\frac{\sigma^2}{n}}} \geq \frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}}\right) = 1 - \Phi\left(\frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}}\right)\]
     \[\iff \frac{c_1 - \mu_0}{\sqrt{\frac{\sigma^2}{n}}} = z_{1-\alpha}\]
-    \[c_1 = \mu_0 + \sqrt{\frac{\sigma^2}{n}z_{1-\alpha}}\]
-    \[S_c = \left\{x: \overline{x} \geq \mu_0 + \frac{\sigma^2}{n}z_{1-\alpha}\right\}\ -\ \text{не зависит от } \mu_1 > \mu_0\]
+    \[c_1 = \mu_0 + \sqrt{\frac{\sigma^2}{n}}z_{1-\alpha}\]
+    \[S_c = \left\{x: \overline{x} \geq \mu_0 + \sqrt{\frac{\sigma^2}{n}}z_{1-\alpha}\right\}\ -\ \text{не зависит от } \mu_1 > \mu_0\]
     Значит, $S_c\ -$ равномерно наиболее мощный критерий
 
     \[P_1(X\in S_c) = P_1\left(\overline{X} \geq \mu_0 + \sqrt{\frac{\sigma^2}{n}}z_{1-\alpha}\right) = P_1\left(\frac{\overline{X} - \mu_1}{\sqrt{\frac{\sigma^2}{n}}} \geq \frac{\mu_0 + \sqrt{\frac{\sigma^2}{n}}z_{1-\alpha} - \mu_1}{\sqrt{\frac{\sigma^2}{n}}}\right) =\]
@@ -5314,7 +5314,7 @@ label("$z_{\frac{\alpha}{2}}$", (b,0), S);
 \end{cases} \ - \  \text{система (нелинейных) ограничений}\]
 \begin{itemize}
     \item $\Theta_{UR} = \Theta$ (UR $\equiv$ unrestricted)
-    \item $\Theta_{UR} = \left\{\theta: \theta \text{ удовлетворяет ограничению } H_0\right\}$ (R $\equiv$ restricted)
+    \item $\Theta_{R} = \left\{\theta: \theta \text{ удовлетворяет ограничению } H_0\right\}$ (R $\equiv$ restricted)
     \item $\widehat{\theta}_{UR} = \argmax{\theta\in\Theta_{UR}}\,\ell(x;\theta)$
     \item $\widehat{\theta}_{R} = \argmax{\theta\in\Theta_{R}}\,\ell(x;\theta)$
 \end{itemize}
@@ -5329,7 +5329,7 @@ label("$z_{\frac{\alpha}{2}}$", (b,0), S);
     С помощью LR-теста протестировать гипотезу $H_0:\nu = 1$ на уровне значимости $\alpha = 0.05$
 
     Шаг 1:
-    \[\mc{L}(x;\mu,\nu) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\nu}}\exp\left(-\frac{(x_i - \mu)^2}{2\nu}\right) = (2\pi)^{-\frac{n}{2}}\nu^{-\frac{n}{2}}\exp\left(\frac{1}{2\nu}\sum_{i=1}^{n}(x_i-\mu)^2\right)\]
+    \[\mc{L}(x;\mu,\nu) = \prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\nu}}\exp\left(-\frac{(x_i - \mu)^2}{2\nu}\right) = (2\pi)^{-\frac{n}{2}}\nu^{-\frac{n}{2}}\exp\left(-\frac{1}{2\nu}\sum_{i=1}^{n}(x_i-\mu)^2\right)\]
     Шаг 2:
     \[\ell(x;\mu,\nu) = -\frac{n}{2}\ln 2\pi - \frac{n}{2}\ln \nu - \frac{1}{2\nu}\sum_{i=1}^{n}(x_i -\mu)^2\]
     Шаг 3: $\widehat{\mu}_{UR},\widehat{\nu}_{UR}\ -$ ?
