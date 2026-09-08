@@ -119,6 +119,170 @@
 то есть либо $\lambda_j = 0$ (нас не интересует $j$-е граничное условие), либо $b_j - g_j(x) = 0$ (мы движемся по $j$-й границе области). В худшем случае надо проверить $2^m$ вариантов активации ограничений \textit{(боже упаси)}.
 
 В остальном алгоритм поиска экстремума аналогичен случаю с ограничениями типа равенства.
+
+\begin{center}
+    \subsect{Динамическая оптимизация в дискретном времени}
+\end{center}
+
+\begin{itemize}
+    \item дискретное время
+    \begin{center}
+        \begin{asy}
+            size(10cm, 0);
+            draw((0,0)--(10,0), Arrow);
+            label("$t$", (10,0), E);
+            for(int i = 1; i <= 9; ++i) {
+                draw((i,-0.2)--(i,0.2));
+                label(string(i), (i,-0.2), S);
+            }
+        \end{asy}
+    \end{center}
+    \item непрерывное время
+    \begin{center}
+        \begin{asy}
+            size(10cm, 0);
+            draw((0,0)--(10,0), Arrow);
+            label("$t$", (10,0), E);
+            draw((1,-0.2)--(1,0.2));
+            label("$0$", (1,-0.2), S);
+        \end{asy}
+    \end{center}
+    \item случайное время
+    \begin{center}
+        \begin{asy}
+            size(10cm, 0);
+            draw((0,0)--(10,0), Arrow);
+            label("$t$", (10,0), E);
+            draw((1,-0.2)--(1,0.2));
+            draw((3,-0.2)--(3,0.2));
+            draw((4,-0.2)--(4,0.2));
+            draw((7,-0.2)--(7,0.2));
+            label("$0$", (1,-0.2), S);
+            label("$1$", (3,-0.2), S);
+            label("$2$", (4,-0.2), S);
+            label("$3$", (7,-0.2), S);
+        \end{asy}
+    \end{center}
+    \item смешанное время
+    \begin{center}
+        \begin{asy}
+            size(10cm, 0);
+            draw((0,0)--(10,0), Arrow);
+            label("$t$", (10,0), E);
+            draw((1,-0.2)--(1,0.2));
+            draw((3,-0.2)--(3,0.2));
+            draw((4,-0.2)--(4,0.2));
+            draw((7,-0.2)--(7,0.2));
+            label("$0$", (1,-0.2), S);
+            label("$1$", (3,-0.2), S);
+            label("$2$", (4,-0.2), S);
+            label("$3$", (7,-0.2), S);
+            draw((1.5,0.1)--(1.5,-0.1));
+            draw((2.5,0.1)--(2.5,-0.1));
+            draw((3.5,0.1)--(3.5,-0.1));
+            draw((3,0.1)--(3,-0.1));
+        \end{asy}
+    \end{center}
+\end{itemize}
+
+\begin{center}
+    \begin{asy}
+        texpreamble("\usepackage[utf8]{inputenc}");
+        texpreamble("\usepackage[english,russian]{babel}");
+        
+        size(10cm, 0);
+        draw((0,0)--(13,0), Arrow);
+        label("$t$", (13,0), E);
+        draw((1,-0.2)--(1,0.2));
+        draw((3,-0.2)--(3,0.2));
+        draw((5,-0.2)--(5,0.2));
+        draw((7,-0.2)--(7,0.2));
+        draw((9,-0.2)--(9,0.2));
+        label("$0$", (1,-0.2), S);
+        label("$1$", (3,-0.2), S);
+        label("$2$", (5,-0.2), S);
+        label("$3$", (7,-0.2), S);
+        label("$4$", (9,-0.2), S);
+        label("Запасы $x_t$", (1,0.5), N);
+        label("Потоки $c_t$", (9,0.5), N);
+    \end{asy}
+\end{center}
+
+\subsubsect{Модель 1: потребление запаса.}
+$x_t\ -$ запас продукта на начало периода
+
+$c_t\ -$ потребление продукта за период $t$
+
+$x_0\ -$ заданное значение запасов
+\[0 \leq c_t \leq x_t\]
+\[x_{t+1} = \alpha(x_t - c_t)\]
+где $\alpha = 1\ -$ чистое распределение, $\alpha < 1\ -$ амортизация ("порча") продукта,
+
+$\alpha > 1\ -$ производительность
+
+Рассмотрим функцию
+\[U = \sum_{t=0}^{\infty}u(c_t)\delta^t\]
+Интерпретация $\delta$:
+\begin{itemize}
+    \item прожил период с вероятностью $\delta$
+    \item закончил решать задачу с вероятностью $1 - \delta$
+\end{itemize}
+Тогда получается, что мы максимизируем $\mb{E}\left(\displaystyle\sum_{t=0}^{\infty}u(c_t)\right)$
+
+Рассмотрим функцию CRRA:
+\[u(c) = \frac{c^{1-\beta}-1}{1 - \beta}\]
+
+Введём лагранжиан:
+\[\mc{L} = \sum_{t=1}^{\infty}\left(u(c_t)\delta^t + \lambda_t(\alpha(x_t - c_t) - x_{t+1}) + \mu_t(x_t - c_t)\right)\]
+(ограничение $c_t = 0$ никогда не реализуется в силу свойств функции полезности)
+\[\begin{cases}
+    \dfrac{\partial\mc{L}}{\partial c_t} = c_t^{-\beta}\delta^t - \lambda\alpha - \mu_t = 0\\[3mm]
+    \dfrac{\partial\mc{L}}{\partial x_t} = -\lambda_{t-1} + \lambda_t\alpha + \mu_t = 0\\[3mm]
+    \mu_t(x_t - c_t) = 0\\
+    \mu_t \geq 0\\
+    x_t - c_t \geq 0
+\end{cases}\]
+1. Может ли тогда быть $x_t = c_t$? Нет, так как в таком случае $c_{t+1} = 0$. Значит, $\mu_t = 0$.
+
+2. Из второго уравнения:
+\[\dfrac{\lambda_t}{\lambda_{t-1}} = \dfrac{1}{\alpha}\]
+\[\lambda_t = \lambda_{t-1}\alpha\]
+\[\lambda_t = \lambda_{t-2}\alpha^2\]
+\[\vdots\]
+\[\lambda_t = \lambda_{0}\alpha^{-t}\]
+3. из первого уравнения:
+\[c_t^{-\beta}\delta^{-t} = \lambda_t\alpha\]
+\[c_t = \left(\lambda_0\delta^{-t}\alpha^{-t}\alpha\right)^{-\frac{1}{\beta}} = (\lambda_0\alpha)^{-\frac{1}{\beta}}(\delta\alpha)^{-\frac{t}{\beta}}\]
+Заметим, что:
+\[c_0 = (\lambda_0\alpha)^{-\frac{1}{\beta}}\]
+Тогда:
+\[c_t = c_0(\delta\alpha)^{-\frac{t}{\beta}} \tag{*}\]
+
+Условие трансверсальности:
+\[\lim_{t\to\infty}\alpha^{-t}x_t = 0.\]
+Инструкция к поиску $c_0$:
+\begin{enumerate}
+    \item Выражаем $x_t$ через $x_0$ и $c_0, c_1, \ldots, c_t$;
+    \item Подставляем $c_1, c_2, \ldots, c_t$, выраженные в (*);
+    \item Из условия трансверсальности находим $c_0$.
+\end{enumerate}
+Получаем:
+\[c_0 = x_0\left(1 - \dfrac{(\delta\alpha)^\frac{1}{\beta}}{\alpha}\right)\]
+\newpage
+\subsubsect{Модель 2: потребитель, деньги, сбережения.}
+\[\sum_{t=0}^{T-1}\delta^tu(c_t) \to \max\]
+Финансовый баланс $(\lambda_t)$:
+\[\underbrace{M_{t+1} - M_t}_{\text{наличные}} = \underbrace{w_t}_{\text{з/п}} - \underbrace{p_tc_t}_{\substack{\text{цена}\\{\text{потребления}}}} - \underbrace{(B_{t+1} - B_t)}_{\substack{\text{сбережения}\\\text{(облигации)}}} + \underbrace{r_tB_t}_{\text{доходность}}\]
+Ограничения:
+\begin{itemize}
+    \item $M_0, B_0$ заданы;
+    \item $M_t \geq 0 -$ граничное условие $(\mu_t)$.
+\end{itemize}
+Решение: $\mu_tM_t = 0,\ \mu_t \geq 0,\ M_t \geq 0$ (из условия первого порядка)
+\[\dfrac{\partial\mc{L}}{\partial B_t} = 0 \implies \lambda_{t-1} = \lambda_t(1 + r_t)\]
+\[\dfrac{\partial\mc{L}}{\partial M_t} = 0 \implies \lambda_{t-1} = \lambda_t + \mu_t\]
+Значит:
+\[\frac{\lambda_t}{\lambda_{t-1}} = \frac{1}{1 + r_t}\ - \text{двойственная переменная к фин балансу мегаважна}\]
 \addcontentsline{toc}{section}{Вариационное исчисление}
 
 
