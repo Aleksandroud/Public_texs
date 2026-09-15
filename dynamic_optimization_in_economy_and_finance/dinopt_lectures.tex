@@ -276,13 +276,123 @@ $\alpha > 1\ -$ производительность
 Ограничения:
 \begin{itemize}
     \item $M_0, B_0$ заданы;
-    \item $M_t \geq 0 -$ граничное условие $(\mu_t)$.
+    \item $M_t \geq 0\ -$ граничное условие $(\mu_t)$.
 \end{itemize}
 Решение: $\mu_tM_t = 0,\ \mu_t \geq 0,\ M_t \geq 0$ (из условия первого порядка)
 \[\dfrac{\partial\mc{L}}{\partial B_t} = 0 \implies \lambda_{t-1} = \lambda_t(1 + r_t)\]
 \[\dfrac{\partial\mc{L}}{\partial M_t} = 0 \implies \lambda_{t-1} = \lambda_t + \mu_t\]
 Значит:
 \[\frac{\lambda_t}{\lambda_{t-1}} = \frac{1}{1 + r_t}\ - \text{двойственная переменная к фин балансу мегаважна}\]
+\newpage
+\subsect{Метод Беллмана в дискретном времени}
+Здесь и далее $x_t\ -$ состояние, а $u_t\ -$ управление (как координата и импульс в физике)
+
+Что мы будем считать решениями оптимизационной задачи:
+\begin{itemize}
+    \item программа: $u_0^*,\ u_1^*,\dots,u_T^*,\ldots$ при заданном $x_0$ (всё уже решено, но при поправках в начальных условиях надо всё решать заново);
+    \item правило (policy): функция $u_t = \widetilde{u}_t(x_t)$ (надо решать всегда, но немного).
+\end{itemize}
+Принцип оптимальности:
+
+Каждый отрезок оптимальной траектории, продолжающийся до её конца, есть снова оптимальная траектория задачи, начинающейся из достигнутого состояния
+
+\subsubsect{Каноническая задача и функция Беллмана}
+\[J = \sum_{t=0}^{T-1}F_t(x_t, u_t) + G(x_T) \to \max\]
+Ограничения:
+
+$x_{t+1} = f(x_t, u_t)\ -$ динамическое отношение между текущим состоянием и состоянием и управлением в предыдущий период
+
+\[u_t \in U_t(x_t),\qquad t = 0,\dots,T-1\]
+Будем считать, что $x_0$ задано, $x_t \in \mb{R}^n$ и $u_t \in \mb{R}^m$
+
+Принципиальная особенность задачи:
+\begin{itemize}
+    \item Аддитивность: критерий $-$ сумма по периоду выигрышей, каждый из которых зависит от $x_t,\ u_t$
+    \item Марковость: $x_{t+1}$ и $U_t$ зависят только от $x_t,\ u_t,\ t$ (у системы нет памяти)
+\end{itemize}
+Пример:
+
+$x_{t+1} = f(x_t, x_{t-1}, u_t)$
+
+Сделаем замену $y_t = x_{t-1}$ и $z_t = \begin{pmatrix}
+    x_t\\
+    y_t
+\end{pmatrix}$
+
+Тогда получаем систему
+\[\begin{cases}
+    y_{t+1} = x_t\\
+    x_{t+1} = f(x_t, y_t, u_t)
+\end{cases}\]
+Функция Беллмана
+\[B_{\tau}(x) = \max_{u_\tau,\dots,u_{T-1}}\left\{\sum_{t=\tau}^{T-1}F_t(x_t,u_t) + G(x_t)\right\},\qquad \text{где } x_{\tau} = x\]
+(в англоязычных источниках вместо $B$ пишут $V$ (потому что value))
+
+Ограничения:
+\[x_{t+1} = f_t(x_t,u_t)\]
+\[u_t \in U_t(x_t)\]
+\[B_T(x) = G(x)\]
+\[B_0(x) = J\]
+
+\subsubsect{Уравнение Беллмана}
+\[B_\tau(x) = \max_{x_\tau,\dots,x_{T-1}}\left[F_\tau(x_\tau,u_\tau) + \left\{\sum_{t=\tau+1}^{T-1}F_t(x_t,u_t) + G(x_T)\right\}\right] = \max_{u_\tau}\left[F_\tau(x_\tau,u_\tau) + \underbrace{\max_{x_{\tau+1},\dots,x_{T-1}}\left\{\sum_{t=\tau+1}^{T-1}F_t(x_t,u_t) + G(x_T)\right\}}_{B_{\tau+1}(x_{\tau+1})}\right]\]
+при условии, что $x_{\tau+1} = f(x_{\tau},u_{\tau})$.
+
+Итого:
+\[\begin{cases}
+    \displaystyle B_\tau(x) = \max_{u\in U_t(x_t)}\bigg\{F_\tau(x) + B_{\tau+1}\big(f_\tau(x,u)\big)\bigg\}\\
+    B_T(x) = G(x)
+\end{cases}\]
+
+\subsubsect{Пример 1: Инвестиции в двухсекторной экономике}
+$x_t\ -$ мощность отрасли производства средств производства,
+
+$y_t\ -$ мощность отрасли производства потребительских товаров.
+
+\[\begin{cases}
+    y_T \to \max\\,
+    x_{t+1} = x_t + (1 - u_t)x_ta,\\
+    y_{t+1} = y_t + u_tx_ta,\\
+    0 \leq u_t \leq 1,
+\end{cases}\]
+где $u_t\ -$ доля средств производства, использованных для расширения производства товаров потребления, а $a\ -$ коэффициент производственной функции.
+
+Идём с конца
+\[B_T = y_T\]
+\[B_{T-1} = \max_{0\leq u_{T-1}\leq 1}\{0 + \underbrace{y_T}_{B_T}\} = \max_{0\leq u_{T-1}\leq 1}\left\{y_{T-1} + u_{T-1}x_{T-1}a\right\}\]
+\[\boxed{u_{T-1}^* = 1}\]
+\[B_{T-2}\ = \max_{0\leq u_{T-2}\leq 1}\big\{0 + \underbrace{y_{T-1} + x_{T-1}a}_{B_{T-2}}\big\} = \max_{0\leq u_{T-2}\leq 1}\big\{y_{T-2} + u_{T-2}x_{T-2}a + a(x_{T-2} + (1 - u_{T-2}x_{T-2}a))\big\}\]
+\[u_{T-2}\left(ax_{T-2} - a^2x_{T-2}\right) + \cdots\]
+\[\left(a - a^2\right)u_{T-2} \to \max\]
+$\implies$ найдём $u_{T-2}^*$ от $a$.\\[1cm]
+Результатом обратного прохода является набор $u_0^*, u_1^*, u_2^*,\dots,u_{T-1}^*$
+
+При прямом обходе из уравнения на $x_{t+1}$ и $y_{t+1}$ найдём $x^*, y^*$
+\newpage
+\subsubsect{Задачи с ограничением на состояния}
+При наличии ограничений на состояние $x_t$ на обратном проходе вместе с $B_t$ строится два множества:
+\begin{enumerate}
+    \item $\underline{U}_t(x) = \left\{u\in U_t(x): f_t(x,u) \in \underline{X}_{t+1}\right\}$;
+    \item $\underline{X}_{t} = \left\{x: \underline{U}_t(x) \neq 0\right\} \cap \left\{\text{ограничения в момент } t\right\}$.
+\end{enumerate}
+\subsubsect{Пример 2}
+\[\begin{cases}
+    y_3 \to \max,\\
+    x_{t+1} = 2x_t = u_t,\\
+    x_0 = 1,\\
+    x_3 \geq 3;\\
+    y_{t+1} = t_t + u_t,\\
+    y_0 = 0,\\
+    y_1 \geq \dfrac{1}{2},\\
+    y_3 \geq 1,\\
+    0 \leq u_t \leq x_t, & t = 0,1,2.
+\end{cases}\]
+$t = 3$:
+\[B_3 = y_3\]
+$t = 2$. Соберём все ограничения: $x \geq 3$, $u_2 \leq x_2$.
+
+Приводим к виду: $x_3 = 2x^2 - u_2 \geq 3\implies u_2 \leq -3 - 2x_2$.
+\[B_2 = \max_{\substack{0\leq u_2 \leq x_2\\ u_2 \leq 2x_2 - 3}}\big\{0 + y_3\big\}\]
 \addcontentsline{toc}{section}{Вариационное исчисление}
 
 
