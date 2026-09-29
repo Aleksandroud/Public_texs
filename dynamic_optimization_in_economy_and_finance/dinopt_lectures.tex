@@ -407,7 +407,7 @@ $t = 2$. Соберём все ограничения: $x \geq 3$, $u_2 \leq x_2
 \[x_\tau = x,\qquad B_\tau = \max_{c_\tau,c_{\tau+1},\ldots}\sum_{t\geq\tau}\delta^tu(c_t)\]
 Теперь зафиксируем другой момент $\psi$:
 \[x_\psi = x,\qquad B_\psi = \max_{c_\psi,c_{\psi+1},\ldots}\sum_{t\geq\psi}\delta^tu(c_t)\]
-Удивитиельно, но функции Беллмана для разных моментов совпали. Значит,
+Удивительно, но функции Беллмана для разных моментов совпали. Значит,
 \[B_\tau(x) = \delta^\tau B(x)\]
 где $B(x)\ -$ какая-то функция (на самом деле функция Беллмана в начальный момент времени). Получаем
 \[B_t(x) = \delta^tB(x)\]
@@ -440,7 +440,7 @@ $t = 2$. Соберём все ограничения: $x \geq 3$, $u_2 \leq x_2
 Будем считать, что $\alpha_t\ -$ случайная величина с известным распределением.
 
 Допустим, что в каждый момент $t$ реализвуется некоторое состояние мира $s_t$
-
+ч
 Логично перейти к ветвистому представлению времени
 \begin{center}
     \includegraphics[scale=0.4]{tree.jpeg}
@@ -453,15 +453,87 @@ $t = 2$. Соберём все ограничения: $x \geq 3$, $u_2 \leq x_2
 Считаем, что известны вероятности каждой предыстории $s^t$:
 \[\sum_{s^t}\pi_t\left(s^t\right) = 1\]
 Тогда:
-\[\mb{E}_0\left(\sum_{t=0}^{\infty}\delta^tu(c_t)\right) = \sum_{t=0}^{\infty}\sum_{s_t}\pi_t\left(s^t\right)u(c_t)\]
+\[\mb{E}_0\left(\sum_{t=0}^{\infty}\delta^tu(c_t)\right) = \sum_{t=0}^{\infty}\sum_{s^t}\pi_t\left(s^t\right)u(c_t)\]
 Введём функцию Беллмана:
 \[B_t(x, s) = \max_{u\in U_t(x,s)} \left\{F_t(x,u,s) + \sum_{s'}P(s'\mid s)B_{t+1}(f_t(x,u,s),s')\right\}\]
 В итоге получаем усложнённую процедуру, у которой проход из конца в начало не меняется, а на проходе из начала в конец находим оптимальную стратегию не только в каждый $t$, но и для каждого возможного состояния
+\newpage
+\sect{
+    \huge Вариационное исчисление
+}
 \addcontentsline{toc}{section}{Вариационное исчисление}
+Раньше время было дискретным. Теперь оно будет непрерывным и теперь мы будем искать траекторию $y(t)$
 
+Если каждой функции $y(t)$ из класса $M$ поставлена в соответствие число \mbox{$V\in\mb{R}$}, то $V$ называется функционалом над $M$
+\[V = V\left(y(t)\right)\]
+Примерами могут послужить площадь под кривой или её длина
+\subsect{Каноническая задача}
+\[V(y(t)) = \int\limits_0^TF(t, y(t), y'(t))\,dt \to \operatorname{extr} \qquad y(0) = y_0\quad y(T) = y_T\]
+$M:$ гладкие функции
 
+При этом мы требуем:
+\begin{enumerate}
+    \item интеграл сходится
+    \item $y(t)$ дважды непрерывно дифференцируема
+    \item $F$ дважды непрерывно дифференцируема по всем аргументам
+\end{enumerate}
+Сделаем замену $t\in [0, T]$ на $t_k = k\cdot \Delta t,\ k=0,\dots,N,\ N\cdot\Delta t = T$. Теперь заменяем функционал:
+\[J = \sum_{k=0}^{N-1}F(t_k, y_k, v_k)\Delta t \to \operatorname{extr}\]
+где $y_0$ и $y_N$ заданы, а $v_k = \dfrac{y_{k+1} - y_k}{\Delta t}$ (то есть заменили производную).\\[3mm]
 
+Видно, что
+\[\frac{\partial v_k}{\partial y_k} = -\frac{1}{\Delta t}\qquad\frac{\partial v_{k-1}}{\partial y_k} = \frac{1}{\Delta}\]
+Тогда
+\[\frac{\partial J}{\partial y_k} = \Delta\cdot F_y(t_k,\ldots) - F_{y'}(t_k) + F_{y'}(t_{k-1},\ldots) = 0\]
+(здесь мы опустили все штрихи у производных функции, чтобы не запутаться)
+\[F_y(t_k) = \frac{F_{y'}(t_k) - F_{y'}(t_{k-1})}{\Delta t}\]
+Тогда при $\Delta t \to 0$
+\[F_y(t) = \frac{d}{dt}F_{y'}(t)\]
+\[F_y - \frac{d}{dt}F_{y'} = 0\]
+\newpage
+Подойдём к задаче с другой стороны
 
+Введём расстояние $n$-го порядка
+\[\rho_n(y_1,y_2) = \max_{0\leq k\leq n}\max_{0\leq t\leq T}\left|y_1^{(k)} - y_2^{(k)}(f)\right|\]
+\begin{center}
+    \includegraphics[scale=0.1]{funcs.png}
+\end{center}
+$n = 0$: $y_3$ ближе к $y_1$, чем к $y_2$
+
+$n = 1$: $y_2$ ближе к $y_1$, чем к $y_3$
+
+Поэтому $\varepsilon$-окрестность тоже зависит от порядка:
+\begin{itemize}
+    \item $\varepsilon$-окрестность 0 порядка $-$ сильная окрестность
+    \item $\varepsilon$-окрестность 1 порядка $-$ слабая окрестность
+\end{itemize}
+причём $\varepsilon$-окр 1 порядка $\subseteq$ $\varepsilon$-окр 0 порядка
+
+$\implies$ максимумы и минимумы тоже разные! Есть сильный $\max$ (значение не меньше, чем в сильной окр) и слабый $\max$ (значение не меньше, чем в слабой окр)
+
+Любой сильный максимум является слабым, но не любой слабый является сильным
+
+Введём приращение: $\Delta V = V(y + Sy) - V(y)$
+
+Если $\Delta V$ представимо в виде $\Delta V = L(y, \delta y) + o(\rho_0(\delta y, 0))$, то функционал $V$ называется дифференцируемым в точке $y$, а $\delta V = L(y, \delta y)$ называется вариационным функционалом
+
+На практике вариацию считают по рабочей формуле:
+\[\delta V = \frac{d}{d\alpha}V(y + \alpha\delta y)\Big|_{\alpha=0}\]
+Пример:
+\[V(y) = \int\limits_0^Ty^2dt\]
+\[\frac{d}{dt}\int\limits_0^T (y + \alpha\delta y)^2dt = \int\limits_0^T2(y + \alpha\delta y)\delta y\,dt\Big|_{\alpha=0} = \int\limits_0^T2y\delta y\,dt\]
+\textit{Теорема:} если дифференцируемый функционал достигает экстремума на кривой $y^*(t)$, то $\delta V = 0$ на $y^*$ при любой допустимой $\delta y$.
+
+\textit{Доказательство:} Пусть $y = y^* + \alpha\delta y$. Тогда при фиксированном $\delta y$
+\[V(y^* + \alpha\delta y) = \varphi(\alpha)\]
+Функция $\varphi$ достигает максимума (минимума) при $\alpha = 0$, то есть $\varphi'(0) = 0$
+\[\frac{d}{d\alpha}V(y^* + \alpha\delta y)\Big|_{\alpha = 0} = 0\]
+\textit{чтд}\\[5mm]
+
+Вернёмся к канонической задаче
+\[\delta V = \frac{d}{d\alpha}\int\limits_0^T F(t, y + \alpha \delta y, y' + \alpha\delta y')\, dt\Big|_{\alpha=0} = \int\limits_0^T(F_y\cdot\delta y + F_{y'}\delta y')\,dt\Big|_{\alpha=0} = \]
+\[F_{y'}\delta y\Big|_0^T + \int\limits_0^T\left(F_y\cdot\delta y - \frac{d}{dt}F_{y'}\cdot\delta y\right)dy = \int\limits\left(F_y - \frac{d}{dt}F_{y'}\right)\delta y\,dt = 0\]
+только если $F_y - \dfrac{d}{dt}F_{y'} = 0$
 \addcontentsline{toc}{section}{Оптимальное управление}
 
 
