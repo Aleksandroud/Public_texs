@@ -534,6 +534,69 @@ $\implies$ максимумы и минимумы тоже разные! Ест�
 \[\delta V = \frac{d}{d\alpha}\int\limits_0^T F(t, y + \alpha \delta y, y' + \alpha\delta y')\, dt\Big|_{\alpha=0} = \int\limits_0^T(F_y\cdot\delta y + F_{y'}\delta y')\,dt\Big|_{\alpha=0} = \]
 \[F_{y'}\delta y\Big|_0^T + \int\limits_0^T\left(F_y\cdot\delta y - \frac{d}{dt}F_{y'}\cdot\delta y\right)dt = \int\limits_0^T\left(F_y - \frac{d}{dt}F_{y'}\right)\delta y\,dt = 0\]
 только если $F_y - \dfrac{d}{dt}F_{y'} = 0$
+
+\newpage
+\subsect{Подвижные границы и условие трансверсальности}
+\subsubsect{Случай многих переменных}
+Предположим, что есть $n$ переменных $y_1,\dots,y_n$
+\[\int\limits_0^TF\left(t, y_1, \dots, y_n, y_1', \dots, y_n'\right)\,dt,\qquad \begin{aligned}
+    &y_i(0) = y_{i0},\\
+    &y_i(T) = y_{iT},\qquad i = 1,\dots,n
+\end{aligned}\]
+Решение: система дифференциальных уравнений второго порядка
+\[F_{y_i} - \frac{d}{dt}F_{y_i'} = 0 \qquad i = 1,\dots,n\]
+$\implies 2n$ неизвестных констант, которые определяются $2n$ начальными условиями
+\subsubsect{Случай производных высокого порядка}
+\[\int\limits_0^T F\left(t, y, y', y'', \dots, y^{(k)}\right)\,dt\]
+Видно, что нужно, чтобы $y$ и $F$ была дифференцируема $2k$ раз
+
+Решение: интегрируем по частям $k$ раз, получаем уравнение Эйлера-Пуассона:
+\[F_y - \frac{d}{dt}F_{y'} + \frac{d^2}{dt^2}F_{y''} - \cdots + (-1)^k \frac{d^k}{dt^k}F_{y^{(k)}} = 0\]
+Это уравнение порядка $2k$, поэтому нужно наложить $2k$ начальных условий
+\[ \begin{aligned}
+    y(0) = y_{00} \quad y'(0) = y_{10} \quad \cdots\quad & y^{(k-1)}(0) = y_{k-1,0}\\
+    y(T) = y_{0T} \quad y'(T) = y_{1T} \quad \cdots\quad & y^{(k-1)}(T) = y_{k-1,T}
+\end{aligned}\]
+\newpage
+\subsubsect{\huge Подвижные границы в канонической задаче}
+1. Задачи с конечной ветикальной кривой. Теперь мы выбираем траекторию
+\begin{center}
+    \includegraphics[scale=0.5]{traj.jpeg}
+\end{center}
+2. Задача с конечной горизонтальной кривой. Теперь мы выбираем момент времени достижения определенного $y_T$
+\begin{center}
+    \includegraphics[scale=0.5]{traj2.jpeg}
+\end{center}
+\newpage
+3. Задача с наклонной кривой. Теперь мы выбираем момент времени достижения определенного $y_T$ и траекторию
+\begin{center}
+    \includegraphics[scale=0.5]{traj3.jpeg}
+\end{center}
+Рассмотрим задачу
+\[\int\limits_0^TF(t,y,y')\,dt\qquad y(0) = y_0\]
+Пусть известна оптимальная траектория $y^*(t)$, а также $T^*$. Тогда
+\[y = y^* + \alpha\cdot\delta y\]
+\[T = T^* + \alpha\cdot\Delta T\]
+Пусть $\displaystyle \int\limits_0^{T^*}F(t,y^*,y')\,dt = \varphi(\alpha)$. Тогда оптимум достигается при $\alpha = 0\implies \varphi'(\alpha) = 0$
+\[\frac{d}{d\alpha}\int\limits_0^{T^* + \alpha\Delta T}F(t, y^* + \alpha\delta y, y^{*'} + \alpha(\delta y)')\Bigg|_{\alpha=0} = \int\limits_0^T (F_y\delta y + F_{y'}(\delta y)')\,dt + [F]_T\cdot\Delta T = \]
+\[F_y\delta y\Big|_0^T + \underbrace{\int\limits_0^T \left(F - \frac{d}{dt}F_{y'}\delta y\right)dt}_{0} + [F]_T\Delta T =\]
+Так как $y(T)$ теперь не зафиксирован, то
+\[=[F_{y'}]_T\delta y(T) + [F]_T\Delta T = 0\]
+\newpage
+Для простоты $\alpha = 1$
+\begin{center}
+    \includegraphics[scale=0.5]{Deltay.jpeg}
+\end{center}
+\[\Delta y_T \approx \delta y(T) + y'(T)\Delta T\]
+\[\implies [F_{y'}]_T\Delta y_T + [F - y'F_{y'}]_T\Delta T = 0\]
+Возвращаясь к задаче с вертикальной кривой, получаем
+\[[F_{y'}]_T\Delta y_T = 0 \implies [F_{y'}]_T = 0\]
+в задаче с вертикальной кривой получаем
+\[[F - y'F_{y'}]_T\Delta T = 0 \implies [F - y'F_{y'}]_T = 0\]
+а в задаче с наклонной кривой
+\[\Delta y_T = h'(T)\Delta T \implies [F_{y'}]h'(T)\Delta T + (F - y'F_{y'})_T\Delta T = 0\]
+\[[F_{y'}(h' + y') + F]_T = 0\]
+Эти уравнения дают нам условие на $y(T)$, которое называется условием трансверсальности.
 \addcontentsline{toc}{section}{Оптимальное управление}
 
 
